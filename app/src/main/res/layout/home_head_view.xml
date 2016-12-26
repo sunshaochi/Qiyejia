@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -82,12 +83,11 @@
         android:id="@+id/gvHomeCompany"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="4"
         android:background="@color/white"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:scrollbars="none"
-        ></com.boyuanitsm.echinfo.widget.MyGridView>
+        android:numColumns="4"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:scrollbars="none"></com.boyuanitsm.echinfo.widget.MyGridView>
 
     <TextView
         style="@style/tv_12_grey"
@@ -103,10 +103,87 @@
         android:id="@+id/gvZx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="3"
         android:background="#e8e9eb"
-        android:scrollbars="none"
-        android:verticalSpacing="1px"
         android:horizontalSpacing="1px"
-        ></com.boyuanitsm.echinfo.widget.MyGridView>
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="1px"></com.boyuanitsm.echinfo.widget.MyGridView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/mid_bannner" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.boyuanitsm.tools.view.CommonView
+            android:id="@+id/cvMyFollow"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_back"
+            app:desText="我的关注"
+            app:desTextColor="#333333"
+            app:desTextSize="16sp"
+            app:isShowCategoryImage="false"
+            app:notesText="查看更多"
+            app:notesTextColor="#999999"
+            app:notesTextSize="14sp"></com.boyuanitsm.tools.view.CommonView>
+
+        <View
+            style="@style/view_line"
+            android:layout_marginLeft="15dp"></View>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcvMyFollow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+    <com.boyuanitsm.tools.view.CommonView
+        android:id="@+id/cvHotCom"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/item_back"
+        app:desText="热门企业"
+        app:desTextColor="#333333"
+        app:desTextSize="16sp"
+        app:isShowCategoryImage="false"
+        app:notesText="查看更多"
+        app:notesTextColor="#999999"
+        app:notesTextSize="14sp"></com.boyuanitsm.tools.view.CommonView>
+
+    <View
+        style="@style/view_line"
+        android:layout_marginLeft="15dp"></View>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcvHotCom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    <com.boyuanitsm.tools.view.CommonView
+        android:id="@+id/cvSxbd"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/item_back"
+        app:desText="失信榜单"
+        app:desTextColor="#333333"
+        app:desTextSize="16sp"
+        app:isShowCategoryImage="false"
+        app:notesText="查看更多"
+        app:notesTextColor="#999999"
+        app:notesTextSize="14sp"></com.boyuanitsm.tools.view.CommonView>
+
+    <View
+        style="@style/view_line"
+        android:layout_marginLeft="15dp"></View>
 </LinearLayout>

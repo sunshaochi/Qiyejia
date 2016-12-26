@@ -25,9 +25,9 @@ public abstract class BaseFrg<T extends BasePresenter> extends Fragment implemen
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if (null == mFragmentRootView) {
+            mFragmentRootView = inflater.inflate(getLayout(), container, false);
             // 注入控件
             ButterKnife.bind(this,mFragmentRootView);
-            mFragmentRootView = inflater.inflate(getLayout(), container, false);
             initView(mFragmentRootView);
         }
 

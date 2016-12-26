@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/item_back"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            style="@style/tv_14_black"
+            android:text="超九成上榜者失信"
+            android:textColor="#666666" />
+
+        <TextView
+            style="@style/tv_12_grey"
+            android:layout_alignParentRight="true"
+            android:text="2015年12月" />
+    </RelativeLayout>
+
+    <View
+        style="@style/view_line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"></View>
+</LinearLayout>

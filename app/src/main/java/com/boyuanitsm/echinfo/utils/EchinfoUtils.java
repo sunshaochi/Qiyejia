@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import com.boyuanitsm.tools.view.xrecyclerview.ProgressStyle;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 工具类
  * Created by wangbin on 16/12/23.
@@ -42,6 +45,19 @@ public class EchinfoUtils {
         params.width=w;
         params.height=h;
         v.setLayoutParams(params);
+    }
+
+    /**
+     * 获取测试List
+     * @param length
+     * @return
+     */
+    public static List<String> getTestDatas(int length){
+        List<String> datas=new ArrayList<>();
+        for(int i=0;i<length;i++){
+            datas.add(i+"");
+        }
+        return datas;
     }
 
 }

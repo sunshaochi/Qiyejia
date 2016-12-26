@@ -2,14 +2,14 @@ package com.boyuanitsm.echinfo.module.start;
 
 import android.os.Bundle;
 
-import com.boyuanitsm.base.BaseAct;
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.base.BaseAct;
 
 /**
  * 引导页
  * Created by wangbin on 16/12/22.
  */
-public class GuideAct extends BaseAct{
+public class GuideAct extends BaseAct {
 
     @Override
     public int getLayout() {

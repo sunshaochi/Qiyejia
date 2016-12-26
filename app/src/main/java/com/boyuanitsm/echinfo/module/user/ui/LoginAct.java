@@ -2,7 +2,7 @@ package com.boyuanitsm.echinfo.module.user.ui;
 
 import android.os.Bundle;
 
-import com.boyuanitsm.base.BaseAct;
+import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.module.user.view.ILoginView;
 
 /**

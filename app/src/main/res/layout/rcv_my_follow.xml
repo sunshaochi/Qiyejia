@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/item_back"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="北京阿里巴巴信息有限公司"
+        android:textColor="#666666"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            style="@style/tv_12_grey"
+            android:text="公司法人：马云" />
+
+        <TextView
+            style="@style/tv_12_grey"
+            android:text="在营（开业）企业"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <View
+        style="@style/view_line"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        ></View>
+</LinearLayout>

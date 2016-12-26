@@ -5,14 +5,16 @@
     android:background="@drawable/item_back"
     android:minHeight="45dp"
     android:orientation="horizontal"
-    android:gravity="center"
+    android:gravity="center_vertical"
     >
 
     <ImageView
         android:id="@+id/ivHome"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:src="@mipmap/czl" />
+        android:src="@mipmap/czl"
+        android:layout_marginLeft="15dp"
+        />
 
     <TextView
         android:id="@+id/tv"

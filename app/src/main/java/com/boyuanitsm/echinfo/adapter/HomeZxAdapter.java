@@ -15,7 +15,7 @@ import com.boyuanitsm.echinfo.R;
  */
 public class HomeZxAdapter extends BaseAdapter{
     private Context context;
-    private int [] images={R.mipmap.qymc,R.mipmap.gdgg,R.mipmap.jyfw,R.mipmap.ppcp};
+    private int [] images={R.mipmap.czl,R.mipmap.csb,R.mipmap.czzq,R.mipmap.cpj,R.mipmap.sxr,R.mipmap.bzx};
     private String [] titles={"查专利","查商标","查著作权","查判决","失信人","被执行"};
     public HomeZxAdapter(Context context){
         this.context=context;
