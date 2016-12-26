@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/frame_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
+
+
+    <View style="@style/view_line"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#fefefe"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/llHome"
+            style="@style/linear_main">
+
+            <ImageView
+                android:id="@+id/ivHome"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/home_h" />
+
+            <TextView
+                android:id="@+id/tvHome"
+                style="@style/tv_main_btm"
+                android:text="首页"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llFollow"
+            style="@style/linear_main">
+
+            <ImageView
+                android:id="@+id/ivAtten"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/attention" />
+
+            <TextView
+                android:id="@+id/tvAtten"
+                style="@style/tv_main_btm"
+                android:text="关注"
+                android:textColor="#666666"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llFind"
+            style="@style/linear_main">
+
+            <ImageView
+                android:id="@+id/ivFind"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/find" />
+
+            <TextView
+                android:id="@+id/tvFind"
+                style="@style/tv_main_btm"
+                android:text="发现"
+                android:textColor="#666666"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llMine"
+            style="@style/linear_main">
+
+            <ImageView
+                android:id="@+id/ivMine"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/me" />
+
+            <TextView
+                android:id="@+id/tvMine"
+                style="@style/tv_main_btm"
+                android:text="我的"
+                android:textColor="#666666"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlTop"
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:background="@mipmap/home_top_bg">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/tv_title_style"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="查企业，就上企业＋！"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/et_white_search"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="请输入企业名，人名，品牌等关键词"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/home_search" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <TextView
+                style="@style/tv_12_white"
+                android:text="热搜:阿里  中国移动" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/hyp" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <TextView
+        style="@style/tv_12_grey"
+        android:layout_width="match_parent"
+        android:background="@color/bg_grey_color"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:text="查企业" />
+
+    <com.boyuanitsm.echinfo.widget.MyGridView
+        android:id="@+id/gvHomeCompany"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="4"
+        android:background="@color/white"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:scrollbars="none"
+        ></com.boyuanitsm.echinfo.widget.MyGridView>
+
+    <TextView
+        style="@style/tv_12_grey"
+        android:layout_width="match_parent"
+        android:background="@color/bg_grey_color"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:text="查专项" />
+
+    <com.boyuanitsm.echinfo.widget.MyGridView
+        android:id="@+id/gvZx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="3"
+        android:background="#e8e9eb"
+        android:scrollbars="none"
+        android:verticalSpacing="1px"
+        android:horizontalSpacing="1px"
+        ></com.boyuanitsm.echinfo.widget.MyGridView>
+</LinearLayout>

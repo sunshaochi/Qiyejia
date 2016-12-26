@@ -1,0 +1,23 @@
+<resources>
+    <!--自定义通用控件点击颜色-->
+    <color name="item_focus_color">#e7e7e7</color>
+    <color name="white">#ffffff</color>
+
+    <!-- 背景色-->
+    <color name="tools_bg_color">#f5f9fa</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="tv_gray">#999a9a</color>
+
+    <!-- 自定义 dialog弹出框颜色 -->
+    <color name="trans">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+
+    <color name="tv_black">#333333</color>
+    <color name="delete_red">#FF3a31</color>
+
+    <color name="background_tab_pressed">#8833B5E5</color>
+
+</resources>
