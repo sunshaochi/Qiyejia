@@ -5,7 +5,10 @@ import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseFrg;
+import com.boyuanitsm.echinfo.module.mine.ui.FeedBackAct;
 import com.boyuanitsm.echinfo.module.mine.ui.MineAct;
+import com.boyuanitsm.echinfo.module.mine.ui.MsgAct;
+import com.boyuanitsm.echinfo.module.mine.ui.SettingAct;
 import com.boyuanitsm.echinfo.widget.MineItemView;
 import com.boyuanitsm.tools.view.CircleImageView;
 
@@ -56,12 +59,15 @@ public class MineFrg extends BaseFrg {
             case R.id.miv_gz:
                 break;
             case R.id.miv_xx:
+                openActivity(MsgAct.class);
                 break;
             case R.id.miv_fk:
+                openActivity(FeedBackAct.class);
                 break;
             case R.id.miv_wt:
                 break;
             case R.id.miv_sz:
+                openActivity(SettingAct.class);
                 break;
         }
     }

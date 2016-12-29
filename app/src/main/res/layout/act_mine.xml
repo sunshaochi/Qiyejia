@@ -16,6 +16,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_head"
             android:layout_width="match_parent"
             android:layout_height="82dp"
             android:gravity="center_vertical"
@@ -36,6 +37,7 @@
                 android:layout_weight="1" />
 
             <com.boyuanitsm.tools.view.CircleImageView
+                android:id="@+id/civ_head"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:src="@mipmap/mine_head" />
@@ -52,6 +54,7 @@
             android:layout_marginLeft="15dp" />
 
         <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_phone"
             style="@style/mineAct_item"
             app:isShowArrowRight="false"
             app:leftText="15010101011"
@@ -64,6 +67,7 @@
             android:layout_marginLeft="15dp" />
 
         <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_changePwd"
             style="@style/mineAct_item"
             app:leftText="修改密码" />
 
@@ -72,6 +76,7 @@
             android:layout_marginLeft="15dp" />
 
         <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_name"
             style="@style/mineAct_item"
             app:leftText="姓名" />
 
@@ -80,6 +85,7 @@
             android:layout_marginLeft="15dp" />
 
         <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_company"
             style="@style/mineAct_item"
             app:leftText="公司名称" />
 
@@ -88,6 +94,7 @@
             android:layout_marginLeft="15dp" />
 
         <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_profession"
             style="@style/mineAct_item"
             app:leftText="职业" />
 

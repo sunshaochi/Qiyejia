@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_grey_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="top|left"
+        android:hint="我们会收集您提交的请求，并在3-5个工作日内回复"
+        android:lines="5"
+        android:maxLength="200"
+        android:padding="15dp"
+        android:textColor="#333"
+        android:textColorHint="#999"
+        android:textSize="14sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:hint="您的联系电话"
+        android:maxLength="11"
+        android:inputType="number"
+        android:lines="1"
+        android:padding="15dp"
+        android:textColor="#333"
+        android:textColorHint="#999"
+        android:textSize="14sp" />
+</LinearLayout>
