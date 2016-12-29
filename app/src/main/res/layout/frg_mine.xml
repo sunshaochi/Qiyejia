@@ -1,14 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_color"
-    >
+    android:background="#eef1f3"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_mine"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@mipmap/mine_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <com.boyuanitsm.tools.view.CircleImageView
+            android:id="@+id/civ_head"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:src="@mipmap/mine_head" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="张三三"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_profession"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/tv_name"
+                android:background="@drawable/tv_mine_profession"
+                android:gravity="center"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="IT质量管理工程师"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
+                android:layout_marginTop="15dp"
+                android:text="上海博通科技信息公司"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/arrow_right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="这是我的"
-        />
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_gz"
+            style="@style/mine_item"
+            app:leftImg="@mipmap/mine_gz"
+            app:leftText="我的关注" />
+
+        <View
+            android:layout_marginLeft="15dp"
+            style="@style/view_line" />
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_xx"
+            style="@style/mine_item"
+            app:leftImg="@mipmap/mine_xx"
+            app:leftText="系统消息" />
+
+        <View
+            android:layout_marginLeft="15dp"
+            style="@style/view_line" />
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_fk"
+            style="@style/mine_item"
+            app:leftImg="@mipmap/mine_fk"
+            app:leftText="意见反馈" />
+
+        <View
+            android:layout_marginLeft="15dp"
+            style="@style/view_line" />
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_wt"
+            style="@style/mine_item"
+            app:leftImg="@mipmap/mine_wt"
+            app:leftText="常见问题" />
+
+        <View
+            android:layout_marginLeft="15dp"
+            style="@style/view_line" />
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            android:id="@+id/miv_sz"
+            style="@style/mine_item"
+            app:leftImg="@mipmap/mine_sz"
+            app:leftText="设置" />
+
+        <View
+            style="@style/view_line" />
+    </LinearLayout>
 
 </LinearLayout>

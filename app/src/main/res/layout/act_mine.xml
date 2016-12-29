@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eef1f3"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="头像"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <com.boyuanitsm.tools.view.CircleImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@mipmap/mine_head" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:src="@mipmap/arrow_right" />
+        </LinearLayout>
+
+        <View
+            style="@style/view_line"
+            android:layout_marginLeft="15dp" />
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            style="@style/mineAct_item"
+            app:isShowArrowRight="false"
+            app:leftText="15010101011"
+            app:rightText="已绑定"
+            app:rightTextColor="#ff7c00"
+            app:rightTextSize="16sp" />
+
+        <View
+            style="@style/view_line"
+            android:layout_marginLeft="15dp" />
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            style="@style/mineAct_item"
+            app:leftText="修改密码" />
+
+        <View
+            style="@style/view_line"
+            android:layout_marginLeft="15dp" />
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            style="@style/mineAct_item"
+            app:leftText="姓名" />
+
+        <View
+            style="@style/view_line"
+            android:layout_marginLeft="15dp" />
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            style="@style/mineAct_item"
+            app:leftText="公司名称" />
+
+        <View
+            style="@style/view_line"
+            android:layout_marginLeft="15dp" />
+
+        <com.boyuanitsm.echinfo.widget.MineItemView
+            style="@style/mineAct_item"
+            app:leftText="职业" />
+
+        <View
+            style="@style/view_line"
+            android:layout_marginLeft="15dp" />
+    </LinearLayout>
+</LinearLayout>
