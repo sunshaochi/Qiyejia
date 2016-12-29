@@ -81,6 +81,7 @@ public class FindFrg extends BaseFrg {
         };
         vp_find.setOnPageChangeListener(listener);
         CommonNavigator commonNavigator = new CommonNavigator(mActivity);
+        commonNavigator.setAdjustMode(true);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
             @Override
             public int getCount() {

@@ -7,7 +7,7 @@
     <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
         android:id="@+id/rcv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView>
+        android:layout_height="match_parent"/>
 <TextView
     android:visibility="gone"
     android:text="感兴趣"
