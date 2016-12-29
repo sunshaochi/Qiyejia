@@ -23,7 +23,9 @@
         <activity
             android:name=".module.mine.ui.MineAct"
             android:screenOrientation="portrait" />
-
+        <!--查专利-->
+        <activity android:name=".module.home.ui.search.SearchPatentAct"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

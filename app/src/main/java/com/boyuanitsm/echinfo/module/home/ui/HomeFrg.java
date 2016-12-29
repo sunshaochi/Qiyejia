@@ -12,6 +12,7 @@ import com.boyuanitsm.echinfo.adapter.HomeZxAdapter;
 import com.boyuanitsm.echinfo.base.BaseFrg;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
+import com.boyuanitsm.echinfo.module.home.ui.search.SearchPatentAct;
 import com.boyuanitsm.echinfo.module.home.view.IHomeView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MyGridView;
@@ -70,7 +71,14 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, Adapt
         /*查专项*/
         MyGridView gvZx = (MyGridView) headView.findViewById(R.id.gvZx);
         gvZx.setAdapter(new HomeZxAdapter(getContext()));
-        gvZx.setOnItemClickListener(this);
+        gvZx.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position==0){
+                    openActivity(SearchPatentAct.class);
+                }
+            }
+        });
         rcv.addHeaderView(headView);
 
         if (disAdapter == null) {
@@ -185,7 +193,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, Adapt
             case R.id.gvZx://查专项
                 switch (position) {
                     case 0://查专利
-
+                        openActivity(SearchPatentAct.class);
                         break;
                     case 1://查商标
 

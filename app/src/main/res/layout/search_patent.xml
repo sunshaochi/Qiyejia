@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_grey_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout_search" />
+
+    <LinearLayout
+        android:id="@+id/ll_sx"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="48dp"
+        android:layout_height="45dp"
+        android:background="@color/white">
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_sj"
+                android:text="时间不限"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_sj"
+                android:background="@mipmap/down_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_lx"
+                android:text="类型不限"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_lx"
+                android:background="@mipmap/down_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_jg"
+        android:layout_below="@+id/ll_sx"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:text="搜索到5000个专利"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/ll_jg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_search"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="您还没有搜索记录" />
+
+        <TextView
+            android:gravity="center"
+            android:layout_marginTop="23dp"
+            android:textSize="19sp"
+            android:textColor="#999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="试试在上面搜索框中输入您想要搜索的企业名字例如“阿里巴巴”" />
+    </LinearLayout>
+
+
+</RelativeLayout>
