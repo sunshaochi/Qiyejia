@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import butterknife.ButterKnife;
 
@@ -20,6 +22,10 @@ public abstract class BaseFrg<T extends BasePresenter> extends Fragment implemen
     protected T mPresenter;
     protected View mFragmentRootView;
     protected FragmentActivity mActivity;
+
+    private TextView tv_title;
+    private TextView tvRight;
+    private RelativeLayout rl_right;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
