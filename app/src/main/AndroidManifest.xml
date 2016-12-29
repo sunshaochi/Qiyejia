@@ -19,10 +19,31 @@
         <activity
             android:name=".module.home.ui.MainAct"
             android:screenOrientation="portrait"></activity>
-        <!--修改资料-->
+        <!--我的资料-->
         <activity
             android:name=".module.mine.ui.MineAct"
             android:screenOrientation="portrait" />
+        <!--消息-->
+        <activity
+            android:name=".module.mine.ui.MsgAct"
+            android:screenOrientation="portrait" />
+        <!--意见反馈-->
+        <activity
+            android:name=".module.mine.ui.FeedBackAct"
+            android:screenOrientation="portrait" />
+        <!--设置-->
+        <activity
+            android:name=".module.mine.ui.SettingAct"
+            android:screenOrientation="portrait" />
+        <!--修改资料内容-->
+        <activity
+            android:name=".module.mine.ui.EditAct"
+            android:screenOrientation="portrait" />
+        <!--分享-->
+        <activity
+            android:name=".module.mine.ui.ShareDialogAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/AlertDialogStyle"/>
 
     </application>
 
