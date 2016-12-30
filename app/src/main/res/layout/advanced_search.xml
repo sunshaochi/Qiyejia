@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/title_act_layout"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:layout_height="36dp"
+    android:background="#eef1f3">
+    <TextView
+        android:layout_marginLeft="15dp"
+        android:text="请在下方输入检索条件"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <EditText
+            android:id="@+id/et_gsmz"
+            android:hint="输入公司名"
+            android:textColorHint="#999999"
+            android:maxLines="1"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line"/>
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <EditText
+            android:id="@+id/et_cpfw"
+            android:hint="输入公司主营产品服务"
+            android:textColorHint="#999999"
+            android:maxLines="1"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line"/>
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <EditText
+            android:id="@+id/et_fr"
+            android:hint="输入企业法人/股东"
+            android:textColorHint="#999999"
+            android:maxLines="1"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line"/>
+    <RelativeLayout
+        android:id="@+id/rl_qy"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:textColor="#000000"
+            android:text="区域选择"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_toLeftOf="@+id/iv_right"
+            android:textColor="#2485f2"
+            android:text="不限"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/iv_right"
+            android:background="@mipmap/gray_right"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line"/>
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <EditText
+            android:id="@+id/et_szjd"
+            android:hint="输入所在街道"
+            android:textColorHint="#999999"
+            android:maxLines="1"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line"/>
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <EditText
+            android:id="@+id/et_xzl"
+            android:hint="输入公司所在写字楼"
+            android:textColorHint="#999999"
+            android:maxLines="1"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line"/>
+    <RelativeLayout
+        android:id="@+id/rl_zczj"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:textColor="#000000"
+            android:text="注册资金"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_toLeftOf="@+id/iv_right2"
+            android:textColor="#2485f2"
+            android:text="不限"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/iv_right2"
+            android:background="@mipmap/gray_right"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line"/>
+    <RelativeLayout
+        android:id="@+id/rl_zcsj"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:textColor="#000000"
+            android:text="注册时间"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_toLeftOf="@+id/iv_right3"
+            android:textColor="#2485f2"
+            android:text="不限"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/iv_right3"
+            android:background="@mipmap/gray_right"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:text="企业查询"
+        style="@style/btn_blue"/>
+</LinearLayout>

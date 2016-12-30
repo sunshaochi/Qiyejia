@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 
+import butterknife.BindView;
+
 /**
  * 高级查找，注册时间选择
  * Q164454216
@@ -17,7 +19,8 @@ import com.boyuanitsm.echinfo.base.BaseAct;
  */
 
 public class RegisterTimeAct extends BaseAct {
-    private ListView lv;
+    @BindView(R.id.lv)
+     ListView lv;
     private String[] strtime={"不限","3年以内","3-5年","5-10年","10年以上"};
     @Override
     public int getLayout() {
@@ -26,7 +29,13 @@ public class RegisterTimeAct extends BaseAct {
 
     @Override
     public void init(Bundle savedInstanceState) {
-        lv= (ListView) findViewById(R.id.lv_time);
+        setTopTitle("注册时间");
+        setRightBtn("确定", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         initData();
     }
 
