@@ -9,13 +9,14 @@
 
     <LinearLayout
         android:id="@+id/ll_sx"
-        android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_marginTop="48dp"
         android:layout_height="45dp"
+        android:gravity="center"
         android:background="@color/white">
         <RelativeLayout
+            android:id="@+id/rl_sj"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:gravity="center"
@@ -37,6 +38,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_lx"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:gravity="center"
@@ -106,5 +108,70 @@
             android:text="试试在上面搜索框中输入您想要搜索的企业名字例如“阿里巴巴”" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_rs"
+        android:orientation="vertical"
+        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/rl_recent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+            <TextView
+                android:id="@+id/recent"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:text="最近搜索"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+                android:id="@+id/xr"
+                android:layout_below="@+id/recent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:background="@mipmap/sc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_below="@+id/rl_recent"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+            <TextView
+                android:id="@+id/tv_rm"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:text="热门搜索"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+                android:id="@+id/rm"
+                android:layout_below="@+id/tv_rm"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -54,4 +54,7 @@
         android:background="@mipmap/gray_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <View
+        android:layout_below="@+id/ll_tent"
+        style="@style/view_line"/>
 </RelativeLayout>

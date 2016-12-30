@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="45dp">
+    <TextView
+        android:layout_marginLeft="15dp"
+        android:text="聚雅"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_toLeftOf="@+id/iv_right"
+        android:layout_marginRight="10dp"
+        android:text="商标注册以完成"
+        android:textColor="#2485f2"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_marginTop="2dp"
+        android:id="@+id/iv_right"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
+        android:background="@mipmap/gray_right"
+        android:layout_width="5dp"
+        android:layout_height="10dp" />
+</RelativeLayout>
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line"/>
+    <RelativeLayout
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp"
+        android:paddingLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/brand_logo"
+            android:background="@mipmap/brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/brand_logo"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#666666"
+                android:textSize="12sp"
+                android:text="申请日期：2016-11-10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="7dp"
+                android:textColor="#666666"
+                android:textSize="12sp"
+                android:text="商标类型：9-科学仪器"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="7dp"
+                android:textColor="#666666"
+                android:textSize="12sp"
+                android:text="申请人：深圳市阳关百货有限公司"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <View
+        style="@style/view_line"/>
+</LinearLayout>
