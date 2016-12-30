@@ -12,6 +12,8 @@ import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * 查商标
  * Q164454216
@@ -19,7 +21,8 @@ import java.util.List;
  */
 
 public class SearchBrandAct extends BaseAct {
-    private XRecyclerView xr;
+    @BindView(R.id.xr)
+     XRecyclerView xr;
     private BaseRecyclerAdapter<String> myAdapter;//查商标适配器
     private List<String> datas = new ArrayList<>();
 
@@ -31,7 +34,7 @@ public class SearchBrandAct extends BaseAct {
     @Override
     public void init(Bundle savedInstanceState) {
         datas = EchinfoUtils.getTestDatas(4);
-        xr = (XRecyclerView) findViewById(R.id.xr);
+        xr = EchinfoUtils.getLinearRecyclerView(xr, getApplicationContext(), false);
         initData();
     }
 
