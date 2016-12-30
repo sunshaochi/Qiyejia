@@ -6,9 +6,11 @@ import android.widget.TextView;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseFrg;
 import com.boyuanitsm.echinfo.module.mine.ui.FeedBackAct;
+import com.boyuanitsm.echinfo.module.mine.ui.FollowAct;
 import com.boyuanitsm.echinfo.module.mine.ui.MineAct;
 import com.boyuanitsm.echinfo.module.mine.ui.MsgAct;
 import com.boyuanitsm.echinfo.module.mine.ui.SettingAct;
+import com.boyuanitsm.echinfo.module.user.ui.LoginAct;
 import com.boyuanitsm.echinfo.widget.MineItemView;
 import com.boyuanitsm.tools.view.CircleImageView;
 
@@ -42,7 +44,6 @@ public class MineFrg extends BaseFrg {
     @Override
     public int getLayout() {
         return R.layout.frg_mine;
-
     }
 
     @Override
@@ -53,20 +54,22 @@ public class MineFrg extends BaseFrg {
     @OnClick({R.id.ll_mine, R.id.miv_gz, R.id.miv_xx, R.id.miv_fk, R.id.miv_wt, R.id.miv_sz})
     public void OnClick(View v) {
         switch (v.getId()) {
-            case R.id.ll_mine:
+            case R.id.ll_mine://个人资料
                 openActivity(MineAct.class);
                 break;
-            case R.id.miv_gz:
+            case R.id.miv_gz://关注
+                openActivity(FollowAct.class);
                 break;
-            case R.id.miv_xx:
+            case R.id.miv_xx://消息
                 openActivity(MsgAct.class);
                 break;
-            case R.id.miv_fk:
+            case R.id.miv_fk://意见反馈
                 openActivity(FeedBackAct.class);
                 break;
-            case R.id.miv_wt:
+            case R.id.miv_wt://问题
+                openActivity(LoginAct.class);//目前作为登录测试
                 break;
-            case R.id.miv_sz:
+            case R.id.miv_sz://设置
                 openActivity(SettingAct.class);
                 break;
         }

@@ -24,11 +24,16 @@
             android:name=".module.mine.ui.MineAct"
             android:screenOrientation="portrait" />
         <!--查专利-->
-        <activity android:name=".module.home.ui.search.SearchPatentAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.home.ui.search.SearchPatentAct"
+            android:screenOrientation="portrait" />
         <!--消息-->
         <activity
             android:name=".module.mine.ui.MsgAct"
+            android:screenOrientation="portrait" />
+        <!--我的关注-->
+        <activity
+            android:name=".module.mine.ui.FollowAct"
             android:screenOrientation="portrait" />
         <!--意见反馈-->
         <activity
@@ -46,12 +51,26 @@
         <activity
             android:name=".module.mine.ui.ShareDialogAct"
             android:screenOrientation="portrait"
-            android:theme="@style/AlertDialogStyle"/><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
+            android:theme="@style/AlertDialogStyle" />
+        <!--登录-->
+        <activity
+            android:name=".module.user.ui.LoginAct"
+            android:screenOrientation="portrait" />
+        <!--注册-->
+        <activity
+            android:name=".module.user.ui.RegisterAct"
+            android:screenOrientation="portrait" />
+        <!--注册成功-->
+        <activity
+            android:name=".module.user.ui.RegisterSuccessAct"
+            android:screenOrientation="portrait" />
+        <!--查商标-->
+        <activity
+            android:name=".module.home.ui.search.SearchBrandAct"
+            android:screenOrientation="portrait" />
+        <!--高级搜索时间筛选-->
+        <activity android:name=".module.home.ui.search.RegisterTimeAct"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
