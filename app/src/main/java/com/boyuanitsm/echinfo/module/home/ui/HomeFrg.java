@@ -12,6 +12,7 @@ import com.boyuanitsm.echinfo.adapter.HomeZxAdapter;
 import com.boyuanitsm.echinfo.base.BaseFrg;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
+import com.boyuanitsm.echinfo.module.home.ui.search.SearchBrandAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchPatentAct;
 import com.boyuanitsm.echinfo.module.home.view.IHomeView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
@@ -97,7 +98,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
                         openActivity(SearchPatentAct.class);
                         break;
                     case 1://查商标
-
+                        openActivity(SearchBrandAct.class);
                         break;
                     case 2://查著作权
 
