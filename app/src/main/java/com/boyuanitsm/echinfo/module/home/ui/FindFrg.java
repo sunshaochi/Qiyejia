@@ -13,6 +13,7 @@ import com.boyuanitsm.echinfo.base.BaseFrg;
 import com.boyuanitsm.echinfo.module.home.ui.find.Interestfrg;
 import com.boyuanitsm.echinfo.module.home.ui.find.Scanfrg;
 import com.boyuanitsm.tools.view.indicator.MagicIndicator;
+import com.boyuanitsm.tools.view.indicator.ViewPagerHelper;
 import com.boyuanitsm.tools.view.indicator.buildins.commonnavigator.CommonNavigator;
 import com.boyuanitsm.tools.view.indicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
 import com.boyuanitsm.tools.view.indicator.buildins.commonnavigator.abs.IPagerIndicator;
@@ -23,6 +24,8 @@ import com.boyuanitsm.tools.view.indicator.buildins.commonnavigator.titles.Simpl
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * 发现
  * Created by wangbin on 16/12/22.
@@ -30,12 +33,15 @@ import java.util.List;
 public class FindFrg extends BaseFrg {
 
     private String[] title = {"可能感兴趣", "推荐阅读"};
-    private ViewPager vp_find;
     private List<Fragment> frglist;
     private Interestfrg interestfrg;
     private Scanfrg scanfrg;
     private FrgAdapter adapter;
     private FragmentManager fragmentManager;
+    @BindView(R.id.mg_title)
+    MagicIndicator magicIndicator;
+    @BindView(R.id.vp_find)
+    ViewPager vp_find;
     @Override
     public int getLayout() {
         return R.layout.frg_find;
@@ -44,8 +50,8 @@ public class FindFrg extends BaseFrg {
 
     @Override
     protected void initView(View fragmentRootView) {
-        final MagicIndicator magicIndicator = (MagicIndicator) fragmentRootView.findViewById(R.id.mg_title);
-        vp_find = (ViewPager) fragmentRootView.findViewById(R.id.vp_find);
+//        final MagicIndicator magicIndicator = (MagicIndicator) fragmentRootView.findViewById(R.id.mg_title);
+//        vp_find = (ViewPager) fragmentRootView.findViewById(R.id.vp_find);
         frglist = new ArrayList<>();
         if (interestfrg == null) {
             interestfrg = new Interestfrg();
@@ -60,26 +66,7 @@ public class FindFrg extends BaseFrg {
         adapter = new FrgAdapter(fragmentManager);
         vp_find.setAdapter(adapter);
         vp_find.setCurrentItem(0);
-        /***
-         * vp监听
-         */
-        ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                magicIndicator.onPageScrolled(position, positionOffset, positionOffsetPixels);
-            }
 
-            @Override
-            public void onPageSelected(int position) {
-                magicIndicator.onPageSelected(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                magicIndicator.onPageScrollStateChanged(state);
-            }
-        };
-        vp_find.setOnPageChangeListener(listener);
         CommonNavigator commonNavigator = new CommonNavigator(mActivity);
         commonNavigator.setAdjustMode(true);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
@@ -114,7 +101,10 @@ public class FindFrg extends BaseFrg {
             }
         });
         magicIndicator.setNavigator(commonNavigator);
+        ViewPagerHelper.bind(magicIndicator,vp_find);
     }
+
+
     class FrgAdapter extends FragmentPagerAdapter {
 
         public FrgAdapter(FragmentManager fm) {
