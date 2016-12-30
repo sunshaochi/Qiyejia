@@ -31,7 +31,7 @@ import butterknife.BindView;
  * 首页
  * Created by wangbin on 16/12/22.
  */
-public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, AdapterView.OnItemClickListener, View.OnClickListener{
+public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.OnClickListener{
     @BindView(R.id.rcv)
     XRecyclerView rcv;
     RelativeLayout rlTop;
@@ -67,15 +67,50 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, Adapt
         /*查企业*/
         MyGridView gvHomeCompany = (MyGridView) headView.findViewById(R.id.gvHomeCompany);
         gvHomeCompany.setAdapter(new HomeComAdapter(getContext()));
-        gvHomeCompany.setOnItemClickListener(this);
+        gvHomeCompany.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                switch (position) {
+                    case 0://企业名称
+
+                        break;
+                    case 1://股东高管
+
+                        break;
+                    case 2://经营范围
+
+                        break;
+                    case 3://品牌产品
+
+                        break;
+                }
+            }
+        });
         /*查专项*/
         MyGridView gvZx = (MyGridView) headView.findViewById(R.id.gvZx);
         gvZx.setAdapter(new HomeZxAdapter(getContext()));
         gvZx.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position==0){
-                    openActivity(SearchPatentAct.class);
+                switch (position) {
+                    case 0://查专利
+                        openActivity(SearchPatentAct.class);
+                        break;
+                    case 1://查商标
+
+                        break;
+                    case 2://查著作权
+
+                        break;
+                    case 3://查判决
+
+                        break;
+                    case 4://失信人
+
+                        break;
+                    case 5://被执行
+
+                        break;
                 }
             }
         });
@@ -171,49 +206,6 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, Adapt
     }
 
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        switch (view.getId()) {
-            case R.id.gvHomeCompany://查企业
-                switch (position) {
-                    case 0://企业名称
-
-                        break;
-                    case 1://股东高管
-
-                        break;
-                    case 2://经营范围
-
-                        break;
-                    case 3://品牌产品
-
-                        break;
-                }
-                break;
-            case R.id.gvZx://查专项
-                switch (position) {
-                    case 0://查专利
-                        openActivity(SearchPatentAct.class);
-                        break;
-                    case 1://查商标
-
-                        break;
-                    case 2://查著作权
-
-                        break;
-                    case 3://查判决
-
-                        break;
-                    case 4://失信人
-
-                        break;
-                    case 5://被执行
-
-                        break;
-                }
-                break;
-        }
-    }
 
 
 
