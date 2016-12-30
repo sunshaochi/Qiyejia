@@ -8,6 +8,5 @@ import com.boyuanitsm.echinfo.base.BaseView;
  * Created by wangbin on 16/12/22.
  */
 public interface ILoginView extends BaseView {
-
-
+    void loginSuccess();
 }

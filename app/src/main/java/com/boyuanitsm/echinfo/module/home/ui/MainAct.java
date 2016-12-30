@@ -65,7 +65,6 @@ public class MainAct extends BaseAct implements IMainView {
                 break;
             case R.id.llMine://我的
                 selectTabPosition(3);
-
                 break;
         }
     }

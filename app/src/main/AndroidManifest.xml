@@ -30,6 +30,10 @@
         <activity
             android:name=".module.mine.ui.MsgAct"
             android:screenOrientation="portrait" />
+        <!--我的关注-->
+        <activity
+            android:name=".module.mine.ui.FollowAct"
+            android:screenOrientation="portrait" />
         <!--意见反馈-->
         <activity
             android:name=".module.mine.ui.FeedBackAct"
@@ -47,6 +51,18 @@
             android:name=".module.mine.ui.ShareDialogAct"
             android:screenOrientation="portrait"
             android:theme="@style/AlertDialogStyle"/>
+        <!--登录-->
+        <activity
+            android:name=".module.user.ui.LoginAct"
+            android:screenOrientation="portrait"/>
+        <!--注册-->
+        <activity
+            android:name=".module.user.ui.RegisterAct"
+            android:screenOrientation="portrait"/>
+        <!--注册成功-->
+        <activity
+            android:name=".module.user.ui.RegisterSuccessAct"
+            android:screenOrientation="portrait"/>
 
     </application>
 
