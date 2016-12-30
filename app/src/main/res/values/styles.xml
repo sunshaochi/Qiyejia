@@ -83,7 +83,10 @@
         <item name="android:background">@drawable/item_back</item>
         <item name="android:textColor">@color/black</item>
     </style>
-
+    <style name="ppAnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/popu_in</item>
+        <item name="android:windowExitAnimation">@anim/popu_out</item>
+    </style>
     <style name="btn_blue">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">44dp</item>

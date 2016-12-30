@@ -3,9 +3,11 @@
     android:orientation="vertical"
     android:gravity="center_vertical"
     android:layout_width="match_parent"
-    android:layout_height="40dp">
+    android:layout_height="40dp"
+    android:background="@color/bg_grey_color">
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_marginLeft="15dp"
         android:text="类型不限"
         android:textColor="#666666"
@@ -18,4 +20,6 @@
         android:background="@mipmap/xz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <View
+        style="@style/view_line"/>
 </RelativeLayout>
