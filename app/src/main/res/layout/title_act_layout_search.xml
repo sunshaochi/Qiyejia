@@ -28,41 +28,37 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="18dp"
-        android:layout_marginBottom="8dp">
+        android:background="@drawable/em_seabar_input"
+        android:layout_centerVertical="true"
+        >
 
-        <EditText
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="14dp"
+            android:src="@mipmap/ease_search_bar_icon_normal"
+            android:layout_centerVertical="true"
+            />
+
+        <com.boyuanitsm.echinfo.widget.ClearEditText
             android:id="@+id/query"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="4dp"
-            android:background="@drawable/em_seabar_input"
-            android:drawableLeft="@drawable/ease_search_bar_icon_normal"
-            android:focusable="true"
+            android:layout_marginLeft="17dp"
             android:focusableInTouchMode="true"
             android:hint="请输入专利号，专利名，公司名"
             android:textColorHint="#999999"
-            android:paddingBottom="5dp"
             android:paddingLeft="5dp"
-            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:background="@null"
             android:singleLine="true"
+            android:gravity="center_vertical"
             android:textSize="12sp" />
 
-        <ImageButton
-            android:id="@+id/search_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:background="@android:color/transparent"
-            android:padding="6dp"
-            android:src="@drawable/ease_search_clear"
-            android:visibility="invisible" />
+
     </RelativeLayout>
 </RelativeLayout>
