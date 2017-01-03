@@ -71,6 +71,12 @@
         <!--高级搜索时间筛选-->
         <activity android:name=".module.home.ui.search.RegisterTimeAct"
             android:screenOrientation="portrait"/>
+        <!--公司信息-->
+        <activity android:name=".module.company.CompanyAct"
+            android:screenOrientation="portrait"/>
+        <!--被执行人界面-->
+        <activity android:name=".module.company.ui.ExecutedPersonAct"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
