@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_color"
     android:orientation="vertical">
+    <include layout="@layout/title_act_layout_find"/>
     <com.boyuanitsm.tools.view.indicator.MagicIndicator
         android:id="@+id/mg_title"
         android:layout_width="match_parent"

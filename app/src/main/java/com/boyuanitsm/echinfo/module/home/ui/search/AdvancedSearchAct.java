@@ -19,7 +19,7 @@ import butterknife.OnClick;
  * Created by xiaoke on 2016/12/30.
  */
 
-public class AdvancedSearch extends BaseAct {
+public class AdvancedSearchAct extends BaseAct {
 
     @BindView(R.id.et_gsmz)
     EditText etGsmz;//公司名字
@@ -63,6 +63,7 @@ public class AdvancedSearch extends BaseAct {
             case R.id.rl_qy:
                 break;
             case R.id.rl_zczj:
+                openActivity(RegisterMoneyAct.class);
                 break;
             case R.id.rl_zcsj:
                 openActivity(RegisterTimeAct.class);
