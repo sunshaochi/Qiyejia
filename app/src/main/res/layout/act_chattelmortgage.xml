@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <TextView
+                    style="@style/executed_item_tv_black"
+                    android:text="名称"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    style="@style/executed_item_tv_black"
+                    android:text="生产设备"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="所有权归"
+                app:rightText="个人" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="数量"
+                app:rightText="3" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="登记编号"
+                app:rightText="2132312312" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="登记日期"
+                app:rightText="2017-01-03 17:19:56" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="登记机关"
+                app:rightText="国土局" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="被担保债权种类"
+                app:rightText="抵押" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="被担保债权数额"
+                app:rightText="2000万" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="债务人履行债务的期限"
+                app:rightText="3年" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="担保范围"
+                app:rightText="延迟利息" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="种类"
+                app:rightText="-" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="质量"
+                app:rightText="-" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="状况"
+                app:rightText="正常" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="所在地情况"
+                app:rightText="-" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="备注"
+                app:rightText="-" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

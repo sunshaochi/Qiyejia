@@ -77,6 +77,24 @@
         <!--被执行人界面-->
         <activity android:name=".module.company.ui.ExecutedPersonAct"
             android:screenOrientation="portrait"/>
+        <!--产品信息-->
+        <activity android:name=".module.company.ui.ProductInfoAct"
+            android:screenOrientation="portrait"/>
+        <!--抽查检查-->
+        <activity android:name=".module.company.ui.SpotCheckAct"
+            android:screenOrientation="portrait"/>
+        <!--动产抵押-->
+        <activity android:name=".module.company.ui.ChattelMortgageAct"
+            android:screenOrientation="portrait"/>
+        <!--对外投资-->
+        <activity android:name=".module.company.ui.ForeignInvestmentAct"
+            android:screenOrientation="portrait"/>
+        <!--法院公告-->
+        <activity android:name=".module.company.ui.CourtAnnouncementAct"
+            android:screenOrientation="portrait"/>
+        <!--法院判决-->
+        <activity android:name=".module.company.ui.CourtDecisionAct"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

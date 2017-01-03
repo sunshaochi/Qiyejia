@@ -9,8 +9,7 @@
     <com.boyuanitsm.tools.view.indicator.MagicIndicator
         android:id="@+id/mg_title"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="#f0f0f0" />
+        android:layout_height="45dp" />
 
     <View
         style="@style/view_line"

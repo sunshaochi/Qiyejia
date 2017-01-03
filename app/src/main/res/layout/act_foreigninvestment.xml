@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_grey_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+        android:background="@color/white"
+        android:id="@+id/rcv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" />
+</LinearLayout>

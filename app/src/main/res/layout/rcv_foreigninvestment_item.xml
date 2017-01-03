@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv_14_black"
+                android:text="华东电网有限公司"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                style="@style/tv_14_black"
+                android:text="存续"
+                android:textColor="@color/tv_blue_color" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/executed_item_tv_black"
+                    android:text="公司法人" />
+
+                <TextView
+                    style="@style/executed_item_tv_black"
+                    android:layout_marginTop="10dp"
+                    android:text="马云"
+                    android:textColor="#999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/executed_item_tv_black"
+                    android:text="注册资金" />
+
+                <TextView
+                    style="@style/executed_item_tv_black"
+                    android:layout_marginTop="10dp"
+                    android:text="2000万人民币"
+                    android:textColor="#999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/executed_item_tv_black"
+                    android:text="成立日期" />
+
+                <TextView
+                    style="@style/executed_item_tv_black"
+                    android:layout_marginTop="10dp"
+                    android:text="2017-01-03"
+                    android:textColor="#999" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/executed_item_tv_black"
+                android:text="所属行业:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="电力"
+                android:textColor="#999" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/executed_item_tv_black"
+                android:text="注册号:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="333333333"
+                android:textColor="#999" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/executed_item_tv_black"
+                android:text="公司网址:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="www.gongsi.com"
+                android:textColor="#999" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/executed_item_tv_black"
+                android:text="地址:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="上海娄山关路"
+                android:textColor="#999" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+</LinearLayout>

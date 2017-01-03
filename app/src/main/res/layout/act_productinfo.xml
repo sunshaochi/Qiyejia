@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_grey_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <com.boyuanitsm.tools.view.MyScrollview
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_name"
+                style="@style/productInfo_item"
+                app:leftText="名称"
+                app:rightText="齐家网" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_urlAddress"
+                style="@style/productInfo_item"
+                app:leftText="网址"
+                app:rightText="www.qijia.com" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_field"
+                style="@style/productInfo_item"
+                app:leftText="所属领域"
+                app:rightText="2222" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_industry"
+                style="@style/productInfo_item"
+                app:leftText="行业"
+                app:rightText="4444444444" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_tag"
+                style="@style/productInfo_item"
+                app:leftText="标签"
+                app:rightText="恶搞的士大夫但是" />
+
+            <View style="@style/view_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="产品介绍"
+                    android:textColor="#333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_introduce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="深圳"
+                    android:textColor="#999"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="用户点评"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
+
+                <View style="@style/view_line" />
+
+                <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+                    android:id="@+id/rcv"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:scrollbars="none" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical|right"
+                    android:onClick="openMoreComment"
+                    android:paddingRight="15dp"
+                    android:text="更多"
+                    android:textColor="#333"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.boyuanitsm.tools.view.MyScrollview>
+
+</LinearLayout>
