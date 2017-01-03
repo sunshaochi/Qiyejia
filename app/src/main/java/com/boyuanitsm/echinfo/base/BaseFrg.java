@@ -96,4 +96,5 @@ public abstract class BaseFrg<T extends BasePresenter> extends Fragment implemen
         }
         getActivity().startActivity(intent);
     }
+
 }

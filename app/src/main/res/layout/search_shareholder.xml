@@ -67,7 +67,7 @@
         android:layout_height="35dp">
         <TextView
             android:layout_marginLeft="15dp"
-            android:text="搜索到5000个专利"
+            android:text="搜索到5000个公司"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

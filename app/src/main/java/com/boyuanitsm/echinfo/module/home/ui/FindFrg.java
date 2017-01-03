@@ -50,8 +50,6 @@ public class FindFrg extends BaseFrg {
 
     @Override
     protected void initView(View fragmentRootView) {
-//        final MagicIndicator magicIndicator = (MagicIndicator) fragmentRootView.findViewById(R.id.mg_title);
-//        vp_find = (ViewPager) fragmentRootView.findViewById(R.id.vp_find);
         frglist = new ArrayList<>();
         if (interestfrg == null) {
             interestfrg = new Interestfrg();

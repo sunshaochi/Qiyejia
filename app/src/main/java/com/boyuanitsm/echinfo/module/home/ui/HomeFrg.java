@@ -14,7 +14,12 @@ import com.boyuanitsm.echinfo.module.company.CompanyAct;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchBrandAct;
+import com.boyuanitsm.echinfo.module.home.ui.search.SearchCopyrightAct;
+import com.boyuanitsm.echinfo.module.home.ui.search.SearchImplementedAct;
+import com.boyuanitsm.echinfo.module.home.ui.search.SearchJudgmentAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchPatentAct;
+import com.boyuanitsm.echinfo.module.home.ui.search.SearchShareholderAct;
+import com.boyuanitsm.echinfo.module.home.ui.search.SearchlosecreditAct;
 import com.boyuanitsm.echinfo.module.home.view.IHomeView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MyGridView;
@@ -77,7 +82,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
 
                         break;
                     case 1://股东高管
-
+                        openActivity(SearchShareholderAct.class);
                         break;
                     case 2://经营范围
 
@@ -102,16 +107,16 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
                         openActivity(SearchBrandAct.class);
                         break;
                     case 2://查著作权
-
+                        openActivity(SearchCopyrightAct.class);
                         break;
                     case 3://查判决
-
+                        openActivity(SearchJudgmentAct.class);
                         break;
                     case 4://失信人
-
+                        openActivity(SearchlosecreditAct.class);
                         break;
                     case 5://被执行
-
+                        openActivity(SearchImplementedAct.class);
                         break;
                 }
             }

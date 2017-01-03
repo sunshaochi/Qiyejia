@@ -11,6 +11,7 @@
         android:onClick="goBack">
 
         <ImageView
+            android:visibility="gone"
             android:layout_width="13dp"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
@@ -18,6 +19,7 @@
             android:src="@mipmap/top_back" />
 
         <TextView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -27,38 +29,33 @@
             android:textSize="16sp" />
     </RelativeLayout>
 
+    <TextView
+        android:text="发现"
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
+        android:textSize="18sp" />
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="18dp"
-        android:background="@drawable/em_seabar_input"
-        android:layout_centerVertical="true"
-        >
+        android:id="@+id/rl_right"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:paddingRight="10dp"
+        android:visibility="gone">
 
-        <ImageView
-            android:layout_width="13dp"
-            android:layout_height="14dp"
-            android:src="@mipmap/ease_search_bar_icon_normal"
-            android:layout_centerVertical="true"
-            />
-
-        <com.boyuanitsm.echinfo.widget.ClearEditText
-            android:id="@+id/query"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tvRight"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="17dp"
-            android:focusableInTouchMode="true"
-            android:hint="请输入专利号，专利名，公司名"
-            android:textColorHint="#999999"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:background="@null"
-            android:singleLine="true"
-            android:gravity="center_vertical"
-            android:textSize="12sp" />
-
-
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:visibility="gone" />
     </RelativeLayout>
+
 </RelativeLayout>

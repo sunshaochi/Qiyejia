@@ -68,8 +68,29 @@
         <activity
             android:name=".module.home.ui.search.SearchBrandAct"
             android:screenOrientation="portrait" />
-        <!--高级搜索时间筛选-->
+        <!--查著作权-->
+        <activity android:name=".module.home.ui.search.SearchCopyrightAct"
+            android:screenOrientation="portrait"/>
+        <!--查判决-->
+        <activity android:name=".module.home.ui.search.SearchJudgmentAct"
+            android:screenOrientation="portrait"/>
+        <!--查被执行-->
+        <activity android:name=".module.home.ui.search.SearchImplementedAct"
+            android:screenOrientation="portrait"/>
+        <!--查失信-->
+        <activity android:name=".module.home.ui.search.SearchlosecreditAct"
+            android:screenOrientation="portrait"/>
+        <!--查股东/法人-->
+        <activity android:name=".module.home.ui.search.SearchShareholderAct"
+            android:screenOrientation="portrait"/>
+        <!--高级搜索-->
+        <activity android:name=".module.home.ui.search.AdvancedSearchAct"
+            android:screenOrientation="portrait"/>
+        <!--高级搜索注册时间筛选-->
         <activity android:name=".module.home.ui.search.RegisterTimeAct"
+            android:screenOrientation="portrait"/>
+        <!--高级搜索注册资金筛选-->
+        <activity android:name=".module.home.ui.search.RegisterMoneyAct"
             android:screenOrientation="portrait"/>
         <!--公司信息-->
         <activity android:name=".module.company.CompanyAct"
