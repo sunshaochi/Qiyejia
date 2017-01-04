@@ -93,7 +93,7 @@
         <activity android:name=".module.home.ui.search.RegisterMoneyAct"
             android:screenOrientation="portrait"/>
         <!--公司信息-->
-        <activity android:name=".module.company.CompanyAct"
+        <activity android:name=".module.company.ui.CompanyAct"
             android:screenOrientation="portrait"/>
         <!--被执行人界面-->
         <activity android:name=".module.company.ui.ExecutedPersonAct"
