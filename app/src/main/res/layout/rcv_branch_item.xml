@@ -12,40 +12,33 @@
 
         <TextView
             style="@style/tv_14_black"
-            android:text="林燕与淘宝纠纷案"
-            android:textStyle="bold" />
+            android:text="天津市房地产开发" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginRight="2dp"
+                android:src="@drawable/court_decision_circle" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="编号：1231232121"
-                android:textColor="#999"
-                android:textSize="12sp" />
+                style="@style/tv_12_grey"
+                android:text="公司法人：马云" />
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <ImageView
-                android:layout_marginRight="2dp"
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/court_decision_circle" />
-
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2017-01-03"
-                android:textColor="#999"
-                android:textSize="12sp" />
+                style="@style/tv_12_blue"
+                android:text="存续" />
         </LinearLayout>
     </LinearLayout>
 

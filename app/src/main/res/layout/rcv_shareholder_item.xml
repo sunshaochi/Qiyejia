@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="平顶山市管理中心" />
+
+        <View style="@style/view_line" />
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="企业法人"
+            android:textColor="#999" />
+    </LinearLayout>
+
+    <View
+        style="@style/view_line"
+        android:layout_height="10dp"
+        android:background="@color/bg_grey_color" />
+</LinearLayout>

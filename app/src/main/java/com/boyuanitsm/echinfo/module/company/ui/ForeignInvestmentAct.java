@@ -37,7 +37,7 @@ public class ForeignInvestmentAct extends BaseAct{
         setRightBtn("纠错", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openActivity(ErrorCorrectionAct.class);
             }
         });
         initFrg();

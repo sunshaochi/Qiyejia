@@ -15,10 +15,10 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * 法院公告
- * Created by Yang on 2017/1/3 0003.
+ * 经营异常
+ * Created by Yang on 2017/1/4 0004.
  */
-public class CourtAnnouncementAct extends BaseAct{
+public class AbnormalOperationAct extends BaseAct {
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
@@ -32,7 +32,7 @@ public class CourtAnnouncementAct extends BaseAct{
 
     @Override
     public void init(Bundle savedInstanceState) {
-        setTopTitle("法院公告");
+        setTopTitle("经营异常");
         initFrg();
     }
 
@@ -42,7 +42,7 @@ public class CourtAnnouncementAct extends BaseAct{
         mAdp = new BaseRecyclerAdapter<String>(getApplicationContext(), testList) {
             @Override
             public int getItemLayoutId(int viewType) {
-                return R.layout.rcv_courtannouncement_item;
+                return R.layout.rcv_abnormaloperation_item;
             }
 
             @Override

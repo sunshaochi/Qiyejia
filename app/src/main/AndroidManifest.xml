@@ -69,53 +69,121 @@
             android:name=".module.home.ui.search.SearchBrandAct"
             android:screenOrientation="portrait" />
         <!--查著作权-->
-        <activity android:name=".module.home.ui.search.SearchCopyrightAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.home.ui.search.SearchCopyrightAct"
+            android:screenOrientation="portrait" />
         <!--查判决-->
-        <activity android:name=".module.home.ui.search.SearchJudgmentAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.home.ui.search.SearchJudgmentAct"
+            android:screenOrientation="portrait" />
         <!--查被执行-->
-        <activity android:name=".module.home.ui.search.SearchImplementedAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.home.ui.search.SearchImplementedAct"
+            android:screenOrientation="portrait" />
         <!--查失信-->
-        <activity android:name=".module.home.ui.search.SearchlosecreditAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.home.ui.search.SearchlosecreditAct"
+            android:screenOrientation="portrait" />
         <!--查股东/法人-->
-        <activity android:name=".module.home.ui.search.SearchShareholderAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.home.ui.search.SearchShareholderAct"
+            android:screenOrientation="portrait" />
         <!--高级搜索-->
-        <activity android:name=".module.home.ui.search.AdvancedSearchAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.home.ui.search.AdvancedSearchAct"
+            android:screenOrientation="portrait" />
         <!--高级搜索注册时间筛选-->
-        <activity android:name=".module.home.ui.search.RegisterTimeAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.home.ui.search.RegisterTimeAct"
+            android:screenOrientation="portrait" />
         <!--高级搜索注册资金筛选-->
-        <activity android:name=".module.home.ui.search.RegisterMoneyAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.home.ui.search.RegisterMoneyAct"
+            android:screenOrientation="portrait" />
         <!--公司信息-->
-        <activity android:name=".module.company.CompanyAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.company.CompanyAct"
+            android:screenOrientation="portrait" />
         <!--被执行人界面-->
-        <activity android:name=".module.company.ui.ExecutedPersonAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.company.ui.ExecutedPersonAct"
+            android:screenOrientation="portrait" />
         <!--产品信息-->
-        <activity android:name=".module.company.ui.ProductInfoAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.company.ui.ProductInfoAct"
+            android:screenOrientation="portrait" />
         <!--抽查检查-->
-        <activity android:name=".module.company.ui.SpotCheckAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.company.ui.SpotCheckAct"
+            android:screenOrientation="portrait" />
         <!--动产抵押-->
-        <activity android:name=".module.company.ui.ChattelMortgageAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.company.ui.ChattelMortgageAct"
+            android:screenOrientation="portrait" />
         <!--对外投资-->
-        <activity android:name=".module.company.ui.ForeignInvestmentAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.company.ui.ForeignInvestmentAct"
+            android:screenOrientation="portrait" />
         <!--法院公告-->
-        <activity android:name=".module.company.ui.CourtAnnouncementAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.company.ui.CourtAnnouncementAct"
+            android:screenOrientation="portrait" />
         <!--法院判决-->
-        <activity android:name=".module.company.ui.CourtDecisionAct"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.company.ui.CourtDecisionAct"
+            android:screenOrientation="portrait" />
+        <!--分支机构-->
+        <activity
+            android:name=".module.company.ui.BranchAct"
+            android:screenOrientation="portrait" />
+        <!--分支机构详情-->
+        <activity
+            android:name=".module.company.ui.BranchDetailAct"
+            android:screenOrientation="portrait" />
+        <!--股东详细信息-->
+        <activity
+            android:name=".module.company.ui.ShareholderAct"
+            android:screenOrientation="portrait" />
+        <!--股东信息-->
+        <activity
+            android:name=".module.company.ui.ShareholderInfoAct"
+            android:screenOrientation="portrait" />
+        <!--纠错-->
+        <activity
+            android:name=".module.company.ui.ErrorCorrectionAct"
+            android:screenOrientation="portrait" />
+        <!--股权出资-->
+        <activity
+            android:name=".module.company.ui.EquityAct"
+            android:screenOrientation="portrait" />
+        <!--行政处罚-->
+        <activity
+            android:name=".module.company.ui.PunishmentAct"
+            android:screenOrientation="portrait" />
+        <!--经营异常-->
+        <activity
+            android:name=".module.company.ui.AbnormalOperationAct"
+            android:screenOrientation="portrait" />
+        <!--企业年报-->
+        <activity
+            android:name=".module.company.ui.YearReportsAct"
+            android:screenOrientation="portrait" />
+        <!--企业资产信息-->
+        <activity
+            android:name=".module.company.ui.AssetInfoAct"
+            android:screenOrientation="portrait" />
+        <!--企业资讯-->
+        <activity
+            android:name=".module.company.ui.EnterpriseInfoAct"
+            android:screenOrientation="portrait" />
+        <!--融资信息-->
+        <activity
+            android:name=".module.company.ui.FinancingInfoAct"
+            android:screenOrientation="portrait" />
+        <!--著作权-->
+        <activity
+            android:name=".module.company.ui.CopyrightAct"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
