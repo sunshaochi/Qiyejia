@@ -1,9 +1,9 @@
 package com.boyuanitsm.echinfo.module.company.ui;
 
-import android.os.Bundle;
+import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
-import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.base.BaseFrg;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -15,10 +15,10 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * 法院公告
- * Created by Yang on 2017/1/3 0003.
+ * 原创著作权
+ * Created by Yang on 2017/1/4 0004.
  */
-public class CourtAnnouncementAct extends BaseAct{
+public class OriginalRightFrg extends BaseFrg{
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
@@ -27,22 +27,21 @@ public class CourtAnnouncementAct extends BaseAct{
 
     @Override
     public int getLayout() {
-        return R.layout.rcv_customview;
+        return R.layout.rcv_frg_customview;
     }
 
     @Override
-    public void init(Bundle savedInstanceState) {
-        setTopTitle("法院公告");
+    protected void initView(View fragmentRootView) {
         initFrg();
     }
 
     private void initFrg() {
         testList = EchinfoUtils.getTestDatas(3);
-        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), true);
-        mAdp = new BaseRecyclerAdapter<String>(getApplicationContext(), testList) {
+        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getContext().getApplicationContext(), true);
+        mAdp = new BaseRecyclerAdapter<String>( getContext().getApplicationContext(), testList) {
             @Override
             public int getItemLayoutId(int viewType) {
-                return R.layout.rcv_courtannouncement_item;
+                return R.layout.rcv_copyright_item;
             }
 
             @Override

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            style="@style/tv_14_black"
+            android:text="决定机关:  工商局"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv_14_black"
+                android:text="列入原因:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="未合法注册公司" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv_14_black"
+                android:text="列入日期:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="2017-01-04" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv_14_black"
+                android:text="移除原因:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="已合法注册，并交费" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv_14_black"
+                android:text="移除日期:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="2017-01-04" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+</LinearLayout>

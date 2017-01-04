@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            style="@style/tv_14_black_bold"
+            android:text="文号：123123" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="类型：" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="警告" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="是否欠税：" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="否" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="决定机关：" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="税务局" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="决定日期：" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="2017-01-04" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tv_14_black"
+                android:text="处罚内容：" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="未缴税" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+</LinearLayout>

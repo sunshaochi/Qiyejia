@@ -127,4 +127,12 @@
         <item name="com.boyuanitsm.echinfo:rightTextColor">#999999</item>
         <item name="com.boyuanitsm.echinfo:isShowArrowRight">false</item>
     </style>
+
+    <style name="tv_14_black_bold" parent="tv_14_black">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="tv_12_blue" parent="tv_12_white">
+        <item name="android:textColor">@color/tv_blue_color</item>
+    </style>
 </resources>

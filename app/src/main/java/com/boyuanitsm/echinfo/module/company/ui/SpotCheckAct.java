@@ -27,7 +27,7 @@ public class SpotCheckAct extends BaseAct{
 
     @Override
     public int getLayout() {
-        return R.layout.act_spotcheck;
+        return R.layout.rcv_customview;
     }
 
     @Override
