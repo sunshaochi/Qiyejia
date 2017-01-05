@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <com.boyuanitsm.echinfo.widget.MineItemView
+        style="@style/productInfo_item"
+        app:leftText="网站名称"
+        app:rightText="齐家网" />
+
+    <View style="@style/view_line" />
+
+    <com.boyuanitsm.echinfo.widget.MineItemView
+        style="@style/productInfo_item"
+        app:leftText="网站首页"
+        app:rightText="www.qijia.com" />
+
+    <View style="@style/view_line" />
+
+    <com.boyuanitsm.echinfo.widget.MineItemView
+        style="@style/productInfo_item"
+        app:leftText="网站备案/许可证号"
+        app:rightText="22312312" />
+
+    <View style="@style/view_line" />
+
+    <com.boyuanitsm.echinfo.widget.MineItemView
+        style="@style/productInfo_item"
+        app:leftText="登记时间"
+        app:rightText="20161212" />
+
+    <View style="@style/view_line" />
+
+    <com.boyuanitsm.echinfo.widget.MineItemView
+        style="@style/productInfo_item"
+        app:leftText="状态"
+        app:rightText="等待受理中" />
+
+    <View style="@style/view_line" />
+
+    <com.boyuanitsm.echinfo.widget.MineItemView
+        style="@style/productInfo_item"
+        app:leftText="主办单位性质"
+        app:rightText="深圳腾讯科技有限公司" />
+
+    <View style="@style/view_line" />
+</LinearLayout>

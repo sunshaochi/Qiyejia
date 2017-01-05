@@ -8,30 +8,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
 
         <TextView
-            style="@style/tv_14_black"
-            android:text="有限公司" />
+            style="@style/tv_14_black_bold"
+            android:text="标题" />
 
         <TextView
-            style="@style/tv_creditInfo_grayItem"
-            android:layout_marginTop="15dp"
-            android:text="55555" />
+            style="@style/tv_14_gray"
+            android:layout_marginTop="10dp"
+            android:text="URL：www.bai.com" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="20dp">
 
             <TextView
-                style="@style/tv_creditInfo_grayItem"
-                android:text="第999号" />
+                style="@style/tv_14_gray"
+                android:text="来源：新闻网" />
 
             <TextView
-                style="@style/tv_creditInfo_grayItem"
+                style="@style/tv_14_gray"
                 android:layout_alignParentRight="true"
-                android:text="四川" />
+                android:text="2017-01-05" />
         </RelativeLayout>
     </LinearLayout>
 

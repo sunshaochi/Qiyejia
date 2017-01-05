@@ -89,6 +89,7 @@ public class CompanyAct extends BaseAct {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0://工商信息
+                        openActivity(BusinessInfoAct.class);
                         break;
                     case 1://对外投资
                         openActivity(ForeignInvestmentAct.class);
@@ -124,6 +125,7 @@ public class CompanyAct extends BaseAct {
                         openActivity(CourtDecisionAct.class);
                         break;
                     case 4://诉讼信息
+                        openActivity(LitigationInfoAct.class);
                         break;
                     case 5://行政处罚
                         openActivity(PunishmentAct.class);
@@ -143,6 +145,7 @@ public class CompanyAct extends BaseAct {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0://专利
+                        openActivity(PatentInfoAct.class);
                         break;
                     case 1://商标
                         break;
@@ -178,17 +181,22 @@ public class CompanyAct extends BaseAct {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0://招聘
+                        openActivity(RecruitmentAct.class);
                         break;
                     case 1://企业资讯
                         openActivity(EnterpriseInfoAct.class);
                         break;
                     case 2://注册网站
+                        openActivity(WebsiteAct.class);
                         break;
                     case 3://产品信息
+                        openActivity(ProductInfoAct.class);
                         break;
                     case 4://舆情口碑
+                        openActivity(OpinionAct.class);
                         break;
                     case 5://清算信息
+                        openActivity(ClearingInfoAct.class);
                         break;
                 }
             }

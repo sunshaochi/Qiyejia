@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            style="@style/tv_14_black_bold"
+            android:text="招聘" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.25"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="薪资:" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="3000-5000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="地点:" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="上海" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.25"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="经验:" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="1年以上" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="学历:" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="大专" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.25"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="发布时间:" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="2017-01-05" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="来源:" />
+
+                <TextView
+                    style="@style/executed_item_tv_gray"
+                    android:text="上海" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+</LinearLayout>

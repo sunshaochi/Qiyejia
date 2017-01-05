@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4f4f4"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/ll_lg_bg"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    style="@style/tv_14_black_bold"
+                    android:text="被执行人姓名/名称" />
+
+                <View
+                    style="@style/view_line"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:text="郑荣" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ll_lg_bg"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/tv_14_black_bold"
+                    android:text="身份证号码/组织机构代码" />
+
+                <View
+                    style="@style/view_line"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:text="67899" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ll_lg_bg"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/tv_14_black_bold"
+                    android:text="执行法院" />
+
+                <View
+                    style="@style/view_line"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:text="人民法院" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ll_lg_bg"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/tv_14_black_bold"
+                    android:text="立案时间" />
+
+                <View
+                    style="@style/view_line"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:text="2017年1月5日" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ll_lg_bg"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/tv_14_black_bold"
+                    android:text="案号" />
+
+                <View
+                    style="@style/view_line"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:text="114号" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/ll_lg_bg"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/tv_14_black_bold"
+                    android:text="执行标的" />
+
+                <View
+                    style="@style/view_line"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:text="123" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -135,7 +135,8 @@ public abstract class BaseAct<T extends BasePresenter> extends FragmentActivity 
         ivRight = (ImageView) findViewById(R.id.ivRight);
         rl_right = (RelativeLayout) findViewById(R.id.rl_right);
         rl_right.setVisibility(View.VISIBLE);
-        tvRight.setVisibility(View.VISIBLE);
+        ivRight.setVisibility(View.VISIBLE);
+        ivRight.setImageResource(res);
         if (listener != null) {
             rl_right.setOnClickListener(listener);
         }

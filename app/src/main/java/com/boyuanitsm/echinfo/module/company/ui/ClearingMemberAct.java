@@ -1,9 +1,10 @@
 package com.boyuanitsm.echinfo.module.company.ui;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
-import com.boyuanitsm.echinfo.base.BaseFrg;
+import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -15,10 +16,10 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * 原创著作权
- * Created by Yang on 2017/1/4 0004.
+ * 清算信息主要成员界面
+ * Created by Yang on 2017/1/5 0005.
  */
-public class OriginalRightFrg extends BaseFrg{
+public class ClearingMemberAct extends BaseAct{
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
@@ -27,31 +28,33 @@ public class OriginalRightFrg extends BaseFrg{
 
     @Override
     public int getLayout() {
-        return R.layout.rcv_frg_customview;
+        return R.layout.rcv_customview;
     }
 
     @Override
-    protected void initView(View fragmentRootView) {
+    public void init(Bundle savedInstanceState) {
+        setTopTitle("主要成员");
+        setRightBtn("纠错", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivity(ErrorCorrectionAct.class);
+            }
+        });
         initFrg();
     }
 
     private void initFrg() {
         testList = EchinfoUtils.getTestDatas(3);
-        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getContext().getApplicationContext(), true);
-        mAdp = new BaseRecyclerAdapter<String>(getContext().getApplicationContext(), testList) {
+        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), true);
+        mAdp = new BaseRecyclerAdapter<String>(getApplicationContext(), testList) {
             @Override
             public int getItemLayoutId(int viewType) {
-                return R.layout.rcv_copyright_item;
+                return R.layout.rcv_clearingmember_item;
             }
 
             @Override
             public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
-                holder.getTextView(R.id.tv_rightTitle1).setText("类别");
-                holder.getTextView(R.id.tv_rightTitle2).setText("登记号");
-                holder.getTextView(R.id.tv_rightTitle3).setText("登记日期");
-                holder.getTextView(R.id.tv_rightTitle4).setText("发布日期");
-                holder.getTextView(R.id.tv_rightTitle5).setText("创作完成日期");
-                holder.getView(R.id.ll_copyRight6).setVisibility(View.GONE);
+
             }
         };
         rcv.setAdapter(mAdp);

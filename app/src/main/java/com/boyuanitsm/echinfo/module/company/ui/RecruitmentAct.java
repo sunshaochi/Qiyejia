@@ -1,14 +1,12 @@
 package com.boyuanitsm.echinfo.module.company.ui;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
-import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -17,10 +15,10 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * 失信信息
+ * 招聘
  * Created by Yang on 2017/1/5 0005.
  */
-public class CreditInfoAct extends BaseAct{
+public class RecruitmentAct extends BaseAct{
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
@@ -34,13 +32,7 @@ public class CreditInfoAct extends BaseAct{
 
     @Override
     public void init(Bundle savedInstanceState) {
-        setTopTitle("失信信息");
-        setRightBtn(R.mipmap.share_circle_icon, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        setTopTitle("招聘信息");
         initFrg();
     }
 
@@ -50,7 +42,7 @@ public class CreditInfoAct extends BaseAct{
         mAdp = new BaseRecyclerAdapter<String>(getApplicationContext(), testList) {
             @Override
             public int getItemLayoutId(int viewType) {
-                return R.layout.rcv_creditinfo_item;
+                return R.layout.rcv_recruitment_item;
             }
 
             @Override
@@ -58,17 +50,6 @@ public class CreditInfoAct extends BaseAct{
 
             }
         };
-        mAdp.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                openActivity(CreditDetailAct.class);
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-        });
         rcv.setAdapter(mAdp);
     }
 }

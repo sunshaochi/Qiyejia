@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4f4f4"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="#63a6f1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="15dp">
+
+                    <TextView
+                        style="@style/tv_14_white_bold"
+                        android:text="组织机构号" />
+
+                    <TextView
+                        style="@style/tv_14_white"
+                        android:layout_marginTop="10dp"
+                        android:text="6669990000" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="15dp">
+
+                    <TextView
+                        style="@style/tv_14_white_bold"
+                        android:text="法定代表人" />
+
+                    <TextView
+                        style="@style/tv_14_white"
+                        android:layout_marginTop="10dp"
+                        android:text="马云" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_creDetail">
+
+                <TextView
+                    style="@style/tv_creDetail_black_bold"
+                    android:text="省份" />
+
+                <View style="@style/view_line" />
+
+                <TextView
+                    style="@style/tv_creDetail_black"
+                    android:text="浙江" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_creDetail">
+
+                <TextView
+                    style="@style/tv_creDetail_black_bold"
+                    android:text="执行依据文号" />
+
+                <View style="@style/view_line" />
+
+                <TextView
+                    style="@style/tv_creDetail_black"
+                    android:text="浙江" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_creDetail">
+
+                <TextView
+                    style="@style/tv_creDetail_black_bold"
+                    android:text="执行法院" />
+
+                <View style="@style/view_line" />
+
+                <TextView
+                    style="@style/tv_creDetail_black"
+                    android:text="浙江法院" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_creDetail">
+
+                <TextView
+                    style="@style/tv_creDetail_black_bold"
+                    android:text="履行情况" />
+
+                <View style="@style/view_line" />
+
+                <TextView
+                    style="@style/tv_creDetail_black"
+                    android:text="未履行" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_creDetail">
+
+                <TextView
+                    style="@style/tv_creDetail_black_bold"
+                    android:text="文书确定义务" />
+
+                <View style="@style/view_line" />
+
+                <TextView
+                    style="@style/tv_creDetail_black"
+                    android:text="经济纠纷经济纠纷经济纠纷经济纠纷经济纠纷经济纠纷经济纠纷" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_creDetail">
+
+                <TextView
+                    style="@style/tv_creDetail_black_bold"
+                    android:text="失信行为详情" />
+
+                <View style="@style/view_line" />
+
+                <TextView
+                    style="@style/tv_creDetail_black"
+                    android:text="违反财务制度报告" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/ll_creDetail">
+
+                <TextView
+                    style="@style/tv_creDetail_black_bold"
+                    android:text="发布日期" />
+
+                <View style="@style/view_line" />
+
+                <TextView
+                    style="@style/tv_creDetail_black"
+                    android:text="2017年1月5日" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
