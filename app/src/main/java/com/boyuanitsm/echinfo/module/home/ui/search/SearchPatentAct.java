@@ -132,6 +132,7 @@ public class SearchPatentAct extends BaseAct implements View.OnClickListener {
      * 填充数据
      */
     private void initData() {
+        query.setHint("请输入专利号，专利名，公司名");
         myAdapter = new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_grey_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout_search" />
+
+    <LinearLayout
+        android:id="@+id/ll_sx"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="48dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:background="@color/white">
+        <RelativeLayout
+            android:id="@+id/rl_sj"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_sj"
+                android:text="全国"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_sj"
+                android:background="@mipmap/down_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_lx"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_lx"
+                android:text="不限行业"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_lx"
+                android:background="@mipmap/down_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_sx"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_sx"
+                android:text="更多筛选"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv_sx"
+                android:background="@mipmap/down_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_jg"
+        android:layout_below="@+id/ll_sx"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="34dp">
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:text="搜索到5000个公司"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/ll_jg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <include
+        android:visibility="gone"
+        layout="@layout/act_search_nocontent"/>
+
+    <LinearLayout
+        android:id="@+id/ll_rs"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/rl_recent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+            <TextView
+                android:id="@+id/recent"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:text="最近搜索"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+                android:id="@+id/xr"
+                android:layout_below="@+id/recent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:background="@mipmap/sc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_below="@+id/rl_recent"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+            <TextView
+                android:id="@+id/tv_rm"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:text="热门搜索"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+                android:id="@+id/rm"
+                android:layout_below="@+id/tv_rm"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
+import com.boyuanitsm.echinfo.widget.ClearEditText;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * 查商标
@@ -22,7 +24,9 @@ import butterknife.BindView;
 
 public class SearchBrandAct extends BaseAct {
     @BindView(R.id.xr)
-     XRecyclerView xr;
+    XRecyclerView xr;
+    @BindView(R.id.query)
+    ClearEditText query;
     private BaseRecyclerAdapter<String> myAdapter;//查商标适配器
     private List<String> datas = new ArrayList<>();
 
@@ -39,6 +43,7 @@ public class SearchBrandAct extends BaseAct {
     }
 
     private void initData() {
+        query.setHint("请输入注册号，商标名或公司名");
         myAdapter = new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
@@ -51,5 +56,12 @@ public class SearchBrandAct extends BaseAct {
             }
         };
         xr.setAdapter(myAdapter);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

@@ -29,12 +29,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 查著作权
+ * 查经营范围
  * Q164454216
- * Created by xiaoke on 2016/12/29.
+ * Created by xiaoke on 2017/1/4.
  */
 
-public class SearchCopyrightAct extends BaseAct implements View.OnClickListener {
+public class SearchBusinessScopeAct extends BaseAct implements View.OnClickListener {
     private XRecyclerView rcv, rm, recent;
     private BaseRecyclerAdapter<String> myAdapter;//著作权数据适配器
     private List<String> datas = new ArrayList<>();
@@ -46,7 +46,7 @@ public class SearchCopyrightAct extends BaseAct implements View.OnClickListener 
     private EditText query;
     @Override
     public int getLayout() {
-        return R.layout.search_copyright;
+        return R.layout.search_business_scope;
     }
 
     @Override
@@ -64,7 +64,6 @@ public class SearchCopyrightAct extends BaseAct implements View.OnClickListener 
         inithotReSou();
         initRecentSearch();
     }
-
     /**
      * 填充最近搜索内容
      */
@@ -132,11 +131,11 @@ public class SearchCopyrightAct extends BaseAct implements View.OnClickListener 
      * 填充数据
      */
     private void initData() {
-        query.setHint("著作权名，登记号或公司名");
+        query.setHint("请输入公司名/地址/经营项目/商标");
         myAdapter = new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
-                return R.layout.rcv_search_copyright;
+                return R.layout.rcv_search_business;
             }
 
             @Override
@@ -149,8 +148,6 @@ public class SearchCopyrightAct extends BaseAct implements View.OnClickListener 
         rcv.setAdapter(myAdapter);
 
     }
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -191,7 +188,7 @@ public class SearchCopyrightAct extends BaseAct implements View.OnClickListener 
      * 选择对话框
      */
     private void selectPop() {
-        View v = LayoutInflater.from(getApplicationContext()).inflate(R.layout.act_select, null);
+        View v = LayoutInflater.from(getApplicationContext()).inflate(R.layout.act_select2, null);
         mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
         ListView lv = (ListView) v.findViewById(R.id.lv);
         lv.setAdapter(new XzSimpleAdapter());

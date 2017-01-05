@@ -132,6 +132,7 @@ public class SearchJudgmentAct extends BaseAct implements View.OnClickListener {
      * 填充数据
      */
     private void initData() {
+        query.setHint("请输入案号，公司名或人名");
         myAdapter = new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {

@@ -132,6 +132,7 @@ public class SearchShareholderAct extends BaseAct implements View.OnClickListene
      * 填充数据
      */
     private void initData() {
+        query.setHint("请输入法定代表人或股东名");
         myAdapter = new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
