@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,17 +22,19 @@ import butterknife.ButterKnife;
 public abstract class BaseAct<T extends BasePresenter> extends FragmentActivity implements BaseView {
     private TextView tv_title;
     private TextView tvRight;
+    private ImageView ivRight;
     private RelativeLayout rl_right;
     /**
      * 将代理类通用行为抽出来
      */
     protected T mPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 手机窗口设置无标题
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(View.inflate(this,getLayout(),null));
+        setContentView(View.inflate(this, getLayout(), null));
         //注入控件
         ButterKnife.bind(this);
         init(savedInstanceState);
@@ -40,7 +43,7 @@ public abstract class BaseAct<T extends BasePresenter> extends FragmentActivity 
     /**
      * 设置布局
      */
-    public abstract int  getLayout();
+    public abstract int getLayout();
 
     /**
      * 填充数据
@@ -66,7 +69,7 @@ public abstract class BaseAct<T extends BasePresenter> extends FragmentActivity 
 
     @Override
     public void toast(String msg) {
-        MyToastUtils.showShortToast(getApplicationContext(),msg);
+        MyToastUtils.showShortToast(getApplicationContext(), msg);
     }
 
     @Override
@@ -118,6 +121,22 @@ public abstract class BaseAct<T extends BasePresenter> extends FragmentActivity 
             rl_right.setVisibility(View.VISIBLE);
             tvRight.setVisibility(View.VISIBLE);
         }
+        if (listener != null) {
+            rl_right.setOnClickListener(listener);
+        }
+    }
+
+    /**
+     * 顶部右边按键(带图片)
+     *
+     * @param res
+     */
+    public void setRightBtn(int res, View.OnClickListener listener) {
+        ivRight = (ImageView) findViewById(R.id.ivRight);
+        rl_right = (RelativeLayout) findViewById(R.id.rl_right);
+        rl_right.setVisibility(View.VISIBLE);
+        ivRight.setVisibility(View.VISIBLE);
+        ivRight.setImageResource(res);
         if (listener != null) {
             rl_right.setOnClickListener(listener);
         }

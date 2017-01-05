@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tv_copyRight"
+            style="@style/tv_14_black_bold"
+            android:text="著作权" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_rightTitle1"
+                style="@style/tv_14_black"
+                android:text="软件名称:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="软件" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_rightTitle2"
+                style="@style/tv_14_black"
+                android:text="分类号:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="软件" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_rightTitle3"
+                style="@style/tv_14_black"
+                android:text="登记号:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="软件" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_rightTitle4"
+                style="@style/tv_14_black"
+                android:text="登记日期:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="软件" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_rightTitle5"
+                style="@style/tv_14_black"
+                android:text="首次发布日期:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="软件" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_copyRight6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_rightTitle6"
+                style="@style/tv_14_black"
+                android:text="著作人:" />
+
+            <TextView
+                style="@style/executed_item_tv_gray"
+                android:text="软件" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+</LinearLayout>

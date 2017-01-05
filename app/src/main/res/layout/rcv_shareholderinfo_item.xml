@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp">
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginTop="15dp"
+            android:text="黄婷婷" />
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginTop="10dp"
+            android:text="事业法人"
+            android:textColor="#999" />
+
+        <View
+            style="@style/view_line"
+            android:layout_marginTop="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="出资时间" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="2017年1月4日"
+                    android:textColor="#999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="认缴出资额" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="2017.333万人民币"
+                    android:textColor="#999" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="实缴时间" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="2017年1月4日"
+                    android:textColor="#999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="实缴出资额" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="2017.333万人民币"
+                    android:textColor="#999" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginTop="30dp"
+            android:text="出资方式" />
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginTop="10dp"
+            android:text="货币"
+            android:textColor="#999" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#f4f4f4" />
+</LinearLayout>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4f4f4"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="年份" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="2016"
+                    android:textColor="#999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="注册号" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="2016"
+                    android:textColor="#999" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="状态" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="正常"
+                    android:textColor="#999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="电话" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="2016"
+                    android:textColor="#999" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="邮箱" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="123@123.com"
+                    android:textColor="#999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="邮编" />
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:layout_marginTop="10dp"
+                    android:text="0000000"
+                    android:textColor="#999" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginTop="30dp"
+            android:text="从业人数" />
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginTop="10dp"
+            android:text="123"
+            android:textColor="#999" />
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="企业地址" />
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="上海长宁"
+            android:textColor="#999" />
+
+        <View
+            style="@style/view_line"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="有限责任公司本年度是否发生股东股权转让" />
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="否"
+            android:textColor="#999" />
+
+        <View
+            style="@style/view_line"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="企业是否有投资信息或购买其他公司股权" />
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="否"
+            android:textColor="#999" />
+
+        <View
+            style="@style/view_line"
+            android:layout_marginTop="15dp" />
+    </LinearLayout>
+</LinearLayout>

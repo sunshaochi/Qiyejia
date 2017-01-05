@@ -10,7 +10,7 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.HomeComAdapter;
 import com.boyuanitsm.echinfo.adapter.HomeZxAdapter;
 import com.boyuanitsm.echinfo.base.BaseFrg;
-import com.boyuanitsm.echinfo.module.company.CompanyAct;
+import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchBrandAct;

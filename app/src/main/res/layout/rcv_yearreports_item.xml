@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@drawable/item_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tv_year"
+            style="@style/tv_14_black"
+            android:text="2014年报"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tv_year"
+            android:id="@+id/tv_companyName"
+            style="@style/tv_14_black"
+            android:text="上海华东集团"
+            android:textColor="#999" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/arrow_right" />
+    </RelativeLayout>
+    <View
+        android:background="#f4f4f4"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+</LinearLayout>

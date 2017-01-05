@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <TextView
+                    style="@style/tv_14_black_bold"
+                    android:text="分支机构名称"
+                    android:textSize="16sp"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    style="@style/tv_14_black_bold"
+                    android:text="齐家网"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="法人"
+                app:rightText="绕绕绕" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="注册资本"
+                app:rightText="555" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="成立时间"
+                app:rightText="2132312312" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="状态"
+                app:rightText="广告歌" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="行业"
+                app:rightText="国土局" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="工商注册号"
+                app:rightText="456666" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="企业类型"
+                app:rightText="私企" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="组织机构代码"
+                app:rightText="-" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="营业期限"
+                app:rightText="-" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="登记机关"
+                app:rightText="-" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="核准日期"
+                app:rightText="2017-01-04" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                style="@style/productInfo_item"
+                app:leftText="统一信用代码"
+                app:rightText="GHH" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
