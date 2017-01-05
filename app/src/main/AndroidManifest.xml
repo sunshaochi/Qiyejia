@@ -183,6 +183,10 @@
         <activity
             android:name=".module.company.ui.CopyrightAct"
             android:screenOrientation="portrait" />
+        <!--失信信息-->
+        <activity
+            android:name=".module.company.ui.CreditInfoAct"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
