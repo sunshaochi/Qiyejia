@@ -43,6 +43,7 @@ public class FindFrg extends BaseFrg {
     MagicIndicator magicIndicator;
     @BindView(R.id.vp_find)
     ViewPager vp_find;
+
     @Override
     public int getLayout() {
         return R.layout.frg_find;
@@ -87,7 +88,6 @@ public class FindFrg extends BaseFrg {
                         vp_find.setCurrentItem(index);
                     }
                 });
-
                 return simplePagerTitleView;
             }
 
@@ -100,7 +100,7 @@ public class FindFrg extends BaseFrg {
             }
         });
         magicIndicator.setNavigator(commonNavigator);
-        ViewPagerHelper.bind(magicIndicator,vp_find);
+        ViewPagerHelper.bind(magicIndicator, vp_find);
     }
 
 
