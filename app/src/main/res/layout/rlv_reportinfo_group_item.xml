@@ -24,8 +24,7 @@
             android:id="@+id/tv_groupName"
             style="@style/tv_16_black_bold"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:text="登记信息" />
+            android:layout_marginLeft="16dp" />
 
         <ImageView
             android:id="@+id/iv_groupArrow"
@@ -34,6 +33,15 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_groupRight"
+            style="@style/tv_14_gray"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text="暂无" />
     </RelativeLayout>
 
 </LinearLayout>

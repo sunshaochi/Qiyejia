@@ -231,6 +231,10 @@
         <activity
             android:name=".module.company.ui.BusinessInfoAct"
             android:screenOrientation="portrait" />
+        <!--年报信息-->
+        <activity
+            android:name=".module.company.ui.ReportInfoAct"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

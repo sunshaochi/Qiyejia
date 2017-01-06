@@ -188,4 +188,33 @@
     <style name="miv_patentDetail_item" parent="productInfo_item">
         <item name="android:layout_height">45dp</item>
     </style>
+
+    <style name="ll_businessChild_one">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+
+    <style name="tvBlack_businessChild_one" parent="tv_14_black_bold">
+        <item name="android:layout_height">33dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">15dp</item>
+    </style>
+    <style name="tvGray_businessChild_one" parent="tv_14_gray">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="view_line_vertical" parent="view_line">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">1px</item>
+    </style>
 </resources>

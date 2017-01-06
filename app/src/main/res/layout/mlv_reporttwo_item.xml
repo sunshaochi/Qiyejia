@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            style="@style/tv_14_black"
+            android:text="张婷婷" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="出资时间" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:layout_marginTop="10dp"
+                    android:text="2017年1月6日" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="认缴出资额" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:layout_marginTop="10dp"
+                    android:text="2017年1月6日" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="实缴时间" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:layout_marginTop="10dp"
+                    android:text="2017年1月6日" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv_14_black"
+                    android:text="实缴出资额" />
+
+                <TextView
+                    style="@style/tv_14_gray"
+                    android:layout_marginTop="10dp"
+                    android:text="2017年1月6日" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            style="@style/tv_14_black"
+            android:layout_marginTop="20dp"
+            android:text="出资方式" />
+
+        <TextView
+            style="@style/tv_14_gray"
+            android:layout_marginTop="10dp"
+            android:text="货币" />
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+</LinearLayout>

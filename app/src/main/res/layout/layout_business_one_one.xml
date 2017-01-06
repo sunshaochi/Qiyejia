@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="法定代表人" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="李鸿章" />
+        </LinearLayout>
+
+        <View style="@style/view_line_vertical" />
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="注册资本" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="6000万" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="成立日期" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="2017-01-06" />
+        </LinearLayout>
+
+        <View style="@style/view_line_vertical" />
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="发照日期" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="2017-01-06" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="公司类型" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="有限责任公司" />
+        </LinearLayout>
+
+        <View style="@style/view_line_vertical" />
+
+        <Space style="@style/ll_businessChild_one" />
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+
+    <View
+        style="@style/view_line"
+        android:layout_marginTop="10dp" />
+</LinearLayout>

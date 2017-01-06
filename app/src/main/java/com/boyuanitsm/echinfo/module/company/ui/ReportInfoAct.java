@@ -9,37 +9,41 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
-import com.boyuanitsm.echinfo.adapter.BusinessFourAdp;
-import com.boyuanitsm.echinfo.adapter.BusinessOneAdp;
 import com.boyuanitsm.echinfo.adapter.BusinessThreeAdp;
-import com.boyuanitsm.echinfo.adapter.BusinessTwoAdp;
+import com.boyuanitsm.echinfo.adapter.ReportFourAdp;
+import com.boyuanitsm.echinfo.adapter.ReportOneAdp;
+import com.boyuanitsm.echinfo.adapter.ReportThreeAdp;
+import com.boyuanitsm.echinfo.adapter.ReportTwoAdp;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.widget.MyListView;
 
 import butterknife.BindView;
 
 /**
- * 工商信息
- * Created by Yang on 2017/1/5 0005.
+ * 年报信息界面
+ * Created by Yang on 2017/1/6 0006.
  */
-public class BusinessInfoAct extends BaseAct {
+public class ReportInfoAct extends BaseAct {
     @BindView(R.id.elv_businessInfo)
     ExpandableListView elv_businessInfo;
 
-    private String[] groupName = {"登记信息", "投资人", "主要成员", "变更记录", "分支机构", "抽查检查", "动产抵押"};
-    private BusinessOneAdp oneAdp;//投资人适配器
-    private BusinessTwoAdp twoAdp;//主要成员适配器
-    private BusinessThreeAdp threeAdp;//变更记录适配器
-    private BusinessFourAdp fourAdp;//分支机构适配器
+    private String[] groupName = {"企业基本信息", "网站或网店信息", "股东信息", "对外投资信息",
+            "企业资产状况信息", "对外提供保证担保信息", "股权变更信息", "变更记录"};
+
+    private ReportOneAdp oneAdp;
+    private ReportTwoAdp twoAdp;
+    private ReportThreeAdp threeAdp;
+    private ReportFourAdp fourAdp;
+    private BusinessThreeAdp sevenAdp;
 
     @Override
     public int getLayout() {
-        return R.layout.act_businessinfo;
+        return R.layout.act_reportinfo;
     }
 
     @Override
     public void init(Bundle savedInstanceState) {
-        setTopTitle("工商信息");
+        setTopTitle("年报信息");
         setRightBtn("纠错", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,8 +95,9 @@ public class BusinessInfoAct extends BaseAct {
             gViewHolder holder;
             if (view == null) {
                 holder = new gViewHolder();
-                view = View.inflate(getApplicationContext(), R.layout.rlv_business_group_item, null);
+                view = View.inflate(getApplicationContext(), R.layout.rlv_reportinfo_group_item, null);
                 holder.tv_groupName = (TextView) view.findViewById(R.id.tv_groupName);
+                holder.tv_groupRight = (TextView) view.findViewById(R.id.tv_groupRight);
                 holder.iv_groupArrow = (ImageView) view.findViewById(R.id.iv_groupArrow);
                 view.setTag(holder);
             } else {
@@ -103,51 +108,58 @@ public class BusinessInfoAct extends BaseAct {
             } else {
                 holder.iv_groupArrow.setImageResource(R.mipmap.arrow_down);
             }
+            if (i == 5 || i == 6) {
+                holder.iv_groupArrow.setVisibility(View.GONE);
+                holder.tv_groupRight.setVisibility(View.VISIBLE);
+            } else {
+                holder.iv_groupArrow.setVisibility(View.VISIBLE);
+                holder.tv_groupRight.setVisibility(View.GONE);
+            }
             holder.tv_groupName.setText(groupName[i]);
             return view;
         }
 
         @Override
         public View getChildView(int gPosition, int cPosition, boolean b, View view, ViewGroup viewGroup) {
-            cViewHolder1 holder1;
-            cViewHolder2 holder2;
-            cViewHolder3 holder3;
-            cViewHolder4 holder4;
-            if (gPosition == 0) {//登记信息
-                holder1 = new cViewHolder1();
-                view = View.inflate(getApplicationContext(), R.layout.view_business_one, null);
-            }
+            cViewHolder holder;
 
-            if (gPosition == 1 || gPosition == 2 || gPosition == 3 || gPosition == 4) {
-                //投资人, 主要成员, 变更记录, 分支机构列表
-                holder2 = new cViewHolder2();
+            if (gPosition == 0 || gPosition == 1 || gPosition == 2 || gPosition == 3
+                    || gPosition == 4 || gPosition == 7) {
+                //"企业基本信息", "网站或网店信息", "股东信息", "对外投资信息","企业资产状况信息","变更记录"
+                holder = new cViewHolder();
                 view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
-                holder2.myListView = (MyListView) view.findViewById(R.id.mlv);
+                holder.myListView = (MyListView) view.findViewById(R.id.mlv);
+                if (gPosition == 0) {
+                    oneAdp = new ReportOneAdp(getApplicationContext());
+                    holder.myListView.setAdapter(oneAdp);
+                }
                 if (gPosition == 1) {
-                    oneAdp = new BusinessOneAdp(getApplicationContext());
-                    holder2.myListView.setAdapter(oneAdp);
+                    oneAdp = new ReportOneAdp(getApplicationContext());
+                    holder.myListView.setAdapter(oneAdp);
                 }
                 if (gPosition == 2) {
-                    twoAdp = new BusinessTwoAdp(getApplicationContext());
-                    holder2.myListView.setAdapter(twoAdp);
+                    twoAdp = new ReportTwoAdp(getApplicationContext());
+                    holder.myListView.setAdapter(twoAdp);
                 }
                 if (gPosition == 3) {
-                    threeAdp = new BusinessThreeAdp(getApplicationContext());
-                    holder2.myListView.setAdapter(threeAdp);
+                    threeAdp = new ReportThreeAdp(getApplicationContext());
+                    holder.myListView.setAdapter(threeAdp);
                 }
                 if (gPosition == 4) {
-                    fourAdp = new BusinessFourAdp(getApplicationContext());
-                    holder2.myListView.setAdapter(fourAdp);
+                    fourAdp = new ReportFourAdp(getApplicationContext());
+                    holder.myListView.setAdapter(fourAdp);
+                }
+                if (gPosition == 7) {
+                    sevenAdp = new BusinessThreeAdp(getApplicationContext());
+                    holder.myListView.setAdapter(sevenAdp);
                 }
             }
 
-            if (gPosition == 5) {//抽查检查
-                holder3 = new cViewHolder3();
-                view = View.inflate(getApplicationContext(), R.layout.view_business_three, null);
+            if (gPosition == 5) {//对外提供保证担保信息
+                view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
             }
 
-            if (gPosition == 6) {//动产抵押
-                holder4 = new cViewHolder4();
+            if (gPosition == 6) {//股权变更信息
                 view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
             }
             return view;
@@ -159,25 +171,14 @@ public class BusinessInfoAct extends BaseAct {
         }
 
         public class gViewHolder {
-            TextView tv_groupName;
+            TextView tv_groupName, tv_groupRight;
             ImageView iv_groupArrow;
         }
 
-        public class cViewHolder1 {
-
-        }
-
-        public class cViewHolder2 {
+        public class cViewHolder {
             MyListView myListView;
         }
 
-        public class cViewHolder3 {
-
-        }
-
-        public class cViewHolder4 {
-
-        }
     }
 
 }

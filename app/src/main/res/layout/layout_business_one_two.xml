@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="工商注册号" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="44444" />
+        </LinearLayout>
+
+        <View style="@style/view_line_vertical" />
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="组织机构代码" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="fffff" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="统一社会信用代码" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="290483" />
+        </LinearLayout>
+
+        <View style="@style/view_line_vertical" />
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="经营状态" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="存续" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="英文名" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="android" />
+        </LinearLayout>
+
+        <View style="@style/view_line_vertical" />
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="曾用名" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="-" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout style="@style/ll_businessChild_one">
+
+            <TextView
+                style="@style/tv_14_black_bold"
+                android:text="所属行业" />
+
+            <TextView
+                style="@style/tv_14_gray"
+                android:layout_marginTop="10dp"
+                android:text="批发零售业" />
+        </LinearLayout>
+
+        <View style="@style/view_line_vertical" />
+
+        <Space style="@style/ll_businessChild_one" />
+    </LinearLayout>
+
+    <View style="@style/view_line" />
+
+    <View
+        style="@style/view_line"
+        android:layout_marginTop="10dp" />
+</LinearLayout>

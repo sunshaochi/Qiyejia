@@ -67,7 +67,7 @@ public class YearReportsAct extends BaseAct{
         mAdp.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+openActivity(ReportInfoAct.class);
             }
 
             @Override

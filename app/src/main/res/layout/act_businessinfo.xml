@@ -7,9 +7,57 @@
     <include layout="@layout/title_act_layout" />
 
     <ExpandableListView
-        android:groupIndicator="@null"
         android:id="@+id/elv_businessInfo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:groupIndicator="@null"
         android:scrollbars="none" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:background="#4b4b4b"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp">
+
+            <TextView
+                style="@style/tv_14_white"
+                android:text="已选" />
+
+            <TextView
+                style="@style/tv_14_white"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/blue_circle"
+                android:gravity="center"
+                android:text="1" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#df4b4b"
+            android:gravity="center"
+            android:text="清空"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#2384f1"
+            android:gravity="center"
+            android:text="查关系"
+            android:textColor="@color/white" />
+    </LinearLayout>
 </LinearLayout>
