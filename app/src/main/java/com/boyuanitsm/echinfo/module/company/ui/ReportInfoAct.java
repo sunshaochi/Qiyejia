@@ -125,31 +125,30 @@ public class ReportInfoAct extends BaseAct {
 
             if (gPosition == 0 || gPosition == 1 || gPosition == 2 || gPosition == 3
                     || gPosition == 4 || gPosition == 7) {
-                //"企业基本信息", "网站或网店信息", "股东信息", "对外投资信息","企业资产状况信息","变更记录"
                 holder = new cViewHolder();
                 view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
                 holder.myListView = (MyListView) view.findViewById(R.id.mlv);
-                if (gPosition == 0) {
+                if (gPosition == 0) {//企业基本信息
                     oneAdp = new ReportOneAdp(getApplicationContext());
                     holder.myListView.setAdapter(oneAdp);
                 }
-                if (gPosition == 1) {
+                if (gPosition == 1) {//网站或网店信息
                     oneAdp = new ReportOneAdp(getApplicationContext());
                     holder.myListView.setAdapter(oneAdp);
                 }
-                if (gPosition == 2) {
+                if (gPosition == 2) {//股东信息
                     twoAdp = new ReportTwoAdp(getApplicationContext());
                     holder.myListView.setAdapter(twoAdp);
                 }
-                if (gPosition == 3) {
+                if (gPosition == 3) {//对外投资信息
                     threeAdp = new ReportThreeAdp(getApplicationContext());
                     holder.myListView.setAdapter(threeAdp);
                 }
-                if (gPosition == 4) {
+                if (gPosition == 4) {//企业资产状况信息
                     fourAdp = new ReportFourAdp(getApplicationContext());
                     holder.myListView.setAdapter(fourAdp);
                 }
-                if (gPosition == 7) {
+                if (gPosition == 7) {//变更记录
                     sevenAdp = new BusinessThreeAdp(getApplicationContext());
                     holder.myListView.setAdapter(sevenAdp);
                 }

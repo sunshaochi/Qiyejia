@@ -3,6 +3,7 @@ package com.boyuanitsm.echinfo.module.company.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
@@ -119,25 +120,30 @@ public class BusinessInfoAct extends BaseAct {
             }
 
             if (gPosition == 1 || gPosition == 2 || gPosition == 3 || gPosition == 4) {
-                //投资人, 主要成员, 变更记录, 分支机构列表
                 holder2 = new cViewHolder2();
                 view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
                 holder2.myListView = (MyListView) view.findViewById(R.id.mlv);
-                if (gPosition == 1) {
+                if (gPosition == 1) {//投资人
                     oneAdp = new BusinessOneAdp(getApplicationContext());
                     holder2.myListView.setAdapter(oneAdp);
                 }
-                if (gPosition == 2) {
+                if (gPosition == 2) {//主要成员
                     twoAdp = new BusinessTwoAdp(getApplicationContext());
                     holder2.myListView.setAdapter(twoAdp);
                 }
-                if (gPosition == 3) {
+                if (gPosition == 3) {//变更记录
                     threeAdp = new BusinessThreeAdp(getApplicationContext());
                     holder2.myListView.setAdapter(threeAdp);
                 }
-                if (gPosition == 4) {
+                if (gPosition == 4) {//分支机构列表
                     fourAdp = new BusinessFourAdp(getApplicationContext());
                     holder2.myListView.setAdapter(fourAdp);
+                    holder2.myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            openActivity(BranchDetailAct.class);
+                        }
+                    });
                 }
             }
 
