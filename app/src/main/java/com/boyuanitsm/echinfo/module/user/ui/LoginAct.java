@@ -7,12 +7,12 @@ import android.widget.EditText;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.module.home.ui.MainAct;
 import com.boyuanitsm.echinfo.module.user.presenter.ILoginPresenter;
 import com.boyuanitsm.echinfo.module.user.presenter.LoginPresenterImpl;
 import com.boyuanitsm.echinfo.module.user.view.ILoginView;
 import com.boyuanitsm.tools.AppManager;
-import com.boyuanitsm.tools.utils.MyToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -59,9 +59,11 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
 
 
     @Override
-    public void loginSuccess() {
+    public void loginSuccess(UserBean userBean) {
         hideProgress();
         toast("登录成功");
+        //存入数据库操作
+
         openActivity(MainAct.class);
         finish();
     }
@@ -75,7 +77,7 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
     @Override
     public void loginFailed(int status, String errorMsg) {
         hideProgress();
-        MyToastUtils.showShortToast(getApplicationContext(), errorMsg);
+        toast(errorMsg);
     }
 
 

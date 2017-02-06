@@ -3,6 +3,7 @@ package com.boyuanitsm.echinfo.module.user.presenter;
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
 import com.boyuanitsm.echinfo.bean.ResultBean;
 import com.boyuanitsm.echinfo.bean.UBean;
+import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.module.user.model.ILoginModel;
 import com.boyuanitsm.echinfo.module.user.model.LoginModelImpl;
@@ -32,7 +33,9 @@ public class LoginPresenterImpl extends BasePresenterImpl<ILoginView, String> im
 
             @Override
             public void onResponse(ResultBean<UBean> response) {
-                mView.loginSuccess();
+                UBean uBean=response.getData();
+                UserBean userBean=uBean.getUser();
+                mView.loginSuccess(userBean);
             }
         });
 
