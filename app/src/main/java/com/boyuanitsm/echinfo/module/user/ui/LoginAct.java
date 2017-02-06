@@ -1,15 +1,18 @@
 package com.boyuanitsm.echinfo.module.user.ui;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.module.home.ui.MainAct;
 import com.boyuanitsm.echinfo.module.user.presenter.ILoginPresenter;
 import com.boyuanitsm.echinfo.module.user.presenter.LoginPresenterImpl;
 import com.boyuanitsm.echinfo.module.user.view.ILoginView;
 import com.boyuanitsm.tools.AppManager;
+import com.boyuanitsm.tools.utils.MyToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -23,6 +26,8 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
     EditText login_phone;
     @BindView(R.id.login_pwd)
     EditText login_pwd;
+
+    private String username, pwd;
 
     @Override
     public int getLayout() {
@@ -44,13 +49,49 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
             case R.id.tv_toForget://忘记密码
                 break;
             case R.id.btn_login://登录
-                mPresenter.toLogin("", "");
+                if (isValidate()) {
+                    showProgress("正在登录中...");
+                    mPresenter.toLogin(username, pwd);
+                }
                 break;
         }
     }
 
+
     @Override
     public void loginSuccess() {
+        hideProgress();
+        toast("登录成功");
+        openActivity(MainAct.class);
         finish();
+    }
+
+    /**
+     * 失败
+     *
+     * @param status
+     * @param errorMsg
+     */
+    @Override
+    public void loginFailed(int status, String errorMsg) {
+        hideProgress();
+        MyToastUtils.showShortToast(getApplicationContext(), errorMsg);
+    }
+
+
+    private boolean isValidate() {
+        username = login_phone.getText().toString().trim();
+        pwd = login_pwd.getText().toString().toString();
+        if (TextUtils.isEmpty(username)) {
+            toast("请输入手机号");
+            login_phone.requestFocus();
+            return false;
+        }
+        if (TextUtils.isEmpty(pwd)) {
+            toast("请输入密码");
+            login_pwd.requestFocus();
+            return false;
+        }
+        return true;
     }
 }

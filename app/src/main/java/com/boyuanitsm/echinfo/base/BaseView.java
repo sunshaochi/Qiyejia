@@ -10,7 +10,7 @@ public interface BaseView {
 
     void toast(String msg);
 
-    void showProgress();
+    void showProgress( String message);
 
     void hideProgress();
     //打开activity不带数据

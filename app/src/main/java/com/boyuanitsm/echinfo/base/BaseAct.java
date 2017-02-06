@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.widget.SafeDialog;
 import com.boyuanitsm.tools.utils.MyToastUtils;
 
 import butterknife.ButterKnife;
@@ -24,6 +25,7 @@ public abstract class BaseAct<T extends BasePresenter> extends FragmentActivity 
     private TextView tvRight;
     private ImageView ivRight;
     private RelativeLayout rl_right;
+    private SafeDialog dialog;
     /**
      * 将代理类通用行为抽出来
      */
@@ -73,13 +75,18 @@ public abstract class BaseAct<T extends BasePresenter> extends FragmentActivity 
     }
 
     @Override
-    public void showProgress() {
-
+    public void showProgress(String message) {
+        dialog=new SafeDialog(this);
+        dialog.setMessage(message);
+        dialog.setCancelable(false);
+        dialog.show();
     }
 
     @Override
     public void hideProgress() {
-
+        if(dialog!=null){
+            dialog.dismiss();
+        }
     }
 
     @Override
@@ -145,4 +152,7 @@ public abstract class BaseAct<T extends BasePresenter> extends FragmentActivity 
     public void goBack(View view) {
         finish();
     }
+
+
+
 }
