@@ -1,14 +1,16 @@
 package com.boyuanitsm.echinfo.module.user.model;
 
-import com.boyuanitsm.echinfo.callback.RequestCallback;
+import com.boyuanitsm.echinfo.callback.ResultCallback;
+import com.boyuanitsm.echinfo.http.manager.UserManager;
 
 /**
  * 登录接口
  * Created by Yang on 2016/12/30 0030.
  */
 public class LoginModelImpl implements ILoginModel{
-    @Override
-    public void toLogin(RequestCallback<String> callback) {
 
+    @Override
+    public void toLogin(String username, String password,ResultCallback callback) {
+        UserManager.getUserManager().toLogin(username,password,callback);
     }
 }

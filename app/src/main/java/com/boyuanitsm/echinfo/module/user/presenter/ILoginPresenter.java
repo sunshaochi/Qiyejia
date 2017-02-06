@@ -7,5 +7,5 @@ import com.boyuanitsm.echinfo.base.BasePresenter;
  * Created by Yang on 2016/12/30 0030.
  */
 public interface ILoginPresenter extends BasePresenter{
-    void toLogin(String mobile,String pwd);
+    void toLogin(String username, String password);
 }

@@ -28,7 +28,7 @@ public class BasePresenterImpl<T extends BaseView, V> implements BasePresenter, 
 
     @Override
     public void beforeRequest() {
-        mView.showProgress();
+//        mView.showProgress();
     }
 
     @Override

@@ -74,7 +74,7 @@ public abstract class BaseFrg<T extends BasePresenter> extends Fragment implemen
     }
 
     @Override
-    public void showProgress() {
+    public void showProgress(String msg) {
 
     }
 
