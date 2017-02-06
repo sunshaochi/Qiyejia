@@ -44,6 +44,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     RelativeLayout rlTop;
     RecyclerView rcvMyFollow;//我的关注
     RecyclerView rcvHotCom;//热门企业
+    RelativeLayout rl_search;//搜索高级搜索
 
     private BaseRecyclerAdapter<String> myAdapter;//我的关注适配器
     private BaseRecyclerAdapter<String> disAdapter;//失信适配器
@@ -65,9 +66,11 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         rlTop = (RelativeLayout) headView.findViewById(R.id.rlTop);
         rcvHotCom = (RecyclerView) headView.findViewById(R.id.rcvHotCom);
         rcvMyFollow= (RecyclerView) headView.findViewById(R.id.rcvMyFollow);
+        rl_search= (RelativeLayout) headView.findViewById(R.id.rl_search);
         headView.findViewById(R.id.cvMyFollow).setOnClickListener(this);
         headView.findViewById(R.id.cvHotCom).setOnClickListener(this);
         headView.findViewById(R.id.cvSxbd).setOnClickListener(this);
+        rl_search.setOnClickListener(this);
         initMyFollow();
         initHotCom();
         /*查企业*/
@@ -224,6 +227,9 @@ openActivity(CompanyAct.class);
 
                 break;
             case R.id.cvSxbd://失信榜单
+
+                break;
+            case R.id.rl_search://高级搜索
 
                 break;
         }
