@@ -34,4 +34,18 @@ public class UserManager {
         params.put("password", password);
         OkHttpManager.getInstance().doPost(EchinoUrl.LOGIN_URL, params, resultCallback);
     }
+
+
+    /**
+     * 获取短信验证码注册
+     * @param username
+     * @param resultCallback
+     */
+    public void getSmscaptcha(String username,String isRegist,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("phoneNumber",username);
+        params.put("isRegister",isRegist);
+        OkHttpManager.getInstance().doPost(EchinoUrl.GET_SMS_URL,params,resultCallback);
+    }
+
 }

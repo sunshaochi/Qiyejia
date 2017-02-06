@@ -10,6 +10,8 @@ import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 工具类
@@ -59,5 +61,21 @@ public class EchinfoUtils {
         }
         return datas;
     }
+    /**
+     * 手机号码验证,11位，不知道详细的手机号码段，只是验证开头必须是1和位数
+     */
+    public static boolean checkCellPhone(String cellPhoneNr) {
+        String reg="^[1][\\d]{10}";//只判断第一位和11位数
+//        String reg = "^[1][34578][\\d]{9}";
+        return startCheck(reg, cellPhoneNr);
+    }
+    public static boolean startCheck(String reg, String string) {
+        boolean tem = false;
 
+        Pattern pattern = Pattern.compile(reg);
+        Matcher matcher = pattern.matcher(string);
+
+        tem = matcher.matches();
+        return tem;
+    }
 }

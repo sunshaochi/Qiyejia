@@ -9,4 +9,5 @@ import com.boyuanitsm.echinfo.callback.ResultCallback;
 public interface ILoginModel {
     //登录
     void toLogin(String username, String password,ResultCallback callback);
+
 }
