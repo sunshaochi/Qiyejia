@@ -5,7 +5,7 @@ import android.os.Handler;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
-import com.boyuanitsm.echinfo.module.user.ui.LoginAct;
+import com.boyuanitsm.echinfo.module.home.ui.MainAct;
 
 /**
  * 启动页
@@ -23,7 +23,7 @@ public class SplashAct extends BaseAct {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                openActivity(LoginAct.class);
+                openActivity(MainAct.class);
                 finish();
             }
         }, 0);

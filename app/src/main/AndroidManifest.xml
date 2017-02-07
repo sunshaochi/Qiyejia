@@ -22,7 +22,9 @@
         <!--主页-->
         <activity
             android:name=".module.home.ui.MainAct"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            ></activity>
         <!--我的资料-->
         <activity
             android:name=".module.mine.ui.MineAct"

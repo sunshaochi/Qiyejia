@@ -1,6 +1,7 @@
 package com.boyuanitsm.echinfo.module.home.model;
 
-import com.boyuanitsm.echinfo.callback.RequestCallback;
+import com.boyuanitsm.echinfo.bean.UserBean;
+import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 
 /**
  * Created by wangbin on 17/2/7.
@@ -8,7 +9,7 @@ import com.boyuanitsm.echinfo.callback.RequestCallback;
 public class MineModelImpl implements IMineModel{
 
     @Override
-    public void toGetUserBean(RequestCallback callback) {
-
+    public UserBean toGetUserBean() {
+       return EchinfoUtils.getCurrentUser();
     }
 }

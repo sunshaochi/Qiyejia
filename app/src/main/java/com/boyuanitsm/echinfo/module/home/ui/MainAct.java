@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.module.home.view.IMainView;
+import com.boyuanitsm.echinfo.module.user.ui.LoginAct;
+import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -64,6 +66,10 @@ public class MainAct extends BaseAct implements IMainView {
                 selectTabPosition(2);
                 break;
             case R.id.llMine://我的
+                if(!EchinfoUtils.isLogin()){
+                    openActivity(LoginAct.class);
+                    return;
+                }
                 selectTabPosition(3);
                 break;
         }
