@@ -41,10 +41,13 @@ public class ForgetPwdAct extends BaseAct<IForgetPwdPresenter> implements IForge
     @BindView(R.id.btn_register)
     Button resetPwd;
     String phone;
+    String nPwd;
+    String captcha;
     Timer timer;
     MyTimerTask myTask;
-    int i=60;
-   @Override
+    int i = 60;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
@@ -79,11 +82,15 @@ public class ForgetPwdAct extends BaseAct<IForgetPwdPresenter> implements IForge
 
     @Override
     public void toResetPwdSucess(String sucessMsg) {
-
+        resetPwd.setEnabled(true);
+        toast(sucessMsg);
+        finish();
     }
 
     @Override
     public void toResetPwdFaild(int status, String errorMsg) {
+        resetPwd.setEnabled(true);
+        toast(errorMsg);
 
     }
 
@@ -110,9 +117,36 @@ public class ForgetPwdAct extends BaseAct<IForgetPwdPresenter> implements IForge
                 mPresenter.getSms(phone, "false");
                 break;
             case R.id.btn_register:
+                resetPwd.setEnabled(false);
+                phone = forgetPhone.getText().toString().trim();
+                if (TextUtils.isEmpty(phone)) {
+                    toast("请输入手机号");
+                    return;
+                }
+                if (phone.length() != 11) {
+                    toast("请输入11的手机号");
+                    forgetPhone.requestFocus();
+                    forgetPhone.setSelection(forgetPhone.length());
+                    return;
+                }
+                if (!EchinfoUtils.checkCellPhone(phone)) {
+                    toast("请输入正确的手机号码");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(forgetCode.getText().toString().trim())) {
+                    toast("验证码不能为空");
+                    return;
+                }
+                captcha = forgetCode.getText().toString().trim();
+                if (!TextUtils.isEmpty(newPwd.getText().toString().trim())) {
+                    nPwd = newPwd.getText().toString().trim();
+                }
+                mPresenter.resetPwd(captcha, phone, nPwd);
                 break;
         }
     }
+
     /**
      * 倒计时
      *

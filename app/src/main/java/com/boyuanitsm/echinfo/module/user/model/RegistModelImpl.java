@@ -1,5 +1,6 @@
 package com.boyuanitsm.echinfo.module.user.model;
 
+import com.boyuanitsm.echinfo.MyApplication;
 import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.manager.UserManager;
@@ -19,5 +20,10 @@ public class RegistModelImpl implements IRegistModel {
     @Override
     public void toRegister(UserBean user, String captcha,ResultCallback callback) {
         UserManager.getUserManager().toRegister(user,captcha,callback);
+    }
+
+    @Override
+    public void toAddUser(UserBean userBean) {
+        MyApplication.getInstances().getDaoSession().getUserBeanDao().insert(userBean);
     }
 }

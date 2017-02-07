@@ -37,4 +37,19 @@ public class IForgetPwdPresenterImpl extends BasePresenterImpl<IForgetPwdView> i
         });
     }
 
+    @Override
+    public void resetPwd(String captcha, String phone, String newPwd) {
+        forgetPwdModel.resetPwd(captcha, phone, newPwd, new ResultCallback<ResultBean<String>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+                mView.toResetPwdFaild(status,errorMsg);
+            }
+
+            @Override
+            public void onResponse(ResultBean<String> response) {
+                mView.toResetPwdSucess(response.getMessage());
+            }
+        });
+    }
+
 }
