@@ -14,7 +14,7 @@ import com.boyuanitsm.echinfo.module.user.view.IRegisterView;
  * Created by xiaoke on 2017/2/6.
  */
 
-public class RegisterPresenterImpl extends BasePresenterImpl<IRegisterView,String> implements IRegisterPresenter {
+public class RegisterPresenterImpl extends BasePresenterImpl<IRegisterView> implements IRegisterPresenter {
     private IRegisterView mView;
     private IRegistModel registModel;
     public RegisterPresenterImpl(IRegisterView view) {
@@ -41,15 +41,17 @@ public class RegisterPresenterImpl extends BasePresenterImpl<IRegisterView,Strin
 
     @Override
     public void toRegister(UserBean user, String captcha) {
-        registModel.toRegister(user, captcha, new ResultCallback<ResultBean<String>>() {
+        registModel.toRegister(user, captcha, new ResultCallback<ResultBean<UserBean>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.toRegisterFaild(status,errorMsg);
             }
 
             @Override
-            public void onResponse(ResultBean<String> response) {
-                mView.toRegisterSucess(response.getMessage());
+            public void onResponse(ResultBean<UserBean> response) {
+                UserBean user=new UserBean();
+                user=response.getData();
+                mView.toRegisterSucess(user,response.getMessage());
             }
         });
     }

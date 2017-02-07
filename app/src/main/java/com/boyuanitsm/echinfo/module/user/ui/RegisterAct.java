@@ -129,7 +129,7 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
     }
 
     @Override
-    public void toRegisterSucess(String sucessMsg) {
+    public void toRegisterSucess(UserBean userBean,String sucessMsg) {
         btn_register.setEnabled(true);
         openActivity(RegisterSuccessAct.class);
         toast(sucessMsg);

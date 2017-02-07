@@ -1,5 +1,8 @@
 package com.boyuanitsm.echinfo.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
@@ -8,7 +11,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by wangbin on 17/2/6.
  */
 @Entity
-public class UserBean  {
+public class UserBean implements Parcelable {
     @Id
     private String id;
     private String username;
@@ -249,4 +252,13 @@ public class UserBean  {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

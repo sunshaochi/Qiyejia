@@ -1,6 +1,7 @@
 package com.boyuanitsm.echinfo.module.user.view;
 
 import com.boyuanitsm.echinfo.base.BaseView;
+import com.boyuanitsm.echinfo.bean.UserBean;
 
 /**
  * 注册
@@ -11,6 +12,6 @@ import com.boyuanitsm.echinfo.base.BaseView;
 public interface IRegisterView extends BaseView {
     void getSmsSucess(String sucessMsg);
     void getSmsFaild(int status, String errorMsg);
-    void toRegisterSucess(String sucessMsg);
+    void toRegisterSucess(UserBean userBean,String sucessMsg);
     void toRegisterFaild(int status,String errorMsg);
 }

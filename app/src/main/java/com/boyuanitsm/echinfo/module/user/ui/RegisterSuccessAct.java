@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.module.home.ui.MainAct;
 import com.boyuanitsm.tools.AppManager;
 
 /**
@@ -23,6 +24,7 @@ public class RegisterSuccessAct extends BaseAct {
     }
 
     public void toHome(View v) {
+        openActivity(MainAct.class);
         AppManager.getAppManager().finishAllActivity();
         finish();
     }
