@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseFrg;
 import com.boyuanitsm.echinfo.bean.UserBean;
+import com.boyuanitsm.echinfo.module.home.presenter.MinePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.view.IMineView;
 import com.boyuanitsm.echinfo.module.mine.ui.FeedBackAct;
 import com.boyuanitsm.echinfo.module.mine.ui.FollowAct;
@@ -50,7 +51,8 @@ public class MineFrg extends BaseFrg implements IMineView{
 
     @Override
     protected void initView(View fragmentRootView) {
-//         mPresenter=new
+         mPresenter=new MinePresenterImpl(this);
+        ((MinePresenterImpl)mPresenter).getUser();
     }
 
     @OnClick({R.id.ll_mine, R.id.miv_gz, R.id.miv_xx, R.id.miv_fk, R.id.miv_wt, R.id.miv_sz})
@@ -79,6 +81,8 @@ public class MineFrg extends BaseFrg implements IMineView{
 
     @Override
     public void showUser(UserBean userBean) {
-
+        tv_company.setText(userBean.getCompanyName());
+        tv_name.setText(userBean.getName());
+        tv_profession.setText(userBean.getJob());
     }
 }

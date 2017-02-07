@@ -3,9 +3,12 @@ package com.boyuanitsm.echinfo.module.mine.ui;
 import android.os.Bundle;
 import android.view.View;
 
+import com.boyuanitsm.echinfo.MyApplication;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.module.home.ui.MainAct;
 import com.boyuanitsm.echinfo.widget.MineItemView;
+import com.boyuanitsm.tools.view.MyAlertDialog;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -37,6 +40,15 @@ public class SettingAct extends BaseAct {
                 openActivity(ShareDialogAct.class);
                 break;
             case R.id.miv_exit://退出
+                new MyAlertDialog(SettingAct.this).builder().setTitle("提示").setMsg("确认推出吗？").setPositiveButton("退出", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        MyApplication.getInstances().getDaoSession().getUserBeanDao().deleteAll();
+                        openActivity(MainAct.class);
+                        finish();
+
+                    }
+                }).setNegativeButton("取消",null).show();
                 break;
         }
     }
