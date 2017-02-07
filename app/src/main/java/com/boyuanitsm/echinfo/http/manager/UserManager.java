@@ -1,5 +1,6 @@
 package com.boyuanitsm.echinfo.http.manager;
 
+import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.EchinoUrl;
 
@@ -34,4 +35,26 @@ public class UserManager {
         params.put("password", password);
         OkHttpManager.getInstance().doPost(EchinoUrl.LOGIN_URL, params, resultCallback);
     }
+
+
+    /**
+     * 获取短信验证码注册
+     * @param username
+     * @param resultCallback
+     */
+    public void getSmscaptcha(String username,String isRegist,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("phoneNumber",username);
+        params.put("isRegister",isRegist);
+        OkHttpManager.getInstance().doPost(EchinoUrl.GET_SMS_URL,params,resultCallback);
+    }
+
+    public void toRegister(UserBean user,String captcha,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("username",user.getUsername());
+        params.put("phoneNumber",user.getUsername());
+        params.put("captcha",captcha);
+        OkHttpManager.getInstance().doPost(EchinoUrl.TO_REGISTER_URL,params,resultCallback);
+    }
+
 }

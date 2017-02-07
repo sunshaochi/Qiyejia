@@ -5,4 +5,8 @@ package com.boyuanitsm.echinfo.http.manager;
  * Created by wangbin on 17/2/6.
  */
 public class CompanyManager {
+
+
+
+
 }
