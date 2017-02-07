@@ -14,4 +14,6 @@ public interface IRegistModel {
     void getSmsCaptcha(String phoneNumber, String isRegister, ResultCallback callback);
     //注册接口调用
     void toRegister(UserBean user,String captcha,ResultCallback callback );
+    //把用户插入数据库
+    void toAddUser(UserBean userBean);
 }

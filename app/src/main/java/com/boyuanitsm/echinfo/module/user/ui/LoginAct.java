@@ -47,7 +47,7 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
                 openActivity(RegisterAct.class);
                 break;
             case R.id.tv_toForget://忘记密码
-
+                openActivity(ForgetPwdAct.class);
                 break;
             case R.id.btn_login://登录
                 if (isValidate()) {
@@ -63,7 +63,6 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
     public void loginSuccess(UserBean userBean) {
         hideProgress();
         toast("登录成功");
-
         openActivity(MainAct.class);
         finish();
     }

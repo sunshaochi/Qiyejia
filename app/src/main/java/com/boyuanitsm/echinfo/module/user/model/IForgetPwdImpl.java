@@ -13,4 +13,9 @@ public class IForgetPwdImpl implements IForgetPwdModel {
     public void getSmsCaptcha(String phoneNumber, String isRegister, ResultCallback callback) {
         UserManager.getUserManager().getSmscaptcha(phoneNumber,isRegister,callback);
     }
+
+    @Override
+    public void resetPwd(String captcha, String phone, String newPwd, ResultCallback callback) {
+        UserManager.getUserManager().resetPwd(captcha,phone,newPwd,callback);
+    }
 }

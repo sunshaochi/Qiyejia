@@ -11,5 +11,6 @@ import com.boyuanitsm.echinfo.callback.ResultCallback;
 public interface IForgetPwdModel {
     //获取短信验证码
     void getSmsCaptcha(String phoneNumber, String isRegister, ResultCallback callback);
-
+    //忘记密码
+    void resetPwd(String captcha, String phone, String newPwd,ResultCallback callback);
 }
