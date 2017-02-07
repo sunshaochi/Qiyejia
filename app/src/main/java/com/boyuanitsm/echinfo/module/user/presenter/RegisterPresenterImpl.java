@@ -15,7 +15,6 @@ import com.boyuanitsm.echinfo.module.user.view.IRegisterView;
  */
 
 public class RegisterPresenterImpl extends BasePresenterImpl<IRegisterView> implements IRegisterPresenter {
-    private IRegisterView mView;
     private IRegistModel registModel;
     public RegisterPresenterImpl(IRegisterView view) {
         super(view);

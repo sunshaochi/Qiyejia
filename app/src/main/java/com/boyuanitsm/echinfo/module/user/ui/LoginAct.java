@@ -47,6 +47,7 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
                 openActivity(RegisterAct.class);
                 break;
             case R.id.tv_toForget://忘记密码
+
                 break;
             case R.id.btn_login://登录
                 if (isValidate()) {
