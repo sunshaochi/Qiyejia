@@ -5,6 +5,8 @@ import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseFrg;
+import com.boyuanitsm.echinfo.bean.UserBean;
+import com.boyuanitsm.echinfo.module.home.view.IMineView;
 import com.boyuanitsm.echinfo.module.mine.ui.FeedBackAct;
 import com.boyuanitsm.echinfo.module.mine.ui.FollowAct;
 import com.boyuanitsm.echinfo.module.mine.ui.MineAct;
@@ -21,7 +23,7 @@ import butterknife.OnClick;
  * 我的
  * Created by wangbin on 16/12/22.
  */
-public class MineFrg extends BaseFrg {
+public class MineFrg extends BaseFrg implements IMineView{
     @BindView(R.id.civ_head)
     CircleImageView civ_head;//头像
     @BindView(R.id.tv_name)
@@ -48,7 +50,7 @@ public class MineFrg extends BaseFrg {
 
     @Override
     protected void initView(View fragmentRootView) {
-
+//         mPresenter=new
     }
 
     @OnClick({R.id.ll_mine, R.id.miv_gz, R.id.miv_xx, R.id.miv_fk, R.id.miv_wt, R.id.miv_sz})
@@ -73,5 +75,10 @@ public class MineFrg extends BaseFrg {
                 openActivity(SettingAct.class);
                 break;
         }
+    }
+
+    @Override
+    public void showUser(UserBean userBean) {
+
     }
 }

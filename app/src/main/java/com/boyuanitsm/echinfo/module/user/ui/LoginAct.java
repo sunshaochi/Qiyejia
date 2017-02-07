@@ -62,7 +62,6 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
     public void loginSuccess(UserBean userBean) {
         hideProgress();
         toast("登录成功");
-        //存入数据库操作
 
         openActivity(MainAct.class);
         finish();

@@ -13,8 +13,7 @@ import com.boyuanitsm.echinfo.module.user.view.ILoginView;
  * 登录
  * Created by Yang on 2016/12/30 0030.
  */
-public class LoginPresenterImpl extends BasePresenterImpl<ILoginView, String> implements ILoginPresenter {
-    private ILoginView mView;
+public class LoginPresenterImpl extends BasePresenterImpl<ILoginView> implements ILoginPresenter {
     private ILoginModel loginModel;
 
     public LoginPresenterImpl(ILoginView view) {
@@ -35,6 +34,8 @@ public class LoginPresenterImpl extends BasePresenterImpl<ILoginView, String> im
             public void onResponse(ResultBean<UBean> response) {
                 UBean uBean=response.getData();
                 UserBean userBean=uBean.getUser();
+                //插入数据库操作
+                loginModel.toAddUser(userBean);
                 mView.loginSuccess(userBean);
             }
         });

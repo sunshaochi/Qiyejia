@@ -1,13 +1,15 @@
 package com.boyuanitsm.echinfo.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by wangbin on 17/2/6.
  */
-public class UserBean implements Parcelable {
-
+@Entity
+public class UserBean  {
+    @Id
     private String id;
     private String username;
     private String password;
@@ -36,311 +38,215 @@ public class UserBean implements Parcelable {
     private String empno;
     private String dictId;
     private String accredit;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMobilePhoneKey() {
-        return mobilePhoneKey;
-    }
-
-    public void setMobilePhoneKey(String mobilePhoneKey) {
-        this.mobilePhoneKey = mobilePhoneKey;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getBindMobileCount() {
-        return bindMobileCount;
-    }
-
-    public void setBindMobileCount(String bindMobileCount) {
-        this.bindMobileCount = bindMobileCount;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
-    }
-
-    public String getWechat() {
-        return wechat;
-    }
-
-    public void setWechat(String wechat) {
-        this.wechat = wechat;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getReferralCode() {
-        return referralCode;
-    }
-
-    public void setReferralCode(String referralCode) {
-        this.referralCode = referralCode;
-    }
-
-    public String getMyReferralCode() {
-        return myReferralCode;
-    }
-
-    public void setMyReferralCode(String myReferralCode) {
-        this.myReferralCode = myReferralCode;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getCompanyAddr() {
-        return companyAddr;
-    }
-
-    public void setCompanyAddr(String companyAddr) {
-        this.companyAddr = companyAddr;
-    }
-
-    public String getCompanyPhone() {
-        return companyPhone;
-    }
-
-    public void setCompanyPhone(String companyPhone) {
-        this.companyPhone = companyPhone;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
-    public String getIsValid() {
-        return isValid;
-    }
-
-    public void setIsValid(String isValid) {
-        this.isValid = isValid;
-    }
-
-    public String getCreatePersonId() {
-        return createPersonId;
-    }
-
-    public void setCreatePersonId(String createPersonId) {
-        this.createPersonId = createPersonId;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getModifyPersonId() {
-        return modifyPersonId;
-    }
-
-    public void setModifyPersonId(String modifyPersonId) {
-        this.modifyPersonId = modifyPersonId;
-    }
-
-    public String getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(String modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getEmpno() {
-        return empno;
-    }
-
-    public void setEmpno(String empno) {
-        this.empno = empno;
-    }
-
-    public String getDictId() {
-        return dictId;
-    }
-
-    public void setDictId(String dictId) {
-        this.dictId = dictId;
-    }
-
     public String getAccredit() {
-        return accredit;
+        return this.accredit;
     }
-
     public void setAccredit(String accredit) {
         this.accredit = accredit;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getDictId() {
+        return this.dictId;
     }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.id);
-        dest.writeString(this.username);
-        dest.writeString(this.password);
-        dest.writeString(this.name);
-        dest.writeString(this.mobilePhoneKey);
-        dest.writeString(this.phone);
-        dest.writeString(this.bindMobileCount);
-        dest.writeString(this.email);
-        dest.writeString(this.qq);
-        dest.writeString(this.wechat);
-        dest.writeString(this.icon);
-        dest.writeString(this.token);
-        dest.writeString(this.referralCode);
-        dest.writeString(this.myReferralCode);
-        dest.writeString(this.companyName);
-        dest.writeString(this.companyAddr);
-        dest.writeString(this.companyPhone);
-        dest.writeString(this.job);
-        dest.writeString(this.userType);
-        dest.writeString(this.isValid);
-        dest.writeString(this.createPersonId);
-        dest.writeString(this.createTime);
-        dest.writeString(this.modifyPersonId);
-        dest.writeString(this.modifyTime);
-        dest.writeString(this.remark);
-        dest.writeString(this.empno);
-        dest.writeString(this.dictId);
-        dest.writeString(this.accredit);
+    public void setDictId(String dictId) {
+        this.dictId = dictId;
     }
-
+    public String getEmpno() {
+        return this.empno;
+    }
+    public void setEmpno(String empno) {
+        this.empno = empno;
+    }
+    public String getRemark() {
+        return this.remark;
+    }
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+    public String getModifyTime() {
+        return this.modifyTime;
+    }
+    public void setModifyTime(String modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+    public String getModifyPersonId() {
+        return this.modifyPersonId;
+    }
+    public void setModifyPersonId(String modifyPersonId) {
+        this.modifyPersonId = modifyPersonId;
+    }
+    public String getCreateTime() {
+        return this.createTime;
+    }
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+    public String getCreatePersonId() {
+        return this.createPersonId;
+    }
+    public void setCreatePersonId(String createPersonId) {
+        this.createPersonId = createPersonId;
+    }
+    public String getIsValid() {
+        return this.isValid;
+    }
+    public void setIsValid(String isValid) {
+        this.isValid = isValid;
+    }
+    public String getUserType() {
+        return this.userType;
+    }
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+    public String getJob() {
+        return this.job;
+    }
+    public void setJob(String job) {
+        this.job = job;
+    }
+    public String getCompanyPhone() {
+        return this.companyPhone;
+    }
+    public void setCompanyPhone(String companyPhone) {
+        this.companyPhone = companyPhone;
+    }
+    public String getCompanyAddr() {
+        return this.companyAddr;
+    }
+    public void setCompanyAddr(String companyAddr) {
+        this.companyAddr = companyAddr;
+    }
+    public String getCompanyName() {
+        return this.companyName;
+    }
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+    public String getMyReferralCode() {
+        return this.myReferralCode;
+    }
+    public void setMyReferralCode(String myReferralCode) {
+        this.myReferralCode = myReferralCode;
+    }
+    public String getReferralCode() {
+        return this.referralCode;
+    }
+    public void setReferralCode(String referralCode) {
+        this.referralCode = referralCode;
+    }
+    public String getToken() {
+        return this.token;
+    }
+    public void setToken(String token) {
+        this.token = token;
+    }
+    public String getIcon() {
+        return this.icon;
+    }
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+    public String getWechat() {
+        return this.wechat;
+    }
+    public void setWechat(String wechat) {
+        this.wechat = wechat;
+    }
+    public String getQq() {
+        return this.qq;
+    }
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+    public String getEmail() {
+        return this.email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getBindMobileCount() {
+        return this.bindMobileCount;
+    }
+    public void setBindMobileCount(String bindMobileCount) {
+        this.bindMobileCount = bindMobileCount;
+    }
+    public String getPhone() {
+        return this.phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getMobilePhoneKey() {
+        return this.mobilePhoneKey;
+    }
+    public void setMobilePhoneKey(String mobilePhoneKey) {
+        this.mobilePhoneKey = mobilePhoneKey;
+    }
+    public String getName() {
+        return this.name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getPassword() {
+        return this.password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getUsername() {
+        return this.username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getId() {
+        return this.id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+    @Generated(hash = 1974141979)
+    public UserBean(String id, String username, String password, String name,
+            String mobilePhoneKey, String phone, String bindMobileCount,
+            String email, String qq, String wechat, String icon, String token,
+            String referralCode, String myReferralCode, String companyName,
+            String companyAddr, String companyPhone, String job, String userType,
+            String isValid, String createPersonId, String createTime,
+            String modifyPersonId, String modifyTime, String remark, String empno,
+            String dictId, String accredit) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.mobilePhoneKey = mobilePhoneKey;
+        this.phone = phone;
+        this.bindMobileCount = bindMobileCount;
+        this.email = email;
+        this.qq = qq;
+        this.wechat = wechat;
+        this.icon = icon;
+        this.token = token;
+        this.referralCode = referralCode;
+        this.myReferralCode = myReferralCode;
+        this.companyName = companyName;
+        this.companyAddr = companyAddr;
+        this.companyPhone = companyPhone;
+        this.job = job;
+        this.userType = userType;
+        this.isValid = isValid;
+        this.createPersonId = createPersonId;
+        this.createTime = createTime;
+        this.modifyPersonId = modifyPersonId;
+        this.modifyTime = modifyTime;
+        this.remark = remark;
+        this.empno = empno;
+        this.dictId = dictId;
+        this.accredit = accredit;
+    }
+    @Generated(hash = 1203313951)
     public UserBean() {
     }
 
-    protected UserBean(Parcel in) {
-        this.id = in.readString();
-        this.username = in.readString();
-        this.password = in.readString();
-        this.name = in.readString();
-        this.mobilePhoneKey = in.readString();
-        this.phone = in.readString();
-        this.bindMobileCount = in.readString();
-        this.email = in.readString();
-        this.qq = in.readString();
-        this.wechat = in.readString();
-        this.icon = in.readString();
-        this.token = in.readString();
-        this.referralCode = in.readString();
-        this.myReferralCode = in.readString();
-        this.companyName = in.readString();
-        this.companyAddr = in.readString();
-        this.companyPhone = in.readString();
-        this.job = in.readString();
-        this.userType = in.readString();
-        this.isValid = in.readString();
-        this.createPersonId = in.readString();
-        this.createTime = in.readString();
-        this.modifyPersonId = in.readString();
-        this.modifyTime = in.readString();
-        this.remark = in.readString();
-        this.empno = in.readString();
-        this.dictId = in.readString();
-        this.accredit = in.readString();
-    }
 
-    public static final Parcelable.Creator<UserBean> CREATOR = new Parcelable.Creator<UserBean>() {
-        @Override
-        public UserBean createFromParcel(Parcel source) {
-            return new UserBean(source);
-        }
-
-        @Override
-        public UserBean[] newArray(int size) {
-            return new UserBean[size];
-        }
-    };
 }

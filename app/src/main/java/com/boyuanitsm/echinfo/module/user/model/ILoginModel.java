@@ -1,5 +1,6 @@
 package com.boyuanitsm.echinfo.module.user.model;
 
+import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 
 /**
@@ -9,4 +10,6 @@ import com.boyuanitsm.echinfo.callback.ResultCallback;
 public interface ILoginModel {
     //登录
     void toLogin(String username, String password,ResultCallback callback);
+    //把用户插入数据库
+    void toAddUser(UserBean userBean);
 }

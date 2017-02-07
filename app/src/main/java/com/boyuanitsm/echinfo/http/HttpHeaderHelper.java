@@ -1,5 +1,10 @@
 package com.boyuanitsm.echinfo.http;
 
+import android.text.TextUtils;
+
+import com.boyuanitsm.echinfo.MyApplication;
+import com.boyuanitsm.echinfo.utils.SpUtils;
+
 import java.util.HashMap;
 
 import okhttp3.Headers;
@@ -16,6 +21,9 @@ public class HttpHeaderHelper {
      */
     public static Headers getHeaders() {
         HashMap<String, String> map = new HashMap<>();
+        if(!TextUtils.isEmpty(SpUtils.getCookie(MyApplication.getInstances()))){
+            map.put("Cookie",SpUtils.getCookie(MyApplication.getInstances()));
+        }
         if(map.size()==0){
             return null;
         }else {

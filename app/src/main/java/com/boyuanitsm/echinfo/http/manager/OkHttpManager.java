@@ -2,10 +2,13 @@ package com.boyuanitsm.echinfo.http.manager;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 
+import com.boyuanitsm.echinfo.MyApplication;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.HttpHeaderHelper;
 import com.boyuanitsm.echinfo.http.param.Param;
+import com.boyuanitsm.echinfo.utils.SpUtils;
 import com.boyuanitsm.tools.utils.GsonUtils;
 import com.boyuanitsm.tools.utils.MyLogUtils;
 import com.google.gson.Gson;
@@ -103,8 +106,9 @@ public class OkHttpManager {
                 String header = response.header("Set-Cookie");
                 MyLogUtils.info("获取到cookie:" + header);
 
-//                if (!TextUtils.isEmpty(header))
-//                    SpUtils.setCooike(MyApplication.getInstance(), header);
+                if (!TextUtils.isEmpty(header))
+                    SpUtils.setCooike(MyApplication.getInstances(), header);
+
                 final String result = response.body().string();
                 MyLogUtils.info("获取result：" + result);
 
