@@ -1,5 +1,6 @@
 package com.boyuanitsm.echinfo.module.user.model;
 
+import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 
 /**
@@ -12,5 +13,5 @@ public interface IRegistModel {
     //获取短信验证码
     void getSmsCaptcha(String phoneNumber, String isRegister, ResultCallback callback);
     //注册接口调用
-//    void toRegister(String phone)
+    void toRegister(UserBean user,String captcha,ResultCallback callback );
 }

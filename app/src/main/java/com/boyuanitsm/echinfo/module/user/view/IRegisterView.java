@@ -11,4 +11,6 @@ import com.boyuanitsm.echinfo.base.BaseView;
 public interface IRegisterView extends BaseView {
     void getSmsSucess(String sucessMsg);
     void getSmsFaild(int status, String errorMsg);
+    void toRegisterSucess(String sucessMsg);
+    void toRegisterFaild(int status,String errorMsg);
 }

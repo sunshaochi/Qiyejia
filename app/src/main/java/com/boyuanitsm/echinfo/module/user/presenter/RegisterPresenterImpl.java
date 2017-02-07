@@ -2,6 +2,7 @@ package com.boyuanitsm.echinfo.module.user.presenter;
 
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
 import com.boyuanitsm.echinfo.bean.ResultBean;
+import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.module.user.model.IRegistModel;
 import com.boyuanitsm.echinfo.module.user.model.RegistModelImpl;
@@ -34,6 +35,21 @@ public class RegisterPresenterImpl extends BasePresenterImpl<IRegisterView,Strin
             public void onResponse(ResultBean<String> response) {
                 String data = response.getData();
                 mView.getSmsSucess(data);
+            }
+        });
+    }
+
+    @Override
+    public void toRegister(UserBean user, String captcha) {
+        registModel.toRegister(user, captcha, new ResultCallback<ResultBean<String>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+                mView.toRegisterFaild(status,errorMsg);
+            }
+
+            @Override
+            public void onResponse(ResultBean<String> response) {
+                mView.toRegisterSucess(response.getMessage());
             }
         });
     }

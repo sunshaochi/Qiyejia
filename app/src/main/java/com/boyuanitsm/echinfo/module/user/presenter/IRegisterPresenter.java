@@ -1,6 +1,7 @@
 package com.boyuanitsm.echinfo.module.user.presenter;
 
 import com.boyuanitsm.echinfo.base.BasePresenter;
+import com.boyuanitsm.echinfo.bean.UserBean;
 
 /**
  * 注册
@@ -10,4 +11,5 @@ import com.boyuanitsm.echinfo.base.BasePresenter;
 
 public interface IRegisterPresenter extends BasePresenter {
     void getSms(String phoneNumber,String isRegister);
+    void toRegister(UserBean user,String captcha);
 }
