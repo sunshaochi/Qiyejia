@@ -30,7 +30,16 @@ public class CompanyManager {
         OkHttpManager.getInstance().doPost(EchinoUrl.INTEREST_COMPANY_URL,params,resultCallback);
     }
 
-    public void toGetCompanyDetail(){}
+    /**
+     * 查询企业详情
+     * @param companyId
+     * @param resultCallback
+     */
+    public void toGetCompanyDetail(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.COMANY_DETAIL_URL,params,resultCallback);
+    }
 
 
 }

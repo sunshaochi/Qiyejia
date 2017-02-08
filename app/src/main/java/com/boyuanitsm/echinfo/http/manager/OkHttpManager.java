@@ -151,10 +151,9 @@ public class OkHttpManager {
      */
     public void doGet(String url, Map<String, String> paramMap, final ResultCallback callback) {
         headers = HttpHeaderHelper.getHeaders();
-        StringBuilder tempParams = new StringBuilder(url);
+        StringBuilder tempParams = new StringBuilder();
 
-        MyLogUtils.info("请求地址:" + url);
-        MyLogUtils.info("请求参数:" + GsonUtils.bean2Json(paramMap));
+
 
         if(paramMap!=null&&paramMap.size()>0){
             int pos = 0;
@@ -171,7 +170,8 @@ public class OkHttpManager {
             }
             url=url+"?"+tempParams.toString();
         }
-
+        MyLogUtils.info("请求地址:" + url);
+        MyLogUtils.info("请求参数:" + GsonUtils.bean2Json(paramMap));
         Request.Builder builder = new Request.Builder();
         builder.url(url).build();
         if (headers != null) {

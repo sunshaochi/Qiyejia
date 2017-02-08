@@ -10,6 +10,10 @@ import android.widget.ScrollView;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.CompanyAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.bean.CompanyBean;
+import com.boyuanitsm.echinfo.module.company.presenter.CompanyPreImpl;
+import com.boyuanitsm.echinfo.module.company.presenter.ICompanyPre;
+import com.boyuanitsm.echinfo.module.company.view.ICompanyView;
 import com.boyuanitsm.echinfo.module.mine.ui.ShareDialogAct;
 import com.boyuanitsm.echinfo.widget.MyGridView;
 
@@ -20,7 +24,7 @@ import butterknife.OnClick;
  * 公司信息
  * Created by wangbin on 17/1/4.
  */
-public class CompanyAct extends BaseAct {
+public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView{
     //公司id
     public static final String COMAPYT_ID="company_id";
     private String companyId;
@@ -66,6 +70,7 @@ public class CompanyAct extends BaseAct {
 
     private CompanyAdapter basicAdp, riskAdp, knowledgeAdp, propertyAdp, companyAdp;
 
+
     @Override
     public int getLayout() {
         return R.layout.act_company;
@@ -75,6 +80,8 @@ public class CompanyAct extends BaseAct {
     public void init(Bundle savedInstanceState) {
         setTopTitle("华东控股集团有限公司");
         companyId=getIntent().getStringExtra(COMAPYT_ID);
+        mPresenter=new CompanyPreImpl(this);
+        mPresenter.getCompanyDetail(companyId);
         initGv();
         initOnItemClick();
         new Thread(new Runnable() {
@@ -260,4 +267,13 @@ public class CompanyAct extends BaseAct {
     };
 
 
+    @Override
+    public void setCompanyMes(CompanyBean companyBean) {
+
+    }
+
+    @Override
+    public void requestError(int status, String errorMsg) {
+         toast(errorMsg);
+    }
 }
