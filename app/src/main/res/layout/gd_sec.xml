@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
@@ -10,17 +11,13 @@
         android:background="#eef1f3"
         android:layout_width="match_parent"
         android:layout_height="35dp" />
-    <com.boyuanitsm.echinfo.widget.MyGridView
-        android:id="@+id/gv_ssfw"
-        android:background="@color/white"
-        android:horizontalSpacing="5dp"
-        android:numColumns="auto_fit"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <com.boyuanitsm.tools.view.FlowTag.FlowTagLayout
+        android:id="@+id/size_flow_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        ></com.boyuanitsm.tools.view.FlowTag.FlowTagLayout>
 
-    </com.boyuanitsm.echinfo.widget.MyGridView>
 
     <TextView
         android:textSize="12sp"
