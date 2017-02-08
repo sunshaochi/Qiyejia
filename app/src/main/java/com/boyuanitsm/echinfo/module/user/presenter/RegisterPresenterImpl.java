@@ -15,7 +15,6 @@ import com.boyuanitsm.echinfo.module.user.view.IRegisterView;
  */
 
 public class RegisterPresenterImpl extends BasePresenterImpl<IRegisterView> implements IRegisterPresenter {
-    private IRegisterView mView;
     private IRegistModel registModel;
     public RegisterPresenterImpl(IRegisterView view) {
         super(view);
@@ -51,6 +50,7 @@ public class RegisterPresenterImpl extends BasePresenterImpl<IRegisterView> impl
             public void onResponse(ResultBean<UserBean> response) {
                 UserBean user=new UserBean();
                 user=response.getData();
+                registModel.toAddUser(user);
                 mView.toRegisterSucess(user,response.getMessage());
             }
         });

@@ -12,6 +12,7 @@ import com.boyuanitsm.echinfo.adapter.HomeZxAdapter;
 import com.boyuanitsm.echinfo.base.BaseFrg;
 import com.boyuanitsm.echinfo.event.MainTabEvent;
 import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
+import com.boyuanitsm.echinfo.module.company.ui.JinyinFwAct;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchBrandAct;
@@ -90,7 +91,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
                         openActivity(SearchShareholderAct.class);
                         break;
                     case 2://经营范围
-
+                        openActivity(JinyinFwAct.class);
                         break;
                     case 3://品牌产品
 

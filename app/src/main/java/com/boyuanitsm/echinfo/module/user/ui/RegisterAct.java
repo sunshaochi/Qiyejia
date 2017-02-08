@@ -104,6 +104,9 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
                     return;
                 }
                 user.setUsername(phone);
+                if (!TextUtils.isEmpty(register_pwd.getText().toString().trim())){
+                    user.setPassword(register_pwd.getText().toString().trim());
+                }
                 AppManager.getAppManager().addActivity(RegisterAct.this);
                 mPresenter.toRegister(user, rg_code);
                 break;

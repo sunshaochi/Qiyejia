@@ -70,6 +70,9 @@
         <activity
             android:name=".module.user.ui.RegisterSuccessAct"
             android:screenOrientation="portrait" />
+        <!--忘记密码-->
+        <activity android:name=".module.user.ui.ForgetPwdAct"
+            android:screenOrientation="portrait"/>
         <!--查商标-->
         <activity
             android:name=".module.home.ui.search.SearchBrandAct"
@@ -241,6 +244,9 @@
         <activity
             android:name=".module.company.ui.ReportInfoAct"
             android:screenOrientation="portrait" />
+        <!--经营范围-->
+        <activity android:name=".module.company.ui.JinyinFwAct"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
