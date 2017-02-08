@@ -7,6 +7,7 @@ import com.boyuanitsm.echinfo.MyApplication;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.module.home.ui.MainAct;
+import com.boyuanitsm.echinfo.utils.SpUtils;
 import com.boyuanitsm.echinfo.widget.MineItemView;
 import com.boyuanitsm.tools.view.MyAlertDialog;
 
@@ -44,7 +45,10 @@ public class SettingAct extends BaseAct {
                     @Override
                     public void onClick(View view) {
                         MyApplication.getInstances().getDaoSession().getUserBeanDao().deleteAll();
-                        openActivity(MainAct.class);
+                        SpUtils.clearSp(getApplicationContext());
+                        Bundle bundle=new Bundle();
+                        bundle.putInt(MainAct.EXIT_APP,1);
+                        openActivity(MainAct.class,bundle);
                         finish();
 
                     }

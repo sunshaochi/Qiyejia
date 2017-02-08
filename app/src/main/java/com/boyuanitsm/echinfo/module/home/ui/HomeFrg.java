@@ -10,6 +10,7 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.HomeComAdapter;
 import com.boyuanitsm.echinfo.adapter.HomeZxAdapter;
 import com.boyuanitsm.echinfo.base.BaseFrg;
+import com.boyuanitsm.echinfo.event.MainTabEvent;
 import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
 import com.boyuanitsm.echinfo.module.company.ui.JinyinFwAct;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
@@ -29,6 +30,8 @@ import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
 import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.view.FullyLinearLayoutManager;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -222,7 +225,7 @@ openActivity(CompanyAct.class);
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cvMyFollow://我的关注
-
+                EventBus.getDefault().post(new MainTabEvent(1));
                 break;
             case R.id.cvHotCom://热门企业
 

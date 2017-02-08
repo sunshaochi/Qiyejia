@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_grey_color"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -53,8 +55,11 @@
     </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/sv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -71,15 +76,17 @@
                 >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvUpdateTime"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="更新：2016-03-01"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:background="@drawable/white_ov_bg"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:padding="8dp"
+                    android:gravity="center"
                     />
 
                 <LinearLayout
@@ -101,8 +108,9 @@
                           />
 
                       <TextView
+                          android:id="@+id/tvPerson"
                           style="@style/tv_14_white"
-                          android:text="张学友"
+                          android:text=""
                           android:layout_marginTop="10dp"
                           />
 
@@ -127,8 +135,9 @@
                             />
 
                         <TextView
+                            android:id="@+id/tvRegMoney"
                             style="@style/tv_14_white"
-                            android:text="1012万人密闭"
+                            android:text=""
                             android:layout_marginTop="10dp"
                             />
 
@@ -152,9 +161,12 @@
                             />
 
                         <TextView
+                            android:id="@+id/tvPublishTime"
                             style="@style/tv_14_white"
-                            android:text="2016-04-03"
+                            android:text=""
+                            android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
+                            android:gravity="center_horizontal"
                             />
 
                     </LinearLayout>
@@ -184,8 +196,9 @@
                           />
 
                       <TextView
+                          android:id="@+id/tvLl"
                           style="@style/tv_12_white"
-                          android:text="浏览51"
+                          android:text="浏览"
                           android:layout_gravity="center_vertical"
 
                           />
@@ -207,8 +220,9 @@
                             />
 
                         <TextView
+                            android:id="@+id/tvFollow"
                             style="@style/tv_12_white"
-                            android:text="关注234"
+                            android:text="关注0"
                             android:layout_gravity="center_vertical"
 
                             />
@@ -231,8 +245,9 @@
                             />
 
                         <TextView
+                            android:id="@+id/tvCommentNum"
                             style="@style/tv_12_white"
-                            android:text="评论10"
+                            android:text="评论0"
                             android:layout_gravity="center_vertical"
 
                             />
@@ -241,6 +256,90 @@
 
             </LinearLayout>
 
+            <!--联系信息-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                >
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="45dp"
+                   android:paddingLeft="10dp"
+                   android:paddingRight="10dp"
+                   >
+                   <TextView
+                       android:id="@+id/tvPhone"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textSize="14sp"
+                       android:textColor="@color/tv_blue_color"
+                       android:text="010-1232144"
+                       android:layout_centerVertical="true"
+                       />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textSize="14sp"
+                       android:textColor="@color/tv_blue_color"
+                       android:text="联系信息"
+                       android:layout_alignParentRight="true"
+                       android:layout_centerVertical="true"
+                       android:layout_marginRight="15dp"
+                       />
+
+                   <ImageView
+                       android:layout_width="10dp"
+                       android:layout_height="6dp"
+                       android:src="@mipmap/arrow_top"
+                       android:layout_alignParentRight="true"
+                       android:layout_centerVertical="true"
+                       />
+
+               </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/llContract"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <View
+                        style="@style/view_line"></View>
+                    <com.boyuanitsm.tools.view.CommonView
+                        android:id="@+id/cvEmail"
+                        style="@style/cv_style"
+                        app:statusImage="@mipmap/email"
+                        app:desText=""
+
+                        ></com.boyuanitsm.tools.view.CommonView>
+
+                    <View
+                        style="@style/view_line"></View>
+                    <com.boyuanitsm.tools.view.CommonView
+                        android:id="@+id/cvWz"
+                        style="@style/cv_style"
+                        app:statusImage="@mipmap/internet"
+                        app:desText=""
+
+                        ></com.boyuanitsm.tools.view.CommonView>
+
+                    <View
+                        style="@style/view_line"></View>
+                    <com.boyuanitsm.tools.view.CommonView
+                        android:id="@+id/cvAddress"
+                        style="@style/cv_style"
+                        app:statusImage="@mipmap/positon"
+                        app:desText=""
+
+                        ></com.boyuanitsm.tools.view.CommonView>
+                </LinearLayout>
+
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -355,5 +454,106 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <View style="@style/view_line"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#fefefe"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/llHome"
+            style="@style/linear_main">
+
+            <ImageView
+                android:id="@+id/ivHome"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/home" />
+
+            <TextView
+                android:id="@+id/tvHome"
+                style="@style/tv_main_btm"
+                android:text="首页"
+                android:textColor="#666666"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llFollow"
+            style="@style/linear_main">
+
+            <ImageView
+                android:id="@+id/ivAtten"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/gsxxguanzhu" />
+
+            <TextView
+                android:id="@+id/tvAtten"
+                style="@style/tv_main_btm"
+                android:text="关注"
+                android:textColor="#666666"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llBg"
+            style="@style/linear_main"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/gsxxbg" />
+
+            <TextView
+                style="@style/tv_main_btm"
+                android:text="报告"
+                android:textColor="#666666"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llComment"
+            style="@style/linear_main">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/gsxxcomment" />
+
+            <TextView
+                style="@style/tv_main_btm"
+                android:text="点评"
+                android:textColor="#666666"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llJk"
+            style="@style/linear_main"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/gsxxjk" />
+
+            <TextView
+                style="@style/tv_main_btm"
+                android:text="监控"
+                android:textColor="#666666"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

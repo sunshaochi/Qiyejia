@@ -1,5 +1,6 @@
 package com.boyuanitsm.echinfo.module.home.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,9 +12,14 @@ import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.event.MainTabEvent;
 import com.boyuanitsm.echinfo.module.home.view.IMainView;
 import com.boyuanitsm.echinfo.module.user.ui.LoginAct;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,6 +48,7 @@ public class MainAct extends BaseAct implements IMainView {
     @BindView(R.id.ivMine)
     ImageView ivMine;
 
+    public static final String EXIT_APP="exit_app";
     @Override
     public int getLayout() {
         return R.layout.act_main;
@@ -49,6 +56,7 @@ public class MainAct extends BaseAct implements IMainView {
 
     @Override
     public void init(Bundle savedInstanceState) {
+        EventBus.getDefault().register(this);
         fragmentManager = getSupportFragmentManager();
         selectTabPosition(0);
     }
@@ -60,6 +68,10 @@ public class MainAct extends BaseAct implements IMainView {
                 selectTabPosition(0);
                 break;
             case R.id.llFollow:// 关注
+                if(!EchinfoUtils.isLogin()){
+                    openActivity(LoginAct.class);
+                    return;
+                }
                 selectTabPosition(1);
                 break;
             case R.id.llFind://发现
@@ -182,5 +194,29 @@ public class MainAct extends BaseAct implements IMainView {
             transaction.hide(mineFrg);
         }
 
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        //退出了
+        if(intent.getIntExtra(EXIT_APP,0)==1){
+            selectTabPosition(0);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    /**
+     * 设置当前在哪个位置
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MainTabEvent event){
+        selectTabPosition(event.tabPosition);
     }
 }

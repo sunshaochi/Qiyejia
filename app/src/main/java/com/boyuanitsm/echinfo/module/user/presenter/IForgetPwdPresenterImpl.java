@@ -3,7 +3,7 @@ package com.boyuanitsm.echinfo.module.user.presenter;
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
 import com.boyuanitsm.echinfo.bean.ResultBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
-import com.boyuanitsm.echinfo.module.user.model.IForgetPwdImpl;
+import com.boyuanitsm.echinfo.module.user.model.ForgetPwdModelImpl;
 import com.boyuanitsm.echinfo.module.user.model.IForgetPwdModel;
 import com.boyuanitsm.echinfo.module.user.view.IForgetPwdView;
 
@@ -19,7 +19,7 @@ public class IForgetPwdPresenterImpl extends BasePresenterImpl<IForgetPwdView> i
     public IForgetPwdPresenterImpl(IForgetPwdView view) {
         super(view);
         mView = view;
-        forgetPwdModel = new IForgetPwdImpl();
+        forgetPwdModel = new ForgetPwdModelImpl();
     }
 
     @Override

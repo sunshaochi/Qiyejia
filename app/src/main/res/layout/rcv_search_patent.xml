@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="一起去哈哈哈哈哈"
@@ -22,6 +23,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tv_sq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -30,8 +32,8 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_flh"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="主类分号：ABCDEFGHIJKLMN"
@@ -39,6 +41,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_rq"
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"

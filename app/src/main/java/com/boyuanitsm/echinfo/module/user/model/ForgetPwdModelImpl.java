@@ -8,7 +8,7 @@ import com.boyuanitsm.echinfo.http.manager.UserManager;
  * Created by xiaoke on 2017/2/7.
  */
 
-public class IForgetPwdImpl implements IForgetPwdModel {
+public class ForgetPwdModelImpl implements IForgetPwdModel {
     @Override
     public void getSmsCaptcha(String phoneNumber, String isRegister, ResultCallback callback) {
         UserManager.getUserManager().getSmscaptcha(phoneNumber,isRegister,callback);
