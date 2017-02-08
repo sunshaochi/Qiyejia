@@ -18,6 +18,12 @@ public class EchinoUrl {
     public static final String TO_REGISTER_URL=BASE_URL+"manager/unLogin/register.do";
     //忘记密码
     public static final String FORGET_PASSWORD_URL=BASE_URL+"manager/unLogin/forgetPassword.do";
+    //修改个人资料接口
+    public static final String MODIFY_USER_URL=BASE_URL+"manager/login/modifyUserInfo.do";
+    //修改密码
+    public static final String MODIFY_PWD_URL=BASE_URL+"manager/login/modifyUserPassword.do";
+    //修改用户头像
+    public static final String MODIFY_HEAD_URL=BASE_URL+"manager/login/modifyUserIcon.do";
     //查找相关接口
     //职业类别
     String PROFESSION_URL=BASE_URL+"occupationMsg/unLogin/findOccupationList.do";

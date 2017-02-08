@@ -84,4 +84,41 @@ public class UserManager {
         params.put("newPassword", newPwd);
         OkHttpManager.getInstance().doPost(EchinoUrl.FORGET_PASSWORD_URL,params,resultCallback);
     }
+
+    /**
+     * 修改资料
+     * @param user
+     * @param resultCallback
+     */
+    public void modifyUser(UserBean user,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        if (!TextUtils.isEmpty(user.getName())){
+            params.put("name",user.getName());
+        }
+        if (!TextUtils.isEmpty(user.getCompanyName())){
+            params.put("companyName",user.getCompanyName());
+        }
+        if (!TextUtils.isEmpty(user.getJob())){
+            params.put("job",user.getJob());
+        }
+        OkHttpManager.getInstance().doPost(EchinoUrl.MODIFY_USER_URL,params,resultCallback);
+    }
+
+    /**
+     * 修改密码
+     * @param password
+     * @param newPassword
+     * @param callback
+     */
+    public void modifyPwd(String password, String newPassword, ResultCallback callback) {
+        Map<String,String> params=new HashMap<>();
+        if (!TextUtils.isEmpty(password)){
+            params.put("password",password);
+        }
+        if (!TextUtils.isEmpty(newPassword)){
+            params.put("newPassword",newPassword);
+        }
+        OkHttpManager.getInstance().doPost(EchinoUrl.MODIFY_PWD_URL,params,callback);
+    }
+
 }
