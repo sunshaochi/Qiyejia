@@ -30,4 +30,7 @@ public class CompanyManager {
         OkHttpManager.getInstance().doPost(EchinoUrl.INTEREST_COMPANY_URL,params,resultCallback);
     }
 
+    public void toGetCompanyDetail(){}
+
+
 }

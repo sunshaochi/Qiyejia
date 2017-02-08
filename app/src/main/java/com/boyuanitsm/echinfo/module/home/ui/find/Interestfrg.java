@@ -11,6 +11,7 @@ import com.boyuanitsm.echinfo.module.home.view.IInterestView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
+import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import butterknife.BindView;
  * Created by xiaoke on 2016/12/29.
  */
 
-public class Interestfrg extends BaseFrg<IInterestPresenter> implements IInterestView {
+public class Interestfrg extends BaseFrg<IInterestPresenter> implements IInterestView,OnItemClickListener {
     @BindView(R.id.rcv)
     XRecyclerView rcv;
     private BaseRecyclerAdapter<CompanyBean> myAdapter;//可能感兴趣适配器
@@ -57,6 +58,10 @@ public class Interestfrg extends BaseFrg<IInterestPresenter> implements IInteres
             public void bindData(BaseRecyclerViewHolder holder, int position, CompanyBean item) {
                 holder.getTextView(R.id.tvComName).setText(item.getCompanyName());
                 holder.getTextView(R.id.tvStatus).setText(item.getManagementStatus());
+
+                holder.getTextView(R.id.tvName).setText(item.getLegalPerson());
+                holder.getTextView(R.id.tvRegMoney).setText(item.getRegCapital());
+                holder.getTextView(R.id.tvClDate).setText(item.getEstablishDate());
             }
         };
         rcv.setAdapter(myAdapter);
@@ -91,5 +96,15 @@ public class Interestfrg extends BaseFrg<IInterestPresenter> implements IInteres
     @Override
     public void requestNoData() {
         rcv.refreshComplete();
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
+
     }
 }
