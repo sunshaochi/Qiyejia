@@ -42,4 +42,7 @@ public class EchinoUrl {
      */
     /*感兴趣的企业*/
     public static final String INTEREST_COMPANY_URL = BASE_URL + "company/login/findEnterpriseInfoListByCompanyIdList.do";
+//    public static final String INTEREST_COMPANY_URL=BASE_URL+"company/login/findEnterpriseInfoListByCompanyIdList.do";
+    /*企业详情*/
+    public static final String COMANY_DETAIL_URL=BASE_URL+"view/login/findDetailedInfoById.do";
 }

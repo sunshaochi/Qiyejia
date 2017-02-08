@@ -57,7 +57,9 @@
     <ScrollView
         android:id="@+id/sv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -441,5 +443,101 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <View style="@style/view_line"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#fefefe"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/llHome"
+            style="@style/linear_main">
+
+            <ImageView
+                android:id="@+id/ivHome"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/home" />
+
+            <TextView
+                android:id="@+id/tvHome"
+                style="@style/tv_main_btm"
+                android:text="首页"
+                android:textColor="#666666"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llFollow"
+            style="@style/linear_main">
+
+            <ImageView
+                android:id="@+id/ivAtten"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/gsxxguanzhu" />
+
+            <TextView
+                android:id="@+id/tvAtten"
+                style="@style/tv_main_btm"
+                android:text="关注"
+                android:textColor="#666666"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llBg"
+            style="@style/linear_main">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/gsxxbg" />
+
+            <TextView
+                style="@style/tv_main_btm"
+                android:text="报告"
+                android:textColor="#666666"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llComment"
+            style="@style/linear_main">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/gsxxcomment" />
+
+            <TextView
+                style="@style/tv_main_btm"
+                android:text="点评"
+                android:textColor="#666666"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llJk"
+            style="@style/linear_main">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/gsxxjk" />
+
+            <TextView
+                style="@style/tv_main_btm"
+                android:text="监控"
+                android:textColor="#666666"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

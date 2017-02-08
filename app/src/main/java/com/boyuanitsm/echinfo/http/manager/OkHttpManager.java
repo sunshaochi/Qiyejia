@@ -16,6 +16,8 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Set;
 
@@ -88,6 +90,90 @@ public class OkHttpManager {
 
         Request.Builder builder = new Request.Builder();
         builder.url(url).post(parmBuilder.build());
+        if (headers != null) {
+            MyLogUtils.info("headers内容是===="+headers);
+            builder.headers(headers);
+        }
+
+        Request request = builder.build();
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                sendFailedStringCallback(-1, "请求失败，请检查网络！", callback);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                //获取cookie
+                String header = response.header("Set-Cookie");
+                MyLogUtils.info("获取到cookie:" + header);
+
+                if (!TextUtils.isEmpty(header))
+                    SpUtils.setCooike(MyApplication.getInstances(), header);
+
+                final String result = response.body().string();
+                MyLogUtils.info("获取result：" + result);
+
+                if(response.isSuccessful()) {
+                    if (callback.mType == String.class) {
+                        sendSuccessResultCallback(result, callback);
+                    } else {
+                        try {
+                            JSONObject jsonObject = new JSONObject(result);
+                            int status = jsonObject.getInt("status");
+                            if (status == 200) {//成功
+                                Object o = mGson.fromJson(result, callback.mType);
+                                sendSuccessResultCallback(o, callback);
+                            } else if (status == 601) {
+                                sendFailedStringCallback(status, result, callback);
+                            } else {//失败
+                                sendFailedStringCallback(status, jsonObject.getString("message"), callback);
+                            }
+                        } catch (Exception e) {
+//                            e.printStackTrace();
+                            sendFailedStringCallback(-1, "解析异常", callback);
+                        }
+                    }
+                }else {
+                    sendFailedStringCallback(-1, "请求失败，请检查网络！", callback);
+                }
+
+            }
+        });
+    }
+
+
+    /**
+     * get请求  键值对
+     * @param url
+     * @param paramMap
+     * @return
+     */
+    public void doGet(String url, Map<String, String> paramMap, final ResultCallback callback) {
+        headers = HttpHeaderHelper.getHeaders();
+        StringBuilder tempParams = new StringBuilder(url);
+
+        MyLogUtils.info("请求地址:" + url);
+        MyLogUtils.info("请求参数:" + GsonUtils.bean2Json(paramMap));
+
+        if(paramMap!=null&&paramMap.size()>0){
+            int pos = 0;
+            for (String key : paramMap.keySet()) {
+                if (pos > 0) {
+                    tempParams.append("&");
+                }
+                try {
+                    tempParams.append(String.format("%s=%s", key, URLEncoder.encode(paramMap.get(key), "utf-8")));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                pos++;
+            }
+            url=url+"?"+tempParams.toString();
+        }
+
+        Request.Builder builder = new Request.Builder();
+        builder.url(url).build();
         if (headers != null) {
             MyLogUtils.info("headers内容是===="+headers);
             builder.headers(headers);

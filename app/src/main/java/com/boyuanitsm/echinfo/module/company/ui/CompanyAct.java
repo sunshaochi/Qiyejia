@@ -21,6 +21,9 @@ import butterknife.OnClick;
  * Created by wangbin on 17/1/4.
  */
 public class CompanyAct extends BaseAct {
+    //公司id
+    public static final String COMAPYT_ID="company_id";
+    private String companyId;
     @BindView(R.id.gvBasic)
     MyGridView gvBasic;//基础信息
     @BindView(R.id.gvRisk)
@@ -71,6 +74,7 @@ public class CompanyAct extends BaseAct {
     @Override
     public void init(Bundle savedInstanceState) {
         setTopTitle("华东控股集团有限公司");
+        companyId=getIntent().getStringExtra(COMAPYT_ID);
         initGv();
         initOnItemClick();
         new Thread(new Runnable() {
@@ -214,7 +218,7 @@ public class CompanyAct extends BaseAct {
         });
     }
 
-    @OnClick({R.id.rlShare,R.id.cvEmail,R.id.cvWz,R.id.cvAddress})
+    @OnClick({R.id.rlShare,R.id.cvEmail,R.id.cvWz,R.id.cvAddress,R.id.llHome,R.id.llFollow,R.id.llBg,R.id.llComment,R.id.llJk})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.rlShare:
@@ -227,6 +231,21 @@ public class CompanyAct extends BaseAct {
 
                 break;
             case R.id.cvAddress://地址
+
+                break;
+            case R.id.llHome://首页
+
+                break;
+            case R.id.llFollow: //关注
+
+                break;
+            case R.id.llBg: // 报告
+
+                break;
+            case R.id.llComment: //点评
+
+                break;
+            case R.id.llJk://监控
 
                 break;
         }
