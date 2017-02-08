@@ -3,6 +3,9 @@ package com.boyuanitsm.echinfo.module.home.ui.search;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,9 @@ import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.ISearchPatentPresenter;
+import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.SearchPatentPresenterImpl;
+import com.boyuanitsm.echinfo.module.home.view.searchView.ISearchPatentView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -34,7 +40,7 @@ import java.util.List;
  * Created by xiaoke on 2016/12/29.
  */
 
-public class SearchPatentAct extends BaseAct implements View.OnClickListener {
+public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements ISearchPatentView,View.OnClickListener {
     private XRecyclerView rcv, rm, recent;
     private BaseRecyclerAdapter<String> myAdapter;//推荐阅读适配器
     private List<String> datas = new ArrayList<>();
@@ -44,6 +50,12 @@ public class SearchPatentAct extends BaseAct implements View.OnClickListener {
     private RelativeLayout rl_lx;
     private LinearLayout ll_sx;
     private EditText query;
+    String name;//搜索名字
+    String patentType;//专利类型
+    String releaseDate;//年份
+    int page=1;
+    int rows=10;
+
     @Override
     public int getLayout() {
         return R.layout.search_patent;
@@ -51,6 +63,7 @@ public class SearchPatentAct extends BaseAct implements View.OnClickListener {
 
     @Override
     public void init(Bundle savedInstanceState) {
+        mPresenter=new SearchPatentPresenterImpl(this);
         datas = EchinfoUtils.getTestDatas(4);
         rcv = (XRecyclerView) findViewById(R.id.rcv);
         rl_sj = (RelativeLayout) findViewById(R.id.rl_sj);
@@ -60,6 +73,25 @@ public class SearchPatentAct extends BaseAct implements View.OnClickListener {
         recent = (XRecyclerView) findViewById(R.id.xr);
         query= (EditText) findViewById(R.id.query);
         rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), false);
+        query.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!TextUtils.isEmpty(s.toString().trim())){
+                    name=s.toString().trim();
+                    mPresenter.findPatentInfo(name,patentType,releaseDate,page,rows);
+                }
+            }
+        });
         initData();
         inithotReSou();
         initRecentSearch();
@@ -161,6 +193,27 @@ public class SearchPatentAct extends BaseAct implements View.OnClickListener {
                 break;
         }
     }
+
+    @Override
+    public void findPatentInfoSucess(String sucessMsg) {
+
+    }
+
+    @Override
+    public void findPatentInfoFaild(int status, String errorMsg) {
+
+    }
+
+    @Override
+    public void getPatentTypeSucess(String suceessMsg) {
+
+    }
+
+    @Override
+    public void getPatentTypeFaild(int status, String errorMsg) {
+
+    }
+
     class XzSimpleAdapter extends BaseAdapter {
 
         @Override

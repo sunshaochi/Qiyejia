@@ -1,5 +1,9 @@
 package com.boyuanitsm.echinfo.module.home.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,6 +18,7 @@ import com.boyuanitsm.echinfo.module.mine.ui.MineAct;
 import com.boyuanitsm.echinfo.module.mine.ui.MsgAct;
 import com.boyuanitsm.echinfo.module.mine.ui.SettingAct;
 import com.boyuanitsm.echinfo.module.user.ui.LoginAct;
+import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MineItemView;
 import com.boyuanitsm.tools.view.CircleImageView;
 
@@ -43,7 +48,7 @@ public class MineFrg extends BaseFrg implements IMineView{
     MineItemView miv_wt;//常见问题
     @BindView(R.id.miv_sz)
     MineItemView miv_sz;//设置
-
+    UserBean user;
     @Override
     public int getLayout() {
         return R.layout.frg_mine;
@@ -84,5 +89,34 @@ public class MineFrg extends BaseFrg implements IMineView{
         tv_company.setText(userBean.getCompanyName());
         tv_name.setText(userBean.getName());
         tv_profession.setText(userBean.getJob());
+    }
+    private MyReceiver myReceiver;
+    public static final String USER_INFO = "com.mine.userinfo";
+
+    public class MyReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            user = EchinfoUtils.getCurrentUser();
+            tv_company.setText(user.getCompanyName());
+            tv_name.setText(user.getName());
+            tv_profession.setText(user.getJob());
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (myReceiver == null) {
+            myReceiver = new MyReceiver();
+            mActivity.registerReceiver(myReceiver, new IntentFilter(USER_INFO));
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (myReceiver != null) {
+            mActivity.unregisterReceiver(myReceiver);
+            myReceiver = null;
+        }
     }
 }
