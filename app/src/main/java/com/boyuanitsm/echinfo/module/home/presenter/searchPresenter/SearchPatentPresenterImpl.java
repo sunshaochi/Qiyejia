@@ -3,6 +3,7 @@ package com.boyuanitsm.echinfo.module.home.presenter.searchPresenter;
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
 import com.boyuanitsm.echinfo.bean.DateBean;
 import com.boyuanitsm.echinfo.bean.PatentBean;
+import com.boyuanitsm.echinfo.bean.PatentTypeBean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.module.home.model.searchModel.ISearchPatentModel;
@@ -48,6 +49,17 @@ public class SearchPatentPresenterImpl extends BasePresenterImpl<ISearchPatentVi
 
     @Override
     public void getPatentType(String type) {
+        searchPatentModel.getPatentType(type, new ResultCallback<ResultBean<List<PatentTypeBean>>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+                mView.getPatentTypeFaild(status,errorMsg);
+            }
+
+            @Override
+            public void onResponse(ResultBean<List<PatentTypeBean>> response) {
+            mView.getPatentTypeSucess(response.getData());
+            }
+        });
 
     }
 }

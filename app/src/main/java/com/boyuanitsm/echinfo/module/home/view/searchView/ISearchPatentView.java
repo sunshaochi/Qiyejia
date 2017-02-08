@@ -2,6 +2,7 @@ package com.boyuanitsm.echinfo.module.home.view.searchView;
 
 import com.boyuanitsm.echinfo.base.BaseView;
 import com.boyuanitsm.echinfo.bean.PatentBean;
+import com.boyuanitsm.echinfo.bean.PatentTypeBean;
 
 import java.util.List;
 
@@ -17,6 +18,6 @@ public interface ISearchPatentView extends BaseView {
     void findPatentInfoFaild(int status,String errorMsg);
     void findPatentNoData();
     //获取专利类型
-    void getPatentTypeSucess(String suceessMsg);
+    void getPatentTypeSucess(List<PatentTypeBean> suceessMsg);
     void getPatentTypeFaild(int status,String errorMsg);
 }

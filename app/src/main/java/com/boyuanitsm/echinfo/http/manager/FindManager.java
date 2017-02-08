@@ -52,10 +52,11 @@ public class FindManager {
 
     /**
      * 获取专利类型?key=paten_type_key
-     * @param type
      * @param callback
      */
-    public void getPatentType(String type,ResultCallback callback){
-
+    public void getPatentType(String type, ResultCallback callback) {
+        Map<String, String> params = new HashMap<>();
+        params.put("key", type);
+        OkHttpManager.getInstance().doGet(EchinoUrl.PANTENT_TYPE_URL,params,callback);
     }
 }
