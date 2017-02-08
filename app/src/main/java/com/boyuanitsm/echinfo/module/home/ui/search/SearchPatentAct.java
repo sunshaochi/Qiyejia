@@ -2,7 +2,6 @@ package com.boyuanitsm.echinfo.module.home.ui.search;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -21,14 +20,13 @@ import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.bean.PatentBean;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.ISearchPatentPresenter;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.SearchPatentPresenterImpl;
 import com.boyuanitsm.echinfo.module.home.view.searchView.ISearchPatentView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
-import com.boyuanitsm.tools.callback.OnItemClickListener;
-import com.boyuanitsm.tools.view.FullyLinearLayoutManager;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -42,8 +40,8 @@ import java.util.List;
 
 public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements ISearchPatentView,View.OnClickListener {
     private XRecyclerView rcv, rm, recent;
-    private BaseRecyclerAdapter<String> myAdapter;//推荐阅读适配器
-    private List<String> datas = new ArrayList<>();
+    private BaseRecyclerAdapter<PatentBean> myAdapter;//推荐阅读适配器
+    private List<PatentBean> datas = new ArrayList<>();
     private PopupWindow mPopupWindow;
     private String[] strSx = {"类型不限", "发明公布", "发明授权", "外观设计", "实用新型"};
     private RelativeLayout rl_sj;
@@ -64,7 +62,7 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     @Override
     public void init(Bundle savedInstanceState) {
         mPresenter=new SearchPatentPresenterImpl(this);
-        datas = EchinfoUtils.getTestDatas(4);
+//        datas = EchinfoUtils.getTestDatas(4);
         rcv = (XRecyclerView) findViewById(R.id.rcv);
         rl_sj = (RelativeLayout) findViewById(R.id.rl_sj);
         rl_lx = (RelativeLayout) findViewById(R.id.rl_lx);
@@ -93,87 +91,90 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
             }
         });
         initData();
-        inithotReSou();
-        initRecentSearch();
+//        inithotReSou();
+//        initRecentSearch();
     }
 
     /**
      * 填充最近搜索内容
      */
-    private void initRecentSearch() {
-        myAdapter= new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
-            @Override
-            public int getItemLayoutId(int viewType) {
-                return R.layout.rcv_rm_item;
-            }
-
-            @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
-
-            }
-        };
-        FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recent.setLayoutManager(linearLayoutManager);
-        recent.setAdapter(myAdapter);
-        myAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-
-            }
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-        });
-    }
+//    private void initRecentSearch() {
+//        myAdapter= new BaseRecyclerAdapter<PatentBean>(getApplicationContext(), datas) {
+//            @Override
+//            public int getItemLayoutId(int viewType) {
+//                return R.layout.rcv_rm_item;
+//            }
+//
+//            @Override
+//            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
+//
+//            }
+//        };
+//        FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(getApplicationContext());
+//        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+//        recent.setLayoutManager(linearLayoutManager);
+//        recent.setAdapter(myAdapter);
+//        myAdapter.setOnItemClickListener(new OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//
+//            }
+//            @Override
+//            public void onItemLongClick(View view, int position) {
+//
+//            }
+//        });
+//    }
 
     /**
      * 热门搜索数据填充
      */
 
-    private void inithotReSou() {
-        myAdapter= new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
-            @Override
-            public int getItemLayoutId(int viewType) {
-                return R.layout.rcv_rm_item;
-            }
-
-            @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
-
-            }
-        };
-        FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        rm.setLayoutManager(linearLayoutManager);
-        rm.setAdapter(myAdapter);
-        myAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-
-            }
-            @Override
-            public void onItemLongClick(View view, int position) {
-
-            }
-        });
-    }
+//    private void inithotReSou() {
+//        myAdapter= new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
+//            @Override
+//            public int getItemLayoutId(int viewType) {
+//                return R.layout.rcv_rm_item;
+//            }
+//
+//            @Override
+//            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
+//
+//            }
+//        };
+//        FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(getApplicationContext());
+//        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+//        rm.setLayoutManager(linearLayoutManager);
+//        rm.setAdapter(myAdapter);
+//        myAdapter.setOnItemClickListener(new OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//
+//            }
+//            @Override
+//            public void onItemLongClick(View view, int position) {
+//
+//            }
+//        });
+//    }
 
     /**
      * 填充数据
      */
     private void initData() {
         query.setHint("请输入专利号，专利名，公司名");
-        myAdapter = new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
+        myAdapter = new BaseRecyclerAdapter<PatentBean>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.rcv_search_patent;
             }
 
             @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
-
+            public void bindData(BaseRecyclerViewHolder holder, int position, PatentBean item) {
+                holder.getTextView(R.id.tv_Name).setText(item.getName());
+                holder.getTextView(R.id.tv_sq).setText("申请人："+item.getApplicatPerson());
+                holder.getTextView(R.id.tv_rq).setText("申请日期："+item.getReleaseDate());
+                holder.getTextView(R.id.tv_flh).setText("主类分号："+item.getApplicationNo());
             }
         };
         rl_sj.setOnClickListener(this);
@@ -195,12 +196,21 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     }
 
     @Override
-    public void findPatentInfoSucess(String sucessMsg) {
-
+    public void findPatentInfoSucess(List<PatentBean> list) {
+        if (page==1){
+            datas.clear();
+        }
+        datas.addAll(list);
+        myAdapter.setData(datas);
     }
 
     @Override
     public void findPatentInfoFaild(int status, String errorMsg) {
+
+    }
+
+    @Override
+    public void findPatentNoData() {
 
     }
 

@@ -47,7 +47,7 @@ public class FindManager {
         }
         params.put("page", page + "");
         params.put("rows", rows + "");
-        OkHttpManager.getInstance().doPost(EchinoUrl.FIND_PATENT_URL, params, callback);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_PATENT_URL, params, callback);
     }
 
     /**
