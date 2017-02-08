@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <include layout="@layout/title_act_layout_search" />
+    <LinearLayout
+        android:id="@+id/mian_title_sec"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <LinearLayout
+            android:id="@+id/city_sec"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+        <TextView
+            android:gravity="center"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:text="全国"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/xj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/hy_sec"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:text="不限行业"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/xj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/gd_sec"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:text="更多筛选"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/xj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <!--点击全国显示-->
+    <include
+        android:visibility="gone"
+        layout="@layout/city_sec"></include>
+    <!--点击不限行业显示-->
+    <include
+        android:visibility="gone"
+        layout="@layout/hy_sec"></include>
+    <!--点击更多筛选显示-->
+    <include
+        layout="@layout/gd_sec"></include>
+
+
+</LinearLayout>

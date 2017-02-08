@@ -244,6 +244,9 @@
         <activity
             android:name=".module.company.ui.ReportInfoAct"
             android:screenOrientation="portrait" />
+        <!--经营范围-->
+        <activity android:name=".module.company.ui.JinyinFwAct"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
