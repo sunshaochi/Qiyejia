@@ -76,15 +76,17 @@
                 >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvUpdateTime"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="更新：2016-03-01"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:background="@drawable/white_ov_bg"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:padding="8dp"
+                    android:gravity="center"
                     />
 
                 <LinearLayout
@@ -106,8 +108,9 @@
                           />
 
                       <TextView
+                          android:id="@+id/tvPerson"
                           style="@style/tv_14_white"
-                          android:text="张学友"
+                          android:text=""
                           android:layout_marginTop="10dp"
                           />
 
@@ -132,8 +135,9 @@
                             />
 
                         <TextView
+                            android:id="@+id/tvRegMoney"
                             style="@style/tv_14_white"
-                            android:text="1012万人密闭"
+                            android:text=""
                             android:layout_marginTop="10dp"
                             />
 
@@ -157,9 +161,12 @@
                             />
 
                         <TextView
+                            android:id="@+id/tvPublishTime"
                             style="@style/tv_14_white"
-                            android:text="2016-04-03"
+                            android:text=""
+                            android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
+                            android:gravity="center_horizontal"
                             />
 
                     </LinearLayout>
@@ -189,8 +196,9 @@
                           />
 
                       <TextView
+                          android:id="@+id/tvLl"
                           style="@style/tv_12_white"
-                          android:text="浏览51"
+                          android:text="浏览"
                           android:layout_gravity="center_vertical"
 
                           />
@@ -212,8 +220,9 @@
                             />
 
                         <TextView
+                            android:id="@+id/tvFollow"
                             style="@style/tv_12_white"
-                            android:text="关注234"
+                            android:text="关注0"
                             android:layout_gravity="center_vertical"
 
                             />
@@ -236,8 +245,9 @@
                             />
 
                         <TextView
+                            android:id="@+id/tvCommentNum"
                             style="@style/tv_12_white"
-                            android:text="评论10"
+                            android:text="评论0"
                             android:layout_gravity="center_vertical"
 
                             />
@@ -261,6 +271,7 @@
                    android:paddingRight="10dp"
                    >
                    <TextView
+                       android:id="@+id/tvPhone"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:textSize="14sp"
@@ -303,7 +314,7 @@
                         android:id="@+id/cvEmail"
                         style="@style/cv_style"
                         app:statusImage="@mipmap/email"
-                        app:desText="537943346@qq.com"
+                        app:desText=""
 
                         ></com.boyuanitsm.tools.view.CommonView>
 
@@ -313,7 +324,7 @@
                         android:id="@+id/cvWz"
                         style="@style/cv_style"
                         app:statusImage="@mipmap/internet"
-                        app:desText="http:www.baidu.com"
+                        app:desText=""
 
                         ></com.boyuanitsm.tools.view.CommonView>
 
@@ -323,7 +334,7 @@
                         android:id="@+id/cvAddress"
                         style="@style/cv_style"
                         app:statusImage="@mipmap/positon"
-                        app:desText="中国上海"
+                        app:desText=""
 
                         ></com.boyuanitsm.tools.view.CommonView>
                 </LinearLayout>
@@ -450,7 +461,8 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#fefefe"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <LinearLayout
             android:id="@+id/llHome"
@@ -492,7 +504,9 @@
 
         <LinearLayout
             android:id="@+id/llBg"
-            style="@style/linear_main">
+            style="@style/linear_main"
+            android:visibility="gone"
+            >
 
             <ImageView
                 android:layout_width="22dp"
@@ -525,7 +539,9 @@
 
         <LinearLayout
             android:id="@+id/llJk"
-            style="@style/linear_main">
+            style="@style/linear_main"
+            android:visibility="gone"
+            >
 
             <ImageView
                 android:layout_width="22dp"
