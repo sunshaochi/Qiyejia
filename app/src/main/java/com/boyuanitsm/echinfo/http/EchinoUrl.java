@@ -26,7 +26,7 @@ public class EchinoUrl {
     public static final String MODIFY_HEAD_URL=BASE_URL+"manager/login/modifyUserIcon.do";
     //查找相关接口
     //职业类别
-    String PROFESSION_URL=BASE_URL+"occupationMsg/unLogin/findOccupationList.do";
+    public static final String PROFESSION_URL=BASE_URL+"occupationMsg/unLogin/findOccupationList.do";
 
 
     /**企业向关 */

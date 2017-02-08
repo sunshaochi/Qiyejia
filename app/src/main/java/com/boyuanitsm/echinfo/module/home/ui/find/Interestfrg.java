@@ -1,10 +1,12 @@
 package com.boyuanitsm.echinfo.module.home.ui.find;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseFrg;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
+import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
 import com.boyuanitsm.echinfo.module.home.presenter.IInterestPresenter;
 import com.boyuanitsm.echinfo.module.home.presenter.InterestPresenterImpl;
 import com.boyuanitsm.echinfo.module.home.view.IInterestView;
@@ -77,12 +79,14 @@ public class Interestfrg extends BaseFrg<IInterestPresenter> implements IInteres
             }
         });
         rcv.setRefreshing(true);
+        myAdapter.setOnItemClickListener(this);
 
     }
 
 
     @Override
-    public void setCompanyData(List<CompanyBean> datas) {
+    public void setCompanyData(List<CompanyBean> mdatas) {
+        this.datas=mdatas;
         rcv.refreshComplete();
         myAdapter.setData(datas);
     }
@@ -100,7 +104,9 @@ public class Interestfrg extends BaseFrg<IInterestPresenter> implements IInteres
 
     @Override
     public void onItemClick(View view, int position) {
-
+        Bundle bundle=new Bundle();
+        bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position-1).getId());
+        openActivity(CompanyAct.class,bundle);
     }
 
     @Override
