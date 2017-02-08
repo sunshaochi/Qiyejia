@@ -1,8 +1,11 @@
 package com.boyuanitsm.echinfo.module.company.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ScrollView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.CompanyAdapter;
@@ -28,6 +31,8 @@ public class CompanyAct extends BaseAct {
     MyGridView gvProperty;//财物信息
     @BindView(R.id.gvCompany)
     MyGridView gvCompany;//企业多维
+    @BindView(R.id.sv)
+    ScrollView sv;
 
     /*基础信息*/
     private String[] basic_titles = {"工商信息", "对外投资", "企业年报", "企业图谱", "行业分析", "资产信息"};
@@ -68,6 +73,12 @@ public class CompanyAct extends BaseAct {
         setTopTitle("华东控股集团有限公司");
         initGv();
         initOnItemClick();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                handler.sendEmptyMessage(0);
+            }
+        }).start();
     }
 
     private void initGv() {
@@ -203,12 +214,31 @@ public class CompanyAct extends BaseAct {
         });
     }
 
-    @OnClick({R.id.rlShare})
+    @OnClick({R.id.rlShare,R.id.cvEmail,R.id.cvWz,R.id.cvAddress})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.rlShare:
                 openActivity(ShareDialogAct.class);
                 break;
+            case R.id.cvEmail://邮箱
+
+                break;
+            case R.id.cvWz://网站
+
+                break;
+            case R.id.cvAddress://地址
+
+                break;
         }
     }
+
+    Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            sv.scrollTo(0,10);
+        }
+    };
+
+
 }

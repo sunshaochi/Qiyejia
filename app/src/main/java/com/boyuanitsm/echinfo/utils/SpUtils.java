@@ -34,4 +34,11 @@ public class SpUtils {
         return getSp(context).getString(COOKIE, "");
     }
 
+    /**
+     * 清除sp
+     * @param context
+     */
+    public static void clearSp(Context context){
+        getSp(context).edit().clear().commit();
+    }
 }
