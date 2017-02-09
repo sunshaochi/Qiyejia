@@ -6,7 +6,7 @@ package com.boyuanitsm.echinfo.http;
  */
 public class EchinoUrl {
     /*基础地址*/
-    public static final String BASE_URL="http://172.16.6.253:8011/yiqicha/";
+    public static final String BASE_URL="http://139.196.226.111:8006/yiqicha/";
 //    public static final String BASE_URL="http://172.16.6.146:8080/yiqicha/";
 
     /**用户 */
@@ -34,4 +34,6 @@ public class EchinoUrl {
     public static final String INTEREST_COMPANY_URL=BASE_URL+"company/login/findEnterpriseInfoListByCompanyIdList.do";
     /*企业详情*/
     public static final String COMANY_DETAIL_URL=BASE_URL+"view/login/findDetailedInfoById.do";
+    /*对外投资*/
+    public static final String INVES_DATA_URL=BASE_URL+"company/login/findAbroadInvestmentListByCompanyId.do";
 }

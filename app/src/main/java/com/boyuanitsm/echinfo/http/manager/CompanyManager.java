@@ -41,5 +41,15 @@ public class CompanyManager {
         OkHttpManager.getInstance().doGet(EchinoUrl.COMANY_DETAIL_URL,params,resultCallback);
     }
 
+    /**
+     * 查询对外投资
+     * @param companyId
+     * @param resultCallback
+     */
+    public void toGetInves(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.INVES_DATA_URL,params,resultCallback);
+    }
 
 }
