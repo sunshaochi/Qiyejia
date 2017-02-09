@@ -10,6 +10,7 @@ import android.view.View;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.UserBean;
+import com.boyuanitsm.echinfo.module.home.ui.MineFrg;
 import com.boyuanitsm.echinfo.module.mine.presenter.IModifyUserPresenter;
 import com.boyuanitsm.echinfo.module.mine.presenter.ModifyUserPresenterImpl;
 import com.boyuanitsm.echinfo.module.mine.view.IModifyUserView;
@@ -29,7 +30,7 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
     private int TYPE;//1修改密码，2姓名，3公司，4工作
     public static final String USER_TYPE = "type";
     UserBean user;
-    String pwd,newPwd;
+    String pwd, newPwd;
     boolean flag = true;
     int error;
 
@@ -48,11 +49,11 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
         setRightBtn("保存", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!TextUtils.isEmpty(cet.getText().toString().trim())){
-                    switch (TYPE){
+                if (!TextUtils.isEmpty(cet.getText().toString().trim())) {
+                    switch (TYPE) {
                         case 1:
-                            newPwd=cet.getText().toString().trim();
-                            pwd=user.getPassword();
+                            newPwd = cet.getText().toString().trim();
+                            pwd = user.getPassword();
                             break;
                         case 2:
                             user.setName(cet.getText().toString().trim());
@@ -64,12 +65,12 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
                             user.setJob(cet.getText().toString().trim());
                             break;
                     }
-                    if (TYPE==1){
-                        mPresenter.modifyPwd(pwd,newPwd);
-                    }else {
+                    if (TYPE == 1) {
+                        mPresenter.modifyPwd(pwd, newPwd);
+                    } else {
                         mPresenter.modifyUser(user);
                     }
-                }else {
+                } else {
                     toast("不能为空");
                 }
             }
@@ -88,7 +89,9 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
             case 2:
                 setTopTitle("修改姓名");
                 if (!TextUtils.isEmpty(user.getName())) {
-                    cet.setHint(user.getName());
+                    cet.setText(user.getName());
+                    cet.setSelection(user.getName().length());
+
                 } else {
                     cet.setHint("请输入修改名字");
                 }
@@ -98,7 +101,8 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
             case 3:
                 setTopTitle("修改公司");
                 if (!TextUtils.isEmpty(user.getCompanyName())) {
-                    cet.setHint(user.getCompanyName());
+                    cet.setText(user.getCompanyName());
+                    cet.setSelection(user.getCompanyName().length());
                 } else {
                     cet.setHint("请输入修改公司名称");
                 }
@@ -107,9 +111,10 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
                 break;
             case 4:
                 setTopTitle("修改职业");
-                if (!TextUtils.isEmpty(user.getJob())){
-                    cet.setHint(user.getJob());
-                }else {
+                if (!TextUtils.isEmpty(user.getJob())) {
+                    cet.setText(user.getJob());
+                    cet.setSelection(user.getJob().length());
+                } else {
                     cet.setHint("请输入修改职业名称");
                 }
                 cet.setInputType(InputType.TYPE_CLASS_TEXT); //输入文本类型
@@ -122,6 +127,7 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
     public void modifyUserSucess(String sucessMsg) {
         toast(sucessMsg);
         sendBroadcast(new Intent(MineAct.USER_INFO));
+        sendBroadcast(new Intent(MineFrg.USER_INFO));
         finish();
     }
 
