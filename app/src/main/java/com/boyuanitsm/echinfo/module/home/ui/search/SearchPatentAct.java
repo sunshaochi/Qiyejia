@@ -3,16 +3,14 @@ package com.boyuanitsm.echinfo.module.home.ui.search;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -21,23 +19,34 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
+import com.boyuanitsm.echinfo.adapter.XzSimpleAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.PatentBean;
 import com.boyuanitsm.echinfo.bean.PatentTypeBean;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.ISearchPatentPresenter;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.SearchPatentPresenterImpl;
 import com.boyuanitsm.echinfo.module.home.view.searchView.ISearchPatentView;
+import com.boyuanitsm.echinfo.utils.ACache;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.ClearEditText;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
+import com.boyuanitsm.tools.utils.GsonUtils;
+import com.boyuanitsm.tools.utils.MyLogUtils;
+import com.boyuanitsm.tools.utils.ToolsUtils;
+import com.boyuanitsm.tools.view.FlowTag.FlowTagLayout;
+import com.boyuanitsm.tools.view.FlowTag.OnTagSelectListener;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 查专利
@@ -63,7 +72,7 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     @BindView(R.id.tv_rm)
     TextView tvRm;
     @BindView(R.id.rm)
-    XRecyclerView rm;//热门搜索
+    FlowTagLayout rm;//热门搜索
     @BindView(R.id.rl_lx)
     RelativeLayout rlLx;//类型
     @BindView(R.id.ll_sx)
@@ -72,10 +81,20 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     LinearLayout llJg;
     @BindView(R.id.recent)
     TextView recent;
-    @BindView(R.id.xr)
-    XRecyclerView xr;
     @BindView(R.id.ll_rs)
     LinearLayout llRs;
+    @BindView(R.id.tv_js)
+    TextView tvJs;
+    @BindView(R.id.iv_sj)
+    ImageView ivSj;
+    @BindView(R.id.rl_search)
+    RelativeLayout rlSearch;
+    @BindView(R.id.size_flow_layout)
+    FlowTagLayout sizeFlowLayout;
+    @BindView(R.id.iv_sc)
+    ImageView ivSc;
+    @BindView(R.id.rl_hot)
+    RelativeLayout rl_hot;
     private BaseRecyclerAdapter<PatentBean> myAdapter;//推荐阅读适配器
     private List<PatentBean> datas = new ArrayList<>();//专利列表
     private List<PatentTypeBean> typedatas = new ArrayList<>();//专利类型
@@ -88,6 +107,11 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     int rows = 10;
     int clickPos = 0;
     int intFlag = 0;//1是获取类型成功2是获取失败
+    ACache aCache;
+    Gson gson;
+    List<String> names = new ArrayList<>();
+    private SearchHistoryAdapter<String> mSizeTagAdapter;//最近搜索适配器
+
     @Override
     public int getLayout() {
         return R.layout.search_patent;
@@ -97,64 +121,85 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     public void init(Bundle savedInstanceState) {
         mPresenter = new SearchPatentPresenterImpl(this);
         iv_lx.setImageResource(R.mipmap.down_gray);
-        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), false);
-        query.addTextChangedListener(new TextWatcher() {
+        ivSj.setImageResource(R.mipmap.down_gray);
+        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), true);
+        aCache = ACache.get(SearchPatentAct.this);
+        gson = new Gson();
+        query.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    // 先隐藏键盘
+                    ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+                            .hideSoftInputFromWindow(SearchPatentAct.this.getCurrentFocus()
+                                    .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
+                    search();
+                }
+                return false;
             }
-
+        });
+        query.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (!TextUtils.isEmpty(s.toString().trim())) {
-                    name = s.toString().trim();
-                    mPresenter.findPatentInfo(name, patentType, releaseDate, page, rows);
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    llRs.setVisibility(View.VISIBLE);
+                } else {
+                    llRs.setVisibility(View.GONE);
                 }
             }
         });
+//        query.onFocusChange();
         initData();
         //获取专利类型
         mPresenter.getPatentType("paten_type_key");
-
+        initRecentSearch();
 //        inithotReSou();
-//        initRecentSearch();
+
+    }
+
+    /**
+     * 点击键盘搜索
+     */
+    private void search() {
+        name = query.getText().toString().trim();
+        if (TextUtils.isEmpty(name)) {
+            toast("输入内容空，请重新输入");
+            return;
+        } else {
+            // 调用搜索的API方法
+            ToolsUtils.hideSoftKeyboard(SearchPatentAct.this);
+            mPresenter.findPatentInfo(name, patentType, releaseDate, page, rows);
+        }
+
     }
 
     /**
      * 填充最近搜索内容
      */
-//    private void initRecentSearch() {
-//        myAdapter= new BaseRecyclerAdapter<PatentBean>(getApplicationContext(), datas) {
-//            @Override
-//            public int getItemLayoutId(int viewType) {
-//                return R.layout.rcv_rm_item;
-//            }
-//
-//            @Override
-//            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
-//
-//            }
-//        };
-//        FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(getApplicationContext());
-//        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-//        recent.setLayoutManager(linearLayoutManager);
-//        recent.setAdapter(myAdapter);
-//        myAdapter.setOnItemClickListener(new OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//
-//            }
-//            @Override
-//            public void onItemLongClick(View view, int position) {
-//
-//            }
-//        });
-//    }
+    private void initRecentSearch() {
+        mSizeTagAdapter = new SearchHistoryAdapter<>(this);
+        sizeFlowLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);//设置是单选
+        sizeFlowLayout.setAdapter(mSizeTagAdapter);
+        sizeFlowLayout.setOnTagSelectListener(new OnTagSelectListener() {
+            @Override
+            public void onItemSelect(FlowTagLayout parent, List<Integer> selectedList) {
+
+            }
+        });
+        String strTime;
+        strTime = aCache.getAsString("PatentHistory");
+        if (!TextUtils.isEmpty(strTime)) {
+            rlRecent.setVisibility(View.VISIBLE);
+            rlSearch.setVisibility(View.GONE);
+            names = gson.fromJson(strTime, new TypeToken<List<String>>() {
+            }.getType());
+            mSizeTagAdapter.onlyAddAll(names);
+        } else {
+            rlSearch.setVisibility(View.VISIBLE);
+            rlRecent.setVisibility(View.GONE);
+        }
+    }
 
     /**
      * 热门搜索数据填充
@@ -207,9 +252,6 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
                 holder.getTextView(R.id.tv_flh).setText("主类分号：" + item.getApplicationNo());
             }
         };
-        rlSj.setOnClickListener(this);
-        rlLx.setOnClickListener(this);
-        rcv.setAdapter(myAdapter);
         rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -220,45 +262,59 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
             @Override
             public void onLoadMore() {
                 page++;
+                MyLogUtils.info(page + "page======");
                 mPresenter.findPatentInfo(name, patentType, releaseDate, page, rows);
             }
         });
 
     }
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.rl_sj:
-                break;
-            case R.id.rl_lx:
-                if (intFlag == 1) {
-                    selectPop(typedatas);
-                } else {
-                    toast("获取专利类型失败");
-                }
-                break;
-        }
-    }
-
     @Override
     public void findPatentInfoSucess(List<PatentBean> list) {
+//        rlRecent.setVisibility(View.GONE);
+        String strTime = null;
+        strTime = aCache.getAsString("PatentHistory");
+        if (!TextUtils.isEmpty(strTime)) {
+            List<String> nameNews = gson.fromJson(strTime, new TypeToken<List<String>>() {
+            }.getType());
+            if (!nameNews.contains(name)) {
+                nameNews.add(name);
+                aCache.put("PatentHistory", GsonUtils.bean2Json(nameNews));
+                mSizeTagAdapter.onlyAddAll(nameNews);
+            }
+        }
+
+
         if (page == 1) {
+            rcv.refreshComplete();
             datas.clear();
         }
+        rcv.loadMoreComplete();
         datas.addAll(list);
         myAdapter.setData(datas);
     }
 
     @Override
     public void findPatentInfoFaild(int status, String errorMsg) {
+        rcv.refreshComplete();
+        rcv.loadMoreComplete();
         toast(errorMsg);
     }
 
     @Override
     public void findPatentNoData() {
+        rcv.refreshComplete();
+        rcv.loadMoreComplete();
+        llJg.setVisibility(View.GONE);
+    }
 
+    @Override
+    public void findPatentTotal(int totals) {
+        if (totals > 0) {
+            llJg.setVisibility(View.VISIBLE);
+            tvJs.setText("搜索到" + totals + "个专利");
+        } else {
+            llJg.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -276,69 +332,25 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
         intFlag = 2;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
-    class XzSimpleAdapter extends BaseAdapter {
-        private List<PatentTypeBean> typeBeanList;
-        private int clickTemp = 0;
-
-        public XzSimpleAdapter(List<PatentTypeBean> typeBean, int click) {
-            this.typeBeanList = typeBean;
-            this.clickTemp = click;
-        }
-
-        @Override
-        public int getCount() {
-            return typeBeanList.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return typeBeanList.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = View.inflate(getApplicationContext(), R.layout.rcv_item_select, null);
-            TextView tv_title = (TextView) convertView.findViewById(R.id.tv_title);
-            RelativeLayout rl_lx = (RelativeLayout) convertView.findViewById(R.id.rl_lx);
-            ImageView iv_right = (ImageView) convertView.findViewById(R.id.iv_right);
-            tv_title.setText(typeBeanList.get(position).getDictName());
-            if (clickTemp == position) {
-                rl_lx.setBackgroundColor(Color.WHITE);
-                iv_right.setVisibility(View.VISIBLE);
-            } else {
-                rl_lx.setBackgroundColor(getResources().getColor(R.color.bg_grey_color));
-                iv_right.setVisibility(View.GONE);
-            }
-            return convertView;
-        }
-    }
-
     /**
+     * 时间类型
      * 选择对话框
      */
     private void selectPop(final List<PatentTypeBean> typeBean) {
         View v = LayoutInflater.from(getApplicationContext()).inflate(R.layout.act_select, null);
         mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
         ListView lv = (ListView) v.findViewById(R.id.lv);
-        xzSimpleAdapter = new XzSimpleAdapter(typeBean, clickPos);
+        LinearLayout ll_dimis = (LinearLayout) v.findViewById(R.id.ll_dimis);
+        xzSimpleAdapter = new XzSimpleAdapter(SearchPatentAct.this, typeBean, clickPos);
         lv.setAdapter(xzSimpleAdapter);
+//        tvSj.setTextColor(Color.parseColor("#2485f2"));
+//        ivSj.setImageResource(R.mipmap.sjtxx);
         tv_lx.setTextColor(Color.parseColor("#2485f2"));
         iv_lx.setImageResource(R.mipmap.sjtxx);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 if (position == 0) {
                     patentType = "";
                 } else {
@@ -369,5 +381,41 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
         mPopupWindow.setAnimationStyle(R.style.ppAnimBottom);
         mPopupWindow.setFocusable(true);
         mPopupWindow.showAsDropDown(llSx, xpos, 0);
+        ll_dimis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopupWindow.dismiss();
+            }
+        });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.rl_lx, R.id.iv_sc, R.id.rl_recent, R.id.rl_hot, R.id.ll_rs})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rl_lx:
+                if (intFlag == 1) {
+                    selectPop(typedatas);
+                } else {
+                    toast("获取专利类型失败");
+                }
+                break;
+            case R.id.iv_sc:
+                aCache.put("PatentHistory", "");
+                rlRecent.setVisibility(View.GONE);
+                break;
+            case R.id.rl_recent:
+                break;
+            case R.id.rl_hot:
+                break;
+            case R.id.ll_rs:
+                break;
+        }
     }
 }

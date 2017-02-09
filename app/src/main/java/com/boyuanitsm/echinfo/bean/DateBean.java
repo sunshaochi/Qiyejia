@@ -8,7 +8,7 @@ import java.util.List;
  */
 
 public class DateBean<T> {
-    private int tatal;
+    private int total;
     private List<T> rows;
 
     public List<T> getRows() {
@@ -20,10 +20,10 @@ public class DateBean<T> {
     }
 
     public int getTatal() {
-        return tatal;
+        return total;
     }
 
     public void setTatal(int tatal) {
-        this.tatal = tatal;
+        this.total = tatal;
     }
 }
