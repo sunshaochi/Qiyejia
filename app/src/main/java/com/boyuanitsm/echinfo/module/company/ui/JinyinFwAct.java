@@ -11,11 +11,14 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.adapter.CityAdapter;
 import com.boyuanitsm.echinfo.adapter.GvAdapter;
+import com.boyuanitsm.echinfo.adapter.ProAdapter;
 import com.boyuanitsm.echinfo.adapter.TagAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
@@ -123,8 +126,8 @@ public class JinyinFwAct extends BaseAct {
 
                 break;
             case R.id.city_sec:
+                setPopupWindow(1);
                 updatacolor(tv_city, iv_city, 0);
-
                 break;
 
             case R.id.hy_sec:
@@ -205,20 +208,38 @@ public class JinyinFwAct extends BaseAct {
             mSizeTagAdapter.onlyAddAll(sdatasource);
 
             mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
-            mPopupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
-            mPopupWindow.setFocusable(true);
-            //获取xoff
-            WindowManager manager = (WindowManager) getApplicationContext().getSystemService(getApplicationContext().WINDOW_SERVICE);
-            int xpos = manager.getDefaultDisplay().getWidth() / 2 - mPopupWindow.getWidth() / 2;
-            //xoff,yoff基于anchor的左下角进行偏移。
-            mPopupWindow.showAsDropDown(gd_sec, xpos, 0);
-
 
         } else if (i == 1) {
+            View v = LayoutInflater.from(JinyinFwAct.this).inflate(R.layout.city_sec, null);
+            ListView lsv_pricive= (ListView) v.findViewById(R.id.lsv_provice);
+            final ListView lsv_city= (ListView) v.findViewById(R.id.lsv_city);
+            ProAdapter proadapteer=new ProAdapter(JinyinFwAct.this);
+            CityAdapter cityadapter=new CityAdapter(JinyinFwAct.this);
+            lsv_pricive.setAdapter(proadapteer);
+            lsv_city.setAdapter(cityadapter);
+
+            lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    lsv_city.setVisibility(View.VISIBLE);
+                }
+            });
+
+            mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
+
 
         } else if (i == 2) {
 
         }
+
+        mPopupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
+        mPopupWindow.setFocusable(true);
+        //获取xoff
+        WindowManager manager = (WindowManager) getApplicationContext().getSystemService(getApplicationContext().WINDOW_SERVICE);
+        int xpos = manager.getDefaultDisplay().getWidth() / 2 - mPopupWindow.getWidth() / 2;
+        //xoff,yoff基于anchor的左下角进行偏移。
+        mPopupWindow.showAsDropDown(gd_sec);
+
         mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
