@@ -5,6 +5,10 @@ import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.bean.CompanyBean;
+import com.boyuanitsm.echinfo.module.company.presenter.ForengnInvesPreImpl;
+import com.boyuanitsm.echinfo.module.company.presenter.IForengnInvesPre;
+import com.boyuanitsm.echinfo.module.company.view.IForeignInvesView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -19,12 +23,13 @@ import butterknife.BindView;
  * 对外投资
  * Created by Yang on 2017/1/3 0003.
  */
-public class ForeignInvestmentAct extends BaseAct{
+public class ForeignInvestmentAct extends BaseAct<IForengnInvesPre> implements IForeignInvesView{
     @BindView(R.id.rcv)
-    XRecyclerView rcv;//用户评论列表
+    XRecyclerView rcv;
+    private String companyId;
 
-    private BaseRecyclerAdapter<String> mAdp;
-    private List<String> testList = new ArrayList<>();
+    private BaseRecyclerAdapter<CompanyBean> adapter;
+    private List<CompanyBean> datas = new ArrayList<>();
 
     @Override
     public int getLayout() {
@@ -34,6 +39,9 @@ public class ForeignInvestmentAct extends BaseAct{
     @Override
     public void init(Bundle savedInstanceState) {
         setTopTitle("对外投资");
+        mPresenter=new ForengnInvesPreImpl(this);
+        companyId=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
+        mPresenter.getInvesDatas(companyId);
         setRightBtn("纠错", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,19 +52,48 @@ public class ForeignInvestmentAct extends BaseAct{
     }
 
     private void initFrg() {
-        testList = EchinfoUtils.getTestDatas(3);
-        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), true);
-        mAdp = new BaseRecyclerAdapter<String>(getApplicationContext(), testList) {
+        rcv = EchinfoUtils.getLinearRecyclerView(rcv, this, false);
+        adapter = new BaseRecyclerAdapter<CompanyBean>(this, datas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.rcv_foreigninvestment_item;
             }
 
             @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
+            public void bindData(BaseRecyclerViewHolder holder, int position, CompanyBean item) {
+                holder.getTextView(R.id.tvCompanyName).setText(item.getCompanyName());
+                holder.getTextView(R.id.tvStatus).setText(item.getManagementStatus());
+                holder.getTextView(R.id.tvPerson).setText(item.getLegalPerson());
+                holder.getTextView(R.id.tvRegMoney).setText(item.getCapital());
+                holder.getTextView(R.id.tvClDate).setText(item.getEstablishDate());
+                holder.getTextView(R.id.tvHy).setText(item.getIndustry());
+                holder.getTextView(R.id.tvRegNo).setText(item.getRegistNo());
+                holder.getTextView(R.id.tvWz).setText(item.getUrl());
+                holder.getTextView(R.id.tvAddress).setText(item.getAddress());
 
             }
         };
-        rcv.setAdapter(mAdp);
+        rcv.setAdapter(adapter);
+        rcv.setRefreshing(true);
+    }
+
+
+    @Override
+    public void getInvesData(List<CompanyBean> mDatas) {
+        rcv.refreshComplete();
+        datas=mDatas;
+        adapter.setData(datas);
+    }
+
+
+    @Override
+    public void requestError(int status, String errorMsg) {
+        rcv.refreshComplete();
+        toast(errorMsg);
+    }
+
+    @Override
+    public void requestNoData() {
+        rcv.refreshComplete();
     }
 }

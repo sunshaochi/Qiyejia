@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.tools.view.FlowTag.OnInitSelectedPosition;
 
@@ -17,12 +16,12 @@ import java.util.List;
 /**
  * Created by HanHailong on 15/10/19.
  */
-public class TagAdapter<T> extends BaseAdapter implements OnInitSelectedPosition {
+public class SearchHistoryAdapter<T> extends BaseAdapter implements OnInitSelectedPosition {
 
     private final Context mContext;
     private final List<T> mDataList;
 
-    public TagAdapter(Context context) {
+    public SearchHistoryAdapter(Context context) {
         this.mContext = context;
         mDataList = new ArrayList<>();
     }
@@ -46,9 +45,9 @@ public class TagAdapter<T> extends BaseAdapter implements OnInitSelectedPosition
     public View getView(int position, View convertView, ViewGroup parent) {
 
 
-        View view = LayoutInflater.from(mContext).inflate(R.layout.tag_item, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.rcv_rm_item, null);
 
-        TextView textView = (TextView) view.findViewById(R.id.tv_tag);
+        TextView textView = (TextView) view.findViewById(R.id.tv_name);
         T t = mDataList.get(position);
 
         if (t instanceof String) {
@@ -58,6 +57,9 @@ public class TagAdapter<T> extends BaseAdapter implements OnInitSelectedPosition
     }
 
     public void onlyAddAll(List<T> datas) {
+        if (mDataList!=null){
+            mDataList.clear();
+        }
         mDataList.addAll(datas);
         notifyDataSetChanged();
     }

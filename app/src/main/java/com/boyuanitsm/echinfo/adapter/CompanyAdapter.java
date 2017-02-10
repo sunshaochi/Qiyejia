@@ -1,6 +1,7 @@
 package com.boyuanitsm.echinfo.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -31,8 +32,11 @@ public class CompanyAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return position;
+    public Integer getItem(int position) {
+        if(TextUtils.isEmpty(des[position]))
+            return 0;
+        else
+        return Integer.valueOf(des[position]);
     }
 
     @Override

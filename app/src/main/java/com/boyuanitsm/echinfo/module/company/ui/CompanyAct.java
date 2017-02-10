@@ -97,7 +97,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
     private CompanyAdapter basicAdp, riskAdp, knowledgeAdp, propertyAdp, companyAdp;
 
-
+    private Bundle bundle=new Bundle();
     @Override
     public int getLayout() {
         return R.layout.act_company;
@@ -109,7 +109,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         mPresenter = new CompanyPreImpl(this);
         mPresenter.getCompanyDetail(companyId);
         initOnItemClick();
-
+        bundle.putString(COMAPYT_ID,companyId);
     }
 
 
@@ -117,12 +117,13 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         gvBasic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                 switch (i) {
                     case 0://工商信息
                         openActivity(BusinessInfoAct.class);
                         break;
                     case 1://对外投资
-                        openActivity(ForeignInvestmentAct.class);
+                        openActivity(ForeignInvestmentAct.class,bundle);
                         break;
                     case 2://企业年报
                         openActivity(YearReportsAct.class);
