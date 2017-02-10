@@ -17,6 +17,7 @@ public interface ISearchPatentView extends BaseView {
     void findPatentInfoSucess(List<PatentBean> list);
     void findPatentInfoFaild(int status,String errorMsg);
     void findPatentNoData();
+    void findPatentTotal(int totals);
     //获取专利类型
     void getPatentTypeSucess(List<PatentTypeBean> suceessMsg);
     void getPatentTypeFaild(int status,String errorMsg);

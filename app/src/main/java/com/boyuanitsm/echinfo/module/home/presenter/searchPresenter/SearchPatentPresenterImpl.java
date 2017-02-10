@@ -38,6 +38,7 @@ public class SearchPatentPresenterImpl extends BasePresenterImpl<ISearchPatentVi
             @Override
             public void onResponse(ResultBean<DateBean<PatentBean>> response) {
                 List<PatentBean> list=response.getData().getRows();
+                mView.findPatentTotal(response.getData().getTatal());
                 if (list!=null&&list.size()>0){
                     mView.findPatentInfoSucess(list);
                 }else {
