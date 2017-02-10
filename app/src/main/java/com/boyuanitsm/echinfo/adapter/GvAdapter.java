@@ -1,9 +1,12 @@
 package com.boyuanitsm.echinfo.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 
@@ -12,9 +15,14 @@ import com.boyuanitsm.echinfo.R;
  */
 public class GvAdapter extends BaseAdapter {
     private Context context;
+    private int clickTemp = -1;//标识选择的Item
 
     public GvAdapter(Context context) {
         this.context = context;
+    }
+
+    public void setSeclection(int position) {
+        clickTemp = position;
     }
 
     @Override
@@ -34,7 +42,36 @@ public class GvAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view=View.inflate(context,R.layout.item_zczb,null);
+        TabHolder tabHolder=null;
+        if(view==null){
+            tabHolder=new TabHolder();
+            view=View.inflate(context,R.layout.item_zczb,null);
+            tabHolder.tv_bq=(TextView) view.findViewById(R.id.tv_bq);
+            view.setTag(tabHolder);
+        }else {
+            tabHolder= (TabHolder) view.getTag();
+        }
+
+        if(clickTemp==i){
+            tabHolder.tv_bq.setTextColor(Color.parseColor("#2485f2"));
+            tabHolder.tv_bq.setBackgroundResource(R.drawable.select_item_bag);
+        }else {
+            tabHolder.tv_bq.setTextColor(Color.parseColor("#666666"));
+            tabHolder.tv_bq.setBackgroundResource(R.drawable.item_bag);
+        }
+
+//        if(i==clickTemp){
+//            textView.setTextColor();
+//            textView.setBackgroundResource(R.drawable.select_item_bag);
+//        }else {
+//            textView.setTextColor(Color.parseColor("#666666"));
+//            textView.setBackgroundResource(R.drawable.item_bag);
+//        }
         return view;
     }
+    class TabHolder {
+        private TextView tv_bq;
+    }
+
+
 }

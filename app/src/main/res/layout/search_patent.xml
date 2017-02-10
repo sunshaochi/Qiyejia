@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_patent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_grey_color"
     android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical">
+    android:focusableInTouchMode="true">
 
     <include layout="@layout/title_act_layout_search" />
 
@@ -94,8 +94,9 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_rcv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/ll_jg">
 
         <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
@@ -108,79 +109,8 @@
         layout="@layout/act_search_nocontent"
         android:visibility="gone" />
 
-    <LinearLayout
-        android:id="@+id/ll_rs"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="48dp"
-        android:background="@color/bg_grey_color"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:id="@+id/rl_recent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginBottom="15dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/recent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:text="最近搜索"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
-            <com.boyuanitsm.tools.view.FlowTag.FlowTagLayout
-                android:layout_below="@+id/recent"
-                android:id="@+id/size_flow_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="10dp"/>
-
-            <ImageView
-                android:id="@+id/iv_sc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp"
-                android:background="@mipmap/sc" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_hot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_recent"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_rm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:text="热门搜索"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
-            <com.boyuanitsm.tools.view.FlowTag.FlowTagLayout
-                android:id="@+id/rm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_rm"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp" />
-        </RelativeLayout>
-    </LinearLayout>
+    <include
+        layout="@layout/common_search_history"
+        android:visibility="gone"/>
 
 </RelativeLayout>

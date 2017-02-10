@@ -13,4 +13,6 @@ public interface ISearchPatentModel {
     void findPatentInfo(String name, String patenType, String releaseDate, int page, int rows, ResultCallback callback);
     //获取专利类型
     void getPatentType(String type,ResultCallback callback);
+    //获取专利热门搜索记录
+    void getHotHistory(String type,ResultCallback callback);
 }
