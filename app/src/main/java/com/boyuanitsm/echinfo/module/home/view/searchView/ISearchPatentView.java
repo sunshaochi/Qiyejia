@@ -21,4 +21,7 @@ public interface ISearchPatentView extends BaseView {
     //获取专利类型
     void getPatentTypeSucess(List<PatentTypeBean> suceessMsg);
     void getPatentTypeFaild(int status,String errorMsg);
+    //获取专利热门搜索记录
+    void getHotHistorySucess(List<PatentBean> suceessMsg);
+    void getHotHistoryFaild(int status,String errorMsg);
 }

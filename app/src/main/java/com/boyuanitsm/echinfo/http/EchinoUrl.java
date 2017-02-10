@@ -37,7 +37,12 @@ public class EchinoUrl {
     public static final String FIND_PATENT_URL = BASE_URL + "patenInfomation/unLogin/findPatenInfoByName.do";
     //专利类型
     public static final String PANTENT_TYPE_URL=BASE_URL+"manager/unLogin/findTypesByKey.do";
-
+    //热门搜索
+    public static final String HOT_SEARCH_URL=BASE_URL+"company/unlogin/findHotQuery.do";
+    //查商标
+    public static final String FIND_BRAND_URL=BASE_URL+"trademark/unLogin/findTrademarkInfoByName.do";
+    //查法院判决
+    public static final String FIND_JUDGMENT_URL=BASE_URL+"courtDecision/unLogin/findCourtDecisionInfo.do";
     /**
      * 企业向关
      */

@@ -63,4 +63,19 @@ public class SearchPatentPresenterImpl extends BasePresenterImpl<ISearchPatentVi
         });
 
     }
+
+    @Override
+    public void getHotHistory(String type) {
+        searchPatentModel.getHotHistory(type, new ResultCallback<ResultBean<List<PatentBean>>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+                mView.getHotHistoryFaild(status,errorMsg);
+            }
+
+            @Override
+            public void onResponse(ResultBean<List<PatentBean>> response) {
+                mView.getHotHistorySucess(response.getData());
+            }
+        });
+    }
 }

@@ -13,4 +13,6 @@ public interface ISearchPatentPresenter extends BasePresenter {
     void  findPatentInfo(String name, String patenType, String releaseDate, int page, int rows);
     //获取专利类型
     void getPatentType(String type);
+    //获取专利热门搜索记录
+    void getHotHistory(String type);
 }
