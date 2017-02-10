@@ -46,4 +46,6 @@ public class EchinoUrl {
     public static final String COMANY_DETAIL_URL=BASE_URL+"view/login/findDetailedInfoById.do";
     /*对外投资*/
     public static final String INVES_DATA_URL=BASE_URL+"company/login/findAbroadInvestmentListByCompanyId.do";
+    /*企业年报*/
+    public static final String COMPANY_REPORT_URL=BASE_URL+"company/login/findAnnualPortsEnterpriseListByCompanyId.do";
 }
