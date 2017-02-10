@@ -5,6 +5,10 @@ import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.bean.LawsuitMsgBean;
+import com.boyuanitsm.echinfo.module.company.presenter.ILawsuitMsgPre;
+import com.boyuanitsm.echinfo.module.company.presenter.LawsuitMsgPreImpl;
+import com.boyuanitsm.echinfo.module.company.view.ILawsuitMsgView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -20,12 +24,13 @@ import butterknife.BindView;
  * 诉讼信息
  * Created by Yang on 2017/1/5 0005.
  */
-public class LitigationInfoAct extends BaseAct{
+public class LitigationInfoAct extends BaseAct<ILawsuitMsgPre> implements ILawsuitMsgView{
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
-    private BaseRecyclerAdapter<String> mAdp;
-    private List<String> testList = new ArrayList<>();
+    private BaseRecyclerAdapter<LawsuitMsgBean> mAdp;
+    private List<LawsuitMsgBean> datas = new ArrayList<>();
+    private String companyId;
 
     @Override
     public int getLayout() {
@@ -35,20 +40,25 @@ public class LitigationInfoAct extends BaseAct{
     @Override
     public void init(Bundle savedInstanceState) {
         setTopTitle("诉讼信息");
+        companyId=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
+        mPresenter=new LawsuitMsgPreImpl(this);
+        mPresenter.getLawsuitMsgDatas(companyId);
         initFrg();
     }
 
     private void initFrg() {
-        testList = EchinfoUtils.getTestDatas(3);
-        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), true);
-        mAdp = new BaseRecyclerAdapter<String>(getApplicationContext(), testList) {
+        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), false);
+        mAdp = new BaseRecyclerAdapter<LawsuitMsgBean>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.rcv_litigationinfo_item;
             }
 
             @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
+            public void bindData(BaseRecyclerViewHolder holder, int position, LawsuitMsgBean item) {
+                holder.getTextView(R.id.tv_lgName).setText(item.getCourt());
+                holder.getTextView(R.id.tv_lgNum).setText(item.getName());
+                holder.getTextView(R.id.tv_lgTime).setText(item.getRegistrineTime());
 
             }
         };
@@ -63,6 +73,35 @@ public class LitigationInfoAct extends BaseAct{
 
             }
         });
+        rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.getLawsuitMsgDatas(companyId);
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
         rcv.setAdapter(mAdp);
+    }
+
+    @Override
+    public void setLawsuitMsg(List<LawsuitMsgBean> mdatas) {
+        rcv.refreshComplete();
+        datas=mdatas;
+        mAdp.setData(datas);
+    }
+
+    @Override
+    public void requestError(int status, String errorMsg) {
+        rcv.refreshComplete();
+
+    }
+
+    @Override
+    public void requestNoData() {
+        rcv.refreshComplete();
     }
 }

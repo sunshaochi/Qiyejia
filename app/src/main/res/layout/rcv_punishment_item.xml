@@ -11,8 +11,9 @@
         android:padding="15dp">
 
         <TextView
+            android:id="@+id/tvWh"
             style="@style/tv_14_black_bold"
-            android:text="文号：123123" />
+            android:text="文号：" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,15 +32,18 @@
                     android:text="类型：" />
 
                 <TextView
+                    android:id="@+id/tvType"
                     style="@style/executed_item_tv_gray"
-                    android:text="警告" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone"
+                >
 
                 <TextView
                     style="@style/tv_14_black"
@@ -68,8 +72,9 @@
                     android:text="决定机关：" />
 
                 <TextView
+                    android:id="@+id/tvJg"
                     style="@style/executed_item_tv_gray"
-                    android:text="税务局" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -79,12 +84,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+
                     style="@style/tv_14_black"
                     android:text="决定日期：" />
 
                 <TextView
+                    android:id="@+id/tvDate"
                     style="@style/executed_item_tv_gray"
-                    android:text="2017-01-04" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 
@@ -99,8 +106,9 @@
                 android:text="处罚内容：" />
 
             <TextView
+                android:id="@+id/tvContent"
                 style="@style/executed_item_tv_gray"
-                android:text="未缴税" />
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 
