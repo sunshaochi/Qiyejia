@@ -228,4 +228,27 @@
         <item name="com.boyuanitsm.echinfo:desTextColor">#3a3a3a</item>
 
     </style>
+
+    <style name="ll_secter_title">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="text_secter_title">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="iv_secter_title">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:src">@mipmap/xj</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
 </resources>
