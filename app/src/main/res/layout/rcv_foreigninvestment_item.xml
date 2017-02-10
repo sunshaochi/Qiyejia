@@ -16,8 +16,9 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/tvCompanyName"
                 style="@style/tv_14_black"
-                android:text="华东电网有限公司"
+                android:text=""
                 android:textStyle="bold" />
 
             <Space
@@ -26,8 +27,9 @@
                 android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/tvStatus"
                 style="@style/tv_14_black"
-                android:text="存续"
+                android:text=""
                 android:textColor="@color/tv_blue_color" />
         </LinearLayout>
 
@@ -49,9 +51,10 @@
                     android:text="公司法人" />
 
                 <TextView
+                    android:id="@+id/tvPerson"
                     style="@style/executed_item_tv_black"
                     android:layout_marginTop="10dp"
-                    android:text="马云"
+                    android:text=""
                     android:textColor="#999" />
             </LinearLayout>
 
@@ -66,9 +69,10 @@
                     android:text="注册资金" />
 
                 <TextView
+                    android:id="@+id/tvRegMoney"
                     style="@style/executed_item_tv_black"
                     android:layout_marginTop="10dp"
-                    android:text="2000万人民币"
+                    android:text=""
                     android:textColor="#999" />
             </LinearLayout>
 
@@ -83,9 +87,10 @@
                     android:text="成立日期" />
 
                 <TextView
+                    android:id="@+id/tvClDate"
                     style="@style/executed_item_tv_black"
                     android:layout_marginTop="10dp"
-                    android:text="2017-01-03"
+                    android:text=""
                     android:textColor="#999" />
             </LinearLayout>
         </LinearLayout>
@@ -101,8 +106,9 @@
                 android:text="所属行业:" />
 
             <TextView
+                android:id="@+id/tvHy"
                 style="@style/executed_item_tv_gray"
-                android:text="电力"
+                android:text=""
                 android:textColor="#999" />
         </LinearLayout>
 
@@ -117,8 +123,9 @@
                 android:text="注册号:" />
 
             <TextView
+                android:id="@+id/tvRegNo"
                 style="@style/executed_item_tv_gray"
-                android:text="333333333"
+                android:text=""
                 android:textColor="#999" />
         </LinearLayout>
 
@@ -133,8 +140,9 @@
                 android:text="公司网址:" />
 
             <TextView
+                android:id="@+id/tvWz"
                 style="@style/executed_item_tv_gray"
-                android:text="www.gongsi.com"
+                android:text=""
                 android:textColor="#999" />
         </LinearLayout>
 
@@ -149,8 +157,9 @@
                 android:text="地址:" />
 
             <TextView
+                android:id="@+id/tvAddress"
                 style="@style/executed_item_tv_gray"
-                android:text="上海娄山关路"
+                android:text=""
                 android:textColor="#999" />
         </LinearLayout>
     </LinearLayout>

@@ -48,8 +48,7 @@ public class RegisterPresenterImpl extends BasePresenterImpl<IRegisterView> impl
 
             @Override
             public void onResponse(ResultBean<UserBean> response) {
-                UserBean user=new UserBean();
-                user=response.getData();
+                UserBean user=response.getData();
                 registModel.toAddUser(user);
                 mView.toRegisterSucess(user,response.getMessage());
             }
