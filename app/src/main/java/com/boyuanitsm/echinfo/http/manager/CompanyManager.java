@@ -63,4 +63,59 @@ public class CompanyManager {
         OkHttpManager.getInstance().doGet(EchinoUrl.COMPANY_REPORT_URL,params,resultCallback);
     }
 
+    /**
+     * 法院公告
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getCourtAnno(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.COURT_ANNO_URL,params,resultCallback);
+    }
+
+    /**
+     * 法院裁决
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getCourtAdjudication(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.COURT_ADJUDICATION,params,resultCallback);
+    }
+
+    /**
+     *  诉讼信息
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getLitigation(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.LITIGATION_URL,params,resultCallback);
+    }
+
+    /**
+     * 获取行政处罚
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getAdministrativeDatas(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.ADMINISTRATIVE_URL,params,resultCallback);
+    }
+
+    /**
+     * 查询经营异常信息
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getManagerException(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.MANAGEMENT_EXCEPTION_URL,params,resultCallback);
+    }
+
 }

@@ -126,14 +126,14 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                         openActivity(ForeignInvestmentAct.class,bundle);
                         break;
                     case 2://企业年报
-                        openActivity(YearReportsAct.class);
+                        openActivity(YearReportsAct.class,bundle);
                         break;
                     case 3://企业图谱
                         break;
                     case 4://行业分析
                         break;
                     case 5://资产信息
-                        openActivity(AssetInfoAct.class);
+                        openActivity(AssetInfoAct.class,bundle);
                         break;
                 }
             }
@@ -144,28 +144,28 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0://法院公告
-                        openActivity(CourtAnnouncementAct.class);
+                        openActivity(CourtAnnouncementAct.class,bundle);
                         break;
                     case 1://被执行人
-                        openActivity(ExecutedPersonAct.class);
+                        openActivity(ExecutedPersonAct.class,bundle);
                         break;
                     case 2://失信信息
-                        openActivity(CreditInfoAct.class);
+                        openActivity(CreditInfoAct.class,bundle);
                         break;
                     case 3://法院判决
-                        openActivity(CourtDecisionAct.class);
+                        openActivity(CourtDecisionAct.class,bundle);
                         break;
                     case 4://诉讼信息
-                        openActivity(LitigationInfoAct.class);
+                        openActivity(LitigationInfoAct.class,bundle);
                         break;
                     case 5://行政处罚
-                        openActivity(PunishmentAct.class);
+                        openActivity(PunishmentAct.class,bundle);
                         break;
                     case 6://经营异常
-                        openActivity(AbnormalOperationAct.class);
+                        openActivity(AbnormalOperationAct.class,bundle);
                         break;
                     case 7://抽查检查
-                        openActivity(SpotCheckAct.class);
+                        openActivity(SpotCheckAct.class,bundle);
                         break;
                 }
             }
@@ -176,12 +176,12 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0://专利
-                        openActivity(PatentInfoAct.class);
+                        openActivity(PatentInfoAct.class,bundle);
                         break;
                     case 1://商标
                         break;
                     case 2://著作权
-                        openActivity(CopyrightAct.class);
+                        openActivity(CopyrightAct.class,bundle);
                         break;
                     case 3://企业证书
                         break;
@@ -196,12 +196,12 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                     case 0://财务数据
                         break;
                     case 1://股权出资
-                        openActivity(EquityAct.class);
+                        openActivity(EquityAct.class,bundle);
                         break;
                     case 2://税务信用
                         break;
                     case 3://融资记录
-                        openActivity(FinancingInfoAct.class);
+                        openActivity(FinancingInfoAct.class,bundle);
                         break;
                 }
             }
@@ -212,22 +212,22 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0://招聘
-                        openActivity(RecruitmentAct.class);
+                        openActivity(RecruitmentAct.class,bundle);
                         break;
                     case 1://企业资讯
-                        openActivity(EnterpriseInfoAct.class);
+                        openActivity(EnterpriseInfoAct.class,bundle);
                         break;
                     case 2://注册网站
-                        openActivity(WebsiteAct.class);
+                        openActivity(WebsiteAct.class,bundle);
                         break;
                     case 3://产品信息
-                        openActivity(ProductInfoAct.class);
+                        openActivity(ProductInfoAct.class,bundle);
                         break;
                     case 4://舆情口碑
-                        openActivity(OpinionAct.class);
+                        openActivity(OpinionAct.class,bundle);
                         break;
                     case 5://清算信息
-                        openActivity(ClearingInfoAct.class);
+                        openActivity(ClearingInfoAct.class,bundle);
                         break;
                 }
             }

@@ -13,21 +13,21 @@
         <TextView
             android:id="@+id/tv_lgName"
             style="@style/tv_14_black"
-            android:text="人民法院" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tv_lgNum"
             style="@style/tv_creditInfo_grayItem"
             android:layout_below="@id/tv_lgName"
             android:layout_marginTop="15dp"
-            android:text="人民法院" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tv_lgTime"
             style="@style/tv_creditInfo_grayItem"
             android:layout_below="@id/tv_lgNum"
             android:layout_marginTop="10dp"
-            android:text="2017年1月5日" />
+            android:text="" />
 
         <ImageView
             android:layout_alignParentRight="true"

@@ -37,7 +37,12 @@ public class EchinoUrl {
     public static final String FIND_PATENT_URL = BASE_URL + "patenInfomation/unLogin/findPatenInfoByName.do";
     //专利类型
     public static final String PANTENT_TYPE_URL=BASE_URL+"manager/unLogin/findTypesByKey.do";
-
+    //热门搜索
+    public static final String HOT_SEARCH_URL=BASE_URL+"company/unlogin/findHotQuery.do";
+    //查商标
+    public static final String FIND_BRAND_URL=BASE_URL+"trademark/unLogin/findTrademarkInfoByName.do";
+    //查法院判决
+    public static final String FIND_JUDGMENT_URL=BASE_URL+"courtDecision/unLogin/findCourtDecisionInfo.do";
     /**
      * 企业向关
      */
@@ -50,4 +55,14 @@ public class EchinoUrl {
     public static final String INVES_DATA_URL=BASE_URL+"company/login/findAbroadInvestmentListByCompanyId.do";
     /*企业年报*/
     public static final String COMPANY_REPORT_URL=BASE_URL+"company/login/findAnnualPortsEnterpriseListByCompanyId.do";
+    /*法院公告*/
+    public static final String COURT_ANNO_URL=BASE_URL+"company/login/findCourtAnnouncementListByCompanyId.do";
+    /*法院裁决*/
+    public static final String COURT_ADJUDICATION=BASE_URL+"company/login/findCourtDecisionListByCompanyId.do";
+    /*诉讼信息*/
+    public static final String LITIGATION_URL=BASE_URL+"company/login/findLawsuitMsgListByCompanyId.do";
+    /*行政处罚*/
+    public static final String ADMINISTRATIVE_URL=BASE_URL+"company/login/findAdministrativePenaltyListByCompanyId.do";
+    /*经营异常*/
+    public static final String MANAGEMENT_EXCEPTION_URL=BASE_URL+"company/login/findManageExceptionListBycompanyId.do";
 }

@@ -59,4 +59,54 @@ public class FindManager {
         params.put("key", type);
         OkHttpManager.getInstance().doGet(EchinoUrl.PANTENT_TYPE_URL,params,callback);
     }
+
+    /**
+     * 获取热门搜索
+     * @param type
+     * @param callback
+     */
+    public void getHotSearchHistory(String type,ResultCallback callback){
+        Map<String,String> params=new HashMap<>();
+        params.put("type",type);
+        OkHttpManager.getInstance().doGet(EchinoUrl.HOT_SEARCH_URL,params,callback);
+    }
+
+    /**
+     * 查商标
+     * @param name
+     * @param type
+     * @param page
+     * @param rows
+     * @param callback
+     */
+
+    public void getBrandInfo(String name,String type,int page,int rows,ResultCallback callback){
+        Map<String,String> params=new HashMap<>();
+        if (!TextUtils.isEmpty(name)){
+            params.put("name",name);
+        }
+        if (!TextUtils.isEmpty(type)){
+            params.put("type",type);
+        }
+        params.put("page",page+"");
+        params.put("rows",rows+"");
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_BRAND_URL,params,callback);
+    }
+
+    /**
+     * 查法院判决
+     * @param title
+     * @param page
+     * @param rows
+     * @param callback
+     */
+    public void findJudgmentInfo(String title,int page,int rows,ResultCallback callback){
+        Map<String,String> params=new HashMap<>();
+        if (!TextUtils.isEmpty(title)){
+            params.put("title",title);
+        }
+        params.put("page",page+"");
+        params.put("rows",rows+"");
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_JUDGMENT_URL,params,callback);
+    }
 }
