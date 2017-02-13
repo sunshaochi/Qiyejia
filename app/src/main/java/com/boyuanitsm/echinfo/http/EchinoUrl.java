@@ -43,6 +43,8 @@ public class EchinoUrl {
     public static final String FIND_BRAND_URL=BASE_URL+"trademark/unLogin/findTrademarkInfoByName.do";
     //查法院判决
     public static final String FIND_JUDGMENT_URL=BASE_URL+"courtDecision/unLogin/findCourtDecisionInfo.do";
+    //查执行
+    public static final String FIND_IMPLEMENT_URL=BASE_URL+"breakExecutive/unLogin/findBreakExecutiveInfo.do";
     /**
      * 企业向关
      */
@@ -55,4 +57,5 @@ public class EchinoUrl {
     public static final String INVES_DATA_URL=BASE_URL+"company/login/findAbroadInvestmentListByCompanyId.do";
     /*企业年报*/
     public static final String COMPANY_REPORT_URL=BASE_URL+"company/login/findAnnualPortsEnterpriseListByCompanyId.do";
+
 }

@@ -109,4 +109,21 @@ public class FindManager {
         params.put("rows",rows+"");
         OkHttpManager.getInstance().doGet(EchinoUrl.FIND_JUDGMENT_URL,params,callback);
     }
+
+    /**
+     * 查询执行
+     * @param name
+     * @param page
+     * @param rows
+     * @param callback
+     */
+    public void findImplementInfo(String name, int page, int rows, ResultCallback callback) {
+        Map<String,String> params=new HashMap<>();
+        if (!TextUtils.isEmpty(name)){
+            params.put("breakExecutive",name);
+        }
+        params.put("page",page+"");
+        params.put("rows",rows+"");
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_IMPLEMENT_URL,params,callback);
+    }
 }
