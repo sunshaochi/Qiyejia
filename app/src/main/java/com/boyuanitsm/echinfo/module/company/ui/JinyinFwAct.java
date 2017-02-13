@@ -131,7 +131,7 @@ public class JinyinFwAct extends BaseAct {
                 break;
 
             case R.id.hy_sec:
-
+                setPopupWindow(2);
                 updatacolor(tv_hy, iv_hy, 0);
 
 
@@ -209,7 +209,7 @@ public class JinyinFwAct extends BaseAct {
 
             mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
 
-        } else if (i == 1) {
+        } else if (i == 1) {//城市
             View v = LayoutInflater.from(JinyinFwAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive= (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city= (ListView) v.findViewById(R.id.lsv_city);
@@ -228,7 +228,23 @@ public class JinyinFwAct extends BaseAct {
             mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
 
 
-        } else if (i == 2) {
+        } else if (i == 2) {//不限行业
+            View v = LayoutInflater.from(JinyinFwAct.this).inflate(R.layout.city_sec, null);
+            ListView lsv_pricive= (ListView) v.findViewById(R.id.lsv_provice);
+            final ListView lsv_city= (ListView) v.findViewById(R.id.lsv_city);
+            ProAdapter proadapteer=new ProAdapter(JinyinFwAct.this);
+            CityAdapter cityadapter=new CityAdapter(JinyinFwAct.this);
+            lsv_pricive.setAdapter(proadapteer);
+            lsv_city.setAdapter(cityadapter);
+
+            lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    lsv_city.setVisibility(View.VISIBLE);
+                }
+            });
+
+            mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
 
         }
 

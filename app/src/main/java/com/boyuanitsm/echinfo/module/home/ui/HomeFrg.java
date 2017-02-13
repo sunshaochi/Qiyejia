@@ -85,7 +85,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 switch (position) {
                     case 0://企业名称
-
+                        openActivity(JinyinFwAct.class);
                         break;
                     case 1://股东高管
                         openActivity(SearchShareholderAct.class);
@@ -94,7 +94,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
                         openActivity(JinyinFwAct.class);
                         break;
                     case 3://品牌产品
-
+                        openActivity(JinyinFwAct.class);
                         break;
                 }
             }
