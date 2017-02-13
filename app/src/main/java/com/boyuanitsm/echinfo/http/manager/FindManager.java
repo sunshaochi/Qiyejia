@@ -126,4 +126,22 @@ public class FindManager {
         params.put("rows",rows+"");
         OkHttpManager.getInstance().doGet(EchinoUrl.FIND_IMPLEMENT_URL,params,callback);
     }
+
+    /**
+     * 查失信
+     * @param name
+     * @param page
+     * @param rows
+     * @param callback
+     */
+
+    public void findLoseCreditInfo(String name, int page, int rows, ResultCallback callback) {
+        Map<String,String> params=new HashMap<>();
+        if (!TextUtils.isEmpty(name)){
+            params.put("iname",name);
+        }
+        params.put("page",page+"");
+        params.put("rows",rows+"");
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_LOSE_CREDIT_URL,params,callback);
+    }
 }

@@ -45,6 +45,8 @@ public class EchinoUrl {
     public static final String FIND_JUDGMENT_URL=BASE_URL+"courtDecision/unLogin/findCourtDecisionInfo.do";
     //查执行
     public static final String FIND_IMPLEMENT_URL=BASE_URL+"breakExecutive/unLogin/findBreakExecutiveInfo.do";
+    //查失信
+    public static final String FIND_LOSE_CREDIT_URL=BASE_URL+"courtitem/unLogin/findCourtitemByName.do";
     /**
      * 企业向关
      */
