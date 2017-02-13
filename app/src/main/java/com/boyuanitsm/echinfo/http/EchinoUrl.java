@@ -50,12 +50,20 @@ public class EchinoUrl {
      */
     /*感兴趣的企业*/
     public static final String INTEREST_COMPANY_URL = BASE_URL + "company/login/findEnterpriseInfoListByCompanyIdList.do";
-//    public static final String INTEREST_COMPANY_URL=BASE_URL+"company/login/findEnterpriseInfoListByCompanyIdList.do";
     /*企业详情*/
     public static final String COMANY_DETAIL_URL=BASE_URL+"view/login/findDetailedInfoById.do";
     /*对外投资*/
     public static final String INVES_DATA_URL=BASE_URL+"company/login/findAbroadInvestmentListByCompanyId.do";
     /*企业年报*/
     public static final String COMPANY_REPORT_URL=BASE_URL+"company/login/findAnnualPortsEnterpriseListByCompanyId.do";
-
+    /*法院公告*/
+    public static final String COURT_ANNO_URL=BASE_URL+"company/login/findCourtAnnouncementListByCompanyId.do";
+    /*法院裁决*/
+    public static final String COURT_ADJUDICATION=BASE_URL+"company/login/findCourtDecisionListByCompanyId.do";
+    /*诉讼信息*/
+    public static final String LITIGATION_URL=BASE_URL+"company/login/findLawsuitMsgListByCompanyId.do";
+    /*行政处罚*/
+    public static final String ADMINISTRATIVE_URL=BASE_URL+"company/login/findAdministrativePenaltyListByCompanyId.do";
+    /*经营异常*/
+    public static final String MANAGEMENT_EXCEPTION_URL=BASE_URL+"company/login/findManageExceptionListBycompanyId.do";
 }
