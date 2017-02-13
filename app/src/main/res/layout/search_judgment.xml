@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_patent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_grey_color"
@@ -8,6 +9,7 @@
     <include layout="@layout/title_act_layout_search" />
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/ll_sx"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -61,22 +63,24 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_jg"
+        android:layout_marginTop="48dp"
         android:layout_below="@+id/ll_sx"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="35dp">
         <TextView
+            android:id="@+id/tv_js"
             android:layout_marginLeft="15dp"
-            android:text="搜索到5000个判决书"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/ll_rcv"
         android:layout_below="@+id/ll_jg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
-            android:id="@+id/rcv"
+            android:id="@+id/xr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
@@ -84,70 +88,8 @@
         android:visibility="gone"
         layout="@layout/act_search_nocontent"/>
 
-    <LinearLayout
-        android:id="@+id/ll_rs"
-        android:orientation="vertical"
-        android:layout_marginTop="48dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:id="@+id/rl_recent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white">
-            <TextView
-                android:id="@+id/recent"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:text="最近搜索"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
-                android:id="@+id/xr"
-                android:layout_below="@+id/recent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <ImageView
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_alignParentRight="true"
-                android:background="@mipmap/sc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:visibility="gone"
-            android:layout_below="@+id/rl_recent"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white">
-            <TextView
-                android:id="@+id/tv_rm"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:text="热门搜索"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
-                android:id="@+id/rm"
-                android:layout_below="@+id/tv_rm"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </RelativeLayout>
-    </LinearLayout>
+    <include
+        layout="@layout/common_search_history"
+        android:visibility="gone"/>
 
 </RelativeLayout>
