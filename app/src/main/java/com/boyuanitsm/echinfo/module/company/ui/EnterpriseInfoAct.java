@@ -12,6 +12,7 @@ import com.boyuanitsm.echinfo.module.company.view.IEnterpriseView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
+import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.utils.ToolsUtils;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
 
@@ -74,6 +75,7 @@ public class EnterpriseInfoAct extends BaseAct<IEnterprisePre> implements IEnter
             }
         };
         rcv.setAdapter(mAdp);
+
         rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -85,6 +87,19 @@ public class EnterpriseInfoAct extends BaseAct<IEnterprisePre> implements IEnter
 
             }
         });
+
+        mAdp.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
+
     }
 
     @Override
