@@ -123,7 +123,19 @@ public class LoseCreditBean implements Parcelable{
      */
 
     private String buildTime;
+    private String bTime;
 
+    public String getbTime() {
+        return bTime;
+    }
+
+    public void setbTime(String bTime) {
+        this.bTime = bTime;
+    }
+
+    public static Creator<LoseCreditBean> getCREATOR() {
+        return CREATOR;
+    }
 
     public long getSerialVersionUID() {
         return serialVersionUID;
@@ -309,6 +321,9 @@ public class LoseCreditBean implements Parcelable{
         this.buildTime = buildTime;
     }
 
+    public LoseCreditBean() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -339,9 +354,7 @@ public class LoseCreditBean implements Parcelable{
         dest.writeString(this.areaname);
         dest.writeString(this.isBlacklist);
         dest.writeString(this.buildTime);
-    }
-
-    public LoseCreditBean() {
+        dest.writeString(this.bTime);
     }
 
     protected LoseCreditBean(Parcel in) {
@@ -368,6 +381,7 @@ public class LoseCreditBean implements Parcelable{
         this.areaname = in.readString();
         this.isBlacklist = in.readString();
         this.buildTime = in.readString();
+        this.bTime = in.readString();
     }
 
     public static final Creator<LoseCreditBean> CREATOR = new Creator<LoseCreditBean>() {

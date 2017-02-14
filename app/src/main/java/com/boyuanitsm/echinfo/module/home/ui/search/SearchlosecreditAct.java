@@ -15,6 +15,8 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.LoseCreditBean;
+import com.boyuanitsm.echinfo.bean.LoseCreditDatabean;
+import com.boyuanitsm.echinfo.bean.LoseCreditRowsBean;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.ISearchLoseCreditPresenter;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.SearchLoseCreditPresenterImpl;
 import com.boyuanitsm.echinfo.module.home.view.searchView.ISearchLoseCreditView;
@@ -71,6 +73,7 @@ public class SearchlosecreditAct extends BaseAct<ISearchLoseCreditPresenter> imp
     List<LoseCreditBean> datas = new ArrayList<>();
     int page = 1;
     int rows = 10;
+    int totals=0;
     String name;
     ACache aCache;
     Gson gson;
@@ -121,18 +124,6 @@ public class SearchlosecreditAct extends BaseAct<ISearchLoseCreditPresenter> imp
         mPresenter.getHotHistory("Courtitem");//获取查判决热门词语
         inithotReSou();
         initRecentSearch();
-//        datas = EchinfoUtils.getTestDatas(4);
-//        rcv = (XRecyclerView) findViewById(R.id.rcv);
-//        rl_sj = (RelativeLayout) findViewById(R.id.rl_sj);
-//        rl_lx = (RelativeLayout) findViewById(R.id.rl_lx);
-//        ll_sx = (LinearLayout) findViewById(R.id.ll_sx);
-//        rm = (XRecyclerView) findViewById(R.id.rm);
-//        recent = (XRecyclerView) findViewById(R.id.xr);
-//        query= (EditText) findViewById(R.id.query);
-//        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), false);
-//        initData();
-//        inithotReSou();
-//        initRecentSearch();
     }
 
     /**
@@ -251,17 +242,6 @@ public class SearchlosecreditAct extends BaseAct<ISearchLoseCreditPresenter> imp
 
     }
 
-
-    //    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.rl_sj:
-//                break;
-//            case R.id.rl_lx:
-////                selectPop();
-//                break;
-//        }
-//    }
     @OnClick({R.id.iv_sc})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -273,7 +253,7 @@ public class SearchlosecreditAct extends BaseAct<ISearchLoseCreditPresenter> imp
     }
 
     @Override
-    public void findLoseCreditInfoSucess(List<LoseCreditBean> list) {
+    public void findLoseCreditInfoSucess(LoseCreditDatabean databean) {
         ToolsUtils.hideSoftKeyboard(SearchlosecreditAct.this);
         rlSearch.setVisibility(View.GONE);
         llJg.setVisibility(View.VISIBLE);
@@ -301,7 +281,28 @@ public class SearchlosecreditAct extends BaseAct<ISearchLoseCreditPresenter> imp
             datas.clear();
         }
         xr.loadMoreComplete();
-        datas.addAll(list);
+        if (databean!=null){
+            LoseCreditRowsBean courtPerson = databean.getCourtPerson();
+            totals= courtPerson.getTotal();
+            if (courtPerson!=null){
+                List<LoseCreditBean> rows = courtPerson.getRows();
+                if (rows!=null&&rows.size()>0){
+                    datas.addAll(rows);
+                }
+            }
+            LoseCreditRowsBean courtUnit = databean.getCourtUnit();
+            totals=totals+courtUnit.getTotal();
+            if (courtUnit!=null){
+                List<LoseCreditBean> rows = courtUnit.getRows();
+                if (rows!=null&&rows.size()>0){
+                    datas.addAll(rows);
+                }
+            }
+        }
+        if (totals > 0) {
+            llJg.setVisibility(View.VISIBLE);
+            tvJs.setText("搜索到" + totals + "条失信记录");
+        }
         myAdapter.setData(datas);
     }
 
@@ -321,21 +322,35 @@ public class SearchlosecreditAct extends BaseAct<ISearchLoseCreditPresenter> imp
 
     @Override
     public void findLoseCreditTotal(int totals) {
-        if (totals > 0) {
-            llJg.setVisibility(View.VISIBLE);
-            tvJs.setText("搜索到" + totals + "个专利");
-        }
     }
 
     @Override
-    public void getHotHistorySucess(List<LoseCreditBean> suceessMsg) {
+    public void getHotHistorySucess(LoseCreditDatabean suceessMsg) {
         if (hotNames != null && hotNames.size() > 0) {
             hotNames.clear();
         }
-        if (suceessMsg != null && suceessMsg.size() > 0) {
-            for (int i = 0; i < suceessMsg.size(); i++) {
-                if (!TextUtils.isEmpty(suceessMsg.get(i).getIname())){
-                    hotNames.add(suceessMsg.get(i).getIname());
+        if (suceessMsg != null ) {
+            LoseCreditRowsBean courtPerson = suceessMsg.getCourtPerson();
+            if (courtPerson!=null){
+                List<LoseCreditBean> rows = courtPerson.getRows();
+                courtPerson.getTotal();
+                if (rows!=null&&rows.size()>0){
+                    for (int i = 0; i < rows.size(); i++) {
+                        if (!TextUtils.isEmpty(rows.get(i).getIname())){
+                            hotNames.add(rows.get(i).getIname());
+                        }
+                    }
+                }
+            }
+            LoseCreditRowsBean courtUnit = suceessMsg.getCourtUnit();
+            if (courtUnit!=null){
+                List<LoseCreditBean> rows = courtUnit.getRows();
+                if (rows!=null&&rows.size()>0){
+                    for (int i = 0; i < rows.size(); i++) {
+                        if (!TextUtils.isEmpty(rows.get(i).getIname())){
+                            hotNames.add(rows.get(i).getIname());
+                        }
+                    }
                 }
             }
             hotAdapter.onlyAddAll(hotNames);

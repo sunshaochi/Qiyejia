@@ -47,6 +47,12 @@ public class EchinoUrl {
     public static final String FIND_IMPLEMENT_URL=BASE_URL+"breakExecutive/unLogin/findBreakExecutiveInfo.do";
     //查失信
     public static final String FIND_LOSE_CREDIT_URL=BASE_URL+"courtitem/unLogin/findCourtitemByName.do";
+    //查企业根据名字
+    public static final String FIND_STOCK_NAME_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByName.do";
+    //查经营范围
+    public static final String FIND_JINGYING_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByBusinessScope.do";
+    //查品牌产品
+    public static final String FIND_PINPAI_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByProductName.do";
     /**
      * 企业向关
      */

@@ -244,9 +244,15 @@
         <activity
             android:name=".module.company.ui.ReportInfoAct"
             android:screenOrientation="portrait" />
-        <!--经营范围-->
+        <!--企业名-->
         <activity android:name=".module.company.ui.JinyinFwAct"
             android:screenOrientation="portrait"></activity>
+        <!--经营范围-->
+        <activity android:name=".module.company.ui.JingyingFwAct"
+            android:screenOrientation="portrait"/>
+        <!--品牌查找-->
+        <activity android:name=".module.company.ui.PinpaidocAct"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

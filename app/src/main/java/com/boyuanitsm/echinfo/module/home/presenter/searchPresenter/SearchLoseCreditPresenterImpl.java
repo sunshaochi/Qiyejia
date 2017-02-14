@@ -1,15 +1,12 @@
 package com.boyuanitsm.echinfo.module.home.presenter.searchPresenter;
 
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
-import com.boyuanitsm.echinfo.bean.DateBean;
-import com.boyuanitsm.echinfo.bean.LoseCreditBean;
+import com.boyuanitsm.echinfo.bean.LoseCreditDatabean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.module.home.model.searchModel.ISearchLoseCreditModel;
 import com.boyuanitsm.echinfo.module.home.model.searchModel.SearchLoseCreditModelImpl;
 import com.boyuanitsm.echinfo.module.home.view.searchView.ISearchLoseCreditView;
-
-import java.util.List;
 
 /**
  * 查失信
@@ -27,17 +24,17 @@ public class SearchLoseCreditPresenterImpl extends BasePresenterImpl<ISearchLose
 
     @Override
     public void findLoseCreditInfo(String name, int page, int rows) {
-        creditModel.findLoseCreditInfo(name, page, rows, new ResultCallback<ResultBean<DateBean<LoseCreditBean>>>() {
+        creditModel.findLoseCreditInfo(name, page, rows, new ResultCallback<ResultBean<LoseCreditDatabean>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.findLoseCreditInfoFaild(status,errorMsg);
             }
 
             @Override
-            public void onResponse(ResultBean<DateBean<LoseCreditBean>> response) {
-                 List<LoseCreditBean> list = response.getData().getRows();
-                if (list!=null&&list.size()>0){
-                    mView.findLoseCreditInfoSucess(list);
+            public void onResponse(ResultBean<LoseCreditDatabean> response) {
+                LoseCreditDatabean data = response.getData();
+                if (data!=null){
+                    mView.findLoseCreditInfoSucess(data);
                 }else {
                     mView.findLoseCreditNoData();
                 }
@@ -47,14 +44,14 @@ public class SearchLoseCreditPresenterImpl extends BasePresenterImpl<ISearchLose
 
     @Override
     public void getHotHistory(String type) {
-            creditModel.getHotHistory(type, new ResultCallback<ResultBean<List<LoseCreditBean>>>() {
+            creditModel.getHotHistory(type, new ResultCallback<ResultBean<LoseCreditDatabean>>() {
                 @Override
                 public void onError(int status, String errorMsg) {
                     mView.getHotHistoryFaild(status,errorMsg);
                 }
 
                 @Override
-                public void onResponse(ResultBean<List<LoseCreditBean>> response) {
+                public void onResponse(ResultBean<LoseCreditDatabean> response) {
                     mView.getHotHistorySucess(response.getData());
                 }
             });

@@ -50,7 +50,7 @@ import butterknife.OnClick;
  * Created by bitch-1 on 2017/2/7.
  */
 
-public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView {
+public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView,OnItemClickListener {
     @BindView(R.id.xr)
     XRecyclerView xr;//下拉刷新view
     @BindView(R.id.gd_sec)
@@ -82,6 +82,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
     private PopupWindow mPopupWindow;
     private GvAdapter gvclnxadt, gvzcziadt;
     private TagAdapter<String> mSizeTagAdapter;
+    public static final String SEARCH_TYPE = "type";
     private int type;
     String name;
     String address;
@@ -97,6 +98,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
 
     @Override
     public void init(Bundle savedInstanceState) {
+        type = getIntent().getIntExtra(SEARCH_TYPE, 0);
         mPresenter=new JingYingPreImpl(this);
         initFrg();//初识化下拉刷洗控件
         query.setOnKeyListener(new View.OnKeyListener() {
@@ -105,7 +107,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     // 先隐藏键盘
                     ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
-                            .hideSoftInputFromWindow(JinyinFwAct.this.getCurrentFocus()
+                            .hideSoftInputFromWindow(PinpaidocAct.this.getCurrentFocus()
                                     .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
                     search();
@@ -113,8 +115,8 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
                 return false;
             }
         });
-        gvclnxadt = new GvAdapter(JinyinFwAct.this);//成立年限
-        gvzcziadt = new GvAdapter(JinyinFwAct.this);//注册资本
+        gvclnxadt = new GvAdapter(PinpaidocAct.this);//成立年限
+        gvzcziadt = new GvAdapter(PinpaidocAct.this);//注册资本
     }
     /**
      * 点击键盘搜索
@@ -126,8 +128,8 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
             return;
         } else {
             // 调用搜索的API方法
-            ToolsUtils.hideSoftKeyboard(JinyinFwAct.this);
-            mPresenter.getQiYeinfo(name,address,industry,capital,establishDate,page,rows);
+            ToolsUtils.hideSoftKeyboard(PinpaidocAct.this);
+            mPresenter.getQiYeinfobyPinPai(name,address,industry,capital,establishDate,page,rows);
         }
 
     }
@@ -135,12 +137,8 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
      * 初始化下拉刷新
      */
     private void initFrg() {
-        query.setHint("请输入公司名或注册号");
-//        View view = View.inflate(getApplicationContext(), R.layout.xhead, null);
-//        view.setMinimumWidth(ToolsUtils.getScreenWidth(JinyinFwAct.this));
-//        xr.addHeaderView(view);
-        xr = EchinfoUtils.getLinearRecyclerView(xr, getApplicationContext(), true);
-        mAdp = new BaseRecyclerAdapter<CompanyBean>(getApplicationContext(), datas) {
+        xr = EchinfoUtils.getLinearRecyclerView(xr, this, true);
+        mAdp = new BaseRecyclerAdapter<CompanyBean>(this, datas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.item_serch_name;
@@ -150,38 +148,27 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
             public void bindData(BaseRecyclerViewHolder holder, int position, CompanyBean item) {
                 holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
                 holder.getTextView(R.id.tv_person).setText("公司法人："+item.getLegalPerson());
-                holder.getTextView(R.id.tv_status).setText(item.getManagementStatus());
+                holder.getTextView(R.id.tv_status).setText("商标/产品："+item.getTrademarkNum());
 
             }
         };
+
         xr.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
                 page=1;
-                mPresenter.getQiYeinfo(name,address,industry,capital,establishDate,page,rows);
+                mPresenter.getQiYeinfobyPinPai(name,address,industry,capital,establishDate,page,rows);
             }
 
             @Override
             public void onLoadMore() {
                 page++;
-                mPresenter.getQiYeinfo(name,address,industry,capital,establishDate,page,rows);
-
-            }
-        });
-        mAdp.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Bundle bundle=new Bundle();
-                bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position).getId());
-                openActivity(CompanyAct.class,bundle);
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
+                mPresenter.getQiYeinfobyPinPai(name,address,industry,capital,establishDate,page,rows);
 
             }
         });
         xr.setAdapter(mAdp);
+        mAdp.setOnItemClickListener(this);
     }
 
     @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec})
@@ -232,7 +219,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
      */
     private void setPopupWindow(int i) {
         if (i == 3) {
-            View v = LayoutInflater.from(JinyinFwAct.this).inflate(R.layout.gd_sec, null);
+            View v = LayoutInflater.from(PinpaidocAct.this).inflate(R.layout.gd_sec, null);
             MyGridView gv_cnlx = (MyGridView) v.findViewById(R.id.gv_clnx);
             MyGridView gv_zczb = (MyGridView) v.findViewById(R.id.gv_zczb);
             FlowTagLayout mSizeFlowTagLayout = (FlowTagLayout) v.findViewById(R.id.size_flow_layout);
@@ -255,7 +242,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
                     gvzcziadt.notifyDataSetChanged();
                 }
             });
-            mSizeTagAdapter = new TagAdapter<>(JinyinFwAct.this);//流逝布局
+            mSizeTagAdapter = new TagAdapter<>(PinpaidocAct.this);//流逝布局
             mSizeFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);//设置是单选
             mSizeFlowTagLayout.setAdapter(mSizeTagAdapter);
             mSizeFlowTagLayout.setOnTagSelectListener(new OnTagSelectListener() {
@@ -276,11 +263,11 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
             mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
 
         } else if (i == 1) {//城市
-            View v = LayoutInflater.from(JinyinFwAct.this).inflate(R.layout.city_sec, null);
+            View v = LayoutInflater.from(PinpaidocAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(JinyinFwAct.this);
-            CityAdapter cityadapter = new CityAdapter(JinyinFwAct.this);
+            ProAdapter proadapteer = new ProAdapter(PinpaidocAct.this);
+            CityAdapter cityadapter = new CityAdapter(PinpaidocAct.this);
             lsv_pricive.setAdapter(proadapteer);
             lsv_city.setAdapter(cityadapter);
 
@@ -295,11 +282,11 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
 
 
         } else if (i == 2) {//不限行业
-            View v = LayoutInflater.from(JinyinFwAct.this).inflate(R.layout.city_sec, null);
+            View v = LayoutInflater.from(PinpaidocAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(JinyinFwAct.this);
-            CityAdapter cityadapter = new CityAdapter(JinyinFwAct.this);
+            ProAdapter proadapteer = new ProAdapter(PinpaidocAct.this);
+            CityAdapter cityadapter = new CityAdapter(PinpaidocAct.this);
             lsv_pricive.setAdapter(proadapteer);
             lsv_city.setAdapter(cityadapter);
 
@@ -366,6 +353,18 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
         }else {
             llJg.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Bundle bundle=new Bundle();
+        bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position).getId());
+        openActivity(CompanyAct.class,bundle);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
+
     }
 }
 

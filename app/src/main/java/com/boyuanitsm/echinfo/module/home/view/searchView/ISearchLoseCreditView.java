@@ -1,9 +1,7 @@
 package com.boyuanitsm.echinfo.module.home.view.searchView;
 
 import com.boyuanitsm.echinfo.base.BaseView;
-import com.boyuanitsm.echinfo.bean.LoseCreditBean;
-
-import java.util.List;
+import com.boyuanitsm.echinfo.bean.LoseCreditDatabean;
 
 /**
  * 查失信
@@ -13,12 +11,12 @@ import java.util.List;
 
 public interface ISearchLoseCreditView extends BaseView{
     //查商标
-    void findLoseCreditInfoSucess(List<LoseCreditBean> list);
+    void findLoseCreditInfoSucess(LoseCreditDatabean databean);
     void findLoseCreditInfoFaild(int status, String errorMsg);
     void findLoseCreditNoData();
     void findLoseCreditTotal(int totals);
     //获取商标热门搜索记录
-    void getHotHistorySucess(List<LoseCreditBean> suceessMsg);
+    void getHotHistorySucess(LoseCreditDatabean suceessMsg);
     void getHotHistoryFaild(int status, String errorMsg);
 
 
