@@ -12,6 +12,7 @@
         android:padding="15dp">
 
         <com.boyuanitsm.tools.view.CircleImageView
+            android:id="@+id/iv_zy"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@mipmap/ic_launcher" />
@@ -22,6 +23,7 @@
             android:text="主要负责人:" />
 
         <TextView
+            android:id="@+id/tv_zy"
             style="@style/executed_item_tv_gray"
             android:text="柳传志" />
     </LinearLayout>

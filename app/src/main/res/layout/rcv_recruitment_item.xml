@@ -30,6 +30,7 @@
                     android:text="薪资:" />
 
                 <TextView
+                    android:id="@+id/tv_xs"
                     style="@style/executed_item_tv_gray"
                     android:text="3000-5000" />
             </LinearLayout>
@@ -45,6 +46,7 @@
                     android:text="地点:" />
 
                 <TextView
+                    android:id="@+id/tv_dd"
                     style="@style/executed_item_tv_gray"
                     android:text="上海" />
             </LinearLayout>
@@ -66,6 +68,7 @@
                     android:text="经验:" />
 
                 <TextView
+                    android:id="@+id/tv_jy"
                     style="@style/executed_item_tv_gray"
                     android:text="1年以上" />
             </LinearLayout>
@@ -81,6 +84,7 @@
                     android:text="学历:" />
 
                 <TextView
+                    android:id="@+id/tv_xl"
                     style="@style/executed_item_tv_gray"
                     android:text="大专" />
             </LinearLayout>
@@ -102,6 +106,7 @@
                     android:text="发布时间:" />
 
                 <TextView
+                    android:id="@+id/tv_sj"
                     style="@style/executed_item_tv_gray"
                     android:text="2017-01-05" />
             </LinearLayout>
@@ -117,6 +122,7 @@
                     android:text="来源:" />
 
                 <TextView
+                    android:id="@+id/tv_ly"
                     style="@style/executed_item_tv_gray"
                     android:text="上海" />
             </LinearLayout>

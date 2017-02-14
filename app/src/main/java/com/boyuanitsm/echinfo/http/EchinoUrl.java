@@ -65,6 +65,17 @@ public class EchinoUrl {
     /*企业年报*/
     public static final String COMPANY_REPORT_URL=BASE_URL+"company/login/findAnnualPortsEnterpriseListByCompanyId.do";
     /*法院公告*/
+
+    /*招聘信息*/
+    public static final String FINDRECRUITING_URL=BASE_URL+"company/login/findRecruitingListByCompanyId.do";
+    /*查询亲算信息*/
+    public static final String FINDCLEARINFO_URL=BASE_URL+" company/login/findClearInfoListByCompanyId.do";
+
+
+    /*企业资讯*/
+    public static final String FINDENTERPRISE_URL=BASE_URL+"company/login/findEnterpriseNewsListByCompanyId.do";
+
+
     public static final String COURT_ANNO_URL=BASE_URL+"company/login/findCourtAnnouncementListByCompanyId.do";
     /*法院裁决*/
     public static final String COURT_ADJUDICATION=BASE_URL+"company/login/findCourtDecisionListByCompanyId.do";
