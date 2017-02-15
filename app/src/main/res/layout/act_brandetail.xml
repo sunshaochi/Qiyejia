@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_act_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="192dp">
+
+                <ImageView
+                    android:id="@+id/iv_log"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_mc"
+                style="@style/miv_patentDetail_item"
+                app:leftText="商标名称"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_lx"
+                style="@style/miv_patentDetail_item"
+                app:leftText="商标类型"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_zch"
+                style="@style/miv_patentDetail_item"
+                app:leftText="注册号"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_sq"
+                style="@style/miv_patentDetail_item"
+                app:leftText="申请时间"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_zt"
+                style="@style/miv_patentDetail_item"
+                app:leftText="状态"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_qx"
+                style="@style/miv_patentDetail_item"
+                app:leftText="使用期限"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="申请人"
+                    android:textColor="#333" />
+
+                <TextView
+                    android:id="@+id/tv_sqr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#999" />
+            </LinearLayout>
+
+            <View style="@style/view_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="申请地址" />
+
+                <TextView
+                    android:id="@+id/tv_sqdz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <View style="@style/view_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="代理机构" />
+
+                <TextView
+                    android:id="@+id/tv_dljg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <View style="@style/view_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="申请流程" />
+
+                <com.boyuanitsm.echinfo.widget.MyListView
+                    android:id="@+id/lv_lc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp" />
+            </LinearLayout>
+
+            <View style="@style/view_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="商品服务列表" />
+
+                <com.boyuanitsm.echinfo.widget.MyListView
+                    android:id="@+id/lv_fw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp" />
+            </LinearLayout>
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_ch"
+                style="@style/miv_patentDetail_item"
+                app:leftText="初审公告号"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_crq"
+                style="@style/miv_patentDetail_item"
+                app:leftText="初审公告日期"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_zgh"
+                style="@style/miv_patentDetail_item"
+                app:leftText="注册公告号"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+
+            <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/miv_rq"
+                style="@style/miv_patentDetail_item"
+                app:leftText="注册公告日期"
+                app:rightText=""
+                app:rightTextColor="#999999" />
+
+            <View style="@style/view_line" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

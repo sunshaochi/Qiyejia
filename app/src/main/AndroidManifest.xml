@@ -253,6 +253,9 @@
         <!--品牌查找-->
         <activity android:name=".module.company.ui.PinpaidocAct"
             android:screenOrientation="portrait"/>
+        <!--商标详情-->
+        <activity android:name=".module.company.ui.BrandInfoAct"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

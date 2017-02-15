@@ -2,6 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@color/white"
+    android:focusable="true"
+    android:id="@+id/rl_patent"
+    android:focusableInTouchMode="true"
     android:layout_height="match_parent">
 
     <include
@@ -88,31 +91,26 @@
 
     </LinearLayout>
     <!--收索结果按钮-->
-    <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+    <LinearLayout
+        android:id="@+id/ll_rcv"
         android:layout_below="@id/ll_jg"
-        android:id="@+id/xr"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView>
-
-    <!--&lt;!&ndash;不同标签点击后不同的显示布局&ndash;&gt;-->
-    <!--<RelativeLayout-->
-        <!--android:layout_below="@id/mian_title_sec"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-    <!--&lt;!&ndash;点击全国显示&ndash;&gt;-->
-    <!--<include-->
-        <!--android:visibility="gone"-->
-        <!--layout="@layout/city_sec"></include>-->
-    <!--&lt;!&ndash;点击不限行业显示&ndash;&gt;-->
-    <!--<include-->
-        <!--android:visibility="gone"-->
-        <!--layout="@layout/hy_sec"></include>-->
-    <!--&lt;!&ndash;点击更多筛选显示&ndash;&gt;-->
-    <!--<include-->
-        <!--layout="@layout/gd_sec"></include>-->
-    <!--</RelativeLayout>-->
+        android:layout_height="match_parent">
+        <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+            android:id="@+id/xr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 
 
+
+    <include
+        android:visibility="gone"
+        layout="@layout/act_search_nocontent"/>
+
+    <include
+        layout="@layout/common_search_history"
+        android:visibility="gone"/>
 
 
 

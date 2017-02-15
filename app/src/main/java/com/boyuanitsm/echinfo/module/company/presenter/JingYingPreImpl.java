@@ -89,4 +89,19 @@ public class JingYingPreImpl extends BasePresenterImpl<IJingyingView> implements
             }
         });
     }
+
+    @Override
+    public void getHotHistory(String type) {
+        model.getHotHistory(type, new ResultCallback<ResultBean<List<CompanyBean>>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+               mView.getHotHistoryFaild(status,errorMsg);
+            }
+
+            @Override
+            public void onResponse(ResultBean<List<CompanyBean>> response) {
+                mView.getHotHistorySucess(response.getData());
+            }
+        });
+    }
 }

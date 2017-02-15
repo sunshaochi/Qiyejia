@@ -16,28 +16,35 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.CityAdapter;
 import com.boyuanitsm.echinfo.adapter.GvAdapter;
 import com.boyuanitsm.echinfo.adapter.ProAdapter;
+import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
 import com.boyuanitsm.echinfo.adapter.TagAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.module.company.presenter.IJingYingPre;
 import com.boyuanitsm.echinfo.module.company.presenter.JingYingPreImpl;
 import com.boyuanitsm.echinfo.module.company.view.IJingyingView;
+import com.boyuanitsm.echinfo.utils.ACache;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.ClearEditText;
 import com.boyuanitsm.echinfo.widget.MyGridView;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
 import com.boyuanitsm.tools.callback.OnItemClickListener;
+import com.boyuanitsm.tools.utils.GsonUtils;
 import com.boyuanitsm.tools.utils.ToolsUtils;
 import com.boyuanitsm.tools.view.FlowTag.FlowTagLayout;
+import com.boyuanitsm.tools.view.FlowTag.OnTagClickListener;
 import com.boyuanitsm.tools.view.FlowTag.OnTagSelectListener;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +84,26 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
     LinearLayout llJg;
     @BindView(R.id.tv_num)
     TextView tvNum;
+
+
+
+    @BindView(R.id.rl_recent)
+    RelativeLayout rlRecent;//最近搜索
+    @BindView(R.id.rl_search)
+    RelativeLayout rlSearch;//无搜索记录展示
+    @BindView(R.id.ll_rcv)
+    LinearLayout ll_rcv;//专利结果展示
+    @BindView(R.id.iv_sc)
+    ImageView ivSc;//最近搜索删除
+    @BindView(R.id.rm)
+    FlowTagLayout rm;//热门搜索
+    @BindView(R.id.rl_patent)
+    RelativeLayout rl_patent;//专利
+    @BindView(R.id.ll_rs)
+    LinearLayout llRs;//热门搜索
+    @BindView(R.id.size_flow_layout)
+    FlowTagLayout sizeFlowLayout;//最近搜索流式布局
+
     private List<CompanyBean> datas = new ArrayList<>();
     private BaseRecyclerAdapter<CompanyBean> mAdp;
     private PopupWindow mPopupWindow;
@@ -91,6 +118,16 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
     String establishDate;
     int page=1;
     int rows=10;
+
+
+
+    ACache aCache;
+    Gson gson;
+    List<String> names = new ArrayList<>();
+    List<String> hotNames = new ArrayList<>();
+    SearchHistoryAdapter<String> recentAdatper;//最近搜索适配器
+    SearchHistoryAdapter<String> hotAdapter;//热门搜索适配器
+
     @Override
     public int getLayout() {
         return R.layout.act_jinyinfw;
@@ -101,6 +138,10 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
         type = getIntent().getIntExtra(SEARCH_TYPE, 0);
         mPresenter=new JingYingPreImpl(this);
         initFrg();//初识化下拉刷洗控件
+
+        aCache=ACache.get(PinpaidocAct.this);
+        gson=new Gson();
+
         query.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -115,9 +156,95 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
                 return false;
             }
         });
+
+        query.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    llRs.setVisibility(View.VISIBLE);
+                } else {
+                    llRs.setVisibility(View.GONE);
+                    rlSearch.setVisibility(View.GONE);
+                }
+            }
+        });
+        mPresenter.getHotHistory("EnterpriseInfo");
+        inithotReSou();
+        initRecentSearch();
+        String strTime = null;
+        strTime = aCache.getAsString("PinPaiHistory");
+        if (!TextUtils.isEmpty(strTime)) {
+            query.setFocusable(true);
+            query.setFocusableInTouchMode(true);
+            query.requestFocus();
+            rlRecent.setVisibility(View.VISIBLE);
+            rlSearch.setVisibility(View.GONE);
+            names = gson.fromJson(strTime, new TypeToken<List<String>>() {
+            }.getType());
+            recentAdatper.onlyAddAll(names);
+        } else {
+            rlSearch.setVisibility(View.VISIBLE);
+            rlRecent.setVisibility(View.GONE);
+        }
+
+
         gvclnxadt = new GvAdapter(PinpaidocAct.this);//成立年限
         gvzcziadt = new GvAdapter(PinpaidocAct.this);//注册资本
     }
+
+    private void initRecentSearch() {
+        recentAdatper = new SearchHistoryAdapter<>(this);
+        sizeFlowLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_NONE);
+        sizeFlowLayout.setAdapter(recentAdatper);
+        sizeFlowLayout.setOnTagClickListener(new OnTagClickListener() {
+            @Override
+            public void onItemClick(FlowTagLayout parent, View view, int position) {
+                name = names.get(position);
+                query.setText(name);
+                query.setSelection(name.length());
+                rl_patent.setFocusable(true);
+                rl_patent.setFocusableInTouchMode(true);
+                rl_patent.requestFocus();
+                page = 1;
+                mPresenter.getQiYeinfobyPinPai(name, address, industry, capital, establishDate, page, rows);
+            }
+        });
+        String strTime = null;
+        strTime = aCache.getAsString("PinPaiHistory");
+        if (!TextUtils.isEmpty(strTime)) {
+            query.setFocusable(true);
+            query.setFocusableInTouchMode(true);
+            query.requestFocus();
+            rlRecent.setVisibility(View.VISIBLE);
+            rlSearch.setVisibility(View.GONE);
+            names = gson.fromJson(strTime, new TypeToken<List<String>>() {
+            }.getType());
+            recentAdatper.onlyAddAll(names);
+        } else {
+            rlSearch.setVisibility(View.VISIBLE);
+            rlRecent.setVisibility(View.GONE);
+        }
+    }
+
+    private void inithotReSou() {
+        hotAdapter = new SearchHistoryAdapter<>(this);
+        rm.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_NONE);//设置是单选
+        rm.setAdapter(hotAdapter);
+        rm.setOnTagClickListener(new OnTagClickListener() {
+            @Override
+            public void onItemClick(FlowTagLayout parent, View view, int position) {
+                name = hotNames.get(position);
+                query.setText(name);
+                query.setSelection(name.length());
+                rl_patent.setFocusable(true);
+                rl_patent.setFocusableInTouchMode(true);
+                rl_patent.requestFocus();
+                page = 1;
+                mPresenter.getQiYeinfobyPinPai(name, address, industry, capital, establishDate, page, rows);
+            }
+        });
+    }
+
     /**
      * 点击键盘搜索
      */
@@ -137,6 +264,7 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
      * 初始化下拉刷新
      */
     private void initFrg() {
+        query.setHint("请输入公司名/地址/经营项目/商标");
         xr = EchinfoUtils.getLinearRecyclerView(xr, this, true);
         mAdp = new BaseRecyclerAdapter<CompanyBean>(this, datas) {
             @Override
@@ -171,7 +299,7 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
         mAdp.setOnItemClickListener(this);
     }
 
-    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec})
+    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec,R.id.iv_sc})
     public void OnClick(View v) {
         switch (v.getId()) {
             case R.id.gd_sec:
@@ -189,6 +317,10 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
                 updatacolor(tv_hy, iv_hy, 0);
                 break;
 
+            case R.id.iv_sc:
+                aCache.put("PinPaiHistory", "");
+                rlRecent.setVisibility(View.GONE);
+                break;
         }
     }
 
@@ -323,6 +455,30 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
 
     @Override
     public void findEnterpriseInfoByNameSuceess(List<CompanyBean> list) {
+
+        ToolsUtils.hideSoftKeyboard(PinpaidocAct.this);
+        rlSearch.setVisibility(View.GONE);
+        llJg.setVisibility(View.VISIBLE);
+        ll_rcv.setVisibility(View.VISIBLE);
+        String strTime = null;
+        strTime = aCache.getAsString("PinPaiHistory");
+        if (!TextUtils.isEmpty(strTime)) {
+            List<String> nameNews = gson.fromJson(strTime, new TypeToken<List<String>>() {
+            }.getType());
+            if (!nameNews.contains(name)) {
+                nameNews.add(name);
+                aCache.put("PinPaiHistory", GsonUtils.bean2Json(nameNews));
+                recentAdatper.onlyAddAll(nameNews);
+            }
+        } else {
+            List<String> nameNews = new ArrayList<>();
+            nameNews.add(name);
+            aCache.put("PinPaiHistory", GsonUtils.bean2Json(nameNews));
+            recentAdatper.onlyAddAll(nameNews);
+        }
+
+
+
         if (page==1){
             xr.refreshComplete();
             datas.clear();
@@ -353,6 +509,25 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
         }else {
             llJg.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void getHotHistorySucess(List<CompanyBean> suceessMsg) {
+        if (hotNames != null && hotNames.size() > 0) {
+            hotNames.clear();
+        }
+        if (suceessMsg != null && suceessMsg.size() > 0) {
+            for (int i = 0; i < suceessMsg.size(); i++) {
+                hotNames.add(suceessMsg.get(i).getCompanyName());
+            }
+            hotAdapter.onlyAddAll(hotNames);
+        }
+    }
+
+    @Override
+    public void getHotHistoryFaild(int status, String errorMsg) {
+        toast(errorMsg);
+
     }
 
     @Override

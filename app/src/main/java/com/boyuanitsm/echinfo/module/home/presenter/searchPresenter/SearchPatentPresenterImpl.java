@@ -2,7 +2,7 @@ package com.boyuanitsm.echinfo.module.home.presenter.searchPresenter;
 
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
 import com.boyuanitsm.echinfo.bean.DateBean;
-import com.boyuanitsm.echinfo.bean.PatentBean;
+import com.boyuanitsm.echinfo.bean.PatenInfomationBean;
 import com.boyuanitsm.echinfo.bean.PatentTypeBean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
@@ -29,15 +29,15 @@ public class SearchPatentPresenterImpl extends BasePresenterImpl<ISearchPatentVi
 
     @Override
     public void findPatentInfo(String name, String patenType, final String releaseDate, int page, int rows) {
-        searchPatentModel.findPatentInfo(name, patenType, releaseDate, page, rows, new ResultCallback<ResultBean<DateBean<PatentBean>>>() {
+        searchPatentModel.findPatentInfo(name, patenType, releaseDate, page, rows, new ResultCallback<ResultBean<DateBean<PatenInfomationBean>>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.findPatentInfoFaild(status,errorMsg);
             }
 
             @Override
-            public void onResponse(ResultBean<DateBean<PatentBean>> response) {
-                List<PatentBean> list=response.getData().getRows();
+            public void onResponse(ResultBean<DateBean<PatenInfomationBean>> response) {
+                List<PatenInfomationBean> list=response.getData().getRows();
                 mView.findPatentTotal(response.getData().getTatal());
                 if (list!=null&&list.size()>0){
                     mView.findPatentInfoSucess(list);
@@ -66,14 +66,14 @@ public class SearchPatentPresenterImpl extends BasePresenterImpl<ISearchPatentVi
 
     @Override
     public void getHotHistory(String type) {
-        searchPatentModel.getHotHistory(type, new ResultCallback<ResultBean<List<PatentBean>>>() {
+        searchPatentModel.getHotHistory(type, new ResultCallback<ResultBean<List<PatenInfomationBean>>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.getHotHistoryFaild(status,errorMsg);
             }
 
             @Override
-            public void onResponse(ResultBean<List<PatentBean>> response) {
+            public void onResponse(ResultBean<List<PatenInfomationBean>> response) {
                 mView.getHotHistorySucess(response.getData());
             }
         });

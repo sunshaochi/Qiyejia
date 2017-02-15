@@ -23,8 +23,9 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
 import com.boyuanitsm.echinfo.adapter.XzSimpleAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
-import com.boyuanitsm.echinfo.bean.PatentBean;
+import com.boyuanitsm.echinfo.bean.PatenInfomationBean;
 import com.boyuanitsm.echinfo.bean.PatentTypeBean;
+import com.boyuanitsm.echinfo.module.company.ui.PatentDetailAct;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.ISearchPatentPresenter;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.SearchPatentPresenterImpl;
 import com.boyuanitsm.echinfo.module.home.view.searchView.ISearchPatentView;
@@ -33,6 +34,7 @@ import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.ClearEditText;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
+import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.utils.GsonUtils;
 import com.boyuanitsm.tools.utils.ToolsUtils;
 import com.boyuanitsm.tools.view.FlowTag.FlowTagLayout;
@@ -46,7 +48,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -96,8 +97,8 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     LinearLayout ll_rcv;//专利结果展示
     @BindView(R.id.rl_patent)
     RelativeLayout rl_patent;//专利
-    private BaseRecyclerAdapter<PatentBean> myAdapter;//推荐阅读适配器
-    private List<PatentBean> datas = new ArrayList<>();//专利列表
+    private BaseRecyclerAdapter<PatenInfomationBean> myAdapter;//推荐阅读适配器
+    private List<PatenInfomationBean> datas = new ArrayList<>();//专利列表
     private List<PatentTypeBean> typedatas = new ArrayList<>();//专利类型
     private PopupWindow mPopupWindow;
     private XzSimpleAdapter xzSimpleAdapter;
@@ -246,14 +247,14 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
      */
     private void initData() {
         query.setHint("请输入专利号，专利名，公司名");
-        myAdapter = new BaseRecyclerAdapter<PatentBean>(getApplicationContext(), datas) {
+        myAdapter = new BaseRecyclerAdapter<PatenInfomationBean>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.rcv_search_patent;
             }
 
             @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, PatentBean item) {
+            public void bindData(BaseRecyclerViewHolder holder, int position, PatenInfomationBean item) {
                 holder.getTextView(R.id.tv_Name).setText(item.getName());
                 holder.getTextView(R.id.tv_sq).setText("申请人：" + item.getApplicatPerson());
                 holder.getTextView(R.id.tv_rq).setText("申请日期：" + item.getReleaseDate());
@@ -277,11 +278,24 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
                 mPresenter.findPatentInfo(name, patentType, releaseDate, page, rows);
             }
         });
+        myAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Bundle bundle=new Bundle();
+                bundle.putParcelable(PatentDetailAct.PATENT_DETAIL,datas.get(position-1));
+                openActivity(PatentDetailAct.class,bundle);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        });
 
     }
 
     @Override
-    public void findPatentInfoSucess(List<PatentBean> list) {
+    public void findPatentInfoSucess(List<PatenInfomationBean> list) {
         ToolsUtils.hideSoftKeyboard(SearchPatentAct.this);
         rlSearch.setVisibility(View.GONE);
         llJg.setVisibility(View.VISIBLE);
@@ -351,7 +365,7 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     }
 
     @Override
-    public void getHotHistorySucess(List<PatentBean> suceessMsg) {
+    public void getHotHistorySucess(List<PatenInfomationBean> suceessMsg) {
         if (hotNames != null && hotNames.size() > 0) {
             hotNames.clear();
         }
@@ -426,12 +440,6 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
         });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @OnClick({R.id.rl_lx, R.id.iv_sc, R.id.rl_recent, R.id.rl_hot, R.id.ll_rs})
     public void onClick(View view) {

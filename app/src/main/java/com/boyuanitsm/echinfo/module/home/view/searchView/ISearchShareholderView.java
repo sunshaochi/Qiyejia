@@ -1,4 +1,4 @@
-package com.boyuanitsm.echinfo.module.company.view;
+package com.boyuanitsm.echinfo.module.home.view.searchView;
 
 import com.boyuanitsm.echinfo.base.BaseView;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
@@ -6,18 +6,18 @@ import com.boyuanitsm.echinfo.bean.CompanyBean;
 import java.util.List;
 
 /**
- * 企业查询
+ * 查股东/高管
  * Q164454216
- * Created by xiaoke on 2017/2/14.
+ * Created by xiaoke on 2017/2/15.
  */
 
-public interface IJingyingView extends BaseView {
+public interface ISearchShareholderView extends BaseView {
     //根据企业名字查找企业
     void findEnterpriseInfoByNameSuceess(List<CompanyBean> list);
     void findEnterpriseInfoByNameFaild(int status, String errorMsg);
     void findfindEnterpriseInfoByNameNodata();
     void findEnterpriseTotals(int tatal);
-    //
+    //获取专利热门搜索记录
     void getHotHistorySucess(List<CompanyBean> suceessMsg);
     void getHotHistoryFaild(int status,String errorMsg);
 }

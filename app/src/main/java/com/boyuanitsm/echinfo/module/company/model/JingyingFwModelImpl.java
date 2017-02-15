@@ -25,4 +25,9 @@ public class JingyingFwModelImpl implements IJingYingFwModel{
         FindManager.getFindManager().findEnterpriseInfoByProductName(businessScope,address,industry,capital,establishDate,page,rows,callback);
 
     }
+
+    @Override
+    public void getHotHistory(String type, ResultCallback callback) {
+        FindManager.getFindManager().getHotSearchHistory(type,callback);
+    }
 }
