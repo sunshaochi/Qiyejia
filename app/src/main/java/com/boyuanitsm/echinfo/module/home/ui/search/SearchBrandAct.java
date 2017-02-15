@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 查商标
@@ -67,6 +68,8 @@ public class SearchBrandAct extends BaseAct<ISearchBrandPresenter> implements IS
     TextView tvJs;//搜索到5000个专利
     @BindView(R.id.rm)
     FlowTagLayout rm;//热门搜索
+    @BindView(R.id.iv_sc)
+    ImageView ivSc;//最近搜索删除
     List<BrandBean> datas = new ArrayList<>();
     int page = 1;
     int rows = 10;
@@ -235,12 +238,6 @@ public class SearchBrandAct extends BaseAct<ISearchBrandPresenter> implements IS
         });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @Override
     public void findBrandInfoSucess(List<BrandBean> list) {
@@ -315,5 +312,15 @@ public class SearchBrandAct extends BaseAct<ISearchBrandPresenter> implements IS
     public void getHotHistoryFaild(int status, String errorMsg) {
         toast(errorMsg);
 
+    }
+    @OnClick({R.id.iv_sc})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_sc:
+                aCache.put("BrandHistory", "");
+                rlRecent.setVisibility(View.GONE);
+                break;
+
+        }
     }
 }

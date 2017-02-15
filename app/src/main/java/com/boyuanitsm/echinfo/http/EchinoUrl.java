@@ -43,12 +43,21 @@ public class EchinoUrl {
     public static final String FIND_BRAND_URL=BASE_URL+"trademark/unLogin/findTrademarkInfoByName.do";
     //查法院判决
     public static final String FIND_JUDGMENT_URL=BASE_URL+"courtDecision/unLogin/findCourtDecisionInfo.do";
+    //查执行
+    public static final String FIND_IMPLEMENT_URL=BASE_URL+"breakExecutive/unLogin/findBreakExecutiveInfo.do";
+    //查失信
+    public static final String FIND_LOSE_CREDIT_URL=BASE_URL+"courtitem/unLogin/findCourtitemByName.do";
+    //查企业根据名字
+    public static final String FIND_STOCK_NAME_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByName.do";
+    //查经营范围
+    public static final String FIND_JINGYING_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByBusinessScope.do";
+    //查品牌产品
+    public static final String FIND_PINPAI_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByProductName.do";
     /**
      * 企业向关
      */
     /*感兴趣的企业*/
     public static final String INTEREST_COMPANY_URL = BASE_URL + "company/login/findEnterpriseInfoListByCompanyIdList.do";
-//    public static final String INTEREST_COMPANY_URL=BASE_URL+"company/login/findEnterpriseInfoListByCompanyIdList.do";
     /*企业详情*/
     public static final String COMANY_DETAIL_URL=BASE_URL+"view/login/findDetailedInfoById.do";
     /*对外投资*/
@@ -56,6 +65,17 @@ public class EchinoUrl {
     /*企业年报*/
     public static final String COMPANY_REPORT_URL=BASE_URL+"company/login/findAnnualPortsEnterpriseListByCompanyId.do";
     /*法院公告*/
+
+    /*招聘信息*/
+    public static final String FINDRECRUITING_URL=BASE_URL+"company/login/findRecruitingListByCompanyId.do";
+    /*查询亲算信息*/
+    public static final String FINDCLEARINFO_URL=BASE_URL+" company/login/findClearInfoListByCompanyId.do";
+
+
+    /*企业资讯*/
+    public static final String FINDENTERPRISE_URL=BASE_URL+"company/login/findEnterpriseNewsListByCompanyId.do";
+
+
     public static final String COURT_ANNO_URL=BASE_URL+"company/login/findCourtAnnouncementListByCompanyId.do";
     /*法院裁决*/
     public static final String COURT_ADJUDICATION=BASE_URL+"company/login/findCourtDecisionListByCompanyId.do";

@@ -75,6 +75,43 @@ public class CompanyManager {
     }
 
     /**
+     * 招聘信息
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getRecruitment(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FINDRECRUITING_URL,params,resultCallback);
+    }
+
+    /**
+     * 查询清算信息
+     * @param companyId
+     * @param resultCallback
+     */
+    public void geFindclearinfo(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FINDCLEARINFO_URL,params,resultCallback);
+    }
+
+    /**
+     * 企业资讯
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getEnterpriseNews(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FINDENTERPRISE_URL,params,resultCallback);
+    }
+
+
+
+
+
+    /**
      * 法院裁决
      * @param companyId
      * @param resultCallback
