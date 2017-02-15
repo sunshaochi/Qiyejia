@@ -6,9 +6,9 @@ import android.view.View;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.LawsuitMsgBean;
-import com.boyuanitsm.echinfo.module.company.presenter.ILawsuitMsgPre;
+import com.boyuanitsm.echinfo.module.company.presenter.ICompanyBasePre;
 import com.boyuanitsm.echinfo.module.company.presenter.LawsuitMsgPreImpl;
-import com.boyuanitsm.echinfo.module.company.view.ILawsuitMsgView;
+import com.boyuanitsm.echinfo.module.company.view.IBaseListView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -24,7 +24,7 @@ import butterknife.BindView;
  * 诉讼信息
  * Created by Yang on 2017/1/5 0005.
  */
-public class LitigationInfoAct extends BaseAct<ILawsuitMsgPre> implements ILawsuitMsgView{
+public class LitigationInfoAct extends BaseAct<ICompanyBasePre> implements IBaseListView<LawsuitMsgBean>{
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
@@ -42,7 +42,7 @@ public class LitigationInfoAct extends BaseAct<ILawsuitMsgPre> implements ILawsu
         setTopTitle("诉讼信息");
         companyId=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
         mPresenter=new LawsuitMsgPreImpl(this);
-        mPresenter.getLawsuitMsgDatas(companyId);
+        mPresenter.getDatas(companyId);
         initFrg();
     }
 
@@ -65,7 +65,9 @@ public class LitigationInfoAct extends BaseAct<ILawsuitMsgPre> implements ILawsu
         mAdp.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                openActivity(LitigationDetailAct.class);
+                Bundle bundle=new Bundle();
+                bundle.putParcelable(LitigationDetailAct.LITIGATION_DETAIL,datas.get(position-1));
+                openActivity(LitigationDetailAct.class,bundle);
             }
 
             @Override
@@ -76,7 +78,7 @@ public class LitigationInfoAct extends BaseAct<ILawsuitMsgPre> implements ILawsu
         rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                mPresenter.getLawsuitMsgDatas(companyId);
+                mPresenter.getDatas(companyId);
             }
 
             @Override
@@ -87,12 +89,14 @@ public class LitigationInfoAct extends BaseAct<ILawsuitMsgPre> implements ILawsu
         rcv.setAdapter(mAdp);
     }
 
+
     @Override
-    public void setLawsuitMsg(List<LawsuitMsgBean> mdatas) {
+    public void setDatas(List<LawsuitMsgBean> mDatas) {
         rcv.refreshComplete();
-        datas=mdatas;
+        datas=mDatas;
         mAdp.setData(datas);
     }
+
 
     @Override
     public void requestError(int status, String errorMsg) {

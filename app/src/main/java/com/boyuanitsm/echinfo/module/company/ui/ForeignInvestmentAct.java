@@ -7,8 +7,8 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.module.company.presenter.ForengnInvesPreImpl;
-import com.boyuanitsm.echinfo.module.company.presenter.IForengnInvesPre;
-import com.boyuanitsm.echinfo.module.company.view.IForeignInvesView;
+import com.boyuanitsm.echinfo.module.company.presenter.ICompanyBasePre;
+import com.boyuanitsm.echinfo.module.company.view.IBaseListView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -23,7 +23,7 @@ import butterknife.BindView;
  * 对外投资
  * Created by Yang on 2017/1/3 0003.
  */
-public class ForeignInvestmentAct extends BaseAct<IForengnInvesPre> implements IForeignInvesView{
+public class ForeignInvestmentAct extends BaseAct<ICompanyBasePre> implements IBaseListView<CompanyBean>{
     @BindView(R.id.rcv)
     XRecyclerView rcv;
     private String companyId;
@@ -41,7 +41,7 @@ public class ForeignInvestmentAct extends BaseAct<IForengnInvesPre> implements I
         setTopTitle("对外投资");
         mPresenter=new ForengnInvesPreImpl(this);
         companyId=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
-        mPresenter.getInvesDatas(companyId);
+        mPresenter.getDatas(companyId);
         setRightBtn("纠错", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,11 +79,12 @@ public class ForeignInvestmentAct extends BaseAct<IForengnInvesPre> implements I
 
 
     @Override
-    public void getInvesData(List<CompanyBean> mDatas) {
+    public void setDatas(List<CompanyBean> mDatas) {
         rcv.refreshComplete();
         datas=mDatas;
         adapter.setData(datas);
     }
+
 
 
     @Override
