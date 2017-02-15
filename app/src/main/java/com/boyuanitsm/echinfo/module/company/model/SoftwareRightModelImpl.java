@@ -4,12 +4,14 @@ import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.manager.CompanyManager;
 
 /**
- * 对外投资
- * Created by wangbin on 17/2/9.
+ * 软件著作权
+ * Created by wangbin on 17/2/14.
  */
-public class ForengnInvesImpl implements ICompanyBaseListModel{
+public class SoftwareRightModelImpl implements ICompanyBaseListModel{
+
+
     @Override
     public void getDatas(String companyId, ResultCallback resultCallback) {
-        CompanyManager.getCompanyManager().toGetInves(companyId,resultCallback);
+        CompanyManager.getCompanyManager().getSoftwarerightsById(companyId,resultCallback);
     }
 }

@@ -31,8 +31,9 @@
                     android:layout_marginTop="10dp" />
 
                 <TextView
+                    android:id="@+id/tvName"
                     style="@style/tv_14_gray"
-                    android:text="郑荣" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -49,8 +50,9 @@
                     android:layout_marginTop="10dp" />
 
                 <TextView
+                    android:id="@+id/tvNo"
                     style="@style/tv_14_gray"
-                    android:text="67899" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -67,8 +69,9 @@
                     android:layout_marginTop="10dp" />
 
                 <TextView
+                    android:id="@+id/tvFy"
                     style="@style/tv_14_gray"
-                    android:text="人民法院" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -76,6 +79,7 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
+
                     style="@style/tv_14_black_bold"
                     android:text="立案时间" />
 
@@ -85,8 +89,9 @@
                     android:layout_marginTop="10dp" />
 
                 <TextView
+                    android:id="@+id/tvLaTime"
                     style="@style/tv_14_gray"
-                    android:text="2017年1月5日" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -103,8 +108,9 @@
                     android:layout_marginTop="10dp" />
 
                 <TextView
+                    android:id="@+id/tvAh"
                     style="@style/tv_14_gray"
-                    android:text="114号" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -121,8 +127,9 @@
                     android:layout_marginTop="10dp" />
 
                 <TextView
+                    android:id="@+id/tvZx"
                     style="@style/tv_14_gray"
-                    android:text="123" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

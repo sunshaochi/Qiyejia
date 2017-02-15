@@ -6,9 +6,9 @@ import android.view.View;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.YearReportBean;
-import com.boyuanitsm.echinfo.module.company.presenter.IYearReportPre;
+import com.boyuanitsm.echinfo.module.company.presenter.ICompanyBasePre;
 import com.boyuanitsm.echinfo.module.company.presenter.YearReportPreImpl;
-import com.boyuanitsm.echinfo.module.company.view.IYearReportView;
+import com.boyuanitsm.echinfo.module.company.view.IBaseListView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -25,7 +25,7 @@ import butterknife.BindView;
  * 企业年报
  * Created by Yang on 2017/1/4 0004.
  */
-public class YearReportsAct extends BaseAct<IYearReportPre> implements IYearReportView{
+public class YearReportsAct extends BaseAct<ICompanyBasePre> implements IBaseListView<YearReportBean>{
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
@@ -49,7 +49,7 @@ public class YearReportsAct extends BaseAct<IYearReportPre> implements IYearRepo
         mPresenter=new YearReportPreImpl(this);
         initFrg();
         companyId=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
-        mPresenter.getYearReportDatas(companyId);
+        mPresenter.getDatas(companyId);
         rcv.setRefreshing(true);
     }
 
@@ -83,14 +83,28 @@ public class YearReportsAct extends BaseAct<IYearReportPre> implements IYearRepo
 
             }
         });
+        rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.getDatas(companyId);
+
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
         rcv.setAdapter(mAdp);
     }
 
     @Override
-    public void setYearReport(List<YearReportBean> datas) {
+    public void setDatas(List<YearReportBean> mDatas) {
         rcv.refreshComplete();
+        datas=mDatas;
         mAdp.setData(datas);
     }
+
 
     @Override
     public void requestError(int status, String errorMsg) {

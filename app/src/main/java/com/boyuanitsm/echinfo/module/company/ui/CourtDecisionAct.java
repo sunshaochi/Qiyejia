@@ -6,8 +6,8 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.CourtDecisionBean;
 import com.boyuanitsm.echinfo.module.company.presenter.CourdecPreImpl;
-import com.boyuanitsm.echinfo.module.company.presenter.ICourdecPre;
-import com.boyuanitsm.echinfo.module.company.view.ICourtDecView;
+import com.boyuanitsm.echinfo.module.company.presenter.ICompanyBasePre;
+import com.boyuanitsm.echinfo.module.company.view.IBaseListView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -22,7 +22,7 @@ import butterknife.BindView;
  * 法院判决
  * Created by Yang on 2017/1/3 0003.
  */
-public class CourtDecisionAct extends BaseAct<ICourdecPre> implements ICourtDecView {
+public class CourtDecisionAct extends BaseAct<ICompanyBasePre> implements IBaseListView<CourtDecisionBean> {
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
@@ -40,7 +40,7 @@ public class CourtDecisionAct extends BaseAct<ICourdecPre> implements ICourtDecV
         setTopTitle("法院判决");
         mPresenter = new CourdecPreImpl(this);
         companyId = getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
-        mPresenter.getCourdecDatas(companyId);
+        mPresenter.getDatas(companyId);
         initFrg();
     }
 
@@ -63,7 +63,7 @@ public class CourtDecisionAct extends BaseAct<ICourdecPre> implements ICourtDecV
         rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                mPresenter.getCourdecDatas(companyId);
+                mPresenter.getDatas(companyId);
 
             }
 
@@ -75,11 +75,13 @@ public class CourtDecisionAct extends BaseAct<ICourdecPre> implements ICourtDecV
     }
 
     @Override
-    public void getCourtDecDatas(List<CourtDecisionBean> mdatas) {
+    public void setDatas(List<CourtDecisionBean> mDatas) {
         rcv.refreshComplete();
-        datas=mdatas;
+        datas=mDatas;
         mAdp.setData(datas);
     }
+
+
 
     @Override
     public void requestError(int status, String errorMsg) {

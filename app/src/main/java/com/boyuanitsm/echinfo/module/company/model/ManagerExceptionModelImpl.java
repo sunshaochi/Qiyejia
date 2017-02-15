@@ -4,12 +4,13 @@ import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.manager.CompanyManager;
 
 /**
- * 对外投资
- * Created by wangbin on 17/2/9.
+ * 经营异常
+ * Created by wangbin on 17/2/13.
  */
-public class ForengnInvesImpl implements ICompanyBaseListModel{
+public class ManagerExceptionModelImpl implements ICompanyBaseListModel{
+
     @Override
     public void getDatas(String companyId, ResultCallback resultCallback) {
-        CompanyManager.getCompanyManager().toGetInves(companyId,resultCallback);
+        CompanyManager.getCompanyManager().getManagerException(companyId,resultCallback);
     }
 }

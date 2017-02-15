@@ -97,6 +97,17 @@ public class CompanyManager {
     }
 
     /**
+     * 查询诉讼信息详情
+     * @param id
+     * @param resultCallback
+     */
+    public void getLitigationDetail(String id,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("id",id);
+        OkHttpManager.getInstance().doGet(EchinoUrl.LITIGATION_DETAIL_URL,params,resultCallback);
+    }
+
+    /**
      * 获取行政处罚
      * @param companyId
      * @param resultCallback
@@ -116,6 +127,50 @@ public class CompanyManager {
         Map<String,String> params=new HashMap<>();
         params.put("companyId",companyId);
         OkHttpManager.getInstance().doGet(EchinoUrl.MANAGEMENT_EXCEPTION_URL,params,resultCallback);
+    }
+
+    /**
+     * 抽查检查
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getFindCheck(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_CHECK_URL,params,resultCallback);
+    }
+
+    /**
+     * 通过公司id查专利
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getPatentById(String companyId,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.PATENT_BY_ID_URL,params,resultCallback);
+    }
+
+    /**
+     * 查询原创著作权
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getCopyrightsById(String companyId,ResultCallback resultCallback ){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.COPYRIGHTS_BYID_URL,params,resultCallback);
+    }
+
+    /**
+     * 查询软件著作权
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getSoftwarerightsById(String companyId,ResultCallback resultCallback ){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.SOFTWORE_RIGHT_URL,params,resultCallback);
     }
 
 }

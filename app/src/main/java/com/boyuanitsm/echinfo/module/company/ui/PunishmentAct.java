@@ -5,9 +5,9 @@ import android.os.Bundle;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.AdministrativePenaltyBean;
-import com.boyuanitsm.echinfo.module.company.presenter.IPunishmentPre;
+import com.boyuanitsm.echinfo.module.company.presenter.ICompanyBasePre;
 import com.boyuanitsm.echinfo.module.company.presenter.PunishmentPreImpl;
-import com.boyuanitsm.echinfo.module.company.view.IPunishmentView;
+import com.boyuanitsm.echinfo.module.company.view.IBaseListView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -22,7 +22,7 @@ import butterknife.BindView;
  * 行政处罚
  * Created by Yang on 2017/1/4 0004.
  */
-public class PunishmentAct extends BaseAct<IPunishmentPre> implements IPunishmentView {
+public class PunishmentAct extends BaseAct<ICompanyBasePre> implements IBaseListView<AdministrativePenaltyBean> {
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
@@ -40,7 +40,7 @@ public class PunishmentAct extends BaseAct<IPunishmentPre> implements IPunishmen
         setTopTitle("行政处罚");
         mPresenter = new PunishmentPreImpl(this);
         companyId = getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
-        mPresenter.getPunishmentDatas(companyId);
+        mPresenter.getDatas(companyId);
         initFrg();
     }
 
@@ -64,7 +64,7 @@ public class PunishmentAct extends BaseAct<IPunishmentPre> implements IPunishmen
         rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                mPresenter.getPunishmentDatas(companyId);
+                mPresenter.getDatas(companyId);
             }
 
             @Override
@@ -75,12 +75,15 @@ public class PunishmentAct extends BaseAct<IPunishmentPre> implements IPunishmen
         rcv.setAdapter(mAdp);
     }
 
+
     @Override
-    public void setPunishmentDatas(List<AdministrativePenaltyBean> mDatas) {
+    public void setDatas(List<AdministrativePenaltyBean> mDatas) {
         rcv.refreshComplete();
         datas = mDatas;
         mAdp.setData(datas);
     }
+
+
 
     @Override
     public void requestError(int status, String errorMsg) {

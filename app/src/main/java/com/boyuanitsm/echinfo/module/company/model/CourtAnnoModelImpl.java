@@ -6,10 +6,10 @@ import com.boyuanitsm.echinfo.http.manager.CompanyManager;
 /**
  * Created by wangbin on 17/2/10.
  */
-public class CourtAnnoModelImpl implements ICourtAnnoModel{
+public class CourtAnnoModelImpl implements ICompanyBaseListModel{
 
     @Override
-    public void getCourtAnnoList(String companyId, ResultCallback resultCallback) {
+    public void getDatas(String companyId, ResultCallback resultCallback) {
         CompanyManager.getCompanyManager().getCourtAnno(companyId,resultCallback);
     }
 }
