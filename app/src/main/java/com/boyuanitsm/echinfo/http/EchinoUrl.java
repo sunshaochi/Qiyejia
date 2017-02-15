@@ -53,6 +53,8 @@ public class EchinoUrl {
     public static final String FIND_JINGYING_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByBusinessScope.do";
     //查品牌产品
     public static final String FIND_PINPAI_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByProductName.do";
+    //查股东高管
+    public static final String FIND_GUDONG_URL=BASE_URL+"stockMsg/unLogin/findStockMsgInfo.do";
     /**
      * 企业向关
      */
