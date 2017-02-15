@@ -166,6 +166,29 @@ public class CompanyManager {
         OkHttpManager.getInstance().doGet(EchinoUrl.MANAGEMENT_EXCEPTION_URL,params,resultCallback);
     }
 
+
+    /**查询融资记录
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getFinancInfo(String companyId, ResultCallback resultCallback) {
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FINDFINANCINGINFO_URL,params,resultCallback);
+    }
+
+    /**
+     * 获取股权出资
+     * @param companyId
+     * @param resultCallback
+     */
+    public void getEquitylist(String companyId, ResultCallback resultCallback) {
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FINDEQUITY_URL,params,resultCallback);
+    }
+
+
     /**
      * 抽查检查
      * @param companyId
@@ -209,5 +232,6 @@ public class CompanyManager {
         params.put("companyId",companyId);
         OkHttpManager.getInstance().doGet(EchinoUrl.SOFTWORE_RIGHT_URL,params,resultCallback);
     }
+
 
 }
