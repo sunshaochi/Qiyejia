@@ -19,6 +19,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@color/white"
@@ -54,9 +55,10 @@
                             android:text="申请号" />
 
                         <TextView
+                            android:id="@+id/tvSqNo"
                             style="@style/tv_14_gray"
                             android:layout_marginTop="10dp"
-                            android:text="9999" />
+                            android:text="" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -71,6 +73,7 @@
                             android:text="申请日期" />
 
                         <TextView
+                            android:id="@+id/tvSqDate"
                             style="@style/tv_14_gray"
                             android:layout_marginTop="10dp"
                             android:text="2017-01-05" />
@@ -95,9 +98,10 @@
                             android:text="申请公布号" />
 
                         <TextView
+                            android:id="@+id/tvPublishNo"
                             style="@style/tv_14_gray"
                             android:layout_marginTop="10dp"
-                            android:text="9999" />
+                            android:text="" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -112,9 +116,10 @@
                             android:text="申请公布日" />
 
                         <TextView
+                            android:id="@+id/tvPublishDate"
                             style="@style/tv_14_gray"
                             android:layout_marginTop="10dp"
-                            android:text="2017-01-05" />
+                            android:text="" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -127,30 +132,34 @@
                 android:layout_marginTop="10dp" />
 
             <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/mivAgency"
                 style="@style/miv_patentDetail_item"
                 app:leftText="专利代理机构"
-                app:rightText="浙江雅兴有限公司" />
+                app:rightText="" />
 
             <View style="@style/view_line" />
 
             <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/mivInventor"
                 style="@style/miv_patentDetail_item"
                 app:leftText="发明人"
-                app:rightText="外星人" />
+                app:rightText="" />
 
             <View style="@style/view_line" />
 
             <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/mivType"
                 style="@style/miv_patentDetail_item"
                 app:leftText="专利类型"
-                app:rightText="实用" />
+                app:rightText="" />
 
             <View style="@style/view_line" />
 
             <com.boyuanitsm.echinfo.widget.MineItemView
+                android:id="@+id/mivState"
                 style="@style/miv_patentDetail_item"
                 app:leftText="状态"
-                app:rightText="授权" />
+                app:rightText="" />
 
             <View style="@style/view_line" />
 
@@ -170,11 +179,12 @@
 
             <View style="@style/view_line" />
             <TextView
+                android:id="@+id/tvDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="15dp"
-                android:text="详细信息"
+                android:text=""
                 android:textColor="#999"
                 android:textSize="14sp" />
 

@@ -6,10 +6,10 @@ import com.boyuanitsm.echinfo.http.manager.CompanyManager;
 /**
  * Created by wangbin on 17/2/10.
  */
-public class LawsuitMsgModelImpl implements ILawsuitMsgModel{
+public class LawsuitMsgModelImpl implements ICompanyBaseListModel{
 
     @Override
-    public void getLawsuitMsgDatas(String companyId, ResultCallback resultCallback) {
+    public void getDatas(String companyId, ResultCallback resultCallback) {
         CompanyManager.getCompanyManager().getLitigation(companyId,resultCallback);
     }
 }

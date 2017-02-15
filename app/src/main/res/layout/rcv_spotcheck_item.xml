@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,8 +22,9 @@
                 android:text="检查实施机关:" />
 
             <TextView
+                android:id="@+id/tvJg"
                 style="@style/executed_item_tv_gray"
-                android:text="海关" />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -35,8 +38,9 @@
                 android:text="类型:" />
 
             <TextView
+                android:id="@+id/tvType"
                 style="@style/executed_item_tv_gray"
-                android:text="-" />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -50,8 +54,9 @@
                 android:text="日期:" />
 
             <TextView
+                android:id="@+id/tvDate"
                 style="@style/executed_item_tv_gray"
-                android:text="2017-01-13" />
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,8 +70,9 @@
                 android:text="结果:" />
 
             <TextView
+                android:id="@+id/tvResult"
                 style="@style/executed_item_tv_gray"
-                android:text="合格" />
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 

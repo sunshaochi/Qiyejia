@@ -42,6 +42,8 @@ public class CopyrightAct extends BaseAct {
     private FrgPagerAdp adapter;
     private FragmentManager fragmentManager;
 
+    public static  String companyId;
+
     @Override
     public int getLayout() {
         return R.layout.act_copyright;
@@ -50,6 +52,7 @@ public class CopyrightAct extends BaseAct {
     @Override
     public void init(Bundle savedInstanceState) {
         setTopTitle("著作权");
+        companyId=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
         initFrg();
     }
 

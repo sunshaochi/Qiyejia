@@ -83,8 +83,18 @@ public class EchinoUrl {
     public static final String COURT_ADJUDICATION=BASE_URL+"company/login/findCourtDecisionListByCompanyId.do";
     /*诉讼信息*/
     public static final String LITIGATION_URL=BASE_URL+"company/login/findLawsuitMsgListByCompanyId.do";
+    /*诉讼信息详情*/
+    public static final String LITIGATION_DETAIL_URL=BASE_URL+"view/login/findLawsuitMsgById.do";
     /*行政处罚*/
     public static final String ADMINISTRATIVE_URL=BASE_URL+"company/login/findAdministrativePenaltyListByCompanyId.do";
     /*经营异常*/
     public static final String MANAGEMENT_EXCEPTION_URL=BASE_URL+"company/login/findManageExceptionListBycompanyId.do";
+    /*抽查检查*/
+    public static final String FIND_CHECK_URL=BASE_URL+"company/login/findSpotCheckListByCompanyI.do";
+    /*通过公司ID查专利*/
+    public static final String PATENT_BY_ID_URL=BASE_URL+"company/login/findPatenInfomationByCompanyId.do";
+    /*查询原创著作权*/
+    public static final String COPYRIGHTS_BYID_URL=BASE_URL+"company/login/findCopyrightsByCompanyId.do";
+    /*查询软件著作权*/
+    public static final String SOFTWORE_RIGHT_URL=BASE_URL+"company/ogin/findSoftwareCopyrightByCompanyId.do";
 }

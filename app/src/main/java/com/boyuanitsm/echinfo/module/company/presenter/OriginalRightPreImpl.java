@@ -1,44 +1,44 @@
 package com.boyuanitsm.echinfo.module.company.presenter;
 
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
-import com.boyuanitsm.echinfo.bean.CourtAnnoBean;
+import com.boyuanitsm.echinfo.bean.CopyrightsBean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
-import com.boyuanitsm.echinfo.module.company.model.CourtAnnoModelImpl;
 import com.boyuanitsm.echinfo.module.company.model.ICompanyBaseListModel;
+import com.boyuanitsm.echinfo.module.company.model.OriginalRightModelImpl;
 import com.boyuanitsm.echinfo.module.company.view.IBaseListView;
 
 import java.util.List;
 
 /**
- * 法院公告
- * Created by wangbin on 17/2/10.
+ * Created by wangbin on 17/2/14.
  */
-public class CourtAnnoPreImpl extends BasePresenterImpl<IBaseListView<CourtAnnoBean>> implements ICompanyBasePre {
+public class OriginalRightPreImpl extends BasePresenterImpl<IBaseListView<CopyrightsBean>> implements ICompanyBasePre {
     private ICompanyBaseListModel model;
 
-    public CourtAnnoPreImpl(IBaseListView<CourtAnnoBean> view) {
+    public OriginalRightPreImpl(IBaseListView<CopyrightsBean> view) {
         super(view);
         mView = view;
-        model = new CourtAnnoModelImpl();
+        model = new OriginalRightModelImpl();
     }
 
     @Override
     public void getDatas(String companyId) {
-        model.getDatas(companyId, new ResultCallback<ResultBean<List<CourtAnnoBean>>>() {
+        model.getDatas(companyId, new ResultCallback<ResultBean<List<CopyrightsBean>>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.requestError(status, errorMsg);
             }
 
             @Override
-            public void onResponse(ResultBean<List<CourtAnnoBean>> response) {
-                List<CourtAnnoBean> list = response.getData();
-                if (list == null || list.size() == 0) {
+            public void onResponse(ResultBean<List<CopyrightsBean>> response) {
+                List<CopyrightsBean> datas=response.getData();
+                if(datas==null||datas.size()==0){
                     mView.requestNoData();
-                } else {
-                    mView.setDatas(list);
+                }else {
+                    mView.setDatas(datas);
                 }
+
             }
         });
     }

@@ -7,10 +7,10 @@ import com.boyuanitsm.echinfo.http.manager.CompanyManager;
  * 法院判决
  * Created by wangbin on 17/2/10.
  */
-public class CourdecModelImpl implements ICourdecModel{
+public class CourdecModelImpl implements ICompanyBaseListModel{
 
     @Override
-    public void getCourdecDatas(String companyId, ResultCallback resultCallback) {
+    public void getDatas(String companyId, ResultCallback resultCallback) {
         CompanyManager.getCompanyManager().getCourtAdjudication(companyId,resultCallback);
     }
 }
