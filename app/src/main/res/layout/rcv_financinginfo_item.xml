@@ -11,6 +11,7 @@
         android:padding="15dp">
 
         <TextView
+            android:id="@+id/tv_je"
             style="@style/tv_14_black_bold"
             android:text="融资金额:  2000万" />
 
@@ -25,6 +26,7 @@
                 android:text="描述:" />
 
             <TextView
+                android:id="@+id/tv_ms"
                 style="@style/executed_item_tv_gray"
                 android:text="描述" />
         </LinearLayout>
@@ -45,6 +47,7 @@
                     android:text="融资时间:" />
 
                 <TextView
+                    android:id="@+id/tv_time"
                     style="@style/executed_item_tv_gray"
                     android:text="2017-01-04" />
             </LinearLayout>
@@ -60,6 +63,7 @@
                     android:text="投资人:" />
 
                 <TextView
+                    android:id="@+id/tv_tzr"
                     style="@style/executed_item_tv_gray"
                     android:text="IDG" />
             </LinearLayout>

@@ -69,8 +69,11 @@ public class EchinoUrl {
     /*招聘信息*/
     public static final String FINDRECRUITING_URL=BASE_URL+"company/login/findRecruitingListByCompanyId.do";
     /*查询亲算信息*/
-    public static final String FINDCLEARINFO_URL=BASE_URL+" company/login/findClearInfoListByCompanyId.do";
-
+    public static final String FINDCLEARINFO_URL=BASE_URL+"company/login/findClearInfoListByCompanyId.do";
+    /*查询融资信息*/
+    public static final String FINDFINANCINGINFO_URL=BASE_URL+"company/login/findFinancingInfoListByCompanyId.do";
+    /*查询股权出资信息*/
+    public static final String FINDEQUITY_URL=BASE_URL+"company/login/findEquityPledgedListByCompanyId.do";
 
     /*企业资讯*/
     public static final String FINDENTERPRISE_URL=BASE_URL+"company/login/findEnterpriseNewsListByCompanyId.do";
