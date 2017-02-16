@@ -12,4 +12,10 @@ public interface ICompanyModel {
      * @param resultCallback
      */
     void getCompanyMes(String companyId, ResultCallback resultCallback);
+
+    void addInsertAtt(String companyId,ResultCallback resultCallback);//添加关注
+
+    void removeAtt(String companyId,ResultCallback resultCallback);//取消关注
+
+
 }

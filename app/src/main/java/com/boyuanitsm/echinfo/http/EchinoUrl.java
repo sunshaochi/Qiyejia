@@ -26,6 +26,10 @@ public class EchinoUrl {
     public static final String MODIFY_PWD_URL = BASE_URL + "manager/login/modifyUserPassword.do";
     //修改用户头像
     public static final String MODIFY_HEAD_URL = BASE_URL + "manager/login/modifyUserIcon.do";
+    //添加关注
+    public static final String INSERTMYATT_URL = BASE_URL + "user/login/insertMyAttention.do";
+    //取消关注
+    public static final String DELETEMYATT_URL = BASE_URL + "user/login/deleteMyAttention.do";
 
     /**
      *     查找相关接口

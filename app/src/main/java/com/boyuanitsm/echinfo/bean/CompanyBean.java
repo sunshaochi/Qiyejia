@@ -34,7 +34,7 @@ public class CompanyBean implements Parcelable {
     private String lastUpdateTime;
     private String companyIntro;
     private String filename;
-    private String sts;
+    private String sts;//1为已经关注，0为未关注
     private String companyUpdatetime;
     private String companyCreatetime;
     private String companyCreateTime;
