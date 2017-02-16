@@ -1,9 +1,9 @@
 package com.boyuanitsm.echinfo.module.home.presenter.searchPresenter;
 
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
-import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.bean.DateBean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
+import com.boyuanitsm.echinfo.bean.StockMsgBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.module.home.model.searchModel.ISearchShareholderModel;
 import com.boyuanitsm.echinfo.module.home.model.searchModel.SearchShareholderModelImpl;
@@ -27,15 +27,15 @@ public class SearchShareholderPresenterImpl extends BasePresenterImpl<ISearchSha
 
     @Override
     public void getQiYeinfo(String stockMsgName, String address, String industry, String capital, String establishDate, int page, int rows) {
-        model.getfindStockMsgInfo(stockMsgName, address, industry, capital, establishDate, page, rows, new ResultCallback<ResultBean<DateBean<CompanyBean>>>() {
+        model.getfindStockMsgInfo(stockMsgName, address, industry, capital, establishDate, page, rows, new ResultCallback<ResultBean<DateBean<StockMsgBean>>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.findEnterpriseInfoByNameFaild(status,errorMsg);
             }
 
             @Override
-            public void onResponse(ResultBean<DateBean<CompanyBean>> response) {
-                List<CompanyBean> list = response.getData().getRows();
+            public void onResponse(ResultBean<DateBean<StockMsgBean>> response) {
+                List<StockMsgBean> list = response.getData().getRows();
                 mView.findEnterpriseTotals(response.getData().getTatal());
                 if (list!=null&&list.size()>0){
                     mView.findEnterpriseInfoByNameSuceess(list);
@@ -48,14 +48,14 @@ public class SearchShareholderPresenterImpl extends BasePresenterImpl<ISearchSha
 
     @Override
     public void getHotHistory(String type) {
-        model.getHotHistory(type, new ResultCallback<ResultBean<List<CompanyBean>>>() {
+        model.getHotHistory(type, new ResultCallback<ResultBean<List<StockMsgBean>>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.getHotHistoryFaild(status,errorMsg);
             }
 
             @Override
-            public void onResponse(ResultBean<List<CompanyBean>> response) {
+            public void onResponse(ResultBean<List<StockMsgBean>> response) {
                 mView.getHotHistorySucess(response.getData());
             }
         });

@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.bean.ProductBean;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MineItemView;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
@@ -39,7 +40,8 @@ public class ProductInfoAct extends BaseAct {
 
     private BaseRecyclerAdapter<String> mAdp;
     private List<String> testList = new ArrayList<>();
-
+    public static final String PRODUCT_INFO="product_info";
+    private ProductBean productBean;
     @Override
     public int getLayout() {
         return R.layout.act_productinfo;
@@ -48,10 +50,16 @@ public class ProductInfoAct extends BaseAct {
     @Override
     public void init(Bundle savedInstanceState) {
         setTopTitle("产品信息");
+        productBean = getIntent().getParcelableExtra(PRODUCT_INFO);
         initFrg();
     }
 
     private void initFrg() {
+        miv_name.setRightText(productBean.getName());
+        miv_field.setRightText(productBean.getDomain());
+        miv_industry.setRightText(productBean.getIndustry());
+        miv_tag.setRightText(productBean.getTag());
+        miv_urlAddress.setRightText(productBean.getUrl());
         testList = EchinfoUtils.getTestDatas(3);
         rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), false);
         rcv.setPullRefreshEnabled(false);

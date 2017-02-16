@@ -13,7 +13,7 @@ import com.boyuanitsm.echinfo.base.BaseFrg;
 import com.boyuanitsm.echinfo.event.MainTabEvent;
 import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
 import com.boyuanitsm.echinfo.module.company.ui.JingyingFwAct;
-import com.boyuanitsm.echinfo.module.company.ui.JinyinFwAct;
+import com.boyuanitsm.echinfo.module.company.ui.SearchGsByNameAct;
 import com.boyuanitsm.echinfo.module.company.ui.PinpaidocAct;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
@@ -87,7 +87,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 switch (position) {
                     case 0://企业名称
-                        openActivity(JinyinFwAct.class);
+                        openActivity(SearchGsByNameAct.class);
                         break;
                     case 1://股东高管
                         openActivity(SearchShareholderAct.class);

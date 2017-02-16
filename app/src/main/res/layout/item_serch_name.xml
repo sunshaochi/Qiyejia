@@ -27,6 +27,7 @@
     <LinearLayout
         android:paddingLeft="10dp"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
@@ -45,6 +46,26 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_status"-->
+            <!--android:textColor="#999999"-->
+            <!--android:textSize="12sp"-->
+            <!--android:text="续存"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/tv_sb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tv_status"
             android:textColor="#999999"
@@ -54,13 +75,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
     <View
         android:layout_marginTop="15dp"
         android:paddingLeft="10dp"
         style="@style/view_line"></View>
-
-
-
-
 </LinearLayout>

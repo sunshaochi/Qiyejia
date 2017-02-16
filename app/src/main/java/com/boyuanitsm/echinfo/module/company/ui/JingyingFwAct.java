@@ -200,7 +200,7 @@ public class JingyingFwAct extends BaseAct<IJingYingPre> implements IJingyingVie
             }
         });
         String strTime = null;
-        strTime = aCache.getAsString("BrandHistory");
+        strTime = aCache.getAsString("JingYingHistory");
         if (!TextUtils.isEmpty(strTime)) {
             query.setFocusable(true);
             query.setFocusableInTouchMode(true);
@@ -309,7 +309,7 @@ public class JingyingFwAct extends BaseAct<IJingYingPre> implements IJingyingVie
         xr.setAdapter(mAdp);
     }
 
-    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec,R.id.iv_sc})
+    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec,R.id.iv_sc,R.id.rl_search,R.id.ll_rs})
     public void OnClick(View v) {
         switch (v.getId()) {
             case R.id.gd_sec:
@@ -327,8 +327,12 @@ public class JingyingFwAct extends BaseAct<IJingYingPre> implements IJingyingVie
                 updatacolor(tv_hy, iv_hy, 0);
                 break;
             case R.id.iv_sc:
-                aCache.put("BrandHistory", "");
+                aCache.put("JingYingHistory", "");
                 rlRecent.setVisibility(View.GONE);
+                break;
+            case R.id.rl_search:
+                break;
+            case R.id.ll_rs:
                 break;
 
         }
@@ -499,6 +503,7 @@ public class JingyingFwAct extends BaseAct<IJingYingPre> implements IJingyingVie
 
     }
 
+
     @Override
     public void findEnterpriseInfoByNameFaild(int status, String errorMsg) {
 
@@ -536,6 +541,7 @@ public class JingyingFwAct extends BaseAct<IJingYingPre> implements IJingyingVie
     public void getHotHistoryFaild(int status, String errorMsg) {
         toast(errorMsg);
     }
+
 
 }
 

@@ -1,7 +1,7 @@
 package com.boyuanitsm.echinfo.module.company.view;
 
 import com.boyuanitsm.echinfo.base.BaseView;
-import com.boyuanitsm.echinfo.bean.CompanyBean;
+import com.boyuanitsm.echinfo.bean.ProductBean;
 
 import java.util.List;
 
@@ -11,13 +11,13 @@ import java.util.List;
  * Created by xiaoke on 2017/2/14.
  */
 
-public interface IJingyingView extends BaseView {
+public interface IPinPaiView extends BaseView {
     //根据企业名字查找企业
-    void findEnterpriseInfoByNameSuceess(List<CompanyBean> list);
+    void findEnterpriseInfoByNameSuceess(List<ProductBean> list);
     void findEnterpriseInfoByNameFaild(int status, String errorMsg);
     void findfindEnterpriseInfoByNameNodata();
     void findEnterpriseTotals(int tatal);
     //获取企业热门搜索
-    void getHotHistorySucess(List<CompanyBean> suceessMsg);
-    void getHotHistoryFaild(int status,String errorMsg);
+    void getHotHistorySucess(List<ProductBean> suceessMsg);
+    void getHotHistoryFaild(int status, String errorMsg);
 }

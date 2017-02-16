@@ -10,11 +10,13 @@ import com.boyuanitsm.echinfo.callback.ResultCallback;
 
 public interface IJingYingFwModel {
     //查找企业根据企业名
-    void getfindStockMsgInfo(String companyName, String address, String industry, String capital, String establishDate, int page, int rows, ResultCallback callback);
+    void getfindStockMsgInfo(String companyName, String address, String industry, String capital, String establishDate,boolean isRangeQuery,String screeningRange, int page, int rows, ResultCallback callback);
     //经营范围查找企业
     void findEnterpriseInfoByBusinessScope(String businessScope, String address, String industry, String capital, String establishDate, int page, int rows, ResultCallback callback);
     //品牌产品查找企业
     void findEnterpriseInfoByProductName(String businessScope, String address, String industry, String capital, String establishDate, int page, int rows, ResultCallback callback);
     //获取热门搜索记录
     void getHotHistory(String type, ResultCallback callback);
+    //获取品牌搜索记录
+    void getPinPaiHotHistory(String type, ResultCallback callback);
 }
