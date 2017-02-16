@@ -13,4 +13,10 @@ public interface ICompanyView extends BaseView{
 
     void requestError(int status, String errorMsg);
 
+    void addInsertAtt();//添加关注
+
+    void removeAtt();//取消关注
+
+
+
 }

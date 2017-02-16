@@ -8,4 +8,8 @@ import com.boyuanitsm.echinfo.base.BasePresenter;
 public interface ICompanyPre extends BasePresenter{
 
     void getCompanyDetail(String companyId);
+
+    void addInsertAtt(String companyId);//添加关注
+
+    void removeAtt(String companyId);//取消关注
 }

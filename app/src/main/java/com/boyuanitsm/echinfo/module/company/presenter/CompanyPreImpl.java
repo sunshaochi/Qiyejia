@@ -22,7 +22,7 @@ public class CompanyPreImpl extends BasePresenterImpl<ICompanyView> implements I
     }
 
     @Override
-    public void getCompanyDetail(String companyId) {
+    public void getCompanyDetail(String companyId) {//获取公司信息
         model.getCompanyMes(companyId, new ResultCallback<ResultBean<CompanyBean>>() {
             @Override
             public void onError(int status, String errorMsg) {
@@ -35,5 +35,45 @@ public class CompanyPreImpl extends BasePresenterImpl<ICompanyView> implements I
                 mView.setCompanyMes(companyBean);
             }
         });
+    }
+
+    @Override
+    public void addInsertAtt(final String companyId) {//添加关注
+        model.addInsertAtt(companyId, new ResultCallback<ResultBean>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+                mView.requestError(status,errorMsg);
+            }
+
+            @Override
+            public void onResponse(ResultBean response) {
+                int statu=response.getStatus();
+                if(statu==200){
+                mView.addInsertAtt();}
+
+
+            }
+        });
+
+    }
+
+    @Override
+    public void removeAtt(String companyId) {//取消关注
+        model.removeAtt(companyId, new ResultCallback<ResultBean>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+                mView.requestError(status,errorMsg);
+            }
+
+            @Override
+            public void onResponse(ResultBean response) {
+                int status=response.getStatus();
+                if(status==200){
+                    mView.removeAtt();
+                }
+
+            }
+        });
+
     }
 }
