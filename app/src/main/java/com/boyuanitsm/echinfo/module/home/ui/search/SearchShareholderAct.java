@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
-import com.boyuanitsm.echinfo.bean.CompanyBean;
+import com.boyuanitsm.echinfo.bean.StockMsgBean;
 import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.ISearchShareholderPresenter;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.SearchShareholderPresenterImpl;
@@ -54,7 +54,7 @@ public class SearchShareholderAct extends BaseAct<ISearchShareholderPresenter> i
     FlowTagLayout sizeFlowLayout;//最近搜索流式布局
     @BindView(R.id.rl_patent)
     RelativeLayout rl_patent;//专利
-    BaseRecyclerAdapter<CompanyBean> myAdapter;//查商标适配器
+    BaseRecyclerAdapter<StockMsgBean> myAdapter;//查商标适配器
     @BindView(R.id.rl_recent)
     RelativeLayout rlRecent;//最近搜索
     @BindView(R.id.rl_search)
@@ -71,7 +71,7 @@ public class SearchShareholderAct extends BaseAct<ISearchShareholderPresenter> i
     FlowTagLayout rm;//热门搜索
     @BindView(R.id.iv_sc)
     ImageView ivSc;//最近搜索删除
-    List<CompanyBean> datas = new ArrayList<>();
+    List<StockMsgBean> datas = new ArrayList<>();
     int page = 1;
     int rows = 10;
     String patentType="0";//0：近似查询、1：精确查询、2：申请人
@@ -132,7 +132,7 @@ public class SearchShareholderAct extends BaseAct<ISearchShareholderPresenter> i
         });
         initData();
         //获取热门搜索词语
-        mPresenter.getHotHistory("EnterpriseInfo");
+        mPresenter.getHotHistory("StockMsg");
         //填充最近搜索
         initRecentSearch();
         //填充热门搜索
@@ -297,14 +297,14 @@ public class SearchShareholderAct extends BaseAct<ISearchShareholderPresenter> i
      */
     private void initData() {
         query.setHint("请输入法定代表人或股东");
-        myAdapter = new BaseRecyclerAdapter<CompanyBean>(getApplicationContext(), datas) {
+        myAdapter = new BaseRecyclerAdapter<StockMsgBean>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.rcv_search_shareholder;
             }
 
             @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, CompanyBean item) {
+            public void bindData(BaseRecyclerViewHolder holder, int position, StockMsgBean item) {
                 holder.getTextView(R.id.tv_name).setText(item.getName());
                 holder.getTextView(R.id.tv_status).setText(item.getManagementStatus());
                 holder.getTextView(R.id.tv_gs).setText(item.getCompanyName());
@@ -331,7 +331,7 @@ public class SearchShareholderAct extends BaseAct<ISearchShareholderPresenter> i
             @Override
             public void onItemClick(View view, int position) {
                 Bundle bundle=new Bundle();
-                bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position).getId());
+                bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position-1).getId());
                 openActivity(CompanyAct.class,bundle);
             }
 
@@ -354,7 +354,7 @@ public class SearchShareholderAct extends BaseAct<ISearchShareholderPresenter> i
     }
 
     @Override
-    public void findEnterpriseInfoByNameSuceess(List<CompanyBean> list) {
+    public void findEnterpriseInfoByNameSuceess(List<StockMsgBean> list) {
         ToolsUtils.hideSoftKeyboard(SearchShareholderAct.this);
         rlSearch.setVisibility(View.GONE);
         llJg.setVisibility(View.VISIBLE);
@@ -409,7 +409,7 @@ public class SearchShareholderAct extends BaseAct<ISearchShareholderPresenter> i
     }
 
     @Override
-    public void getHotHistorySucess(List<CompanyBean> suceessMsg) {
+    public void getHotHistorySucess(List<StockMsgBean> suceessMsg) {
         if (hotNames != null && hotNames.size() > 0) {
             hotNames.clear();
         }

@@ -161,7 +161,7 @@ public class FindManager {
      * @param rows
      * @param callback
      */
-    public void findStockByName(String companyName,String address,String industry,String capital,String establishDate,int page,int rows,ResultCallback callback) {
+    public void findStockByName(String companyName,String address,String industry,String capital,String establishDate,boolean isRangeQuery ,String screeningRange ,int page,int rows,ResultCallback callback) {
         Map<String,String> params=new HashMap<>();
         if (!TextUtils.isEmpty(companyName)){
             params.put("companyName",companyName);
@@ -177,6 +177,10 @@ public class FindManager {
         }
         if (!TextUtils.isEmpty(establishDate)){
             params.put("establishDate",establishDate);
+        }
+        params.put("isRangeQuery",isRangeQuery+"");
+        if (!TextUtils.isEmpty(screeningRange)){
+            params.put("screeningRange",screeningRange);
         }
         params.put("page",page+"");
         params.put("rows",rows+"");

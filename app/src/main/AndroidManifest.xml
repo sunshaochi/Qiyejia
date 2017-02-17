@@ -245,7 +245,7 @@
             android:name=".module.company.ui.ReportInfoAct"
             android:screenOrientation="portrait" />
         <!--企业名-->
-        <activity android:name=".module.company.ui.JinyinFwAct"
+        <activity android:name=".module.company.ui.SearchGsByNameAct"
             android:screenOrientation="portrait"></activity>
         <!--经营范围-->
         <activity android:name=".module.company.ui.JingyingFwAct"

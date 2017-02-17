@@ -26,10 +26,10 @@ import com.boyuanitsm.echinfo.adapter.ProAdapter;
 import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
 import com.boyuanitsm.echinfo.adapter.TagAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
-import com.boyuanitsm.echinfo.bean.CompanyBean;
-import com.boyuanitsm.echinfo.module.company.presenter.IJingYingPre;
-import com.boyuanitsm.echinfo.module.company.presenter.JingYingPreImpl;
-import com.boyuanitsm.echinfo.module.company.view.IJingyingView;
+import com.boyuanitsm.echinfo.bean.ProductBean;
+import com.boyuanitsm.echinfo.module.company.presenter.IPinPaiPre;
+import com.boyuanitsm.echinfo.module.company.presenter.PinPaiPreImpl;
+import com.boyuanitsm.echinfo.module.company.view.IPinPaiView;
 import com.boyuanitsm.echinfo.utils.ACache;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.ClearEditText;
@@ -53,11 +53,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 经营范围act
+ * 品牌产品act
  * Created by bitch-1 on 2017/2/7.
  */
 
-public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView,OnItemClickListener {
+public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnItemClickListener {
     @BindView(R.id.xr)
     XRecyclerView xr;//下拉刷新view
     @BindView(R.id.gd_sec)
@@ -104,8 +104,8 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
     @BindView(R.id.size_flow_layout)
     FlowTagLayout sizeFlowLayout;//最近搜索流式布局
 
-    private List<CompanyBean> datas = new ArrayList<>();
-    private BaseRecyclerAdapter<CompanyBean> mAdp;
+    private List<ProductBean> datas = new ArrayList<>();
+    private BaseRecyclerAdapter<ProductBean> mAdp;
     private PopupWindow mPopupWindow;
     private GvAdapter gvclnxadt, gvzcziadt;
     private TagAdapter<String> mSizeTagAdapter;
@@ -136,7 +136,7 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
     @Override
     public void init(Bundle savedInstanceState) {
         type = getIntent().getIntExtra(SEARCH_TYPE, 0);
-        mPresenter=new JingYingPreImpl(this);
+        mPresenter=new PinPaiPreImpl(this);
         initFrg();//初识化下拉刷洗控件
 
         aCache=ACache.get(PinpaidocAct.this);
@@ -168,7 +168,7 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
                 }
             }
         });
-        mPresenter.getHotHistory("EnterpriseInfo");
+        mPresenter.getHotHistory("ProductInfo");
         inithotReSou();
         initRecentSearch();
         String strTime = null;
@@ -266,17 +266,19 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
     private void initFrg() {
         query.setHint("请输入公司名/地址/经营项目/商标");
         xr = EchinfoUtils.getLinearRecyclerView(xr, this, true);
-        mAdp = new BaseRecyclerAdapter<CompanyBean>(this, datas) {
+        mAdp = new BaseRecyclerAdapter<ProductBean>(this, datas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.item_serch_name;
             }
 
             @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, CompanyBean item) {
+            public void bindData(BaseRecyclerViewHolder holder, int position, ProductBean item) {
                 holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
                 holder.getTextView(R.id.tv_person).setText("公司法人："+item.getLegalPerson());
-                holder.getTextView(R.id.tv_status).setText("商标/产品："+item.getTrademarkNum());
+                holder.getTextView(R.id.tv_status).setText(item.getManagementStatus());
+                holder.getTextView(R.id.tv_sb).setText( "商标/产品："+item.getName());
+//                "商标/产品："+
 
             }
         };
@@ -299,7 +301,7 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
         mAdp.setOnItemClickListener(this);
     }
 
-    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec,R.id.iv_sc})
+    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec,R.id.iv_sc,R.id.rl_search,R.id.ll_rs})
     public void OnClick(View v) {
         switch (v.getId()) {
             case R.id.gd_sec:
@@ -320,6 +322,10 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
             case R.id.iv_sc:
                 aCache.put("PinPaiHistory", "");
                 rlRecent.setVisibility(View.GONE);
+                break;
+            case R.id.rl_search:
+                break;
+            case R.id.ll_rs:
                 break;
         }
     }
@@ -454,7 +460,7 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
     }
 
     @Override
-    public void findEnterpriseInfoByNameSuceess(List<CompanyBean> list) {
+    public void findEnterpriseInfoByNameSuceess(List<ProductBean> list) {
 
         ToolsUtils.hideSoftKeyboard(PinpaidocAct.this);
         rlSearch.setVisibility(View.GONE);
@@ -512,7 +518,7 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
     }
 
     @Override
-    public void getHotHistorySucess(List<CompanyBean> suceessMsg) {
+    public void getHotHistorySucess(List<ProductBean> suceessMsg) {
         if (hotNames != null && hotNames.size() > 0) {
             hotNames.clear();
         }
@@ -533,8 +539,8 @@ public class PinpaidocAct extends BaseAct<IJingYingPre> implements IJingyingView
     @Override
     public void onItemClick(View view, int position) {
         Bundle bundle=new Bundle();
-        bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position).getId());
-        openActivity(CompanyAct.class,bundle);
+        bundle.putParcelable(ProductInfoAct.PRODUCT_INFO,datas.get(position-1));
+        openActivity(ProductInfoAct.class,bundle);
     }
 
     @Override
