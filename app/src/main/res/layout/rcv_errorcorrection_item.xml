@@ -5,11 +5,13 @@
     android:orientation="vertical">
 
     <CheckBox
+        android:clickable="false"
+        android:id="@+id/cbMsg"
         android:textSize="12sp"
         android:button="@null"
-        android:layout_width="69dp"
-        android:layout_height="24dp"
+        android:layout_width="match_parent"
         android:layout_marginLeft="15dp"
+        android:layout_height="24dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/tv_error_correction_select"
         android:gravity="center"

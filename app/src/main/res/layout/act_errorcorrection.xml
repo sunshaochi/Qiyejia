@@ -11,15 +11,16 @@
         style="@style/tv_14_black"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:text="选择信息有误的部分（多选）" />
+        android:text="选择信息有误的部分（单选）" />
 
     <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
         android:id="@+id/rcv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:paddingRight="15dp" />
 
     <EditText
+        android:id="@+id/etContent"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_margin="15dp"
@@ -31,6 +32,7 @@
         android:textSize="14sp" />
 
     <EditText
+        android:id="@+id/etPhone"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="15dp"
@@ -45,6 +47,7 @@
         android:textSize="14sp" />
 
     <Button
+        android:id="@+id/btnSub"
         style="@style/btn_blue"
         android:text="提交纠错信息" />
     <Space

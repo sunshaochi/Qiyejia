@@ -32,6 +32,9 @@ public class EchinoUrl {
     //取消关注
     public static final String DELETEMYATT_URL = BASE_URL + "user/login/deleteMyAttention.do";
 
+    //关注列表
+    public static final String FINDMYATT_URL = BASE_URL + "user/login/findMyAttentionListByAccountId.do";
+
     /**
      *     查找相关接口
      */
@@ -104,4 +107,14 @@ public class EchinoUrl {
     public static final String COPYRIGHTS_BYID_URL=BASE_URL+"company/login/findCopyrightsByCompanyId.do";
     /*查询软件著作权*/
     public static final String SOFTWORE_RIGHT_URL=BASE_URL+"company/ogin/findSoftwareCopyrightByCompanyId.do";
+
+
+    /*意见反馈*/
+    public static final String INSERTIDEATICKING_URL=BASE_URL+"company/login/insertIdeaTicking.do";
+
+    /*获取字典列表（纠错的错误列表）*/
+    public static final String ERROR_LIST_URL=BASE_URL+"company/login/findDictListBydictType.do";
+    /*提交纠错信息*/
+    public static final String ERROR_SUBMIT_URL=BASE_URL+"company/login/insertCorrectionManage.do";
+
 }
