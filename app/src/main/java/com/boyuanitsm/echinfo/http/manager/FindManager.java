@@ -161,7 +161,7 @@ public class FindManager {
      * @param rows
      * @param callback
      */
-    public void findStockByName(String companyName,String address,String industry,String capital,String establishDate,int page,int rows,ResultCallback callback) {
+    public void findStockByName(String companyName,String address,String industry,String capital,String establishDate,boolean isRangeQuery ,String screeningRange ,int page,int rows,ResultCallback callback) {
         Map<String,String> params=new HashMap<>();
         if (!TextUtils.isEmpty(companyName)){
             params.put("companyName",companyName);
@@ -177,6 +177,10 @@ public class FindManager {
         }
         if (!TextUtils.isEmpty(establishDate)){
             params.put("establishDate",establishDate);
+        }
+        params.put("isRangeQuery",isRangeQuery+"");
+        if (!TextUtils.isEmpty(screeningRange)){
+            params.put("screeningRange",screeningRange);
         }
         params.put("page",page+"");
         params.put("rows",rows+"");
@@ -255,5 +259,42 @@ public class FindManager {
         params.put("page",page+"");
         params.put("rows",rows+"");
         OkHttpManager.getInstance().doGet(EchinoUrl.FIND_PINPAI_URL,params,callback);
+    }
+    /**
+     * 根据股东/高管查找企业
+     * companyName - 企业名称
+     address - 区域
+     industry - 行业
+     capital - 注册资金（闭区间）开始不限capital=*,x；结束不限capital=x,*；0-1万人民币 capital=0,10000；
+     establishDate - 成立时间（闭区间）时间格式 2016-12-13，规则同注册资金
+     * @param stockMsgName
+     * @param address
+     * @param industry
+     * @param capital
+     * @param establishDate
+     * @param page
+     * @param rows
+     * @param callback
+     */
+    public void findStockMsgInfo(String stockMsgName   ,String address,String industry,String capital,String establishDate,int page,int rows,ResultCallback callback) {
+        Map<String,String> params=new HashMap<>();
+        if (!TextUtils.isEmpty(stockMsgName  )){
+            params.put("stockMsgName",stockMsgName  );
+        }
+        if (!TextUtils.isEmpty(address)){
+            params.put("address",address);
+        }
+        if (!TextUtils.isEmpty(industry)){
+            params.put("industry",industry);
+        }
+        if (!TextUtils.isEmpty(capital)){
+            params.put("capital",capital);
+        }
+        if (!TextUtils.isEmpty(establishDate)){
+            params.put("establishDate",establishDate);
+        }
+        params.put("page",page+"");
+        params.put("rows",rows+"");
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_GUDONG_URL,params,callback);
     }
 }

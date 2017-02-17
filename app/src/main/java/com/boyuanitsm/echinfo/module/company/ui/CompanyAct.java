@@ -3,8 +3,10 @@ package com.boyuanitsm.echinfo.module.company.ui;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -67,6 +69,10 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     MyGridView gvCompany;//企业多维
     @BindView(R.id.sv)
     ScrollView sv;
+    @BindView(R.id.ivAtten)
+    ImageView ivAtten;//关注图片
+
+    private boolean isatt;
 
     /*基础信息*/
     private String[] basic_titles = {"工商信息", "对外投资", "企业年报", "企业图谱", "行业分析", "资产信息"};
@@ -253,6 +259,11 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
                 break;
             case R.id.llFollow: //关注
+                if(!isatt){
+                    mPresenter.addInsertAtt(companyId);
+                }else {
+                    mPresenter.removeAtt(companyId);
+                }
 
                 break;
             case R.id.llBg: // 报告
@@ -289,6 +300,17 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         cvEmail.setDesText(companyBean.getEmail());
         cvWz.setDesText(companyBean.getUrl());
         cvAddress.setDesText(companyBean.getAddress());
+        if(!TextUtils.isEmpty(companyBean.getSts())){
+            if(companyBean.getSts().equals("1")){//已经关注
+                isatt=true;
+                ivAtten.setImageResource(R.mipmap.guanzhu);
+
+            }else {
+                isatt=false;
+                ivAtten.setImageResource(R.mipmap.gsxxguanzhu);
+            }
+
+        }
 
         String[] basic_des = {"", companyBean.getAbroadInvestmentNum() + "", companyBean.getAnnualPortsMsgNum() + "", "", "", ""};
         basicAdp = new CompanyAdapter(this, basic_images, basic_titles, basic_des);
@@ -325,4 +347,22 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     public void requestError(int status, String errorMsg) {
         toast(errorMsg);
     }
+
+    @Override
+    public void addInsertAtt() {
+        isatt=true;
+        ivAtten.setImageResource(R.mipmap.guanzhu);
+
+    }
+
+    @Override
+    public void removeAtt() {
+        isatt=false;
+        ivAtten.setImageResource(R.mipmap.gsxxguanzhu);
+
+    }
+
+
+
+
 }

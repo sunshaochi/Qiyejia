@@ -10,9 +10,11 @@ import com.boyuanitsm.echinfo.http.manager.FindManager;
  */
 
 public class JingyingFwModelImpl implements IJingYingFwModel{
+
+
     @Override
-    public void getfindStockMsgInfo(String companyName, String address, String industry, String capital, String establishDate, int page, int rows, ResultCallback callback) {
-        FindManager.getFindManager().findStockByName(companyName,address,industry,capital,establishDate,page,rows,callback);
+    public void getfindStockMsgInfo(String companyName, String address, String industry, String capital, String establishDate, boolean isRangeQuery, String screeningRange, int page, int rows, ResultCallback callback) {
+        FindManager.getFindManager().findStockByName(companyName,address,industry,capital,establishDate,isRangeQuery,establishDate,page,rows,callback);
     }
 
     @Override
@@ -24,5 +26,15 @@ public class JingyingFwModelImpl implements IJingYingFwModel{
     public void findEnterpriseInfoByProductName(String businessScope, String address, String industry, String capital, String establishDate, int page, int rows, ResultCallback callback) {
         FindManager.getFindManager().findEnterpriseInfoByProductName(businessScope,address,industry,capital,establishDate,page,rows,callback);
 
+    }
+
+    @Override
+    public void getHotHistory(String type, ResultCallback callback) {
+        FindManager.getFindManager().getHotSearchHistory(type,callback);
+    }
+
+    @Override
+    public void getPinPaiHotHistory(String type, ResultCallback callback) {
+        FindManager.getFindManager().getHotSearchHistory(type,callback);
     }
 }

@@ -15,6 +15,7 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.BrandBean;
+import com.boyuanitsm.echinfo.module.company.ui.BrandInfoAct;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.ISearchBrandPresenter;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.SearchBrandPresenterImpl;
 import com.boyuanitsm.echinfo.module.home.view.searchView.ISearchBrandView;
@@ -23,6 +24,7 @@ import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.ClearEditText;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
+import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.utils.GsonUtils;
 import com.boyuanitsm.tools.utils.ToolsUtils;
 import com.boyuanitsm.tools.view.FlowTag.FlowTagLayout;
@@ -234,6 +236,19 @@ public class SearchBrandAct extends BaseAct<ISearchBrandPresenter> implements IS
             public void onLoadMore() {
                 page++;
                 mPresenter.findBrandInfo(name, patentType, page, rows);
+            }
+        });
+        myAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Bundle bundle=new Bundle();
+                bundle.putParcelable(BrandInfoAct.BRANDINFO,datas.get(position-1));
+                openActivity(BrandInfoAct.class,bundle);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
             }
         });
     }

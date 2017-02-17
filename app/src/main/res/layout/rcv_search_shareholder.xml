@@ -9,6 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
+        android:id="@+id/tv_name"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:textColor="#333333"
@@ -37,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/tv_gs"
             android:textColor="#666666"
             android:layout_marginLeft="10dp"
             android:text="华东电网有限公司"
@@ -47,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/tv_status"
             android:textColor="#999999"
             android:layout_marginRight="15dp"
             android:text="在营(开业)企业"

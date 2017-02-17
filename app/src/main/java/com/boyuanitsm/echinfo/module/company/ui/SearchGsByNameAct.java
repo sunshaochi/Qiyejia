@@ -16,28 +16,36 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.CityAdapter;
 import com.boyuanitsm.echinfo.adapter.GvAdapter;
 import com.boyuanitsm.echinfo.adapter.ProAdapter;
+import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
 import com.boyuanitsm.echinfo.adapter.TagAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
+import com.boyuanitsm.echinfo.bean.SearchFwBean;
 import com.boyuanitsm.echinfo.module.company.presenter.IJingYingPre;
 import com.boyuanitsm.echinfo.module.company.presenter.JingYingPreImpl;
 import com.boyuanitsm.echinfo.module.company.view.IJingyingView;
+import com.boyuanitsm.echinfo.utils.ACache;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.ClearEditText;
 import com.boyuanitsm.echinfo.widget.MyGridView;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
 import com.boyuanitsm.tools.callback.OnItemClickListener;
+import com.boyuanitsm.tools.utils.GsonUtils;
 import com.boyuanitsm.tools.utils.ToolsUtils;
 import com.boyuanitsm.tools.view.FlowTag.FlowTagLayout;
+import com.boyuanitsm.tools.view.FlowTag.OnTagClickListener;
 import com.boyuanitsm.tools.view.FlowTag.OnTagSelectListener;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,11 +54,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 经营范围act
+ * 按公司名查找企业
  * Created by bitch-1 on 2017/2/7.
  */
 
-public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView {
+public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyingView {
     @BindView(R.id.xr)
     XRecyclerView xr;//下拉刷新view
     @BindView(R.id.gd_sec)
@@ -77,6 +85,23 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
     LinearLayout llJg;
     @BindView(R.id.tv_num)
     TextView tvNum;
+    @BindView(R.id.rl_recent)
+    RelativeLayout rlRecent;//最近搜索
+    @BindView(R.id.rl_search)
+    RelativeLayout rlSearch;//无搜索记录展示
+    @BindView(R.id.ll_rcv)
+    LinearLayout ll_rcv;//专利结果展示
+    @BindView(R.id.iv_sc)
+    ImageView ivSc;//最近搜索删除
+    @BindView(R.id.rm)
+    FlowTagLayout rm;//热门搜索
+    @BindView(R.id.rl_patent)
+    RelativeLayout rl_patent;//专利
+    @BindView(R.id.ll_rs)
+    LinearLayout llRs;//热门搜索
+    @BindView(R.id.size_flow_layout)
+    FlowTagLayout sizeFlowLayout;//最近搜索流式布局
+
     private List<CompanyBean> datas = new ArrayList<>();
     private BaseRecyclerAdapter<CompanyBean> mAdp;
     private PopupWindow mPopupWindow;
@@ -88,8 +113,18 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
     String industry;
     String capital;
     String establishDate;
-    int page=1;
-    int rows=10;
+    int page = 1;
+    int rows = 10;
+    boolean isRangeQuery;
+    String screeningRange;
+    ACache aCache;
+    Gson gson;
+    List<String> names = new ArrayList<>();
+    List<String> hotNames = new ArrayList<>();
+    SearchHistoryAdapter<String> recentAdatper;//最近搜索适配器
+    SearchHistoryAdapter<String> hotAdapter;//热门搜索适配器
+    SearchFwBean searchFwBean;
+
     @Override
     public int getLayout() {
         return R.layout.act_jinyinfw;
@@ -97,7 +132,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
 
     @Override
     public void init(Bundle savedInstanceState) {
-        mPresenter=new JingYingPreImpl(this);
+        mPresenter = new JingYingPreImpl(this);
         initFrg();//初识化下拉刷洗控件
         query.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -105,7 +140,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     // 先隐藏键盘
                     ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
-                            .hideSoftInputFromWindow(JinyinFwAct.this.getCurrentFocus()
+                            .hideSoftInputFromWindow(SearchGsByNameAct.this.getCurrentFocus()
                                     .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
                     search();
@@ -113,9 +148,97 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
                 return false;
             }
         });
-        gvclnxadt = new GvAdapter(JinyinFwAct.this);//成立年限
-        gvzcziadt = new GvAdapter(JinyinFwAct.this);//注册资本
+
+
+        aCache = ACache.get(SearchGsByNameAct.this);
+        gson = new Gson();
+        query.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    llRs.setVisibility(View.VISIBLE);
+                } else {
+                    llRs.setVisibility(View.GONE);
+                    rlSearch.setVisibility(View.GONE);
+                }
+            }
+        });
+        mPresenter.getHotHistory("EnterpriseInfo");
+        inithotReSou();
+        initRecentSearch();
+        String strTime = null;
+        strTime = aCache.getAsString("QiYeHistory");
+        if (!TextUtils.isEmpty(strTime)) {
+            query.setFocusable(true);
+            query.setFocusableInTouchMode(true);
+            query.requestFocus();
+            rlRecent.setVisibility(View.VISIBLE);
+            rlSearch.setVisibility(View.GONE);
+            names = gson.fromJson(strTime, new TypeToken<List<String>>() {
+            }.getType());
+            recentAdatper.onlyAddAll(names);
+        } else {
+            rlSearch.setVisibility(View.VISIBLE);
+            rlRecent.setVisibility(View.GONE);
+        }
+
+        gvclnxadt = new GvAdapter(SearchGsByNameAct.this);//成立年限
+        gvzcziadt = new GvAdapter(SearchGsByNameAct.this);//注册资本
     }
+
+    private void initRecentSearch() {
+        recentAdatper = new SearchHistoryAdapter<>(this);
+        sizeFlowLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_NONE);
+        sizeFlowLayout.setAdapter(recentAdatper);
+        sizeFlowLayout.setOnTagClickListener(new OnTagClickListener() {
+            @Override
+            public void onItemClick(FlowTagLayout parent, View view, int position) {
+                name = names.get(position);
+                query.setText(name);
+                query.setSelection(name.length());
+                rl_patent.setFocusable(true);
+                rl_patent.setFocusableInTouchMode(true);
+                rl_patent.requestFocus();
+                page = 1;
+                mPresenter.getQiYeinfo(name, address, industry, capital, establishDate, isRangeQuery, screeningRange, page, rows);
+            }
+        });
+        String strTime = null;
+        strTime = aCache.getAsString("QiYeHistory");
+        if (!TextUtils.isEmpty(strTime)) {
+            query.setFocusable(true);
+            query.setFocusableInTouchMode(true);
+            query.requestFocus();
+            rlRecent.setVisibility(View.VISIBLE);
+            rlSearch.setVisibility(View.GONE);
+            names = gson.fromJson(strTime, new TypeToken<List<String>>() {
+            }.getType());
+            recentAdatper.onlyAddAll(names);
+        } else {
+            rlSearch.setVisibility(View.VISIBLE);
+            rlRecent.setVisibility(View.GONE);
+        }
+    }
+
+    private void inithotReSou() {
+        hotAdapter = new SearchHistoryAdapter<>(this);
+        rm.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_NONE);//设置是单选
+        rm.setAdapter(hotAdapter);
+        rm.setOnTagClickListener(new OnTagClickListener() {
+            @Override
+            public void onItemClick(FlowTagLayout parent, View view, int position) {
+                name = hotNames.get(position);
+                query.setText(name);
+                query.setSelection(name.length());
+                rl_patent.setFocusable(true);
+                rl_patent.setFocusableInTouchMode(true);
+                rl_patent.requestFocus();
+                page = 1;
+                mPresenter.getQiYeinfo(name, address, industry, capital, establishDate, isRangeQuery, screeningRange, page, rows);
+            }
+        });
+    }
+
     /**
      * 点击键盘搜索
      */
@@ -126,18 +249,19 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
             return;
         } else {
             // 调用搜索的API方法
-            ToolsUtils.hideSoftKeyboard(JinyinFwAct.this);
-            mPresenter.getQiYeinfo(name,address,industry,capital,establishDate,page,rows);
+            ToolsUtils.hideSoftKeyboard(SearchGsByNameAct.this);
+            mPresenter.getQiYeinfo(name, address, industry, capital, establishDate, isRangeQuery, screeningRange, page, rows);
         }
 
     }
+
     /**
      * 初始化下拉刷新
      */
     private void initFrg() {
         query.setHint("请输入公司名或注册号");
 //        View view = View.inflate(getApplicationContext(), R.layout.xhead, null);
-//        view.setMinimumWidth(ToolsUtils.getScreenWidth(JinyinFwAct.this));
+//        view.setMinimumWidth(ToolsUtils.getScreenWidth(SearchGsByNameAct.this));
 //        xr.addHeaderView(view);
         xr = EchinfoUtils.getLinearRecyclerView(xr, getApplicationContext(), true);
         mAdp = new BaseRecyclerAdapter<CompanyBean>(getApplicationContext(), datas) {
@@ -149,7 +273,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
             @Override
             public void bindData(BaseRecyclerViewHolder holder, int position, CompanyBean item) {
                 holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
-                holder.getTextView(R.id.tv_person).setText("公司法人："+item.getLegalPerson());
+                holder.getTextView(R.id.tv_person).setText("公司法人：" + item.getLegalPerson());
                 holder.getTextView(R.id.tv_status).setText(item.getManagementStatus());
 
             }
@@ -157,23 +281,23 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
         xr.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                page=1;
-                mPresenter.getQiYeinfo(name,address,industry,capital,establishDate,page,rows);
+                page = 1;
+                mPresenter.getQiYeinfo(name, address, industry, capital, establishDate, isRangeQuery, screeningRange, page, rows);
             }
 
             @Override
             public void onLoadMore() {
                 page++;
-                mPresenter.getQiYeinfo(name,address,industry,capital,establishDate,page,rows);
+                mPresenter.getQiYeinfo(name, address, industry, capital, establishDate, isRangeQuery, screeningRange, page, rows);
 
             }
         });
         mAdp.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Bundle bundle=new Bundle();
-                bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position).getId());
-                openActivity(CompanyAct.class,bundle);
+                Bundle bundle = new Bundle();
+                bundle.putString(CompanyAct.COMAPYT_ID, datas.get(position - 1).getId());
+                openActivity(CompanyAct.class, bundle);
             }
 
             @Override
@@ -184,7 +308,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
         xr.setAdapter(mAdp);
     }
 
-    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec})
+    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec, R.id.iv_sc, R.id.ll_rs, R.id.rl_search})
     public void OnClick(View v) {
         switch (v.getId()) {
             case R.id.gd_sec:
@@ -202,6 +326,14 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
                 updatacolor(tv_hy, iv_hy, 0);
                 break;
 
+            case R.id.iv_sc:
+                aCache.put("QiYeHistory", "");
+                rlRecent.setVisibility(View.GONE);
+                break;
+            case R.id.ll_rs:
+                break;
+            case R.id.rl_search:
+                break;
         }
     }
 
@@ -232,7 +364,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
      */
     private void setPopupWindow(int i) {
         if (i == 3) {
-            View v = LayoutInflater.from(JinyinFwAct.this).inflate(R.layout.gd_sec, null);
+            View v = LayoutInflater.from(SearchGsByNameAct.this).inflate(R.layout.gd_sec, null);
             MyGridView gv_cnlx = (MyGridView) v.findViewById(R.id.gv_clnx);
             MyGridView gv_zczb = (MyGridView) v.findViewById(R.id.gv_zczb);
             FlowTagLayout mSizeFlowTagLayout = (FlowTagLayout) v.findViewById(R.id.size_flow_layout);
@@ -255,8 +387,8 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
                     gvzcziadt.notifyDataSetChanged();
                 }
             });
-            mSizeTagAdapter = new TagAdapter<>(JinyinFwAct.this);//流逝布局
-            mSizeFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);//设置是单选
+            mSizeTagAdapter = new TagAdapter<>(SearchGsByNameAct.this);//流逝布局
+            mSizeFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_MULTI);//设置是多选
             mSizeFlowTagLayout.setAdapter(mSizeTagAdapter);
             mSizeFlowTagLayout.setOnTagSelectListener(new OnTagSelectListener() {
                 @Override
@@ -276,11 +408,11 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
             mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
 
         } else if (i == 1) {//城市
-            View v = LayoutInflater.from(JinyinFwAct.this).inflate(R.layout.city_sec, null);
+            View v = LayoutInflater.from(SearchGsByNameAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(JinyinFwAct.this);
-            CityAdapter cityadapter = new CityAdapter(JinyinFwAct.this);
+            ProAdapter proadapteer = new ProAdapter(SearchGsByNameAct.this);
+            CityAdapter cityadapter = new CityAdapter(SearchGsByNameAct.this);
             lsv_pricive.setAdapter(proadapteer);
             lsv_city.setAdapter(cityadapter);
 
@@ -295,11 +427,11 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
 
 
         } else if (i == 2) {//不限行业
-            View v = LayoutInflater.from(JinyinFwAct.this).inflate(R.layout.city_sec, null);
+            View v = LayoutInflater.from(SearchGsByNameAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(JinyinFwAct.this);
-            CityAdapter cityadapter = new CityAdapter(JinyinFwAct.this);
+            ProAdapter proadapteer = new ProAdapter(SearchGsByNameAct.this);
+            CityAdapter cityadapter = new CityAdapter(SearchGsByNameAct.this);
             lsv_pricive.setAdapter(proadapteer);
             lsv_city.setAdapter(cityadapter);
 
@@ -336,12 +468,33 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
 
     @Override
     public void findEnterpriseInfoByNameSuceess(List<CompanyBean> list) {
-        if (page==1){
+
+        ToolsUtils.hideSoftKeyboard(SearchGsByNameAct.this);
+        rlSearch.setVisibility(View.GONE);
+        llJg.setVisibility(View.VISIBLE);
+        ll_rcv.setVisibility(View.VISIBLE);
+        String strTime = null;
+        strTime = aCache.getAsString("QiYeHistory");
+        if (!TextUtils.isEmpty(strTime)) {
+            List<String> nameNews = gson.fromJson(strTime, new TypeToken<List<String>>() {
+            }.getType());
+            if (!nameNews.contains(name)) {
+                nameNews.add(name);
+                aCache.put("QiYeHistory", GsonUtils.bean2Json(nameNews));
+                recentAdatper.onlyAddAll(nameNews);
+            }
+        } else {
+            List<String> nameNews = new ArrayList<>();
+            nameNews.add(name);
+            aCache.put("QiYeHistory", GsonUtils.bean2Json(nameNews));
+            recentAdatper.onlyAddAll(nameNews);
+        }
+        if (page == 1) {
             xr.refreshComplete();
             datas.clear();
         }
         xr.loadMoreComplete();
-        if (list!=null&&list.size()>0){
+        if (list != null && list.size() > 0) {
             datas.addAll(list);
         }
         mAdp.setData(datas);
@@ -350,7 +503,7 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
 
     @Override
     public void findEnterpriseInfoByNameFaild(int status, String errorMsg) {
-
+        toast(errorMsg);
     }
 
     @Override
@@ -360,12 +513,30 @@ public class JinyinFwAct extends BaseAct<IJingYingPre> implements IJingyingView 
 
     @Override
     public void findEnterpriseTotals(int tatal) {
-        if (tatal>0){
+        if (tatal > 0) {
             llJg.setVisibility(View.VISIBLE);
-            tvNum.setText(tatal+"");
-        }else {
+            tvNum.setText(tatal + "");
+        } else {
             llJg.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void getHotHistorySucess(List<CompanyBean> suceessMsg) {
+        if (hotNames != null && hotNames.size() > 0) {
+            hotNames.clear();
+        }
+        if (suceessMsg != null && suceessMsg.size() > 0) {
+            for (int i = 0; i < suceessMsg.size(); i++) {
+                hotNames.add(suceessMsg.get(i).getCompanyName());
+            }
+            hotAdapter.onlyAddAll(hotNames);
+        }
+    }
+
+    @Override
+    public void getHotHistoryFaild(int status, String errorMsg) {
+        toast(errorMsg);
     }
 }
 

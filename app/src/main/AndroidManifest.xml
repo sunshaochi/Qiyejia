@@ -245,13 +245,16 @@
             android:name=".module.company.ui.ReportInfoAct"
             android:screenOrientation="portrait" />
         <!--企业名-->
-        <activity android:name=".module.company.ui.JinyinFwAct"
+        <activity android:name=".module.company.ui.SearchGsByNameAct"
             android:screenOrientation="portrait"></activity>
         <!--经营范围-->
         <activity android:name=".module.company.ui.JingyingFwAct"
             android:screenOrientation="portrait"/>
         <!--品牌查找-->
         <activity android:name=".module.company.ui.PinpaidocAct"
+            android:screenOrientation="portrait"/>
+        <!--商标详情-->
+        <activity android:name=".module.company.ui.BrandInfoAct"
             android:screenOrientation="portrait"/>
     </application>
 

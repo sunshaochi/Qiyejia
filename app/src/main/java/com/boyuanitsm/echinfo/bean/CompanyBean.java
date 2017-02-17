@@ -12,6 +12,7 @@ public class CompanyBean implements Parcelable {
     private String id;
     private String seq;
     private String type;
+    private String name;
     private String companyName;
     private String registNo;
     private String companyPhoneNo;
@@ -33,7 +34,7 @@ public class CompanyBean implements Parcelable {
     private String lastUpdateTime;
     private String companyIntro;
     private String filename;
-    private String sts;
+    private String sts;//1为已经关注，0为未关注
     private String companyUpdatetime;
     private String companyCreatetime;
     private String companyCreateTime;
@@ -76,6 +77,13 @@ public class CompanyBean implements Parcelable {
     private String commentCount;
     private String regCapital;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getId() {
         return id;
@@ -605,6 +613,9 @@ public class CompanyBean implements Parcelable {
         this.regCapital = regCapital;
     }
 
+    public CompanyBean() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -615,6 +626,7 @@ public class CompanyBean implements Parcelable {
         dest.writeString(this.id);
         dest.writeString(this.seq);
         dest.writeString(this.type);
+        dest.writeString(this.name);
         dest.writeString(this.companyName);
         dest.writeString(this.registNo);
         dest.writeString(this.companyPhoneNo);
@@ -680,13 +692,11 @@ public class CompanyBean implements Parcelable {
         dest.writeString(this.regCapital);
     }
 
-    public CompanyBean() {
-    }
-
     protected CompanyBean(Parcel in) {
         this.id = in.readString();
         this.seq = in.readString();
         this.type = in.readString();
+        this.name = in.readString();
         this.companyName = in.readString();
         this.registNo = in.readString();
         this.companyPhoneNo = in.readString();
@@ -752,7 +762,7 @@ public class CompanyBean implements Parcelable {
         this.regCapital = in.readString();
     }
 
-    public static final Parcelable.Creator<CompanyBean> CREATOR = new Parcelable.Creator<CompanyBean>() {
+    public static final Creator<CompanyBean> CREATOR = new Creator<CompanyBean>() {
         @Override
         public CompanyBean createFromParcel(Parcel source) {
             return new CompanyBean(source);

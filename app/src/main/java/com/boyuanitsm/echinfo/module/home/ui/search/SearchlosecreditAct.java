@@ -17,6 +17,7 @@ import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.LoseCreditBean;
 import com.boyuanitsm.echinfo.bean.LoseCreditDatabean;
 import com.boyuanitsm.echinfo.bean.LoseCreditRowsBean;
+import com.boyuanitsm.echinfo.module.company.ui.CreditDetailAct;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.ISearchLoseCreditPresenter;
 import com.boyuanitsm.echinfo.module.home.presenter.searchPresenter.SearchLoseCreditPresenterImpl;
 import com.boyuanitsm.echinfo.module.home.view.searchView.ISearchLoseCreditView;
@@ -25,6 +26,7 @@ import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.ClearEditText;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
+import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.utils.GsonUtils;
 import com.boyuanitsm.tools.utils.ToolsUtils;
 import com.boyuanitsm.tools.view.FlowTag.FlowTagLayout;
@@ -237,6 +239,19 @@ public class SearchlosecreditAct extends BaseAct<ISearchLoseCreditPresenter> imp
             public void onLoadMore() {
                 page++;
                 mPresenter.findLoseCreditInfo(name, page, rows);
+            }
+        });
+        myAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Bundle bundle=new Bundle();
+                bundle.putParcelable(CreditDetailAct.CREDIT_DETAIL,datas.get(position-1));
+                openActivity(CreditDetailAct.class,bundle);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
             }
         });
 

@@ -26,6 +26,10 @@ public class EchinoUrl {
     public static final String MODIFY_PWD_URL = BASE_URL + "manager/login/modifyUserPassword.do";
     //修改用户头像
     public static final String MODIFY_HEAD_URL = BASE_URL + "manager/login/modifyUserIcon.do";
+    //添加关注
+    public static final String INSERTMYATT_URL = BASE_URL + "user/login/insertMyAttention.do";
+    //取消关注
+    public static final String DELETEMYATT_URL = BASE_URL + "user/login/deleteMyAttention.do";
 
     /**
      *     查找相关接口
@@ -71,8 +75,11 @@ public class EchinoUrl {
     /*招聘信息*/
     public static final String FINDRECRUITING_URL=BASE_URL+"company/login/findRecruitingListByCompanyId.do";
     /*查询亲算信息*/
-    public static final String FINDCLEARINFO_URL=BASE_URL+" company/login/findClearInfoListByCompanyId.do";
-
+    public static final String FINDCLEARINFO_URL=BASE_URL+"company/login/findClearInfoListByCompanyId.do";
+    /*查询融资信息*/
+    public static final String FINDFINANCINGINFO_URL=BASE_URL+"company/login/findFinancingInfoListByCompanyId.do";
+    /*查询股权出资信息*/
+    public static final String FINDEQUITY_URL=BASE_URL+"company/login/findEquityPledgedListByCompanyId.do";
 
     /*企业资讯*/
     public static final String FINDENTERPRISE_URL=BASE_URL+"company/login/findEnterpriseNewsListByCompanyId.do";

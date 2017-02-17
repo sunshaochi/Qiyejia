@@ -17,4 +17,7 @@ public interface IJingyingView extends BaseView {
     void findEnterpriseInfoByNameFaild(int status, String errorMsg);
     void findfindEnterpriseInfoByNameNodata();
     void findEnterpriseTotals(int tatal);
+    //获取企业热门搜索
+    void getHotHistorySucess(List<CompanyBean> suceessMsg);
+    void getHotHistoryFaild(int status,String errorMsg);
 }
