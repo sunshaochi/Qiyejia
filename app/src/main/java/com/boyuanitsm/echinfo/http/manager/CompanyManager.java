@@ -210,4 +210,33 @@ public class CompanyManager {
         OkHttpManager.getInstance().doGet(EchinoUrl.SOFTWORE_RIGHT_URL,params,resultCallback);
     }
 
+    /**
+     * 获取纠错列表
+     * @param dictType
+     * @param resultCallback
+     */
+    public void getErrorCorrectionList(String dictType,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("dictType",dictType);
+        OkHttpManager.getInstance().doGet(EchinoUrl.ERROR_LIST_URL,params,resultCallback);
+    }
+
+    /**
+     * 提交纠错信息
+     * @param companyId
+     * @param errorParts
+     * @param errorContent
+     * @param mobileEmailQqNo
+     * @param status
+     * @param resultCallback
+     */
+    public void submitErrorMsg(String companyId, String errorParts, String errorContent, String mobileEmailQqNo, int status,ResultCallback resultCallback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        params.put("errorParts",errorParts);
+        params.put("errorContent",errorContent);
+        params.put("mobileEmailQqNo",mobileEmailQqNo);
+        params.put("status",status+"");
+        OkHttpManager.getInstance().doPost(EchinoUrl.ERROR_SUBMIT_URL,params,resultCallback);
+    }
 }
