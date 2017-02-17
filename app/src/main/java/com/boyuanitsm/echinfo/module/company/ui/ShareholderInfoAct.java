@@ -39,7 +39,7 @@ public class ShareholderInfoAct extends BaseAct {
     private StockMsgBean stockMsgBean;
     @Override
     public int getLayout() {
-        return R.layout.rcv_customview;
+        return R.layout.rcv_customview2;
     }
 
     @Override

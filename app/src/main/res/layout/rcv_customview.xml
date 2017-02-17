@@ -6,153 +6,165 @@
     android:orientation="vertical">
 
     <include layout="@layout/title_act_layout" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:paddingLeft="15dp">
+        <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="张婷婷"
-            android:textColor="#333"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="事业法人" />
     </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:orientation="vertical"-->
+        <!--android:paddingLeft="15dp">-->
 
-    <View
-        style="@style/view_line"
-        android:paddingLeft="15dp" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_name"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="张婷婷"-->
+            <!--android:textColor="#333"-->
+            <!--android:textSize="14sp" />-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="185dp"
-        android:background="@color/white"
-        android:orientation="vertical">
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:text="事业法人" />-->
+    <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <!--<View-->
+        <!--style="@style/view_line"-->
+        <!--android:paddingLeft="15dp" />-->
 
-            <LinearLayout
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="185dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:orientation="vertical">-->
 
-                <TextView
-                    android:text="出资时间"
-                    android:textColor="#333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+        <!--<LinearLayout-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
 
-                <TextView
-                    android:id="@+id/tv_czsj"
-                    android:text="2008年5月21日"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <!--<LinearLayout-->
+                <!--android:layout_weight="1"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
 
-                <TextView
-                    android:text="认缴出资额"
-                    android:textColor="#333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <!--<TextView-->
+                    <!--android:text="出资时间"-->
+                    <!--android:textColor="#333"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
 
-                <TextView
-                    android:id="@+id/tv_rjcz"
-                    android:text="21234.345万人民币"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_czsj"-->
+                    <!--android:text="2008年5月21日"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_weight="1"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
 
-            <LinearLayout
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                <!--<TextView-->
+                    <!--android:text="认缴出资额"-->
+                    <!--android:textColor="#333"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
 
-                <TextView
-                    android:text="实缴时间"
-                    android:textColor="#333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_rjcz"-->
+                    <!--android:text="21234.345万人民币"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
 
-                <TextView
-                    android:id="@+id/tv_sjsj"
-                    android:text="2008年5月21日"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <!--<LinearLayout-->
+                <!--android:layout_weight="1"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
 
-                <TextView
-                    android:text="实缴出资额"
-                    android:textColor="#333"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <!--<TextView-->
+                    <!--android:text="实缴时间"-->
+                    <!--android:textColor="#333"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
 
-                <TextView
-                    android:id="@+id/tv_sjcz"
-                    android:text="21234.345万人民币"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:paddingLeft="15dp">
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_sjsj"-->
+                    <!--android:text="2008年5月21日"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_weight="1"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="出资方式"
-                android:textColor="#333"
-                android:textSize="14sp" />
+                <!--<TextView-->
+                    <!--android:text="实缴出资额"-->
+                    <!--android:textColor="#333"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
 
-            <TextView
-                android:id="@+id/tv_fs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="货币" />
-        </LinearLayout>
-    </LinearLayout>
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_sjcz"-->
+                    <!--android:text="21234.345万人民币"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="70dp"-->
+            <!--android:background="@color/white"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:orientation="vertical"-->
+            <!--android:paddingLeft="15dp">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="出资方式"-->
+                <!--android:textColor="#333"-->
+                <!--android:textSize="14sp" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_fs"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:text="货币" />-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
 </LinearLayout>

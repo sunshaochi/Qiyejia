@@ -9,6 +9,7 @@ public class EchinoUrl {
     public static final String BASE_URL="http://139.196.226.111:8006/yiqicha/";
 //    public static final String BASE_URL="http://172.16.6.146:8080/yiqicha/";
 
+
     /**
      * 用户
      */
@@ -34,7 +35,6 @@ public class EchinoUrl {
     /**
      *     查找相关接口
      */
-//    company/unlogin/findHotQuery.do//热门搜索接口：type
     //职业类别
     String PROFESSION_URL = BASE_URL + "occupationMsg/unLogin/findOccupationList.do";
     //查专利
