@@ -10,5 +10,6 @@ public interface IHomePresenter extends BasePresenter{
     //我的关注
     void getMyAttention();
 
-
+    //获取热门企业
+    void getHotHistory(String type);
 }

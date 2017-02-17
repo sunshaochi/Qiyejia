@@ -13,11 +13,13 @@
         android:paddingRight="15dp">
 
         <TextView
+            android:id="@+id/tv_name"
             style="@style/tv_14_black"
             android:text="超九成上榜者失信"
             android:textColor="#666666" />
 
         <TextView
+            android:id="@+id/tv_sj"
             style="@style/tv_12_grey"
             android:layout_alignParentRight="true"
             android:text="2015年12月" />

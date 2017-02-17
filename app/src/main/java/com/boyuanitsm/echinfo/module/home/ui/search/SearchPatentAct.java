@@ -36,6 +36,7 @@ import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
 import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.utils.GsonUtils;
+import com.boyuanitsm.tools.utils.MyLogUtils;
 import com.boyuanitsm.tools.utils.ToolsUtils;
 import com.boyuanitsm.tools.view.FlowTag.FlowTagLayout;
 import com.boyuanitsm.tools.view.FlowTag.OnTagClickListener;
@@ -381,6 +382,11 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     @Override
     public void getHotHistoryFaild(int status, String errorMsg) {
         toast(errorMsg);
+    }
+
+    @Override
+    public void getRecentYears(List<String> releaseYear) {
+        MyLogUtils.info(releaseYear.toString());
     }
 
     /**

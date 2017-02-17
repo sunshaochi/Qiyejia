@@ -34,7 +34,7 @@ public class YearReportsAct extends BaseAct<ICompanyBasePre> implements IBaseLis
     private String companyId;
     @Override
     public int getLayout() {
-        return R.layout.rcv_customview;
+        return R.layout.rcv_customview2;
     }
 
     @Override

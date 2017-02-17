@@ -1,5 +1,6 @@
 package com.boyuanitsm.echinfo.module.home.ui;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,6 +11,7 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.HomeComAdapter;
 import com.boyuanitsm.echinfo.adapter.HomeZxAdapter;
 import com.boyuanitsm.echinfo.base.BaseFrg;
+import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.event.MainTabEvent;
 import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
 import com.boyuanitsm.echinfo.module.company.ui.JingyingFwAct;
@@ -44,7 +46,7 @@ import butterknife.BindView;
  * 首页
  * Created by wangbin on 16/12/22.
  */
-public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.OnClickListener{
+public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.OnClickListener {
     @BindView(R.id.rcv)
     XRecyclerView rcv;
     RelativeLayout rlTop;
@@ -54,9 +56,10 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
 
     private BaseRecyclerAdapter<String> myAdapter;//我的关注适配器
     private BaseRecyclerAdapter<String> disAdapter;//失信适配器
-    private BaseRecyclerAdapter<String> hotAdapter;//热门企业适配器
+    private BaseRecyclerAdapter<CompanyBean> hotAdapter;//热门企业适配器
 
     private List<String> datas = new ArrayList<>();
+    private List<CompanyBean> companylist = new ArrayList<>();
 
     @Override
     public int getLayout() {
@@ -71,12 +74,13 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         View headView = View.inflate(getContext(), R.layout.home_head_view, null);
         rlTop = (RelativeLayout) headView.findViewById(R.id.rlTop);
         rcvHotCom = (RecyclerView) headView.findViewById(R.id.rcvHotCom);
-        rcvMyFollow= (RecyclerView) headView.findViewById(R.id.rcvMyFollow);
-        rl_search= (RelativeLayout) headView.findViewById(R.id.rl_search);
+        rcvMyFollow = (RecyclerView) headView.findViewById(R.id.rcvMyFollow);
+        rl_search = (RelativeLayout) headView.findViewById(R.id.rl_search);
         headView.findViewById(R.id.cvMyFollow).setOnClickListener(this);
         headView.findViewById(R.id.cvHotCom).setOnClickListener(this);
         headView.findViewById(R.id.cvSxbd).setOnClickListener(this);
         rl_search.setOnClickListener(this);
+        mPresenter.getHotHistory("EnterpriseInfo");
         initMyFollow();
         initHotCom();
         /*查企业*/
@@ -150,6 +154,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
             public void onItemClick(View view, int position) {
 
             }
+
             @Override
             public void onItemLongClick(View view, int position) {
 
@@ -160,8 +165,8 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     /**
      * 我的关注
      */
-    private void initMyFollow(){
-        myAdapter= new BaseRecyclerAdapter<String>(getContext(), datas) {
+    private void initMyFollow() {
+        myAdapter = new BaseRecyclerAdapter<String>(getContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.rcv_my_follow;
@@ -181,6 +186,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
             public void onItemClick(View view, int position) {
 
             }
+
             @Override
             public void onItemLongClick(View view, int position) {
 
@@ -192,15 +198,16 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
      * 热门企业
      */
     private void initHotCom() {
-        hotAdapter = new BaseRecyclerAdapter<String>(getContext(), datas) {
+        hotAdapter = new BaseRecyclerAdapter<CompanyBean>(getContext(), companylist) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.rcv_dishonesty_item;
             }
 
             @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
-
+            public void bindData(BaseRecyclerViewHolder holder, int position, CompanyBean item) {
+                holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
+                holder.getTextView(R.id.tv_sj).setText(item.getPublishDate());
             }
         };
         FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(getContext());
@@ -210,7 +217,9 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         hotAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-openActivity(CompanyAct.class);
+                Bundle bundle=new Bundle();
+                bundle.putString(CompanyAct.COMAPYT_ID,companylist.get(position).getId());
+                openActivity(CompanyAct.class,bundle);
             }
 
             @Override
@@ -219,9 +228,6 @@ openActivity(CompanyAct.class);
             }
         });
     }
-
-
-
 
 
     public void onClick(View v) {
@@ -239,5 +245,22 @@ openActivity(CompanyAct.class);
 
                 break;
         }
+    }
+
+    @Override
+    public void getHotHistorySucess(List<CompanyBean> suceessMsg) {
+        if (companylist != null & companylist.size() > 0) {
+            companylist.clear();
+        }
+        if (suceessMsg != null && suceessMsg.size() > 0) {
+            companylist.addAll(suceessMsg);
+        }
+        hotAdapter.setData(companylist);
+    }
+
+    @Override
+    public void getHotHistoryFaild(int status, String errorMsg) {
+        toast(errorMsg);
+
     }
 }
