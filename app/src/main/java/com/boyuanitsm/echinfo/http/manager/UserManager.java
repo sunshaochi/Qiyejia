@@ -132,9 +132,23 @@ public class UserManager {
         OkHttpManager.getInstance().doPost(EchinoUrl.INSERTMYATT_URL,params,resultCallback);
     }
 
+    /**
+     * 取消关注
+     * @param companyId
+     * @param resultCallback
+     */
     public void removeAtt(String companyId, ResultCallback resultCallback) {
         Map<String, String> params = new HashMap<>();
         params.put("companyId", companyId);
         OkHttpManager.getInstance().doPost(EchinoUrl.DELETEMYATT_URL,params,resultCallback);
+    }
+
+    /**查询关注列表
+     * @param resultCallback
+     */
+    public void FindMyAtt(ResultCallback resultCallback) {
+        Map<String, String> params = new HashMap<>();
+        OkHttpManager.getInstance().doGet(EchinoUrl.FINDMYATT_URL,params,resultCallback);
+
     }
 }

@@ -8,6 +8,7 @@
     <include layout="@layout/title_act_layout" />
 
     <EditText
+        android:id="@+id/et_content"
         android:layout_width="match_parent"
         android:layout_height="135dp"
         android:layout_marginTop="10dp"
@@ -22,6 +23,7 @@
         android:textSize="14sp" />
 
     <EditText
+        android:id="@+id/et_phone"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
@@ -31,7 +33,7 @@
         android:maxLength="11"
         android:inputType="number"
         android:lines="1"
-        android:padding="15dp"
+        android:paddingLeft="15dp"
         android:textColor="#333"
         android:textColorHint="#999"
         android:textSize="14sp" />

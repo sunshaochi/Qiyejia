@@ -234,4 +234,17 @@ public class CompanyManager {
     }
 
 
+    /**
+     * 意见反馈
+     * @param content
+     * @param mobileEmailQqNo
+     * @param resultCallback
+     */
+    public void CommitIdeaTicking(String content, String mobileEmailQqNo, ResultCallback resultCallback) {
+        Map<String,String> params=new HashMap<>();
+        params.put("content",content);
+        params.put("mobileEmailQqNo",mobileEmailQqNo);
+        OkHttpManager.getInstance().doPost(EchinoUrl.INSERTIDEATICKING_URL,params,resultCallback);
+
+    }
 }
