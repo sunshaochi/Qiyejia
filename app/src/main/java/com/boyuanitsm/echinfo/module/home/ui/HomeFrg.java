@@ -31,6 +31,7 @@ import com.boyuanitsm.echinfo.module.home.ui.search.SearchPatentAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchShareholderAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchlosecreditAct;
 import com.boyuanitsm.echinfo.module.home.view.IHomeView;
+import com.boyuanitsm.echinfo.module.user.ui.LoginAct;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MyGridView;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
@@ -253,6 +254,10 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cvMyFollow://我的关注
+                if(!EchinfoUtils.isLogin()){
+                    openActivity(LoginAct.class);
+                    return;
+                }
                 EventBus.getDefault().post(new MainTabEvent(1));
                 break;
             case R.id.cvHotCom://热门企业

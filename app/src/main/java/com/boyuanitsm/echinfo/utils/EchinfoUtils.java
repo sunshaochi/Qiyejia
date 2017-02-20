@@ -102,7 +102,11 @@ public class EchinfoUtils {
      */
     public static UserBean getCurrentUser() {
         List<UserBean> list = MyApplication.getInstances().getDaoSession().getUserBeanDao().loadAll();
-        return list.get(0);
+        if (list!=null&&list.size()>0){
+            return list.get(0);
+
+        }
+        return null;
     }
 
 
