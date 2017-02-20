@@ -34,6 +34,8 @@ public class EchinoUrl {
 
     //关注列表
     public static final String FINDMYATT_URL = BASE_URL + "user/login/findMyAttentionListByAccountId.do";
+    //登出
+    public static final String LOGIN_OUT_URL=BASE_URL+"manager/unLogin/logout.do";
 
     /**
      *     查找相关接口

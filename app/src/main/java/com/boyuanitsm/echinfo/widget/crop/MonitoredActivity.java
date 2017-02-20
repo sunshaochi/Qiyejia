@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.boyuanitsm.echinfo.widget.crop.square;
+package com.boyuanitsm.echinfo.widget.crop;
 
 import android.os.Bundle;
 

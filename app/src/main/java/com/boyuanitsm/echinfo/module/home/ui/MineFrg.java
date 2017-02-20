@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseFrg;
+import com.boyuanitsm.echinfo.bean.IconFilePath;
 import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.module.home.presenter.MinePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.view.IMineView;
@@ -90,6 +91,12 @@ public class MineFrg extends BaseFrg implements IMineView{
         tv_name.setText(userBean.getName());
         tv_profession.setText(userBean.getJob());
     }
+
+    @Override
+    public void uploadUser(IconFilePath path) {
+
+    }
+
     private MyReceiver myReceiver;
     public static final String USER_INFO = "com.mine.userinfo";
 

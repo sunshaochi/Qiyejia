@@ -1,4 +1,4 @@
-package com.boyuanitsm.echinfo.widget.crop.square;
+package com.boyuanitsm.echinfo.widget.crop;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

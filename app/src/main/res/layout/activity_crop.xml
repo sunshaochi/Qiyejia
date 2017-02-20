@@ -8,7 +8,7 @@
     >
     <include layout="@layout/title_act_layout"></include>
 
-    <com.boyuanitsm.zhetengba.view.crop.square.ClipImageLayout
+    <com.boyuanitsm.echinfo.widget.crop.ClipImageLayout
         android:id="@+id/crop_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -5,8 +5,10 @@ import android.text.TextUtils;
 import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.EchinoUrl;
+import com.lidroid.xutils.http.client.multipart.content.FileBody;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 /**
@@ -151,4 +153,25 @@ public class UserManager {
         OkHttpManager.getInstance().doGet(EchinoUrl.FINDMYATT_URL,params,resultCallback);
 
     }
+
+    /**
+     * 退出
+     * @param callback
+     */
+
+    public void loginOut(ResultCallback callback){
+        Map<String,String> params=new Hashtable<>();
+        OkHttpManager.getInstance().doPost(EchinoUrl.LOGIN_OUT_URL,params,callback);
+    }
+
+    /**
+     * 上传头像
+     *
+     * @param fileMaps
+     * @param callback
+     */
+    public void subHeadImg(Map<String, FileBody> fileMaps, ResultCallback callback) {
+//        submitFujian(EchinoUrl.MODIFY_HEAD_URL, fileMaps, callback);
+    }
+
 }

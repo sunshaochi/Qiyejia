@@ -17,7 +17,7 @@ import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MineItemView;
-import com.boyuanitsm.echinfo.widget.crop.square.CropImageActivity;
+import com.boyuanitsm.echinfo.widget.crop.CropImageActivity;
 import com.boyuanitsm.tools.utils.MyBitmapUtils;
 import com.boyuanitsm.tools.view.CircleImageView;
 
@@ -201,6 +201,15 @@ public class MineAct extends BaseAct{
                 }
                 break;
         }
+    }
+
+    /**
+     * 上传头像
+     * @param temppath
+     */
+
+    private void toloadfile(String temppath) {
+
     }
 
     private MyReceiver myReceiver;

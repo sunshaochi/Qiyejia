@@ -1,6 +1,7 @@
 package com.boyuanitsm.echinfo.module.home.view;
 
 import com.boyuanitsm.echinfo.base.BaseView;
+import com.boyuanitsm.echinfo.bean.IconFilePath;
 import com.boyuanitsm.echinfo.bean.UserBean;
 
 /**
@@ -10,4 +11,5 @@ import com.boyuanitsm.echinfo.bean.UserBean;
 public interface IMineView extends BaseView{
      /*展示用户信息*/
      void showUser(UserBean userBean);
+     void  uploadUser(IconFilePath path);
 }

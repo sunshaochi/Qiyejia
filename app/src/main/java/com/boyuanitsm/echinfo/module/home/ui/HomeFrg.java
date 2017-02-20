@@ -1,5 +1,9 @@
 package com.boyuanitsm.echinfo.module.home.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -281,4 +285,35 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
 
     }
 
+
+    private MyReceiver myReceiver;
+    public static final String DATA_UPDATA = "com.update.homeinfo";
+
+    public class MyReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (!EchinfoUtils.isLogin()){
+                rcvMyFollow.setVisibility(View.GONE);
+            }else {
+                rcvMyFollow.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (myReceiver == null) {
+            myReceiver = new MyReceiver();
+            mActivity.registerReceiver(myReceiver, new IntentFilter(DATA_UPDATA));
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (myReceiver != null) {
+           mActivity.unregisterReceiver(myReceiver);
+            myReceiver = null;
+        }
+    }
 }
