@@ -357,6 +357,7 @@
                 android:id="@+id/gvBasic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:numColumns="2"
                 android:horizontalSpacing="1px"
                 android:verticalSpacing="1px"
@@ -382,6 +383,7 @@
                 android:layout_height="wrap_content"
                 android:numColumns="2"
                 android:horizontalSpacing="1px"
+                android:background="@color/white"
                 android:verticalSpacing="1px"
                 ></com.boyuanitsm.echinfo.widget.MyGridView>
 
@@ -403,6 +405,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:numColumns="2"
+                android:background="@color/white"
                 android:horizontalSpacing="1px"
                 android:verticalSpacing="1px"
                 ></com.boyuanitsm.echinfo.widget.MyGridView>
@@ -426,6 +429,7 @@
                 android:layout_height="wrap_content"
                 android:numColumns="2"
                 android:horizontalSpacing="1px"
+                android:background="@color/white"
                 android:verticalSpacing="1px"
                 ></com.boyuanitsm.echinfo.widget.MyGridView>
 
@@ -447,6 +451,7 @@
                 android:id="@+id/gvCompany"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:numColumns="2"
                 android:horizontalSpacing="1px"
                 android:verticalSpacing="1px"

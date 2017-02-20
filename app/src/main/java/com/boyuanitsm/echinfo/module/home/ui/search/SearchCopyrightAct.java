@@ -132,7 +132,7 @@ public class SearchCopyrightAct extends BaseAct implements View.OnClickListener 
      * 填充数据
      */
     private void initData() {
-        query.setHint("著作权名，登记号或公司名");
+        query.setHint("请输入著作权名");
         myAdapter = new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
