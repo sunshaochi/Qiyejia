@@ -81,6 +81,17 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         headView.findViewById(R.id.cvSxbd).setOnClickListener(this);
         rl_search.setOnClickListener(this);
         mPresenter.getHotHistory("EnterpriseInfo");
+        rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.getHotHistory("EnterpriseInfo");
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
         initMyFollow();
         initHotCom();
         /*查企业*/
@@ -249,6 +260,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
 
     @Override
     public void getHotHistorySucess(List<CompanyBean> suceessMsg) {
+        rcv.refreshComplete();
         if (companylist != null & companylist.size() > 0) {
             companylist.clear();
         }
