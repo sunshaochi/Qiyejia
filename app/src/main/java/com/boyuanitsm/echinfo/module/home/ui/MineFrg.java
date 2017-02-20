@@ -18,7 +18,6 @@ import com.boyuanitsm.echinfo.module.mine.ui.FollowAct;
 import com.boyuanitsm.echinfo.module.mine.ui.MineAct;
 import com.boyuanitsm.echinfo.module.mine.ui.MsgAct;
 import com.boyuanitsm.echinfo.module.mine.ui.SettingAct;
-import com.boyuanitsm.echinfo.module.user.ui.LoginAct;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MineItemView;
 import com.boyuanitsm.tools.view.CircleImageView;
@@ -76,8 +75,8 @@ public class MineFrg extends BaseFrg implements IMineView{
             case R.id.miv_fk://意见反馈
                 openActivity(FeedBackAct.class);
                 break;
-            case R.id.miv_wt://问题
-                openActivity(LoginAct.class);//目前作为登录测试
+            case R.id.miv_wt://常见问题
+//                openActivity(LoginAct.class);//目前作为登录测试
                 break;
             case R.id.miv_sz://设置
                 openActivity(SettingAct.class);

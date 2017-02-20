@@ -273,7 +273,11 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             @Override
             public void bindData(BaseRecyclerViewHolder holder, int position, CompanyBean item) {
                 holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
-                holder.getTextView(R.id.tv_person).setText("公司法人：" + item.getLegalPerson());
+                if (!TextUtils.isEmpty(item.getLegalPerson())){
+                    holder.getTextView(R.id.tv_person).setText("公司法人：" + item.getLegalPerson());
+                }else {
+                    holder.getTextView(R.id.tv_person).setText("公司法人：无" );
+                }
                 holder.getTextView(R.id.tv_status).setText(item.getManagementStatus());
 
             }

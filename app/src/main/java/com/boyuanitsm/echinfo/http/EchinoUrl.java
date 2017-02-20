@@ -6,8 +6,8 @@ package com.boyuanitsm.echinfo.http;
  */
 public class EchinoUrl {
     /*基础地址*/
-//    public static final String BASE_URL="http://139.196.226.111:8006/yiqicha/";
-    public static final String BASE_URL="http://172.16.6.146:8080/yiqicha/";
+    public static final String BASE_URL="http://139.196.226.111:8006/yiqicha/";
+//    public static final String BASE_URL="http://172.16.6.146:8080/yiqicha/";
 
 
     /**

@@ -131,7 +131,7 @@ public class SearchBusinessScopeAct extends BaseAct implements View.OnClickListe
      * 填充数据
      */
     private void initData() {
-        query.setHint("请输入公司名/地址/经营项目/商标");
+        query.setHint("请输入经营项目");
         myAdapter = new BaseRecyclerAdapter<String>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {

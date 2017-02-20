@@ -208,7 +208,7 @@ public class SearchlosecreditAct extends BaseAct<ISearchLoseCreditPresenter> imp
      * 填充数据
      */
     private void initData() {
-        query.setHint("请输入案号，公司名或人名");
+        query.setHint("请输入失信人或失信公司");
         myAdapter = new BaseRecyclerAdapter<LoseCreditBean>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {

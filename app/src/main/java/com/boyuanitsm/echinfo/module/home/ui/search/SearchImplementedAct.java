@@ -200,7 +200,7 @@ public class SearchImplementedAct extends BaseAct<ISearchImplementPresenter> imp
      * 填充数据
      */
     private void initData() {
-        query.setHint("请输入案号，公司名或人名");
+        query.setHint("请输入被执行人或公司名");
         myAdapter = new BaseRecyclerAdapter<ImplementBean>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
