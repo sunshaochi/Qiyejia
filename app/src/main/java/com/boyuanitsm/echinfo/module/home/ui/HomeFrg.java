@@ -15,8 +15,8 @@ import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.event.MainTabEvent;
 import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
 import com.boyuanitsm.echinfo.module.company.ui.JingyingFwAct;
-import com.boyuanitsm.echinfo.module.company.ui.SearchGsByNameAct;
 import com.boyuanitsm.echinfo.module.company.ui.PinpaidocAct;
+import com.boyuanitsm.echinfo.module.company.ui.SearchGsByNameAct;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchBrandAct;
@@ -92,6 +92,11 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
 
             }
         });
+        if (!EchinfoUtils.isLogin()){
+            rcvMyFollow.setVisibility(View.GONE);
+        }else {
+            rcvMyFollow.setVisibility(View.VISIBLE);
+        }
         initMyFollow();
         initHotCom();
         /*查企业*/
@@ -275,4 +280,5 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         toast(errorMsg);
 
     }
+
 }

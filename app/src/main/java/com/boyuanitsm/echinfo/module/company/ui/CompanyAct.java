@@ -91,12 +91,12 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
 
     /*财物信息*/
-    private String[] property_titles = {"财物数据", "股权出资", "税务信用", "融资纪录"};
+    private String[] property_titles = { "股权出资", "税务信用", "融资纪录"};//"财物数据",
     private int property_images[] = {R.mipmap.cwsjico, R.mipmap.gqczico, R.mipmap.swxyico, R.mipmap.rzjlico};
 
 
     /*企业多维*/
-    private String[] company_titles = {"招聘", "企业资讯", "注册网站", "产品信息", "舆情口碑", "清算信息"};
+    private String[] company_titles = {"招聘", "企业资讯", "注册网站", "产品信息", "清算信息"};//"舆情口碑",
     private int[] company_images = {R.mipmap.zpico, R.mipmap.qynewsico, R.mipmap.websiteico, R.mipmap.cpxxico,
             R.mipmap.yqkbico, R.mipmap.qsxxico};
 
@@ -170,9 +170,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                     case 6://经营异常
                         openActivity(AbnormalOperationAct.class,bundle);
                         break;
-                    case 7://抽查检查
-                        openActivity(SpotCheckAct.class,bundle);
-                        break;
+//                    case 7://抽查检查
+//                        openActivity(SpotCheckAct.class,bundle);
+//                        break;
                 }
             }
         });
@@ -199,8 +199,8 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
-                    case 0://财务数据
-                        break;
+//                    case 0://财务数据
+//                        break;
                     case 1://股权出资
                         openActivity(EquityAct.class,bundle);
                         break;
@@ -229,9 +229,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                     case 3://产品信息
                         openActivity(ProductInfoAct.class,bundle);
                         break;
-                    case 4://舆情口碑
-                        openActivity(OpinionAct.class,bundle);
-                        break;
+//                    case 4://舆情口碑
+//                        openActivity(OpinionAct.class,bundle);
+//                        break;
                     case 5://清算信息
                         openActivity(ClearingInfoAct.class,bundle);
                         break;
