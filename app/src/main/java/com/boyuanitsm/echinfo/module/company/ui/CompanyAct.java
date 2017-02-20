@@ -81,9 +81,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
 
     /*风险信息*/
-    private String[] risk_titles = {"法院公告", "被执行人", "失信信息", "法院裁决", "诉讼信息", "行政处罚", "经营异常", "抽查检查"};
+    private String[] risk_titles = {"法院公告", "被执行人", "失信信息", "法院裁决", "诉讼信息", "行政处罚", "经营异常"};//, "抽查检查"
     private int[] risk_images = {R.mipmap.fyggico, R.mipmap.bzxrico, R.mipmap.sxxxico, R.mipmap.fypjico,
-            R.mipmap.ssxxico, R.mipmap.xzcfico, R.mipmap.jyycico, R.mipmap.ccjcico};
+            R.mipmap.ssxxico, R.mipmap.xzcfico, R.mipmap.jyycico};//, R.mipmap.ccjcico
 
     /*知识产权*/
     private String[] knowledge_titles = {"专利", "商标", "著作权", "企业证书"};
@@ -92,13 +92,13 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
     /*财物信息*/
     private String[] property_titles = { "股权出资", "税务信用", "融资纪录"};//"财物数据",
-    private int property_images[] = {R.mipmap.cwsjico, R.mipmap.gqczico, R.mipmap.swxyico, R.mipmap.rzjlico};
+    private int property_images[] = { R.mipmap.gqczico, R.mipmap.swxyico, R.mipmap.rzjlico};//R.mipmap.cwsjico,
 
 
     /*企业多维*/
     private String[] company_titles = {"招聘", "企业资讯", "注册网站", "产品信息", "清算信息"};//"舆情口碑",
     private int[] company_images = {R.mipmap.zpico, R.mipmap.qynewsico, R.mipmap.websiteico, R.mipmap.cpxxico,
-            R.mipmap.yqkbico, R.mipmap.qsxxico};
+            R.mipmap.qsxxico};// R.mipmap.yqkbico,
 
 
     private CompanyAdapter basicAdp, riskAdp, knowledgeAdp, propertyAdp, companyAdp;
@@ -201,12 +201,12 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                 switch (i) {
 //                    case 0://财务数据
 //                        break;
-                    case 1://股权出资
+                    case 0://股权出资
                         openActivity(EquityAct.class,bundle);
                         break;
-                    case 2://税务信用
+                    case 1://税务信用
                         break;
-                    case 3://融资记录
+                    case 2://融资记录
                         openActivity(FinancingInfoAct.class,bundle);
                         break;
                 }
@@ -232,7 +232,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 //                    case 4://舆情口碑
 //                        openActivity(OpinionAct.class,bundle);
 //                        break;
-                    case 5://清算信息
+                    case 4://清算信息
                         openActivity(ClearingInfoAct.class,bundle);
                         break;
                 }
