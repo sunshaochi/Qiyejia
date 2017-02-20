@@ -4,7 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -13,7 +17,13 @@ import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MineItemView;
+import com.boyuanitsm.echinfo.widget.crop.square.CropImageActivity;
+import com.boyuanitsm.tools.utils.MyBitmapUtils;
 import com.boyuanitsm.tools.view.CircleImageView;
+
+import com.boyuanitsm.tools.view.MySelfSheetDialog;
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,6 +46,13 @@ public class MineAct extends BaseAct{
     @BindView(R.id.miv_profession)
     MineItemView miv_profession;//职业
     UserBean userBean;
+
+    private String photoSavePath;//图片路径
+    private String photoSaveName;//图片名字
+    public static final int PHOTOZOOM = 0;//相册
+    public static final int PHOTOTAKE = 1;//相机
+    public static final int IMAGE_COMPLETE = 2; // 结果
+    Uri imageUri = null;
     @Override
     public int getLayout() {
         return R.layout.act_mine;
@@ -78,7 +95,7 @@ public class MineAct extends BaseAct{
         Bundle bundle;
         switch (v.getId()) {
             case R.id.ll_head://头像
-                
+                headIconDialog();//上传图片
                 break;
             case R.id.miv_phone:
                 break;
@@ -104,6 +121,88 @@ public class MineAct extends BaseAct{
                 break;
         }
     }
+
+    /**
+     * 上传图片
+     */
+    private void headIconDialog() {
+        MySelfSheetDialog dialog = new MySelfSheetDialog(MineAct.this);
+        dialog.builder().addSheetItem("拍照", MySelfSheetDialog.SheetItemColor.Blue, new MySelfSheetDialog.OnSheetItemClickListener() {
+            @Override
+            public void onClick(int which) {
+                String state = Environment.getExternalStorageState();
+                if(state.equals(Environment.MEDIA_MOUNTED)){
+                    photoSaveName = String.valueOf(System.currentTimeMillis()) + ".png";
+                    Intent openCameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    imageUri = Uri.fromFile(new File(photoSavePath, photoSaveName));
+//                        openCameraIntent.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
+                    openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                    startActivityForResult(openCameraIntent, PHOTOTAKE);
+
+
+                }else {
+                    toast("储存卡不存在");
+                }
+
+            }
+        }).addSheetItem("从相册取", MySelfSheetDialog.SheetItemColor.Blue, new MySelfSheetDialog.OnSheetItemClickListener() {
+            @Override
+            public void onClick(int which) {
+                Intent openAlbumIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                openAlbumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(openAlbumIntent, PHOTOZOOM);
+            }
+        }).show();
+    }
+    /**
+     * 返回的Path
+     */
+    private String temppath;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Uri uri = null;
+        Intent intent = null;
+        switch (requestCode){
+            case PHOTOZOOM:// 相册
+                if (resultCode != RESULT_OK) {
+                    return;
+                }
+                if (data == null) {
+                    return;
+                }
+                uri = data.getData();
+                Bitmap userbitmap = MyBitmapUtils.decodeUriAsBitmap2(this, uri);
+
+                if (userbitmap==null){
+                  toast("图片有误，请重新选择！");
+                    return;
+                }
+                File user_head =MyBitmapUtils.saveBitmap(MyBitmapUtils.zoomImgKeepWH(userbitmap, 400, 400, true), "user_head.jpeg");
+                intent = new Intent(this, CropImageActivity.class);
+                intent.putExtra("path", Environment.getExternalStorageDirectory() + "/" + "user_head.jpeg");
+                startActivityForResult(intent, IMAGE_COMPLETE);
+                break;
+            case PHOTOTAKE:// 拍照
+                if (resultCode != RESULT_OK) {
+                    return;
+                }
+                String path = photoSavePath + photoSaveName;
+                Intent intent2 = new Intent(this, CropImageActivity.class);
+                intent2.putExtra("path", path);
+                startActivityForResult(intent2, IMAGE_COMPLETE);
+                break;
+            case IMAGE_COMPLETE:// 完成
+                if(data!=null) {
+                    temppath = data.getStringExtra("path");
+//                    toloadfile(temppath);
+                    civ_head.setImageBitmap(MyBitmapUtils.LoadBigImg(temppath, 120, 120));//展示大图片
+                }
+                break;
+        }
+    }
+
     private MyReceiver myReceiver;
     public static final String USER_INFO = "com.update.userinfo";
 

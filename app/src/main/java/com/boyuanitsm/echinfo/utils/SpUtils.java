@@ -10,6 +10,7 @@ public class SpUtils {
 
     private final static String ECHINO_SP="ztb_sp";
     private static final String COOKIE="cookie";
+    private final static String SCREEN_WITH="screen_with";
 
 
     public static SharedPreferences getSp(Context context) {
@@ -41,4 +42,13 @@ public class SpUtils {
     public static void clearSp(Context context){
         getSp(context).edit().clear().commit();
     }
+
+    public static void setScreenWith(Context context,int screenWith){
+        getSp(context).edit().putInt(SCREEN_WITH, screenWith).commit();
+    }
+
+    public static int getScreenWith(Context context){
+        return getSp(context).getInt(SCREEN_WITH, 0);
+    }
+
 }
