@@ -1,5 +1,6 @@
 package com.boyuanitsm.echinfo.module.home.ui;
 
+import android.text.TextUtils;
 import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
@@ -48,7 +49,11 @@ public class FollowFrg extends BaseFrg<IFollowPre> implements IFollowView {
             @Override
             public void bindData(BaseRecyclerViewHolder holder, int position, AttenBean item) {
                 holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
-                holder.getTextView(R.id.tv_fr).setText("公司法人:"+item.getLegalPerson());
+                if (!TextUtils.isEmpty(item.getLegalPerson())){
+                    holder.getTextView(R.id.tv_fr).setText("公司法人:"+item.getLegalPerson());
+                }else {
+                    holder.getTextView(R.id.tv_fr).setText("公司法人:无");
+                }
                 holder.getTextView(R.id.tv_zt).setText(item.getManagementStatus());
             }
         };

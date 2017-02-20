@@ -293,7 +293,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         tvPerson.setText(companyBean.getLegalPerson());
         tvRegMoney.setText(companyBean.getRegCapital());
         tvPublishTime.setText(companyBean.getCompanyCreatetime());
-        tvUpdateTime.setText("更新：" + companyBean.getLastUpdateTime());
+        if (!TextUtils.isEmpty(companyBean.getLastUpdateTime())){
+            tvUpdateTime.setText("更新：" + companyBean.getLastUpdateTime());
+        }
         tvFollow.setText("关注" + companyBean.getFocus());
         tvLl.setText("浏览："+companyBean.getBrowseCount());
         tvPhone.setText(companyBean.getCompanyPhoneNo());

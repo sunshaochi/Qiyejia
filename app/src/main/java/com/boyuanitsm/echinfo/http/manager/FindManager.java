@@ -297,4 +297,17 @@ public class FindManager {
         params.put("rows",rows+"");
         OkHttpManager.getInstance().doGet(EchinoUrl.FIND_GUDONG_URL,params,callback);
     }
+    /**
+     * 查失信
+     * @param sid
+     * @param callback
+     */
+
+    public void findLoseCredit(String sid,  ResultCallback callback) {
+        Map<String,String> params=new HashMap<>();
+        if (!TextUtils.isEmpty(sid)){
+            params.put("sid",sid);
+        }
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_LOSE_CREDIT_URL,params,callback);
+    }
 }
