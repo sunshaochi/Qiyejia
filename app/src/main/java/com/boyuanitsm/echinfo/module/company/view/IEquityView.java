@@ -10,9 +10,8 @@ import java.util.List;
  * Created by bitch-1 on 2017/2/15.
  */
 public interface IEquityView extends BaseView {
-    void setEquityDatas(List<EquityBean> mdatas);
+    void setEquityDatas(EquityBean mdatas);
 
     void requestError(int status, String errorMsg);
 
-    void requestNoData();
 }

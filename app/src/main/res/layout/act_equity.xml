@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@color/bg_grey_color"
     android:orientation="vertical">
+    <include layout="@layout/title_act_layout"></include>
 
     <com.boyuanitsm.echinfo.widget.MineItemView
        android:id="@+id/miv_dj"
@@ -44,13 +45,13 @@
         app:leftText="质权人"
         app:rightText="张东" />
 
-    <View style="@style/view_line" />
-
     <com.boyuanitsm.echinfo.widget.MineItemView
         android:id="@+id/miv_zzj"
         style="@style/productInfo_item"
         app:leftText="证件号码"
         app:rightText="8928949821" />
+
+    <View style="@style/view_line" />
 
     <View style="@style/view_line" />
 
