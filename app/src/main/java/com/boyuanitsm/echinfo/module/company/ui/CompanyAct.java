@@ -354,6 +354,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     public void addInsertAtt() {
         isatt=true;
         ivAtten.setImageResource(R.mipmap.guanzhu);
+        mPresenter.getCompanyDetail(companyId);
 
     }
 
@@ -361,7 +362,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     public void removeAtt() {
         isatt=false;
         ivAtten.setImageResource(R.mipmap.gsxxguanzhu);
-
+        mPresenter.getCompanyDetail(companyId);
     }
 
 

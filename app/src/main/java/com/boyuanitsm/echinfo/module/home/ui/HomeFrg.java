@@ -15,6 +15,7 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.HomeComAdapter;
 import com.boyuanitsm.echinfo.adapter.HomeZxAdapter;
 import com.boyuanitsm.echinfo.base.BaseFrg;
+import com.boyuanitsm.echinfo.bean.AttenBean;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.event.MainTabEvent;
 import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
@@ -287,6 +288,23 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     @Override
     public void getHotHistoryFaild(int status, String errorMsg) {
         toast(errorMsg);
+
+    }
+
+
+    //关注企业
+    @Override
+    public void setFollowDatas(List<AttenBean> mdatas) {
+
+    }
+
+    @Override
+    public void requestError(int status, String errorMsg) {
+
+    }
+
+    @Override
+    public void requestNoData() {
 
     }
 
