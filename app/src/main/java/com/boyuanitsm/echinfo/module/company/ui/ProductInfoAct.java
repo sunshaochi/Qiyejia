@@ -1,6 +1,7 @@
 package com.boyuanitsm.echinfo.module.company.ui;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -50,16 +51,17 @@ public class ProductInfoAct extends BaseAct {
     @Override
     public void init(Bundle savedInstanceState) {
         setTopTitle("产品信息");
-        productBean = getIntent().getParcelableExtra(PRODUCT_INFO);
+        productBean = getIntent().getParcelableExtra(PRODUCT_INFO);//从收索里面传递过来的
         initFrg();
     }
 
     private void initFrg() {
+        if(productBean!=null){
         miv_name.setRightText(productBean.getName());
         miv_field.setRightText(productBean.getDomain());
         miv_industry.setRightText(productBean.getIndustry());
         miv_tag.setRightText(productBean.getTag());
-        miv_urlAddress.setRightText(productBean.getUrl());
+        miv_urlAddress.setRightText(productBean.getUrl());}
         testList = EchinfoUtils.getTestDatas(3);
         rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), false);
         rcv.setPullRefreshEnabled(false);
