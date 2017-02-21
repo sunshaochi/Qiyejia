@@ -6,7 +6,7 @@ import com.boyuanitsm.echinfo.bean.UserBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.EchinoUrl;
 
-
+import java.io.File;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
@@ -163,15 +163,21 @@ public class UserManager {
         Map<String,String> params=new Hashtable<>();
         OkHttpManager.getInstance().doPost(EchinoUrl.LOGIN_OUT_URL,params,callback);
     }
-//
-//    /**
-//     * 上传头像
-//     *
-//     * @param fileMaps
-//     * @param callback
-//     */
-//    public void subHeadImg(Map<String, FileBody> fileMaps, ResultCallback callback) {
-////        submitFujian(EchinoUrl.MODIFY_HEAD_URL, fileMaps, callback);
-//    }
+
+    /**
+     * 上传头像
+     *
+     * @param temppath
+     * @param callback
+     */
+    public void subHeadImg(String temppath , ResultCallback callback) {
+        Map<String, File> filemap = new HashMap<>();
+         File file = new File(temppath);
+        filemap.put("file", file);
+        Map<String,String> params=new HashMap<>();
+        params.put("type", "img");
+        params.put("uploadLableName", "file");
+        OkHttpManager.getInstance().uploadFile(EchinoUrl.MODIFY_HEAD_URL,params, filemap, callback);
+    }
 
 }
