@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.boyuanitsm.echinfo.MyApplication;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.param.Param;
+import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.utils.SpUtils;
 import com.boyuanitsm.tools.utils.GsonUtils;
 import com.boyuanitsm.tools.utils.MyLogUtils;
@@ -385,6 +386,11 @@ public class OkHttpManager {
         HashMap<String, String> map = new HashMap<>();
         if(!TextUtils.isEmpty(SpUtils.getCookie(MyApplication.getInstances()))){
             map.put("Cookie",SpUtils.getCookie(MyApplication.getInstances()));
+        }
+        if (EchinfoUtils.getCurrentUser() != null) {
+            if (!TextUtils.isEmpty(EchinfoUtils.getCurrentUser().getId())) {
+                map.put("keyUserId", EchinfoUtils.getCurrentUser().getId());
+            }
         }
        return map;
     }

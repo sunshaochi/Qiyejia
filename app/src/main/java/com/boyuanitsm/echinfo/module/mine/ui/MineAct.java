@@ -15,12 +15,14 @@ import android.view.View;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.UserBean;
+import com.boyuanitsm.echinfo.module.mine.presenter.MineMsgPre;
+import com.boyuanitsm.echinfo.module.mine.presenter.MineMsgPreImpl;
+import com.boyuanitsm.echinfo.module.mine.view.IMineMsgView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MineItemView;
 import com.boyuanitsm.echinfo.widget.crop.CropImageActivity;
 import com.boyuanitsm.tools.utils.MyBitmapUtils;
 import com.boyuanitsm.tools.view.CircleImageView;
-
 import com.boyuanitsm.tools.view.MySelfSheetDialog;
 
 import java.io.File;
@@ -32,7 +34,7 @@ import butterknife.OnClick;
  * 我的界面
  * Created by Yang on 2016/12/27 0027.
  */
-public class MineAct extends BaseAct{
+public class MineAct extends BaseAct<MineMsgPre> implements IMineMsgView{
     @BindView(R.id.civ_head)
     CircleImageView civ_head;//头像
     @BindView(R.id.miv_phone)
@@ -61,6 +63,7 @@ public class MineAct extends BaseAct{
     @Override
     public void init(Bundle savedInstanceState) {
         setTopTitle("修改资料");
+        mPresenter=new MineMsgPreImpl(this);
         userBean=new UserBean();
         userBean = EchinfoUtils.getCurrentUser();
         //填充个人资料
@@ -196,24 +199,26 @@ public class MineAct extends BaseAct{
             case IMAGE_COMPLETE:// 完成
                 if(data!=null) {
                     temppath = data.getStringExtra("path");
-//                    toloadfile(temppath);
+                    mPresenter.upLoadIcon(temppath);
                     civ_head.setImageBitmap(MyBitmapUtils.LoadBigImg(temppath, 120, 120));//展示大图片
                 }
                 break;
         }
     }
 
-    /**
-     * 上传头像
-     * @param temppath
-     */
-
-    private void toloadfile(String temppath) {
-
-    }
 
     private MyReceiver myReceiver;
     public static final String USER_INFO = "com.update.userinfo";
+
+    @Override
+    public void upLoadHeadSucess(String sucessMsg) {
+
+    }
+
+    @Override
+    public void upLoadHeadFaild(int status, String errorMsg) {
+
+    }
 
     public class MyReceiver extends BroadcastReceiver {
         @Override

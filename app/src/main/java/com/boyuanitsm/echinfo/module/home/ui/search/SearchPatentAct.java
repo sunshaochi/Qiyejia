@@ -102,6 +102,7 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     private List<PatenInfomationBean> datas = new ArrayList<>();//专利列表
     private List<PatentTypeBean> typedatas = new ArrayList<>();//专利类型
     private List<String> timeList=new ArrayList<>();//时间选择；
+    private List<String> timeNewList=new ArrayList<>();//接收最新时间；
     private PopupWindow mPopupWindow,mPopupWindow2;
     private XzSimpleAdapter xzSimpleAdapter;
     private SjSimpleAdapter sjSimpleAdapter;
@@ -118,7 +119,8 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     List<String> hotNames = new ArrayList<>();
     SearchHistoryAdapter<String> recentAdatper;//最近搜索适配器
     SearchHistoryAdapter<String> hotAdapter;//热门搜索适配器
-
+    String nameChange;
+    int temp=-1;//0表示搜索名字未改变，1表示已经改变
     @Override
     public int getLayout() {
         return R.layout.search_patent;
@@ -157,6 +159,7 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
                 }
             }
         });
+
         initData();
         //获取专利类型
         mPresenter.getPatentType("paten_type_key");
@@ -304,6 +307,18 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
         llJg.setVisibility(View.VISIBLE);
         ll_rcv.setVisibility(View.VISIBLE);
         String strTime = null;
+        nameChange= aCache.getAsString("PatentName");
+        if (!TextUtils.isEmpty(nameChange)&&!TextUtils.isEmpty(name)){
+            if (TextUtils.equals(nameChange,name)){
+                    temp=0;
+            }else {
+                aCache.put("PatentName",name);
+                temp=1;
+            }
+        }else {
+            aCache.put("PatentName",name);
+            temp=1;
+        }
         strTime = aCache.getAsString("PatentHistory");
         if (!TextUtils.isEmpty(strTime)) {
             List<String> nameNews = gson.fromJson(strTime, new TypeToken<List<String>>() {
@@ -390,7 +405,11 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     public void getRecentYears(List<String> releaseYear) {
         String timeStr="时间不限";
         releaseYear.add(0, timeStr);
-        timeList=releaseYear;
+        String patentTimes = aCache.getAsString("PatentTimes");
+        if (TextUtils.isEmpty(patentTimes)){
+            aCache.put("PatentTimes", GsonUtils.bean2Json(releaseYear));
+        }
+        timeNewList=releaseYear;
     }
 
     /**
@@ -513,9 +532,29 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
                 }
                 break;
             case R.id.rl_sj:
-                if (timeList!=null&&timeList.size()>0){
-                    selectPop2(timeList);
+                if (temp==0){
+                    //0表示未改变
+                    String patentTimes = aCache.getAsString("PatentTimes");
+                    if (TextUtils.isEmpty(patentTimes)){
+                        timeList=timeNewList;
+                    }else {
+                      String  strTime = aCache.getAsString("PatentTimes");
+                        if (!TextUtils.isEmpty(strTime)) {
+                           timeList = gson.fromJson(strTime, new TypeToken<List<String>>() {
+                            }.getType());
+                        }
+                    }
+                    if (timeList!=null&&timeList.size()>0){
+                        selectPop2(timeList);
+                    }
+                }else if (temp==1){
+                  //1表示改变；
+                    aCache.put("PatentTimes", GsonUtils.bean2Json(timeNewList));
+                    if (timeNewList!=null&&timeNewList.size()>0){
+                        selectPop2(timeNewList);
+                    }
                 }
+
                 break;
             case R.id.iv_sc:
                 aCache.put("PatentHistory", "");
