@@ -215,7 +215,9 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         myAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+                Bundle bundle=new Bundle();
+                bundle.putString(CompanyAct.COMAPYT_ID,attdatas.get(position).getId());
+                openActivity(CompanyAct.class,bundle);
             }
 
             @Override
