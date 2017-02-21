@@ -1,6 +1,7 @@
 package com.boyuanitsm.echinfo.module.company.view;
 
 import com.boyuanitsm.echinfo.base.BaseView;
+import com.boyuanitsm.echinfo.bean.LoseCreditDatabean;
 
 /**
  * Q164454216
@@ -8,6 +9,7 @@ import com.boyuanitsm.echinfo.base.BaseView;
  */
 
 public interface ICrediteListView extends BaseView {
-    void getCreditListSucess();
+    void getCreditListSucess(LoseCreditDatabean databean);
+    void findLoseCreditNoData();
     void getCreditListFaild(int status,String errorMsg);
 }

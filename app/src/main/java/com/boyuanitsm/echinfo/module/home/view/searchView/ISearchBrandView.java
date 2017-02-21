@@ -20,9 +20,7 @@ public interface ISearchBrandView  extends BaseView{
     //获取商标类型
 //    void getBrandTypeSucess(List<BrandTypeBean> suceessMsg);
 //    void getBrandTypeFaild(int status,String errorMsg);
-    //获取商标热门搜索记录
-    void getHotHistorySucess(List<BrandBean> suceessMsg);
-    void getHotHistoryFaild(int status,String errorMsg);
+
 
 
 }

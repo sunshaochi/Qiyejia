@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/title_act_layout"/>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:layout_height="44dp">
+    <TextView
+        android:text="姓名"
+        android:textColor="#333"
+        android:textSize="15sp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_marginLeft="20dp"
+        android:text="张三"
+        android:textColor="#333"
+        android:textSize="15sp"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+    <View
+        style="@style/view_line"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="44dp">
+        <TextView
+            android:text="单位"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_dw"
+            android:layout_marginLeft="20dp"
+            android:text="张三"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        style="@style/view_line"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="44dp">
+        <TextView
+            android:text="证书级别"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_jb"
+            android:layout_marginLeft="20dp"
+            android:text="张三"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        style="@style/view_line"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="44dp">
+        <TextView
+            android:text="证书号码"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_hm"
+            android:layout_marginLeft="20dp"
+            android:text="张三"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        style="@style/view_line"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="44dp">
+        <TextView
+            android:text="首次获证日期"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_rq"
+            android:layout_marginLeft="20dp"
+            android:text="张三"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        style="@style/view_line"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="44dp">
+        <TextView
+            android:text="所在省份"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_sf"
+            android:layout_marginLeft="20dp"
+            android:text="张三"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        style="@style/view_line"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="44dp">
+        <TextView
+            android:id="@+id/tv_bg"
+            android:text="变更情况"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:text="张三"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_weight="0.72"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        style="@style/view_line"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="44dp">
+        <TextView
+            android:text="批准（备案）情况"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_ba"
+            android:layout_marginLeft="20dp"
+            android:text="张三"
+            android:textColor="#333"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        style="@style/view_line"/>
+</LinearLayout>

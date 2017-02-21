@@ -13,6 +13,5 @@ public interface ISearchBrandModel {
     void findBrandInfo(String name, String type, int page, int rows, ResultCallback callback);
     //获取商标类型
     void getBrandType(String type, ResultCallback callback);
-    //获取商标热门搜索记录
-    void getHotHistory(String type, ResultCallback callback);
+
 }

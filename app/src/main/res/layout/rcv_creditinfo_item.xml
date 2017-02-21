@@ -11,10 +11,12 @@
         android:padding="15dp">
 
         <TextView
+            android:id="@+id/tv_name"
             style="@style/tv_14_black"
             android:text="有限公司" />
 
         <TextView
+            android:id="@+id/tv_hm"
             style="@style/tv_creditInfo_grayItem"
             android:layout_marginTop="15dp"
             android:text="55555" />
@@ -25,10 +27,12 @@
             android:layout_marginTop="10dp">
 
             <TextView
+                android:id="@+id/tv_ah"
                 style="@style/tv_creditInfo_grayItem"
                 android:text="第999号" />
 
             <TextView
+                android:id="@+id/tv_sf"
                 style="@style/tv_creditInfo_grayItem"
                 android:layout_alignParentRight="true"
                 android:text="四川" />

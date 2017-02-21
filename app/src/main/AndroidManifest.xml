@@ -77,7 +77,7 @@
             android:screenOrientation="portrait"/>
         <!--查商标-->
         <activity
-            android:name=".module.home.ui.search.SearchBrandAct"
+            android:name=".module.home.ui.search.SearchBrandFrg"
             android:screenOrientation="portrait" />
         <!--查著作权-->
         <activity
@@ -258,8 +258,15 @@
         <!--商标详情-->
         <activity android:name=".module.company.ui.BrandInfoAct"
             android:screenOrientation="portrait"/>
+        <!--裁剪-->
         <activity android:name=".widget.crop.CropImageActivity"
             android:screenOrientation="portrait"/>
-    </application>
+        <!--查找商标-->
+        <activity android:name=".module.home.ui.search.FindBrandAct"
+            android:screenOrientation="portrait"/>
+        <!--企业证书列表-->
+        <activity android:name=".module.company.ui.QiYeZsAct"
+            android:screenOrientation="portrait"/>
+        </application>
 
 </manifest>

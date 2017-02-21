@@ -5,6 +5,9 @@ import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.bean.LoseCreditBean;
+import com.boyuanitsm.echinfo.bean.LoseCreditDatabean;
+import com.boyuanitsm.echinfo.bean.LoseCreditRowsBean;
 import com.boyuanitsm.echinfo.module.company.presenter.CrediteListPreImpl;
 import com.boyuanitsm.echinfo.module.company.presenter.ICreditListPre;
 import com.boyuanitsm.echinfo.module.company.view.ICrediteListView;
@@ -27,8 +30,8 @@ public class CreditInfoAct extends BaseAct<ICreditListPre> implements ICrediteLi
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
-    private BaseRecyclerAdapter<String> mAdp;
-    private List<String> testList = new ArrayList<>();
+    private BaseRecyclerAdapter<LoseCreditBean> mAdp;
+    private List<LoseCreditBean> datas = new ArrayList<>();
     String sid;
     @Override
     public int getLayout() {
@@ -51,23 +54,28 @@ public class CreditInfoAct extends BaseAct<ICreditListPre> implements ICrediteLi
     }
 
     private void initFrg() {
-        testList = EchinfoUtils.getTestDatas(3);
-        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), true);
-        mAdp = new BaseRecyclerAdapter<String>(getApplicationContext(), testList) {
+//        datas = EchinfoUtils.getTestDatas(3);
+        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), false);
+        mAdp = new BaseRecyclerAdapter<LoseCreditBean>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.rcv_creditinfo_item;
             }
 
             @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
-
+            public void bindData(BaseRecyclerViewHolder holder, int position, LoseCreditBean item) {
+                holder.getTextView(R.id.tv_name).setText(item.getIname());
+                holder.getTextView(R.id.tv_hm).setText(item.getGistid());
+                holder.getTextView(R.id.tv_ah).setText(item.getCasecode());
+                holder.getTextView(R.id.tv_sf).setText(item.getAreaname());
             }
         };
         mAdp.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                openActivity(CreditDetailAct.class);
+                Bundle bundle=new Bundle();
+                bundle.putParcelable(CreditDetailAct.CREDIT_DETAIL,datas.get(position-1));
+                openActivity(CreditDetailAct.class,bundle);
             }
 
             @Override
@@ -79,12 +87,33 @@ public class CreditInfoAct extends BaseAct<ICreditListPre> implements ICrediteLi
     }
 
     @Override
-    public void getCreditListSucess() {
+    public void getCreditListSucess(LoseCreditDatabean databean) {
+        if (databean!=null){
+            LoseCreditRowsBean courtPerson = databean.getCourtPerson();
+            if (courtPerson!=null){
+                List<LoseCreditBean> rows = courtPerson.getRows();
+                if (rows!=null&&rows.size()>0){
+                    datas.addAll(rows);
+                }
+            }
+            LoseCreditRowsBean courtUnit = databean.getCourtUnit();
+            if (courtUnit!=null){
+                List<LoseCreditBean> rows = courtUnit.getRows();
+                if (rows!=null&&rows.size()>0){
+                    datas.addAll(rows);
+                }
+            }
+        }
+        mAdp.setData(datas);
+    }
+
+    @Override
+    public void findLoseCreditNoData() {
 
     }
 
     @Override
     public void getCreditListFaild(int status, String errorMsg) {
-
+        toast(errorMsg);
     }
 }

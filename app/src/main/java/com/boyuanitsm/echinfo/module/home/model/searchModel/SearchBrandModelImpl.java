@@ -20,8 +20,4 @@ public class SearchBrandModelImpl implements ISearchBrandModel{
         FindManager.getFindManager().getPatentType(type,callback);
     }
 
-    @Override
-    public void getHotHistory(String type, ResultCallback callback) {
-        FindManager.getFindManager().getHotSearchHistory(type,callback);
-    }
 }
