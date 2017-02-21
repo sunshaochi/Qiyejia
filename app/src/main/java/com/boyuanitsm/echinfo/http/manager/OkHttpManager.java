@@ -335,8 +335,14 @@ public class OkHttpManager {
      * @param files
      * @param callback
      */
-    public void uploadFile(String url,Map<String,String> params,Map<String,File> files,final ResultCallback callback){
+    public void uploadFile(final String url, Map<String,String> params, Map<String,File> files, final ResultCallback callback){
+        MyLogUtils.info("参数URL:" + url);
+        MyLogUtils.info("参数paramms:" + params);
+        MyLogUtils.info("参数files:" + files);
+
+
         OkHttpUtils.post().url(url).params(params).headers(getHeaders()).files("file",files).build().execute(new com.zhy.http.okhttp.callback.Callback<String>() {
+
             @Override
             public String parseNetworkResponse(Response response, int id) throws Exception {
                 String header = response.header("Set-Cookie");
