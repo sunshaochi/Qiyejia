@@ -60,12 +60,15 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     RecyclerView rcvHotCom;//热门企业
     RelativeLayout rl_search;//搜索高级搜索
 
-    private BaseRecyclerAdapter<String> myAdapter;//我的关注适配器
+
     private BaseRecyclerAdapter<String> disAdapter;//失信适配器
     private BaseRecyclerAdapter<CompanyBean> hotAdapter;//热门企业适配器
 
     private List<String> datas = new ArrayList<>();
     private List<CompanyBean> companylist = new ArrayList<>();
+
+    private List<AttenBean> attdatas = new ArrayList<>();//关注list
+    private BaseRecyclerAdapter<AttenBean> myAdapter;//我的关注适配器
 
     @Override
     public int getLayout() {
@@ -77,6 +80,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         datas = EchinfoUtils.getTestDatas(4);
         mPresenter = new HomePresenterImpl(this);
         rcv = EchinfoUtils.getLinearRecyclerView(rcv, getContext(), false);
+
         View headView = View.inflate(getContext(), R.layout.home_head_view, null);
         rlTop = (RelativeLayout) headView.findViewById(R.id.rlTop);
         rcvHotCom = (RecyclerView) headView.findViewById(R.id.rcvHotCom);
@@ -87,10 +91,12 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         headView.findViewById(R.id.cvSxbd).setOnClickListener(this);
         rl_search.setOnClickListener(this);
         mPresenter.getHotHistory("EnterpriseInfo");
+        mPresenter.getMyAttention();
         rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
                 mPresenter.getHotHistory("EnterpriseInfo");
+                mPresenter.getMyAttention();
             }
 
             @Override
@@ -188,14 +194,17 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
      * 我的关注
      */
     private void initMyFollow() {
-        myAdapter = new BaseRecyclerAdapter<String>(getContext(), datas) {
+        myAdapter = new BaseRecyclerAdapter<AttenBean>(getContext(), attdatas) {
             @Override
             public int getItemLayoutId(int viewType) {
                 return R.layout.rcv_my_follow;
             }
 
             @Override
-            public void bindData(BaseRecyclerViewHolder holder, int position, String item) {
+            public void bindData(BaseRecyclerViewHolder holder, int position, AttenBean item) {
+                holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
+                holder.getTextView(R.id.tv_fr).setText("公司法人:"+item.getLegalPerson());
+                holder.getTextView(R.id.tv_zt).setText(item.getManagementStatus());
 
             }
         };
@@ -295,6 +304,19 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     //关注企业
     @Override
     public void setFollowDatas(List<AttenBean> mdatas) {
+        if(attdatas!=null&&attdatas.size()>0){
+            attdatas.clear();
+        }
+        if(mdatas.size()>4){
+            for (int i=0;i<4;i++){
+                attdatas.add(mdatas.get(i));
+            }
+        }else {
+            attdatas=mdatas;
+        }
+        myAdapter.setData(attdatas);
+
+
 
     }
 
