@@ -175,8 +175,8 @@ public class UserManager {
          File file = new File(temppath);
         filemap.put("file", file);
         Map<String,String> params=new HashMap<>();
-        params.put("type", "img");
-        params.put("uploadLableName", "file");
+//        params.put("type", "img");
+//        params.put("uploadLableName", "file");
         OkHttpManager.getInstance().uploadFile(EchinoUrl.MODIFY_HEAD_URL,params, filemap, callback);
     }
 
