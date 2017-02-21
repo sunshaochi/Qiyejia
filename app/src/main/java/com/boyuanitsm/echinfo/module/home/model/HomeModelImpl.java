@@ -11,9 +11,10 @@ import com.boyuanitsm.echinfo.http.manager.UserManager;
  */
 public class HomeModelImpl implements IHomeModel{
 
+
     @Override
-    public void getMyAttention(RequestCallback<String> callback) {
-        UserManager.getUserManager().FindMyAtt((ResultCallback) callback);
+    public void getMyAttention(ResultCallback resultCallback) {
+        UserManager.getUserManager().FindMyAtt(resultCallback);
 
     }
 

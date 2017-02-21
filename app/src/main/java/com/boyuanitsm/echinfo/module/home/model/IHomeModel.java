@@ -10,7 +10,7 @@ import com.boyuanitsm.echinfo.callback.ResultCallback;
 public interface IHomeModel{
 
     /*获取我的关注*/
-    void getMyAttention(RequestCallback<String> callback);
+    void getMyAttention(ResultCallback resultCallback);
     /*获取热门企业*/
     void getHotCompany(String type,ResultCallback callback);
     /*获取失信列表*/

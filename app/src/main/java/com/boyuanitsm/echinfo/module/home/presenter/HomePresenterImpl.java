@@ -1,8 +1,10 @@
 package com.boyuanitsm.echinfo.module.home.presenter;
 
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
+import com.boyuanitsm.echinfo.bean.AttenBean;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
+import com.boyuanitsm.echinfo.callback.RequestCallback;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.module.home.model.HomeModelImpl;
 import com.boyuanitsm.echinfo.module.home.model.IHomeModel;
@@ -25,6 +27,23 @@ public class HomePresenterImpl extends BasePresenterImpl<IHomeView> implements I
 
     @Override
     public void getMyAttention() {
+        homeModel.getMyAttention(new ResultCallback<ResultBean<List<AttenBean>>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+                mView.requestError(status,errorMsg);
+            }
+
+            @Override
+            public void onResponse(ResultBean<List<AttenBean>> response) {
+                List<AttenBean>list=response.getData();
+                 if(list.size()==0||list==null){
+                         mView.requestNoData();
+                       }else {
+                        mView.setFollowDatas(list);
+                      }
+                 }
+
+        });
 
 
     }
