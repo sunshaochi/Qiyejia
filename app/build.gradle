@@ -36,8 +36,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile 'com.jakewharton:butterknife:8.0.1'
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile'org.greenrobot:greendao:3.0.1'
     compile'org.greenrobot:greendao-generator:3.0.0'
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.zhy:okhttputils:2.6.2'
 }

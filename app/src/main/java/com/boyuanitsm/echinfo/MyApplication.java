@@ -5,6 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.echino.greendao.gen.DaoMaster;
 import com.echino.greendao.gen.DaoSession;
+import com.zhy.http.okhttp.OkHttpUtils;
+
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Created by wangbin on 17/2/6.
@@ -21,6 +26,7 @@ public class MyApplication extends Application{
         super.onCreate();
         instances = this;
         setDatabase();
+        initHttpUtils();
     }
 
     public static MyApplication getInstances(){
@@ -46,5 +52,23 @@ public class MyApplication extends Application{
     }
     public SQLiteDatabase getDb() {
         return db;
+    }
+
+
+    /**
+     * 初始化
+     */
+    private void initHttpUtils(){
+
+        try {
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .connectTimeout(10000L, TimeUnit.MILLISECONDS)
+                    .readTimeout(10000L, TimeUnit.MILLISECONDS)
+                    .build();
+            OkHttpUtils.initClient(okHttpClient);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
