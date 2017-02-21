@@ -1,5 +1,9 @@
 package com.boyuanitsm.echinfo.module.home.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,12 +15,13 @@ import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.HomeComAdapter;
 import com.boyuanitsm.echinfo.adapter.HomeZxAdapter;
 import com.boyuanitsm.echinfo.base.BaseFrg;
+import com.boyuanitsm.echinfo.bean.AttenBean;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.event.MainTabEvent;
 import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
 import com.boyuanitsm.echinfo.module.company.ui.JingyingFwAct;
-import com.boyuanitsm.echinfo.module.company.ui.SearchGsByNameAct;
 import com.boyuanitsm.echinfo.module.company.ui.PinpaidocAct;
+import com.boyuanitsm.echinfo.module.company.ui.SearchGsByNameAct;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchBrandAct;
@@ -27,6 +32,7 @@ import com.boyuanitsm.echinfo.module.home.ui.search.SearchPatentAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchShareholderAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchlosecreditAct;
 import com.boyuanitsm.echinfo.module.home.view.IHomeView;
+import com.boyuanitsm.echinfo.module.user.ui.LoginAct;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MyGridView;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
@@ -81,6 +87,22 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         headView.findViewById(R.id.cvSxbd).setOnClickListener(this);
         rl_search.setOnClickListener(this);
         mPresenter.getHotHistory("EnterpriseInfo");
+        rcv.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.getHotHistory("EnterpriseInfo");
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
+        if (!EchinfoUtils.isLogin()){
+            rcvMyFollow.setVisibility(View.GONE);
+        }else {
+            rcvMyFollow.setVisibility(View.VISIBLE);
+        }
         initMyFollow();
         initHotCom();
         /*查企业*/
@@ -233,6 +255,10 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cvMyFollow://我的关注
+                if(!EchinfoUtils.isLogin()){
+                    openActivity(LoginAct.class);
+                    return;
+                }
                 EventBus.getDefault().post(new MainTabEvent(1));
                 break;
             case R.id.cvHotCom://热门企业
@@ -249,6 +275,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
 
     @Override
     public void getHotHistorySucess(List<CompanyBean> suceessMsg) {
+        rcv.refreshComplete();
         if (companylist != null & companylist.size() > 0) {
             companylist.clear();
         }
@@ -262,5 +289,54 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     public void getHotHistoryFaild(int status, String errorMsg) {
         toast(errorMsg);
 
+    }
+
+
+    //关注企业
+    @Override
+    public void setFollowDatas(List<AttenBean> mdatas) {
+
+    }
+
+    @Override
+    public void requestError(int status, String errorMsg) {
+
+    }
+
+    @Override
+    public void requestNoData() {
+
+    }
+
+
+    private MyReceiver myReceiver;
+    public static final String DATA_UPDATA = "com.update.homeinfo";
+
+    public class MyReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (!EchinfoUtils.isLogin()){
+                rcvMyFollow.setVisibility(View.GONE);
+            }else {
+                rcvMyFollow.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (myReceiver == null) {
+            myReceiver = new MyReceiver();
+            mActivity.registerReceiver(myReceiver, new IntentFilter(DATA_UPDATA));
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (myReceiver != null) {
+           mActivity.unregisterReceiver(myReceiver);
+            myReceiver = null;
+        }
     }
 }

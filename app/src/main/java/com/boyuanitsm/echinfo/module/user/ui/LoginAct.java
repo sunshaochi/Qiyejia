@@ -64,6 +64,7 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
         hideProgress();
         toast("登录成功");
         openActivity(MainAct.class);
+//        sendBroadcast(new Intent(HomeFrg.UPDATA));
         finish();
     }
 

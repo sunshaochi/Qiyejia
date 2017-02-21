@@ -16,4 +16,30 @@
         android:paddingRight="15dp"
         android:textSize="14sp"
         android:textColor="#666666"/>
+    <com.boyuanitsm.echinfo.widget.ClearEditText
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:id="@+id/new_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textSize="14sp"
+        android:textColor="#666666"/>
+    <com.boyuanitsm.echinfo.widget.ClearEditText
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:id="@+id/new_password_again"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textSize="14sp"
+        android:textColor="#666666"/>
 </LinearLayout>

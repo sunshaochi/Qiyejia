@@ -1,5 +1,7 @@
 package com.boyuanitsm.echinfo.module.company.presenter;
 
+import android.text.TextUtils;
+
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
 import com.boyuanitsm.echinfo.bean.EquityBean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
@@ -23,20 +25,17 @@ public class EquityPreImpl extends BasePresenterImpl<IEquityView> implements IEq
 
     @Override
     public void getEquityDatas(String companyId) {
-        modle.getFinancIf(companyId, new ResultCallback<ResultBean<List<EquityBean>>>() {
+        modle.getFinancIf(companyId, new ResultCallback<ResultBean<EquityBean>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.requestError(status,errorMsg);
             }
 
             @Override
-            public void onResponse(ResultBean<List<EquityBean>> response) {
-                List<EquityBean>list=response.getData();
-                if(list.size()==0||list==null){
-                    mView.requestNoData();
-                }else {
-                    mView.setEquityDatas(list);
-                }
+            public void onResponse(ResultBean<EquityBean> response) {
+                EquityBean equityBean =response.getData();
+                mView.setEquityDatas(equityBean);
+
 
             }
         });

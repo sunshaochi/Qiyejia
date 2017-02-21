@@ -81,9 +81,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
 
     /*风险信息*/
-    private String[] risk_titles = {"法院公告", "被执行人", "失信信息", "法院裁决", "诉讼信息", "行政处罚", "经营异常", "抽查检查"};
+    private String[] risk_titles = {"法院公告", "被执行人", "失信信息", "法院裁决", "诉讼信息", "行政处罚", "经营异常"};//, "抽查检查"
     private int[] risk_images = {R.mipmap.fyggico, R.mipmap.bzxrico, R.mipmap.sxxxico, R.mipmap.fypjico,
-            R.mipmap.ssxxico, R.mipmap.xzcfico, R.mipmap.jyycico, R.mipmap.ccjcico};
+            R.mipmap.ssxxico, R.mipmap.xzcfico, R.mipmap.jyycico};//, R.mipmap.ccjcico
 
     /*知识产权*/
     private String[] knowledge_titles = {"专利", "商标", "著作权", "企业证书"};
@@ -91,14 +91,14 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
 
     /*财物信息*/
-    private String[] property_titles = {"财物数据", "股权出资", "税务信用", "融资纪录"};
-    private int property_images[] = {R.mipmap.cwsjico, R.mipmap.gqczico, R.mipmap.swxyico, R.mipmap.rzjlico};
+    private String[] property_titles = { "股权出资", "税务信用", "融资纪录"};//"财物数据",
+    private int property_images[] = { R.mipmap.gqczico, R.mipmap.swxyico, R.mipmap.rzjlico};//R.mipmap.cwsjico,
 
 
     /*企业多维*/
-    private String[] company_titles = {"招聘", "企业资讯", "注册网站", "产品信息", "舆情口碑", "清算信息"};
+    private String[] company_titles = {"招聘", "企业资讯", "注册网站", "产品信息", "清算信息"};//"舆情口碑",
     private int[] company_images = {R.mipmap.zpico, R.mipmap.qynewsico, R.mipmap.websiteico, R.mipmap.cpxxico,
-            R.mipmap.yqkbico, R.mipmap.qsxxico};
+            R.mipmap.qsxxico};// R.mipmap.yqkbico,
 
 
     private CompanyAdapter basicAdp, riskAdp, knowledgeAdp, propertyAdp, companyAdp;
@@ -113,9 +113,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     public void init(Bundle savedInstanceState) {
         companyId = getIntent().getStringExtra(COMAPYT_ID);
         mPresenter = new CompanyPreImpl(this);
-        mPresenter.getCompanyDetail(companyId);
+        mPresenter.getCompanyDetail("4ee8a9f4d4844a17a91535a82349b61f");
         initOnItemClick();
-        bundle.putString(COMAPYT_ID,companyId);
+        bundle.putString(COMAPYT_ID,"4ee8a9f4d4844a17a91535a82349b61f");
     }
 
 
@@ -170,9 +170,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                     case 6://经营异常
                         openActivity(AbnormalOperationAct.class,bundle);
                         break;
-                    case 7://抽查检查
-                        openActivity(SpotCheckAct.class,bundle);
-                        break;
+//                    case 7://抽查检查
+//                        openActivity(SpotCheckAct.class,bundle);
+//                        break;
                 }
             }
         });
@@ -199,14 +199,14 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
-                    case 0://财务数据
-                        break;
-                    case 1://股权出资
+//                    case 0://财务数据
+//                        break;
+                    case 0://股权出资
                         openActivity(EquityAct.class,bundle);
                         break;
-                    case 2://税务信用
+                    case 1://税务信用
                         break;
-                    case 3://融资记录
+                    case 2://融资记录
                         openActivity(FinancingInfoAct.class,bundle);
                         break;
                 }
@@ -229,10 +229,10 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                     case 3://产品信息
                         openActivity(ProductInfoAct.class,bundle);
                         break;
-                    case 4://舆情口碑
-                        openActivity(OpinionAct.class,bundle);
-                        break;
-                    case 5://清算信息
+//                    case 4://舆情口碑
+//                        openActivity(OpinionAct.class,bundle);
+//                        break;
+                    case 4://清算信息
                         openActivity(ClearingInfoAct.class,bundle);
                         break;
                 }
@@ -293,7 +293,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         tvPerson.setText(companyBean.getLegalPerson());
         tvRegMoney.setText(companyBean.getRegCapital());
         tvPublishTime.setText(companyBean.getCompanyCreatetime());
-        tvUpdateTime.setText("更新：" + companyBean.getLastUpdateTime());
+        if (!TextUtils.isEmpty(companyBean.getLastUpdateTime())){
+            tvUpdateTime.setText("更新：" + companyBean.getLastUpdateTime());
+        }
         tvFollow.setText("关注" + companyBean.getFocus());
         tvLl.setText("浏览："+companyBean.getBrowseCount());
         tvPhone.setText(companyBean.getCompanyPhoneNo());
@@ -352,6 +354,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     public void addInsertAtt() {
         isatt=true;
         ivAtten.setImageResource(R.mipmap.guanzhu);
+        mPresenter.getCompanyDetail(companyId);
 
     }
 
@@ -359,7 +362,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     public void removeAtt() {
         isatt=false;
         ivAtten.setImageResource(R.mipmap.gsxxguanzhu);
-
+        mPresenter.getCompanyDetail(companyId);
     }
 
 

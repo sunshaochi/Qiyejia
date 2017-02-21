@@ -26,6 +26,7 @@ public class HomePresenterImpl extends BasePresenterImpl<IHomeView> implements I
     @Override
     public void getMyAttention() {
 
+
     }
 
     @Override

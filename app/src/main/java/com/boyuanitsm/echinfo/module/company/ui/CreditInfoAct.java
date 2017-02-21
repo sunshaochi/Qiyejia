@@ -5,6 +5,9 @@ import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
+import com.boyuanitsm.echinfo.module.company.presenter.CrediteListPreImpl;
+import com.boyuanitsm.echinfo.module.company.presenter.ICreditListPre;
+import com.boyuanitsm.echinfo.module.company.view.ICrediteListView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
@@ -20,13 +23,13 @@ import butterknife.BindView;
  * 失信信息
  * Created by Yang on 2017/1/5 0005.
  */
-public class CreditInfoAct extends BaseAct{
+public class CreditInfoAct extends BaseAct<ICreditListPre> implements ICrediteListView{
     @BindView(R.id.rcv)
     XRecyclerView rcv;
 
     private BaseRecyclerAdapter<String> mAdp;
     private List<String> testList = new ArrayList<>();
-
+    String sid;
     @Override
     public int getLayout() {
         return R.layout.rcv_customview;
@@ -35,6 +38,9 @@ public class CreditInfoAct extends BaseAct{
     @Override
     public void init(Bundle savedInstanceState) {
         setTopTitle("失信信息");
+        sid=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
+        mPresenter=new CrediteListPreImpl(this);
+        mPresenter.getICrediteByid("5550a5f9e138231700b9328e");
         setRightBtn(R.mipmap.share_circle_icon, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,5 +76,15 @@ public class CreditInfoAct extends BaseAct{
             }
         });
         rcv.setAdapter(mAdp);
+    }
+
+    @Override
+    public void getCreditListSucess() {
+
+    }
+
+    @Override
+    public void getCreditListFaild(int status, String errorMsg) {
+
     }
 }

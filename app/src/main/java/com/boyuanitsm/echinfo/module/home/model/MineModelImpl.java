@@ -12,4 +12,9 @@ public class MineModelImpl implements IMineModel{
     public UserBean toGetUserBean() {
        return EchinfoUtils.getCurrentUser();
     }
+
+    @Override
+    public void loadHeadIcon() {
+
+    }
 }

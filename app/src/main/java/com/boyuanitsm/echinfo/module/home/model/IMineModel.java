@@ -8,4 +8,6 @@ import com.boyuanitsm.echinfo.bean.UserBean;
 public interface IMineModel {
     /*获取用户*/
     UserBean toGetUserBean();
+    //上传用户头像
+    void loadHeadIcon();
 }

@@ -3,6 +3,7 @@ package com.boyuanitsm.echinfo.module.home.model;
 import com.boyuanitsm.echinfo.callback.RequestCallback;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.manager.FindManager;
+import com.boyuanitsm.echinfo.http.manager.UserManager;
 
 /**
  * 数据接口代理类
@@ -12,6 +13,7 @@ public class HomeModelImpl implements IHomeModel{
 
     @Override
     public void getMyAttention(RequestCallback<String> callback) {
+        UserManager.getUserManager().FindMyAtt((ResultCallback) callback);
 
     }
 

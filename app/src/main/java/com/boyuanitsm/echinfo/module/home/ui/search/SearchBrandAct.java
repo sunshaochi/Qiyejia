@@ -205,7 +205,7 @@ public class SearchBrandAct extends BaseAct<ISearchBrandPresenter> implements IS
      * 数据列表
      */
     private void initData() {
-        query.setHint("请输入注册号，商标名或公司名");
+        query.setHint("请输入商标名");
         myAdapter = new BaseRecyclerAdapter<BrandBean>(getApplicationContext(), datas) {
             @Override
             public int getItemLayoutId(int viewType) {
@@ -306,7 +306,7 @@ public class SearchBrandAct extends BaseAct<ISearchBrandPresenter> implements IS
     public void findBrandTotal(int totals) {
         if (totals > 0) {
             llJg.setVisibility(View.VISIBLE);
-            tvJs.setText("搜索到" + totals + "个专利");
+            tvJs.setText("搜索到" + totals + "个商标");
         }
     }
 

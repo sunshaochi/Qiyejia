@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
+import com.boyuanitsm.echinfo.adapter.SjSimpleAdapter;
 import com.boyuanitsm.echinfo.adapter.XzSimpleAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.PatenInfomationBean;
@@ -100,8 +101,10 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
     private BaseRecyclerAdapter<PatenInfomationBean> myAdapter;//推荐阅读适配器
     private List<PatenInfomationBean> datas = new ArrayList<>();//专利列表
     private List<PatentTypeBean> typedatas = new ArrayList<>();//专利类型
-    private PopupWindow mPopupWindow;
+    private List<String> timeList=new ArrayList<>();//时间选择；
+    private PopupWindow mPopupWindow,mPopupWindow2;
     private XzSimpleAdapter xzSimpleAdapter;
+    private SjSimpleAdapter sjSimpleAdapter;
     String name;//搜索名字
     String patentType;//专利类型
     String releaseDate;//年份
@@ -383,8 +386,15 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
         toast(errorMsg);
     }
 
+    @Override
+    public void getRecentYears(List<String> releaseYear) {
+        String timeStr="时间不限";
+        releaseYear.add(0, timeStr);
+        timeList=releaseYear;
+    }
+
     /**
-     * 时间类型
+     * 专利类型
      * 选择对话框
      */
     private void selectPop(final List<PatentTypeBean> typeBean) {
@@ -394,8 +404,6 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
         LinearLayout ll_dimis = (LinearLayout) v.findViewById(R.id.ll_dimis);
         xzSimpleAdapter = new XzSimpleAdapter(SearchPatentAct.this, typeBean, clickPos);
         lv.setAdapter(xzSimpleAdapter);
-//        tvSj.setTextColor(Color.parseColor("#2485f2"));
-//        ivSj.setImageResource(R.mipmap.sjtxx);
         tv_lx.setTextColor(Color.parseColor("#2485f2"));
         iv_lx.setImageResource(R.mipmap.sjtxx);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -439,9 +447,62 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
             }
         });
     }
+    /**
+     * 时间类型
+     * 选择对话框
+     */
+    private void selectPop2(final List<String> typeBean) {
+        View v = LayoutInflater.from(getApplicationContext()).inflate(R.layout.act_select, null);
+        mPopupWindow2 = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
+        ListView lv = (ListView) v.findViewById(R.id.lv);
+        LinearLayout ll_dimis = (LinearLayout) v.findViewById(R.id.ll_dimis);
+        sjSimpleAdapter = new SjSimpleAdapter(SearchPatentAct.this, typeBean, clickPos);
+        lv.setAdapter(sjSimpleAdapter);
+        tvSj.setTextColor(Color.parseColor("#2485f2"));
+        ivSj.setImageResource(R.mipmap.sjtxx);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                if (position == 0) {
+                    releaseDate = "";
+                } else {
+                    releaseDate = typeBean.get(position);
+                }
+                clickPos = position;
+                mPopupWindow2.dismiss();
+                page = 1;
+                mPresenter.findPatentInfo(name, patentType, releaseDate, page, rows);
+            }
+        });
+        mPopupWindow2.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                if (!TextUtils.isEmpty(releaseDate)) {
+                    tvSj.setText(releaseDate);
+                } else {
+                    tvSj.setText("时间不限");
+                }
+                tvSj.setTextColor(Color.parseColor("#000000"));
+                ivSj.setImageResource(R.mipmap.down_gray);
+            }
+        });
+        WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        int xpos = manager.getDefaultDisplay().getWidth() / 2 - mPopupWindow2.getWidth() / 2;
+        //xoff,yoff基于anchor的左下角进行偏移。
+        mPopupWindow2.setBackgroundDrawable(new BitmapDrawable(null, ""));
+        mPopupWindow2.setAnimationStyle(R.style.ppAnimBottom);
+        mPopupWindow2.setFocusable(true);
+        mPopupWindow2.showAsDropDown(llSx, xpos, 0);
+        ll_dimis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopupWindow2.dismiss();
+            }
+        });
+    }
 
-    @OnClick({R.id.rl_lx, R.id.iv_sc, R.id.rl_recent, R.id.rl_hot, R.id.ll_rs})
+    @OnClick({R.id.rl_lx, R.id.iv_sc, R.id.rl_recent, R.id.rl_hot, R.id.ll_rs,R.id.rl_sj})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_lx:
@@ -449,6 +510,11 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
                     selectPop(typedatas);
                 } else {
                     toast("获取专利类型失败");
+                }
+                break;
+            case R.id.rl_sj:
+                if (timeList!=null&&timeList.size()>0){
+                    selectPop2(timeList);
                 }
                 break;
             case R.id.iv_sc:

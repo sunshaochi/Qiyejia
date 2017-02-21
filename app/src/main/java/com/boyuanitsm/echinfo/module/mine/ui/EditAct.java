@@ -27,10 +27,14 @@ import butterknife.BindView;
 public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUserView {
     @BindView(R.id.cet_Edit_Update)
     ClearEditText cet;
+    @BindView(R.id.new_password)
+    ClearEditText newPassword;
+    @BindView(R.id.new_password_again)
+    ClearEditText newPasswordAgain;
     private int TYPE;//1修改密码，2姓名，3公司，4工作
     public static final String USER_TYPE = "type";
     UserBean user;
-    String pwd, newPwd;
+    String pwd, newPwd, resetPwd;
     boolean flag = true;
     int error;
 
@@ -42,6 +46,13 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
     @Override
     public void init(Bundle savedInstanceState) {
         TYPE = getIntent().getIntExtra(USER_TYPE, 0);
+        if (TYPE == 1) {
+            newPassword.setVisibility(View.VISIBLE);
+            newPasswordAgain.setVisibility(View.VISIBLE);
+        } else {
+            newPassword.setVisibility(View.GONE);
+            newPasswordAgain.setVisibility(View.GONE);
+        }
         user = new UserBean();
         user = EchinfoUtils.getCurrentUser();
         mPresenter = new ModifyUserPresenterImpl(this);
@@ -52,8 +63,10 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
                 if (!TextUtils.isEmpty(cet.getText().toString().trim())) {
                     switch (TYPE) {
                         case 1:
-                            newPwd = cet.getText().toString().trim();
-                            pwd = user.getPassword();
+                            pwd = cet.getText().toString().trim();
+                            newPwd=newPassword.getText().toString().trim();
+                            resetPwd=newPasswordAgain.getText().toString().trim();
+//                            pwd = user.getPassword();
                             break;
                         case 2:
                             user.setName(cet.getText().toString().trim());
@@ -66,6 +79,10 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
                             break;
                     }
                     if (TYPE == 1) {
+                        if (!TextUtils.equals(newPwd,resetPwd)){
+                            toast("您输入的密码不同，请重新输入！");
+                            return;
+                        }
                         mPresenter.modifyPwd(pwd, newPwd);
                     } else {
                         mPresenter.modifyUser(user);
@@ -82,8 +99,12 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
         switch (position) {
             case 1:
                 setTopTitle("修改密码");
-                cet.setHint("请输入修改密码");
+                cet.setHint("请输入原密码");
+                newPassword.setHint("请输入新密码");
+                newPasswordAgain.setHint("请确认密码");
                 cet.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD); //输入隐藏密码类型
+                newPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD); //输入隐藏密码类型
+                newPasswordAgain.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD); //输入隐藏密码类型
                 cet.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)}); //最大输入长度
                 break;
             case 2:
@@ -138,12 +159,13 @@ public class EditAct extends BaseAct<IModifyUserPresenter> implements IModifyUse
 
     @Override
     public void modifyPwdSucess(String sucessMsg) {
-
+        toast(sucessMsg);
+        finish();
     }
 
     @Override
     public void modifyPwdFaild(int status, String errorMsg) {
-
+        toast(errorMsg);
     }
 
 }

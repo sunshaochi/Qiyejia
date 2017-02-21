@@ -24,4 +24,6 @@ public interface ISearchPatentView extends BaseView {
     //获取专利热门搜索记录
     void getHotHistorySucess(List<PatenInfomationBean> suceessMsg);
     void getHotHistoryFaild(int status,String errorMsg);
+        //获取结果年份
+    void getRecentYears(List<String> releaseYear);
 }

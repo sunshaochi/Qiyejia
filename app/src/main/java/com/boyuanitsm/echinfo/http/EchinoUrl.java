@@ -34,6 +34,8 @@ public class EchinoUrl {
 
     //关注列表
     public static final String FINDMYATT_URL = BASE_URL + "user/login/findMyAttentionListByAccountId.do";
+    //登出
+    public static final String LOGIN_OUT_URL=BASE_URL+"manager/unLogin/logout.do";
 
     /**
      *     查找相关接口
@@ -62,6 +64,8 @@ public class EchinoUrl {
     public static final String FIND_PINPAI_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByProductName.do";
     //查股东高管
     public static final String FIND_GUDONG_URL=BASE_URL+"stockMsg/unLogin/findStockMsgInfo.do";
+    //根据id查失信信息接口
+    public static final String FIND_LOSECREDIT_URL=BASE_URL+"company/login/findCourtitemListBysId.do";
     /**
      * 企业向关
      */
