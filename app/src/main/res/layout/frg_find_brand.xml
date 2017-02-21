@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_patent"
+    android:background="@color/bg_color"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+    <include layout="@layout/title_act_layout_search"/>
+    <com.boyuanitsm.tools.view.indicator.MagicIndicator
+        android:id="@+id/mg_title"
+        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_below="@+id/mg_title"
+        style="@style/view_line"
+        android:layout_height="1px" />
+    <!--<LinearLayout-->
+        <!--android:id="@+id/ll_sx"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+        <!--<LinearLayout-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:background="@color/white"-->
+            <!--android:layout_height="45dp">-->
+            <!--<TextView-->
+                <!--android:textSize="16sp"-->
+                <!--android:text="全部类别"-->
+                <!--android:textColor="#000000"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <!--<ImageView-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:background="@mipmap/down_gray"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+        <!--<View style="@style/view_line" />-->
+    <!--</LinearLayout>-->
+    <!--<View-->
+        <!--style="@style/view_line"/>-->
+    <android.support.v4.view.ViewPager
+        android:layout_below="@+id/v_line"
+        android:id="@+id/vp_brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <include
+        layout="@layout/act_search_nocontent"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/common_search_history"
+        android:visibility="gone"/>
+
+</RelativeLayout>

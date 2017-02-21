@@ -190,6 +190,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                         openActivity(CopyrightAct.class,bundle);
                         break;
                     case 3://企业证书
+                        openActivity(QiYeZsAct.class,bundle);
                         break;
                 }
             }

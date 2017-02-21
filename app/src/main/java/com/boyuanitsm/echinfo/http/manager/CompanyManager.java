@@ -276,4 +276,16 @@ public class CompanyManager {
         OkHttpManager.getInstance().doPost(EchinoUrl.INSERTIDEATICKING_URL,params,resultCallback);
 
     }
+
+    /**
+     * 获取企业证书列表
+     * @param companyId
+     * @param callback
+     */
+
+    public void getQiYeList(String companyId, ResultCallback callback) {
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.GET_QIYE_LIST,params,callback);
+    }
 }

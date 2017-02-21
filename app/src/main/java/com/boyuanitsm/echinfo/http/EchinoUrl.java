@@ -6,7 +6,7 @@ package com.boyuanitsm.echinfo.http;
  */
 public class EchinoUrl {
     /*基础地址*/
-    public static final String BASE_URL="http://139.196.226.111:8006/yiqicha/";
+    public static final String BASE_URL = "http://139.196.226.111:8006/yiqicha/";
 //    public static final String BASE_URL="http://172.16.6.146:8080/yiqicha/";
 
 
@@ -35,90 +35,92 @@ public class EchinoUrl {
     //关注列表
     public static final String FINDMYATT_URL = BASE_URL + "user/login/findMyAttentionListByAccountId.do";
     //登出
-    public static final String LOGIN_OUT_URL=BASE_URL+"manager/unLogin/logout.do";
+    public static final String LOGIN_OUT_URL = BASE_URL + "manager/unLogin/logout.do";
 
     /**
-     *     查找相关接口
+     * 查找相关接口
      */
     //职业类别
     String PROFESSION_URL = BASE_URL + "occupationMsg/unLogin/findOccupationList.do";
     //查专利
     public static final String FIND_PATENT_URL = BASE_URL + "patenInfomation/unLogin/findPatenInfoByName.do";
     //专利类型
-    public static final String PANTENT_TYPE_URL=BASE_URL+"manager/unLogin/findTypesByKey.do";
+    public static final String PANTENT_TYPE_URL = BASE_URL + "manager/unLogin/findTypesByKey.do";
     //热门搜索
-    public static final String HOT_SEARCH_URL=BASE_URL+"company/unlogin/findHotQuery.do";
+    public static final String HOT_SEARCH_URL = BASE_URL + "company/unlogin/findHotQuery.do";
     //查商标
-    public static final String FIND_BRAND_URL=BASE_URL+"trademark/unLogin/findTrademarkInfoByName.do";
+    public static final String FIND_BRAND_URL = BASE_URL + "trademark/unLogin/findTrademarkInfoByName.do";
     //查法院判决
-    public static final String FIND_JUDGMENT_URL=BASE_URL+"courtDecision/unLogin/findCourtDecisionInfo.do";
+    public static final String FIND_JUDGMENT_URL = BASE_URL + "courtDecision/unLogin/findCourtDecisionInfo.do";
     //查执行
-    public static final String FIND_IMPLEMENT_URL=BASE_URL+"breakExecutive/unLogin/findBreakExecutiveInfo.do";
+    public static final String FIND_IMPLEMENT_URL = BASE_URL + "breakExecutive/unLogin/findBreakExecutiveInfo.do";
     //查失信
-    public static final String FIND_LOSE_CREDIT_URL=BASE_URL+"courtitem/unLogin/findCourtitemByName.do";
+    public static final String FIND_LOSE_CREDIT_URL = BASE_URL + "courtitem/unLogin/findCourtitemByName.do";
     //查企业根据名字
-    public static final String FIND_STOCK_NAME_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByName.do";
+    public static final String FIND_STOCK_NAME_URL = BASE_URL + "company/unLogin/findEnterpriseInfoByName.do";
     //查经营范围
-    public static final String FIND_JINGYING_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByBusinessScope.do";
+    public static final String FIND_JINGYING_URL = BASE_URL + "company/unLogin/findEnterpriseInfoByBusinessScope.do";
     //查品牌产品
-    public static final String FIND_PINPAI_URL=BASE_URL+"company/unLogin/findEnterpriseInfoByProductName.do";
+    public static final String FIND_PINPAI_URL = BASE_URL + "company/unLogin/findEnterpriseInfoByProductName.do";
     //查股东高管
-    public static final String FIND_GUDONG_URL=BASE_URL+"stockMsg/unLogin/findStockMsgInfo.do";
+    public static final String FIND_GUDONG_URL = BASE_URL + "stockMsg/unLogin/findStockMsgInfo.do";
     //根据id查失信信息接口
-    public static final String FIND_LOSECREDIT_URL=BASE_URL+"company/login/findCourtitemListBysId.do";
+    public static final String FIND_LOSECREDIT_URL = BASE_URL + "company/login/findCourtitemListBysId.do";
     /**
      * 企业向关
      */
     /*感兴趣的企业*/
     public static final String INTEREST_COMPANY_URL = BASE_URL + "company/login/findEnterpriseInfoListByCompanyIdList.do";
     /*企业详情*/
-    public static final String COMANY_DETAIL_URL=BASE_URL+"view/login/findDetailedInfoById.do";
+    public static final String COMANY_DETAIL_URL = BASE_URL + "view/login/findDetailedInfoById.do";
     /*对外投资*/
-    public static final String INVES_DATA_URL=BASE_URL+"company/login/findAbroadInvestmentListByCompanyId.do";
+    public static final String INVES_DATA_URL = BASE_URL + "company/login/findAbroadInvestmentListByCompanyId.do";
     /*企业年报*/
-    public static final String COMPANY_REPORT_URL=BASE_URL+"company/login/findAnnualPortsEnterpriseListByCompanyId.do";
+    public static final String COMPANY_REPORT_URL = BASE_URL + "company/login/findAnnualPortsEnterpriseListByCompanyId.do";
     /*法院公告*/
 
     /*招聘信息*/
-    public static final String FINDRECRUITING_URL=BASE_URL+"company/login/findRecruitingListByCompanyId.do";
+    public static final String FINDRECRUITING_URL = BASE_URL + "company/login/findRecruitingListByCompanyId.do";
     /*查询亲算信息*/
-    public static final String FINDCLEARINFO_URL=BASE_URL+"company/login/findClearInfoListByCompanyId.do";
+    public static final String FINDCLEARINFO_URL = BASE_URL + "company/login/findClearInfoListByCompanyId.do";
     /*查询融资信息*/
-    public static final String FINDFINANCINGINFO_URL=BASE_URL+"company/login/findFinancingInfoListByCompanyId.do";
+    public static final String FINDFINANCINGINFO_URL = BASE_URL + "company/login/findFinancingInfoListByCompanyId.do";
     /*查询股权出资信息*/
-    public static final String FINDEQUITY_URL=BASE_URL+"company/login/findEquityPledgedListByCompanyId.do";
+    public static final String FINDEQUITY_URL = BASE_URL + "company/login/findEquityPledgedListByCompanyId.do";
 
     /*企业资讯*/
-    public static final String FINDENTERPRISE_URL=BASE_URL+"company/login/findEnterpriseNewsListByCompanyId.do";
+    public static final String FINDENTERPRISE_URL = BASE_URL + "company/login/findEnterpriseNewsListByCompanyId.do";
 
+    //企业证书列表获取
+    public static final String GET_QIYE_LIST=BASE_URL+"company/login/findQualifictionCertificationListBycompanyId.do";
 
-    public static final String COURT_ANNO_URL=BASE_URL+"company/login/findCourtAnnouncementListByCompanyId.do";
+    public static final String COURT_ANNO_URL = BASE_URL + "company/login/findCourtAnnouncementListByCompanyId.do";
     /*法院裁决*/
-    public static final String COURT_ADJUDICATION=BASE_URL+"company/login/findCourtDecisionListByCompanyId.do";
+    public static final String COURT_ADJUDICATION = BASE_URL + "company/login/findCourtDecisionListByCompanyId.do";
     /*诉讼信息*/
-    public static final String LITIGATION_URL=BASE_URL+"company/login/findLawsuitMsgListByCompanyId.do";
+    public static final String LITIGATION_URL = BASE_URL + "company/login/findLawsuitMsgListByCompanyId.do";
     /*诉讼信息详情*/
-    public static final String LITIGATION_DETAIL_URL=BASE_URL+"view/login/findLawsuitMsgById.do";
+    public static final String LITIGATION_DETAIL_URL = BASE_URL + "view/login/findLawsuitMsgById.do";
     /*行政处罚*/
-    public static final String ADMINISTRATIVE_URL=BASE_URL+"company/login/findAdministrativePenaltyListByCompanyId.do";
+    public static final String ADMINISTRATIVE_URL = BASE_URL + "company/login/findAdministrativePenaltyListByCompanyId.do";
     /*经营异常*/
-    public static final String MANAGEMENT_EXCEPTION_URL=BASE_URL+"company/login/findManageExceptionListBycompanyId.do";
+    public static final String MANAGEMENT_EXCEPTION_URL = BASE_URL + "company/login/findManageExceptionListBycompanyId.do";
     /*抽查检查*/
-    public static final String FIND_CHECK_URL=BASE_URL+"company/login/findSpotCheckListByCompanyI.do";
+    public static final String FIND_CHECK_URL = BASE_URL + "company/login/findSpotCheckListByCompanyI.do";
     /*通过公司ID查专利*/
-    public static final String PATENT_BY_ID_URL=BASE_URL+"company/login/findPatenInfomationByCompanyId.do";
+    public static final String PATENT_BY_ID_URL = BASE_URL + "company/login/findPatenInfomationByCompanyId.do";
     /*查询原创著作权*/
-    public static final String COPYRIGHTS_BYID_URL=BASE_URL+"company/login/findCopyrightsByCompanyId.do";
+    public static final String COPYRIGHTS_BYID_URL = BASE_URL + "company/login/findCopyrightsByCompanyId.do";
     /*查询软件著作权*/
-    public static final String SOFTWORE_RIGHT_URL=BASE_URL+"company/ogin/findSoftwareCopyrightByCompanyId.do";
+    public static final String SOFTWORE_RIGHT_URL = BASE_URL + "company/ogin/findSoftwareCopyrightByCompanyId.do";
 
 
     /*意见反馈*/
-    public static final String INSERTIDEATICKING_URL=BASE_URL+"company/login/insertIdeaTicking.do";
+    public static final String INSERTIDEATICKING_URL = BASE_URL + "company/login/insertIdeaTicking.do";
 
     /*获取字典列表（纠错的错误列表）*/
-    public static final String ERROR_LIST_URL=BASE_URL+"company/login/findDictListBydictType.do";
+    public static final String ERROR_LIST_URL = BASE_URL + "company/login/findDictListBydictType.do";
     /*提交纠错信息*/
-    public static final String ERROR_SUBMIT_URL=BASE_URL+"company/login/insertCorrectionManage.do";
+    public static final String ERROR_SUBMIT_URL = BASE_URL + "company/login/insertCorrectionManage.do";
 
 }

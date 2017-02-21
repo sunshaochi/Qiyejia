@@ -24,7 +24,7 @@ import com.boyuanitsm.echinfo.module.company.ui.PinpaidocAct;
 import com.boyuanitsm.echinfo.module.company.ui.SearchGsByNameAct;
 import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
-import com.boyuanitsm.echinfo.module.home.ui.search.SearchBrandAct;
+import com.boyuanitsm.echinfo.module.home.ui.search.FindBrandAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchCopyrightAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchImplementedAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchJudgmentAct;
@@ -144,7 +144,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
                         openActivity(SearchPatentAct.class);
                         break;
                     case 1://查商标
-                        openActivity(SearchBrandAct.class);
+                        openActivity(FindBrandAct.class);
                         break;
                     case 2://查著作权
                         openActivity(SearchCopyrightAct.class);

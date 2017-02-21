@@ -13,6 +13,5 @@ public interface ISearchBrandPresenter extends BasePresenter {
     void  findBrandInfo(String name, String patenType, int page, int rows);
     //获取商标类型
     void getBrandType(String type);
-    //获取商标热门搜索记录
-    void getHotHistory(String type);
+
 }

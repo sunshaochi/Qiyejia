@@ -52,18 +52,4 @@ public class SearchBrandPresenterImpl extends BasePresenterImpl<ISearchBrandView
 
     }
 
-    @Override
-    public void getHotHistory(String type) {
-            iSearchBrandModel.getHotHistory(type, new ResultCallback<ResultBean<List<BrandBean>>>() {
-                @Override
-                public void onError(int status, String errorMsg) {
-                    mView.getHotHistoryFaild(status,errorMsg);
-                }
-
-                @Override
-                public void onResponse(ResultBean<List<BrandBean>> response) {
-                    mView.getHotHistorySucess(response.getData());
-                }
-            });
-    }
 }

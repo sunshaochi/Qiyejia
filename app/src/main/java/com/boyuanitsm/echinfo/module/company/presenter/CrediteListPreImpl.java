@@ -1,6 +1,7 @@
 package com.boyuanitsm.echinfo.module.company.presenter;
 
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
+import com.boyuanitsm.echinfo.bean.LoseCreditDatabean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.module.company.model.CrediteListModelImpl;
@@ -23,15 +24,20 @@ public class CrediteListPreImpl extends BasePresenterImpl<ICrediteListView> impl
 
     @Override
     public void getICrediteByid(String sid) {
-        model.getCreditList(sid, new ResultCallback<ResultBean<String>>() {
+        model.getCreditList(sid, new ResultCallback<ResultBean<LoseCreditDatabean>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.getCreditListFaild(status,errorMsg);
             }
 
             @Override
-            public void onResponse(ResultBean<String> response) {
-                mView.getCreditListSucess();
+            public void onResponse(ResultBean<LoseCreditDatabean> response) {
+                LoseCreditDatabean data = response.getData();
+                if (data!=null){
+                    mView.getCreditListSucess(data);
+                }else {
+                    mView.findLoseCreditNoData();
+                }
             }
         });
     }
