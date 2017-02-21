@@ -256,6 +256,20 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/white">
+
+                <com.boyuanitsm.tools.view.FlowTag.FlowTagLayout
+                    android:id="@+id/size_flow_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></com.boyuanitsm.tools.view.FlowTag.FlowTagLayout>
+
+
+            </LinearLayout>
+
+
             <!--联系信息-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -285,7 +299,7 @@
                        android:layout_height="wrap_content"
                        android:textSize="14sp"
                        android:textColor="@color/tv_blue_color"
-                       android:text="联系信息"
+                       android:text="更多企业信息"
                        android:layout_alignParentRight="true"
                        android:layout_centerVertical="true"
                        android:layout_marginRight="15dp"
@@ -294,7 +308,7 @@
                    <ImageView
                        android:layout_width="10dp"
                        android:layout_height="6dp"
-                       android:src="@mipmap/arrow_top"
+                       android:src="@mipmap/arrow_right"
                        android:layout_alignParentRight="true"
                        android:layout_centerVertical="true"
                        />
@@ -302,6 +316,7 @@
                </RelativeLayout>
 
                 <LinearLayout
+
                     android:id="@+id/llContract"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -311,6 +326,7 @@
                     <View
                         style="@style/view_line"></View>
                     <com.boyuanitsm.tools.view.CommonView
+                        android:visibility="gone"
                         android:id="@+id/cvEmail"
                         style="@style/cv_style"
                         app:statusImage="@mipmap/email"
@@ -319,8 +335,10 @@
                         ></com.boyuanitsm.tools.view.CommonView>
 
                     <View
+                        android:visibility="gone"
                         style="@style/view_line"></View>
                     <com.boyuanitsm.tools.view.CommonView
+                        android:visibility="gone"
                         android:id="@+id/cvWz"
                         style="@style/cv_style"
                         app:statusImage="@mipmap/internet"
@@ -329,8 +347,10 @@
                         ></com.boyuanitsm.tools.view.CommonView>
 
                     <View
+                        android:visibility="gone"
                         style="@style/view_line"></View>
                     <com.boyuanitsm.tools.view.CommonView
+                        android:visibility="gone"
                         android:id="@+id/cvAddress"
                         style="@style/cv_style"
                         app:statusImage="@mipmap/positon"
@@ -349,7 +369,6 @@
                 android:paddingLeft="10dp"
                 android:gravity="center_vertical"
                 android:background="@color/white"
-                android:layout_marginTop="10dp"
                 />
             <View
                style="@style/view_line"></View>
@@ -460,11 +479,16 @@
 
     </ScrollView>
 
-    <View style="@style/view_line"></View>
+    <!--<View style="@style/view_line"></View>-->
 
-    <LinearLayout
+    <FrameLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
         android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
         android:background="#fefefe"
         android:orientation="horizontal"
         >
@@ -489,6 +513,24 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llComment"
+            style="@style/linear_main">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/gsxxcomment" />
+
+            <TextView
+                style="@style/tv_main_btm"
+                android:text="点评"
+                android:textColor="#666666" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/linear_main"></LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/llFollow"
             style="@style/linear_main">
 
@@ -510,7 +552,7 @@
         <LinearLayout
             android:id="@+id/llBg"
             style="@style/linear_main"
-            android:visibility="gone"
+
             >
 
             <ImageView
@@ -526,21 +568,6 @@
                 />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/llComment"
-            style="@style/linear_main">
-
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@mipmap/gsxxcomment" />
-
-            <TextView
-                style="@style/tv_main_btm"
-                android:text="点评"
-                android:textColor="#666666"
-                />
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llJk"
@@ -560,5 +587,31 @@
                 />
         </LinearLayout>
     </LinearLayout>
+
+        <LinearLayout
+            android:paddingBottom="3dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/fzlc_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发展历程"
+                android:textColor="#2485f2"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
 </LinearLayout>
