@@ -80,6 +80,8 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     FlowTagLayout size_flow_layout;
     private TagAdapter<String> mSizeTagAdapter;
 
+    private CompanyBean mcompanyBean;
+
     private boolean isatt;
 
     /*基础信息*/
@@ -249,7 +251,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         });
     }
 
-    @OnClick({R.id.rlShare, R.id.cvEmail, R.id.cvWz, R.id.cvAddress, R.id.llHome, R.id.llFollow, R.id.llBg, R.id.llComment, R.id.llJk})
+    @OnClick({R.id.rlShare, R.id.cvEmail, R.id.cvWz, R.id.cvAddress, R.id.llHome, R.id.llFollow, R.id.llBg, R.id.llComment, R.id.llJk,R.id.ll_gd})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.rlShare:
@@ -284,6 +286,12 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             case R.id.llJk://监控
 
                 break;
+            case R.id.ll_gd://更多
+                Bundle bundle=new Bundle();
+//
+                bundle.putParcelable("mcompanyBean",mcompanyBean);
+                openActivity(MoreInfoAct.class,bundle);
+                break;
         }
     }
 
@@ -298,6 +306,10 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
     @Override
     public void setCompanyMes(CompanyBean companyBean) {
+        if(mcompanyBean!=null){
+            mcompanyBean=null;
+        }
+        mcompanyBean=companyBean;
         setTopTitle(companyBean.getCompanyName());
         tvPerson.setText(companyBean.getLegalPerson());
         tvRegMoney.setText(companyBean.getRegCapital());
