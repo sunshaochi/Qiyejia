@@ -54,7 +54,7 @@ public class EquityAct extends BaseAct<IEquityPre> implements IEquityView {
         setTopTitle("股权出资");
         mPresenter=new EquityPreImpl(this);
         companyId = getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
-        mPresenter.getEquityDatas("e30e037f87d34a1cad09150b3dbe168b");
+        mPresenter.getEquityDatas(companyId);
 //        initFrg();
     }
 

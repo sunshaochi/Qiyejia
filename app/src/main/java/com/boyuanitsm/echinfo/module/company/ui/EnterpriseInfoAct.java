@@ -70,8 +70,9 @@ public class EnterpriseInfoAct extends BaseAct<IEnterprisePre> implements IEnter
 
             @Override
             public void bindData(BaseRecyclerViewHolder holder, int position, EnterpriBean item) {
-                holder.getTextView(R.id.tvName).setText(item.getTitle());
+                holder.getTextView(R.id.tvName).setText(item.getNewsName());
                 holder.getTextView(R.id.tvNo).setText(item.getNewsFrom());
+                holder.getTextView(R.id.tvDate).setText(item.getNewsTime());
             }
         };
         rcv.setAdapter(mAdp);
