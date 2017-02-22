@@ -11,10 +11,12 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
@@ -109,13 +111,13 @@ public class FindBrandAct extends BaseAct<IFindBrandPre> implements IFindBrandVi
         //填充热门搜索
         inithotReSou();
         query.setHint("请输入商标名");
-        query.setOnKeyListener(new View.OnKeyListener() {
+        query.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId== EditorInfo.IME_ACTION_SEARCH){
                     // 先隐藏键盘
-                    ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
-                            .hideSoftInputFromWindow(getCurrentFocus()
+                    ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+                            .hideSoftInputFromWindow(FindBrandAct.this.getCurrentFocus()
                                     .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
                     search();
