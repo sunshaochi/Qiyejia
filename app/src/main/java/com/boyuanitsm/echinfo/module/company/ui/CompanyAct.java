@@ -348,7 +348,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         gvCompany.setAdapter(companyAdp);
 
         mSizeTagAdapter = new TagAdapter<>(CompanyAct.this);//流逝布局
-        size_flow_layout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);//设置是单选
+        size_flow_layout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_NONE);//设置是不选
         size_flow_layout.setAdapter(mSizeTagAdapter);
 
         List<String> sdatasource = new ArrayList<>();

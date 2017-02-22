@@ -69,6 +69,7 @@ public class MineAct extends BaseAct<MineMsgPre> implements IMineMsgView{
         userBean = EchinfoUtils.getCurrentUser();
         //填充个人资料
         initData(userBean);
+        //与上传图片有关的
         photoSavePath = Environment.getExternalStorageDirectory().getPath() + "/ClipHeadPhoto/cache/";
         File tempFile = new File(photoSavePath);
         if (!tempFile.exists()) {
