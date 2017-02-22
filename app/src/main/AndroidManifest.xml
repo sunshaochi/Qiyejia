@@ -228,6 +228,9 @@
         <activity
             android:name=".module.company.ui.RecruitmentAct"
             android:screenOrientation="portrait" />
+        <!--更多企业信息-->
+        <activity android:name=".module.company.ui.MoreInfoAct"
+            android:screenOrientation="portrait"></activity>
         <!--清算信息-->
         <activity
             android:name=".module.company.ui.ClearingInfoAct"
