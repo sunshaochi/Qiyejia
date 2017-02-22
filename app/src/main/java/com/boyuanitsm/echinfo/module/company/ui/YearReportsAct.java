@@ -75,7 +75,9 @@ public class YearReportsAct extends BaseAct<ICompanyBasePre> implements IBaseLis
         mAdp.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                openActivity(ReportInfoAct.class);
+                Bundle bundle=new Bundle();
+                bundle.putParcelable(ReportInfoAct.YEAR_REPORTINFO,datas.get(position-2));
+                openActivity(ReportInfoAct.class,bundle);
             }
 
             @Override
@@ -116,4 +118,6 @@ public class YearReportsAct extends BaseAct<ICompanyBasePre> implements IBaseLis
     public void requestNoData() {
         rcv.refreshComplete();
     }
+
+
 }
