@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.event.MainTabEvent;
+import com.boyuanitsm.echinfo.module.home.ui.find.Interestfrg;
 import com.boyuanitsm.echinfo.module.home.view.IMainView;
 import com.boyuanitsm.echinfo.module.user.ui.LoginAct;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
@@ -30,7 +31,7 @@ import butterknife.OnClick;
  */
 public class MainAct extends BaseAct implements IMainView {
     private FragmentManager fragmentManager;
-    private Fragment homeFrg, followFrg, findFrg, mineFrg;
+    private Fragment homeFrg, followFrg, findFrg, mineFrg,interestFrg;
     @BindView(R.id.tvHome)
     TextView tvHome;
     @BindView(R.id.ivHome)
@@ -111,11 +112,17 @@ public class MainAct extends BaseAct implements IMainView {
                 }
                 break;
             case 2:
-                if(findFrg==null){
-                    findFrg=new FindFrg();
-                    transaction.add(R.id.frame_main,findFrg);
+//                if(findFrg==null){
+//                    findFrg=new FindFrg();
+//                    transaction.add(R.id.frame_main,findFrg);
+//                }else {
+//                    transaction.show(findFrg);
+//                }
+                if(interestFrg==null){
+                    interestFrg=new Interestfrg();
+                    transaction.add(R.id.frame_main,interestFrg);
                 }else {
-                    transaction.show(findFrg);
+                    transaction.show(interestFrg);
                 }
                 break;
             case 3:
@@ -187,11 +194,14 @@ public class MainAct extends BaseAct implements IMainView {
         if (followFrg != null) {
             transaction.hide(followFrg);
         }
-        if (findFrg != null) {
-            transaction.hide(findFrg);
-        }
+//        if (findFrg != null) {
+//            transaction.hide(findFrg);//原本发现fra后来界面改了
+//        }
         if (mineFrg != null) {
             transaction.hide(mineFrg);
+        }
+        if(interestFrg!=null){
+            transaction.hide(interestFrg);//发现里面可能感兴趣frg
         }
 
     }
