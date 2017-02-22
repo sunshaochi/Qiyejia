@@ -288,4 +288,15 @@ public class CompanyManager {
         params.put("companyId",companyId);
         OkHttpManager.getInstance().doGet(EchinoUrl.GET_QIYE_LIST,params,callback);
     }
+
+    /**
+     * 注册网站
+     * @param companyId
+     * @param callback
+     */
+    public void Findweb(String companyId, ResultCallback callback) {
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FINDWEB_URL,params,callback);
+    }
 }

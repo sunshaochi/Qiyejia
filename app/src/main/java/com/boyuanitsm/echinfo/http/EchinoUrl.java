@@ -94,6 +94,9 @@ public class EchinoUrl {
     //企业证书列表获取
     public static final String GET_QIYE_LIST=BASE_URL+"company/login/findQualifictionCertificationListBycompanyId.do";
 
+    //注册网站
+    public static final String FINDWEB_URL =BASE_URL+"company/login/findEnterpriseWebMsgListByCompanyId.do";
+
     public static final String COURT_ANNO_URL = BASE_URL + "company/login/findCourtAnnouncementListByCompanyId.do";
     /*法院裁决*/
     public static final String COURT_ADJUDICATION = BASE_URL + "company/login/findCourtDecisionListByCompanyId.do";

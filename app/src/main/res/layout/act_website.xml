@@ -8,44 +8,50 @@
     <include layout="@layout/title_act_layout" />
 
     <com.boyuanitsm.echinfo.widget.MineItemView
+        android:id="@+id/tv_name"
         style="@style/productInfo_item"
         app:leftText="网站名称"
-        app:rightText="齐家网" />
+        app:rightText="" />
 
     <View style="@style/view_line" />
 
     <com.boyuanitsm.echinfo.widget.MineItemView
+        android:id="@+id/tv_shouye"
         style="@style/productInfo_item"
         app:leftText="网站首页"
-        app:rightText="www.qijia.com" />
+        app:rightText="" />
 
     <View style="@style/view_line" />
 
     <com.boyuanitsm.echinfo.widget.MineItemView
+        android:id="@+id/tv_beian"
         style="@style/productInfo_item"
         app:leftText="网站备案/许可证号"
-        app:rightText="22312312" />
+        app:rightText="" />
 
     <View style="@style/view_line" />
 
     <com.boyuanitsm.echinfo.widget.MineItemView
+        android:id="@+id/tv_time"
         style="@style/productInfo_item"
         app:leftText="登记时间"
-        app:rightText="20161212" />
+        app:rightText="" />
 
     <View style="@style/view_line" />
 
     <com.boyuanitsm.echinfo.widget.MineItemView
+        android:id="@+id/tv_zt"
         style="@style/productInfo_item"
         app:leftText="状态"
-        app:rightText="等待受理中" />
+        app:rightText="" />
 
     <View style="@style/view_line" />
 
     <com.boyuanitsm.echinfo.widget.MineItemView
+        android:id="@+id/tv_danwei"
         style="@style/productInfo_item"
         app:leftText="主办单位性质"
-        app:rightText="深圳腾讯科技有限公司" />
+        app:rightText="" />
 
     <View style="@style/view_line" />
 </LinearLayout>
