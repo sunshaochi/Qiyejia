@@ -21,7 +21,6 @@ import java.util.regex.Pattern;
  */
 public class EchinfoUtils {
 
-
     /**
      * 初始化下拉刷新
      *
@@ -108,6 +107,16 @@ public class EchinfoUtils {
         }
         return null;
     }
-
+    /**
+     * 密码验证
+     *
+     * @param pwd
+     * @return
+     */
+    public static boolean checkPwd(String pwd) {
+        String reg="^[0-9A-Za-z]{6,20}$";
+//        String reg = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{4,24}$";//字母+数字组合
+        return startCheck(reg, pwd);
+    }
 
 }

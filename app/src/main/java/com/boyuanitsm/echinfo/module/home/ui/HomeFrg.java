@@ -78,7 +78,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
 
     @Override
     protected void initView(View fragmentRootView) {
-        datas = EchinfoUtils.getTestDatas(4);
+        datas = EchinfoUtils.getTestDatas(0);
         mPresenter = new HomePresenterImpl(this);
         rcv = EchinfoUtils.getLinearRecyclerView(rcv, getContext(), false);
 
@@ -280,7 +280,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
 
                 break;
             case R.id.rl_search://高级搜索
-
+                openActivity(SearchGsByNameAct.class);
                 break;
         }
     }

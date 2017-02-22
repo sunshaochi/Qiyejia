@@ -46,7 +46,7 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
     private Timer timer;
     private MyTimerTask myTask;
     private UserBean user;
-
+    private String passwd;
     @Override
     public int getLayout() {
         return R.layout.act_register;
@@ -105,6 +105,11 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
                 }
                 user.setUsername(phone);
                 if (!TextUtils.isEmpty(register_pwd.getText().toString().trim())){
+                    passwd=register_pwd.getText().toString().trim();
+                    if (!EchinfoUtils.checkPwd(passwd)){
+                        toast("请输入6-20位数字或字母密码");
+                        return;
+                    }
                     user.setPassword(register_pwd.getText().toString().trim());
                 }
                 AppManager.getAppManager().addActivity(RegisterAct.this);

@@ -276,6 +276,9 @@
         <!--热门企业-->
         <activity android:name=".module.home.ui.search.SearchHot"
             android:screenOrientation="portrait"/>
+        <!--税务信用-->
+        <activity android:name=".module.company.ui.SuiWuInfo"
+            android:screenOrientation="portrait"/>
         </application>
 
 </manifest>
