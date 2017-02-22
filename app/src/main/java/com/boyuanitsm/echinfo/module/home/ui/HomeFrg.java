@@ -26,6 +26,7 @@ import com.boyuanitsm.echinfo.module.home.presenter.HomePresenterImpl;
 import com.boyuanitsm.echinfo.module.home.presenter.IHomePresenter;
 import com.boyuanitsm.echinfo.module.home.ui.search.FindBrandAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchCopyrightAct;
+import com.boyuanitsm.echinfo.module.home.ui.search.SearchHot;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchImplementedAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchJudgmentAct;
 import com.boyuanitsm.echinfo.module.home.ui.search.SearchPatentAct;
@@ -104,9 +105,9 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
 
             }
         });
-        if (!EchinfoUtils.isLogin()){
+        if (!EchinfoUtils.isLogin()) {
             rcvMyFollow.setVisibility(View.GONE);
-        }else {
+        } else {
             rcvMyFollow.setVisibility(View.VISIBLE);
         }
         initMyFollow();
@@ -203,7 +204,7 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
             @Override
             public void bindData(BaseRecyclerViewHolder holder, int position, AttenBean item) {
                 holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
-                holder.getTextView(R.id.tv_fr).setText("公司法人:"+item.getLegalPerson());
+                holder.getTextView(R.id.tv_fr).setText("公司法人:" + item.getLegalPerson());
                 holder.getTextView(R.id.tv_zt).setText(item.getManagementStatus());
 
             }
@@ -215,9 +216,9 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         myAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Bundle bundle=new Bundle();
-                bundle.putString(CompanyAct.COMAPYT_ID,attdatas.get(position).getId());
-                openActivity(CompanyAct.class,bundle);
+                Bundle bundle = new Bundle();
+                bundle.putString(CompanyAct.COMAPYT_ID, attdatas.get(position).getId());
+                openActivity(CompanyAct.class, bundle);
             }
 
             @Override
@@ -250,9 +251,9 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
         hotAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Bundle bundle=new Bundle();
-                bundle.putString(CompanyAct.COMAPYT_ID,companylist.get(position).getId());
-                openActivity(CompanyAct.class,bundle);
+                Bundle bundle = new Bundle();
+                bundle.putString(CompanyAct.COMAPYT_ID, companylist.get(position).getId());
+                openActivity(CompanyAct.class, bundle);
             }
 
             @Override
@@ -266,14 +267,14 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cvMyFollow://我的关注
-                if(!EchinfoUtils.isLogin()){
+                if (!EchinfoUtils.isLogin()) {
                     openActivity(LoginAct.class);
                     return;
                 }
                 EventBus.getDefault().post(new MainTabEvent(1));
                 break;
             case R.id.cvHotCom://热门企业
-
+                openActivity(SearchHot.class);
                 break;
             case R.id.cvSxbd://失信榜单
 
@@ -306,18 +307,17 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     //关注企业
     @Override
     public void setFollowDatas(List<AttenBean> mdatas) {
-        if(attdatas!=null&&attdatas.size()>0){
+        if (attdatas != null && attdatas.size() > 0) {
             attdatas.clear();
         }
-        if(mdatas.size()>4){
-            for (int i=0;i<4;i++){
+        if (mdatas.size() > 4) {
+            for (int i = 0; i < 4; i++) {
                 attdatas.add(mdatas.get(i));
             }
-        }else {
-            attdatas=mdatas;
+        } else {
+            attdatas = mdatas;
         }
         myAdapter.setData(attdatas);
-
 
 
     }
@@ -339,9 +339,9 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
     public class MyReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (!EchinfoUtils.isLogin()){
+            if (!EchinfoUtils.isLogin()) {
                 rcvMyFollow.setVisibility(View.GONE);
-            }else {
+            } else {
                 rcvMyFollow.setVisibility(View.VISIBLE);
             }
         }
@@ -355,11 +355,12 @@ public class HomeFrg extends BaseFrg<IHomePresenter> implements IHomeView, View.
             mActivity.registerReceiver(myReceiver, new IntentFilter(DATA_UPDATA));
         }
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (myReceiver != null) {
-           mActivity.unregisterReceiver(myReceiver);
+            mActivity.unregisterReceiver(myReceiver);
             myReceiver = null;
         }
     }

@@ -43,7 +43,7 @@ public class CreditInfoAct extends BaseAct<ICreditListPre> implements ICrediteLi
         setTopTitle("失信信息");
         sid=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
         mPresenter=new CrediteListPreImpl(this);
-        mPresenter.getICrediteByid("5550a5f9e138231700b9328e");
+        mPresenter.getICrediteByid(sid);
         setRightBtn(R.mipmap.share_circle_icon, new View.OnClickListener() {
             @Override
             public void onClick(View view) {

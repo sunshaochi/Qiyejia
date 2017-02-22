@@ -41,7 +41,7 @@ public class AbnormalOperationAct extends BaseAct<ICompanyBasePre> implements IB
         setTopTitle("经营异常");
         companyId=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
         mPresenter=new ManagerExceptionPreImpl(this);
-        mPresenter.getDatas("339560f42d9d4d8799d443e4d5797cb2");
+        mPresenter.getDatas(companyId);
         initFrg();
     }
 

@@ -276,6 +276,9 @@
         <!--企业证书列表-->
         <activity android:name=".module.company.ui.QiYeZsAct"
             android:screenOrientation="portrait"/>
+        <!--热门企业-->
+        <activity android:name=".module.home.ui.search.SearchHot"
+            android:screenOrientation="portrait"/>
         </application>
 
 </manifest>
