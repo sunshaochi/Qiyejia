@@ -22,6 +22,7 @@ import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.echinfo.widget.MineItemView;
 import com.boyuanitsm.echinfo.widget.crop.CropImageActivity;
 import com.boyuanitsm.tools.utils.MyBitmapUtils;
+import com.boyuanitsm.tools.utils.MyLogUtils;
 import com.boyuanitsm.tools.view.CircleImageView;
 import com.boyuanitsm.tools.view.MySelfSheetDialog;
 
@@ -68,6 +69,11 @@ public class MineAct extends BaseAct<MineMsgPre> implements IMineMsgView{
         userBean = EchinfoUtils.getCurrentUser();
         //填充个人资料
         initData(userBean);
+        photoSavePath = Environment.getExternalStorageDirectory().getPath() + "/ClipHeadPhoto/cache/";
+        File tempFile = new File(photoSavePath);
+        if (!tempFile.exists()) {
+            tempFile.mkdirs();
+        }
     }
 
     /**
@@ -176,8 +182,7 @@ public class MineAct extends BaseAct<MineMsgPre> implements IMineMsgView{
                     return;
                 }
                 uri = data.getData();
-                Bitmap userbitmap = MyBitmapUtils.decodeUriAsBitmap2(this, uri);
-
+                Bitmap userbitmap = MyBitmapUtils.decodeUriAsBitmap(this, uri);
                 if (userbitmap==null){
                   toast("图片有误，请重新选择！");
                     return;
@@ -185,6 +190,7 @@ public class MineAct extends BaseAct<MineMsgPre> implements IMineMsgView{
                 File user_head =MyBitmapUtils.saveBitmap(MyBitmapUtils.zoomImgKeepWH(userbitmap, 400, 400, true), "user_head.jpeg");
                 intent = new Intent(this, CropImageActivity.class);
                 intent.putExtra("path", Environment.getExternalStorageDirectory() + "/" + "user_head.jpeg");
+                MyLogUtils.info("相册图片地址是：" + Environment.getExternalStorageDirectory() + "/" + "user_head.jpeg");
                 startActivityForResult(intent, IMAGE_COMPLETE);
                 break;
             case PHOTOTAKE:// 拍照
@@ -194,6 +200,7 @@ public class MineAct extends BaseAct<MineMsgPre> implements IMineMsgView{
                 String path = photoSavePath + photoSaveName;
                 Intent intent2 = new Intent(this, CropImageActivity.class);
                 intent2.putExtra("path", path);
+                MyLogUtils.info("拍照地址是=====："+path);
                 startActivityForResult(intent2, IMAGE_COMPLETE);
                 break;
             case IMAGE_COMPLETE:// 完成

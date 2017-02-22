@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.CompanyAdapter;
+import com.boyuanitsm.echinfo.adapter.TagAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.module.company.presenter.CompanyPreImpl;
@@ -20,6 +21,10 @@ import com.boyuanitsm.echinfo.module.company.view.ICompanyView;
 import com.boyuanitsm.echinfo.module.mine.ui.ShareDialogAct;
 import com.boyuanitsm.echinfo.widget.MyGridView;
 import com.boyuanitsm.tools.view.CommonView;
+import com.boyuanitsm.tools.view.FlowTag.FlowTagLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -71,6 +76,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     ScrollView sv;
     @BindView(R.id.ivAtten)
     ImageView ivAtten;//关注图片
+    @BindView(R.id.size_flow_layout)
+    FlowTagLayout size_flow_layout;
+    private TagAdapter<String> mSizeTagAdapter;
 
     private boolean isatt;
 
@@ -338,6 +346,16 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                  companyBean.getProductInfoNum()+"", "",companyBean.getClearInfoNum()+""};
         companyAdp = new CompanyAdapter(this, company_images, company_titles, company_des);
         gvCompany.setAdapter(companyAdp);
+
+        mSizeTagAdapter = new TagAdapter<>(CompanyAct.this);//流逝布局
+        size_flow_layout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);//设置是单选
+        size_flow_layout.setAdapter(mSizeTagAdapter);
+
+        List<String> sdatasource = new ArrayList<>();
+        sdatasource.add("续存");
+        sdatasource.add("股份有限公司");
+        mSizeTagAdapter.onlyAddAll(sdatasource);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
