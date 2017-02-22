@@ -86,21 +86,25 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
                 phone = register_phone.getText().toString().trim();
                 rg_code = register_code.getText().toString().trim();
                 if (TextUtils.isEmpty(phone)) {
-                    toast("请输入手机号");
+                    toast("请输入正确的手机号码格式");
+                    btn_register.setEnabled(true);
                     return;
                 }
                 if (phone.length() != 11) {
-                    toast("请输入11的手机号");
+                    toast("请输入正确的手机号码格式");
                     register_phone.requestFocus();
                     register_phone.setSelection(register_phone.length());
+                    btn_register.setEnabled(true);
                     return;
                 }
                 if (!EchinfoUtils.checkCellPhone(phone)) {
-                    toast("请输入正确的手机号码");
+                    toast("请输入正确的手机号码格式");
+                    btn_register.setEnabled(true);
                     return;
                 }
                 if (TextUtils.isEmpty(rg_code)) {
                     toast("请输入验证码");
+                    btn_register.setEnabled(true);
                     return;
                 }
                 user.setUsername(phone);
@@ -108,9 +112,14 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
                     passwd=register_pwd.getText().toString().trim();
                     if (!EchinfoUtils.checkPwd(passwd)){
                         toast("请输入6-20位数字或字母密码");
+                        btn_register.setEnabled(true);
                         return;
                     }
                     user.setPassword(register_pwd.getText().toString().trim());
+                }else {
+                    toast("请输入密码");
+                    btn_register.setEnabled(true);
+                    return;
                 }
                 AppManager.getAppManager().addActivity(RegisterAct.this);
                 mPresenter.toRegister(user, rg_code);
