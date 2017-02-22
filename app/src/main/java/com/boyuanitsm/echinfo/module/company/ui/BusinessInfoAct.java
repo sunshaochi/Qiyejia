@@ -132,8 +132,8 @@ public class BusinessInfoAct extends BaseAct {
                     holder2.myListView.setAdapter(twoAdp);
                 }
                 if (gPosition == 3) {//变更记录
-                    threeAdp = new BusinessThreeAdp(getApplicationContext());
-                    holder2.myListView.setAdapter(threeAdp);
+//                    threeAdp = new BusinessThreeAdp(getApplicationContext(),);
+//                    holder2.myListView.setAdapter(threeAdp);
                 }
                 if (gPosition == 4) {//分支机构列表
                     fourAdp = new BusinessFourAdp(getApplicationContext());
