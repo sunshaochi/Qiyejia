@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -134,10 +135,10 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
         rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), true);
         aCache = ACache.get(SearchPatentAct.this);
         gson = new Gson();
-        query.setOnKeyListener(new View.OnKeyListener() {
+        query.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId== EditorInfo.IME_ACTION_SEARCH){
                     // 先隐藏键盘
                     ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
                             .hideSoftInputFromWindow(SearchPatentAct.this.getCurrentFocus()
@@ -148,6 +149,20 @@ public class SearchPatentAct extends BaseAct<ISearchPatentPresenter> implements 
                 return false;
             }
         });
+//        query.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+//                    // 先隐藏键盘
+//                    ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+//                            .hideSoftInputFromWindow(SearchPatentAct.this.getCurrentFocus()
+//                                    .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+//                    //进行搜索操作的方法，在该方法中可以加入mEditSearchUser的非空判断
+//                    search();
+//                }
+//                return false;
+//            }
+//        });
         query.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

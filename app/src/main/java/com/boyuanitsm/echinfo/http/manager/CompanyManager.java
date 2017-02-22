@@ -241,7 +241,7 @@ public class CompanyManager {
     public void getErrorCorrectionList(String dictType,ResultCallback resultCallback){
         Map<String,String> params=new HashMap<>();
         params.put("dictType",dictType);
-        OkHttpManager.getInstance().doGet(EchinoUrl.ERROR_LIST_URL,params,resultCallback);
+        OkHttpManager.getInstance().doPost(EchinoUrl.ERROR_LIST_URL,params,resultCallback);
     }
 
     /**

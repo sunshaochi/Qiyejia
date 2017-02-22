@@ -7,25 +7,26 @@ import android.os.Parcelable;
  * Created by bitch-1 on 2017/2/15.
  */
 public class EquityBean implements Parcelable{
-    private java.lang.String	account;
+    private java.lang.String	account;//出质股权数额
 
-    private java.lang.String	companyId;
+    private java.lang.String	companyId;//企业ID
 
-    private java.lang.String	date;
+    private java.lang.String	date;//登记日期
 
-    private java.lang.String	id;
+    private java.lang.String	id;//主键ID
 
-    private java.lang.String	pawnee;
+    private java.lang.String	pawnee;//质权人
 
-    private java.lang.String	pawneeId;
+    private java.lang.String	pawneeId;//质权人证件号码
 
-    private java.lang.String	pledgor;
+    private java.lang.String	pledgor;//出质人
 
-    private java.lang.String	pledgorId;
 
-    private java.lang.String	registrationNumber;
+    private java.lang.String	pledgorId;//出质人证件号码
 
-    private java.lang.String	status;
+    private java.lang.String	registrationNumber;//登记编号
+
+    private java.lang.String	status;//状态
 
 
 
