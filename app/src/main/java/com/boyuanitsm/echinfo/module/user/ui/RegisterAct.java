@@ -65,17 +65,17 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
             case R.id.tv_getCode://获取验证码
                 phone = register_phone.getText().toString().trim();
                 if (TextUtils.isEmpty(phone)) {
-                    toast("请输入手机号");
+                    toast("请输入手机号码！");
                     return;
                 }
                 if (phone.length() != 11) {
-                    toast("请输入11的手机号");
+                    toast("请输入11的手机号码！");
                     register_phone.requestFocus();
                     register_phone.setSelection(register_phone.length());
                     return;
                 }
                 if (!EchinfoUtils.checkCellPhone(phone)) {
-                    toast("请输入正确的手机号码");
+                    toast("请输入正确的手机号码！");
                     return;
                 }
                 tv_getCode.setEnabled(false);
@@ -86,24 +86,24 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
                 phone = register_phone.getText().toString().trim();
                 rg_code = register_code.getText().toString().trim();
                 if (TextUtils.isEmpty(phone)) {
-                    toast("请输入正确的手机号码格式");
+                    toast("请输入正确的手机号码格式！");
                     btn_register.setEnabled(true);
                     return;
                 }
                 if (phone.length() != 11) {
-                    toast("请输入正确的手机号码格式");
+                    toast("请输入正确的手机号码格式！");
                     register_phone.requestFocus();
                     register_phone.setSelection(register_phone.length());
                     btn_register.setEnabled(true);
                     return;
                 }
                 if (!EchinfoUtils.checkCellPhone(phone)) {
-                    toast("请输入正确的手机号码格式");
+                    toast("请输入正确的手机号码格式！");
                     btn_register.setEnabled(true);
                     return;
                 }
                 if (TextUtils.isEmpty(rg_code)) {
-                    toast("请输入验证码");
+                    toast("请输入验证码！");
                     btn_register.setEnabled(true);
                     return;
                 }
@@ -111,13 +111,13 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
                 if (!TextUtils.isEmpty(register_pwd.getText().toString().trim())){
                     passwd=register_pwd.getText().toString().trim();
                     if (!EchinfoUtils.checkPwd(passwd)){
-                        toast("请输入6-20位数字或字母密码");
+                        toast("请输入6-20位数字或字母密码！");
                         btn_register.setEnabled(true);
                         return;
                     }
                     user.setPassword(register_pwd.getText().toString().trim());
                 }else {
-                    toast("请输入密码");
+                    toast("请输入密码！");
                     btn_register.setEnabled(true);
                     return;
                 }
@@ -135,7 +135,7 @@ public class RegisterAct extends BaseAct<IRegisterPresenter> implements IRegiste
         timer = new Timer();
         myTask = new MyTimerTask();
         timer.schedule(myTask, 0, 1000);
-        toast("验证码发送成功");
+        toast("验证码发送成功！");
 
     }
 

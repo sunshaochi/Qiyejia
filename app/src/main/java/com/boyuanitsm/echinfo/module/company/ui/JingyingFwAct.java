@@ -121,6 +121,8 @@ public class JingyingFwAct extends BaseAct<IJingYingPre> implements IJingyingVie
     List<String> hotNames = new ArrayList<>();
     SearchHistoryAdapter<String> recentAdatper;//最近搜索适配器
     SearchHistoryAdapter<String> hotAdapter;//热门搜索适配器
+    String[] strYears={"不限","1年内","1-2年内","2-3年内","3-5年内","5-10年内","10年以上"};
+    String[] strMoney={"不限","100万以内","100-200万","200-500万","500-1000万","1000万以上"};
     @Override
     public int getLayout() {
         return R.layout.act_jinyinfw;
@@ -176,8 +178,8 @@ public class JingyingFwAct extends BaseAct<IJingYingPre> implements IJingyingVie
             rlSearch.setVisibility(View.VISIBLE);
             rlRecent.setVisibility(View.GONE);
         }
-        gvclnxadt = new GvAdapter(JingyingFwAct.this);//成立年限
-        gvzcziadt = new GvAdapter(JingyingFwAct.this);//注册资本
+        gvclnxadt = new GvAdapter(JingyingFwAct.this,strYears);//成立年限
+        gvzcziadt = new GvAdapter(JingyingFwAct.this,strMoney);//注册资本
     }
 
     /**

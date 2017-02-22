@@ -85,12 +85,12 @@ public class LoginAct extends BaseAct<ILoginPresenter> implements ILoginView {
         username = login_phone.getText().toString().trim();
         pwd = login_pwd.getText().toString().toString();
         if (TextUtils.isEmpty(username)) {
-            toast("请输入手机号");
+            toast("请输入手机号码！");
             login_phone.requestFocus();
             return false;
         }
         if (TextUtils.isEmpty(pwd)) {
-            toast("请输入密码");
+            toast("请输入密码!");
             login_pwd.requestFocus();
             return false;
         }

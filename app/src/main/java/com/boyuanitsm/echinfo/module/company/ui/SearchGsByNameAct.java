@@ -28,7 +28,6 @@ import com.boyuanitsm.echinfo.adapter.SearchHistoryAdapter;
 import com.boyuanitsm.echinfo.adapter.TagAdapter;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
-import com.boyuanitsm.echinfo.bean.SearchFwBean;
 import com.boyuanitsm.echinfo.module.company.presenter.IJingYingPre;
 import com.boyuanitsm.echinfo.module.company.presenter.JingYingPreImpl;
 import com.boyuanitsm.echinfo.module.company.view.IJingyingView;
@@ -124,8 +123,9 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
     List<String> hotNames = new ArrayList<>();
     SearchHistoryAdapter<String> recentAdatper;//最近搜索适配器
     SearchHistoryAdapter<String> hotAdapter;//热门搜索适配器
-    SearchFwBean searchFwBean;
-
+    String[] strYears = {"不限", "1年内", "1-2年内", "2-3年内", "3-5年内", "5-10年内", "10年以上"};
+    String[] strMoney = {"不限", "100万以内", "100-200万", "200-500万", "500-1000万", "1000万以上"};
+    List<String> sdatasource = new ArrayList<>();
     @Override
     public int getLayout() {
         return R.layout.act_jinyinfw;
@@ -138,7 +138,7 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
         query.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId== EditorInfo.IME_ACTION_SEARCH){
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     // 先隐藏键盘
                     ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
                             .hideSoftInputFromWindow(SearchGsByNameAct.this.getCurrentFocus()
@@ -183,8 +183,8 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             rlRecent.setVisibility(View.GONE);
         }
 
-        gvclnxadt = new GvAdapter(SearchGsByNameAct.this);//成立年限
-        gvzcziadt = new GvAdapter(SearchGsByNameAct.this);//注册资本
+        gvclnxadt = new GvAdapter(SearchGsByNameAct.this, strYears);//成立年限
+        gvzcziadt = new GvAdapter(SearchGsByNameAct.this, strMoney);//注册资本
     }
 
     private void initRecentSearch() {
@@ -274,10 +274,10 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             @Override
             public void bindData(BaseRecyclerViewHolder holder, int position, CompanyBean item) {
                 holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
-                if (!TextUtils.isEmpty(item.getLegalPerson())){
+                if (!TextUtils.isEmpty(item.getLegalPerson())) {
                     holder.getTextView(R.id.tv_person).setText("公司法人：" + item.getLegalPerson());
-                }else {
-                    holder.getTextView(R.id.tv_person).setText("公司法人：无" );
+                } else {
+                    holder.getTextView(R.id.tv_person).setText("公司法人：无");
                 }
                 holder.getTextView(R.id.tv_status).setText(item.getManagementStatus());
 
@@ -381,6 +381,7 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     gvclnxadt.setSeclection(i);
+
                     gvclnxadt.notifyDataSetChanged();
                 }
             });
@@ -388,26 +389,62 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             gv_zczb.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    switch (i){
+                        case 0:
+                            capital="";
+                            break;
+                        case 1:
+                            capital="0,100";
+                            break;
+                        case 2:
+                            capital="100,200";
+                            break;
+                        case 3:
+                            capital="200,500";
+                            break;
+                        case 4:
+                            capital="500,1000";
+                            break;
+
+                    }
                     gvzcziadt.setSeclection(i);
                     gvzcziadt.notifyDataSetChanged();
                 }
             });
             mSizeTagAdapter = new TagAdapter<>(SearchGsByNameAct.this);//流逝布局
-            mSizeFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_MULTI);//设置是多选
+            mSizeFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);//设置是多选
             mSizeFlowTagLayout.setAdapter(mSizeTagAdapter);
             mSizeFlowTagLayout.setOnTagSelectListener(new OnTagSelectListener() {
                 @Override
                 public void onItemSelect(FlowTagLayout parent, List<Integer> selectedList) {
+                    switch (selectedList.get(0)){
+                        case 0:
+                            screeningRange=0+"";
+                            break;
+                        case 1:
+                            screeningRange=11+"";
 
+                            break;
+                        case 2:
+                            screeningRange=9+"";
+
+                            break;
+                        case 3:
+                            screeningRange=7+"";
+
+                            break;
+                        case 4:
+                            screeningRange=8+"";
+                            break;
+                    }
                 }
-            });
 
-            List<String> sdatasource = new ArrayList<>();
-            sdatasource.add("按名称查");
-            sdatasource.add("按地址查");
-            sdatasource.add("按经营范围查");
-            sdatasource.add("按品牌/产品查");
-            sdatasource.add("按法定代表人查");
+            });
+            sdatasource.add("按名称查询");
+            sdatasource.add("按地址查询");
+            sdatasource.add("按经营范围查询");
+            sdatasource.add("按品牌/产品查询");
+            sdatasource.add("按法定代表人查询");
             mSizeTagAdapter.onlyAddAll(sdatasource);
 
             mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
