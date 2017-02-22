@@ -7,9 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.bean.EditRecordBean;
 import com.boyuanitsm.echinfo.widget.MyListView;
+
+import java.util.List;
 
 /**
  * 工商信息界面变更记录适配器
@@ -20,19 +24,22 @@ public class BusinessThreeAdp extends BaseAdapter {
     private LayoutInflater inflater;
     private BusinessThreeItemAdp itemAdp;
 
-    public BusinessThreeAdp(Context context) {
+    private List<EditRecordBean> datas;
+
+    public BusinessThreeAdp(Context context,List<EditRecordBean> datas) {
         inflater = LayoutInflater.from(context);
         this.context = context;
+        this.datas=datas;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return datas.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return datas.get(i);
     }
 
     @Override
@@ -48,6 +55,7 @@ public class BusinessThreeAdp extends BaseAdapter {
             view = inflater.inflate(R.layout.mlv_businessthree_item, null);
             holder.view_line = view.findViewById(R.id.view_line);
             holder.mlv = (MyListView) view.findViewById(R.id.mlv);
+            holder.tv_time= (TextView) view.findViewById(R.id.tv_time);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -57,6 +65,8 @@ public class BusinessThreeAdp extends BaseAdapter {
         } else {
             holder.view_line.setVisibility(View.VISIBLE);
         }
+        holder.tv_time.setText(datas.get(i).getEditTime());
+
         itemAdp = new BusinessThreeItemAdp(context, i);
         holder.mlv.setSelector(new ColorDrawable(Color.TRANSPARENT));
         holder.mlv.setAdapter(itemAdp);
@@ -66,5 +76,6 @@ public class BusinessThreeAdp extends BaseAdapter {
     private class ViewHolder {
         View view_line;
         MyListView mlv;
+        TextView tv_time;
     }
 }

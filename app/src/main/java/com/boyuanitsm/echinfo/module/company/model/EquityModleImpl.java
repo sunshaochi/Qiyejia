@@ -9,6 +9,6 @@ import com.boyuanitsm.echinfo.http.manager.CompanyManager;
 public class EquityModleImpl implements IEquityModle {
     @Override
     public void getFinancIf(String companyId, ResultCallback resultCallback) {
-        CompanyManager.getCompanyManager().getEquitylist(companyId,resultCallback);
+        CompanyManager.getCompanyManager().getEquitylist(companyId,"",resultCallback);
     }
 }

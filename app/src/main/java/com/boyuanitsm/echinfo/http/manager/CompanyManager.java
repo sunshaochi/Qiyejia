@@ -1,5 +1,7 @@
 package com.boyuanitsm.echinfo.http.manager;
 
+import android.text.TextUtils;
+
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.EchinoUrl;
 
@@ -182,9 +184,11 @@ public class CompanyManager {
      * @param companyId
      * @param resultCallback
      */
-    public void getEquitylist(String companyId, ResultCallback resultCallback) {
+    public void getEquitylist(String companyId,String year,ResultCallback resultCallback) {
         Map<String,String> params=new HashMap<>();
         params.put("companyId",companyId);
+        if(!TextUtils.isEmpty(year))
+            params.put("year",year);
         OkHttpManager.getInstance().doGet(EchinoUrl.FINDEQUITY_URL,params,resultCallback);
     }
 
@@ -287,5 +291,21 @@ public class CompanyManager {
         Map<String,String> params=new HashMap<>();
         params.put("companyId",companyId);
         OkHttpManager.getInstance().doGet(EchinoUrl.GET_QIYE_LIST,params,callback);
+    }
+
+    /**
+     * 查询企业变更记录
+     * @param companyId
+     * @param year
+     * @param callback
+     */
+    public void getCompanyEditRecord(String companyId,String year,ResultCallback callback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",companyId);
+        if (!TextUtils.isEmpty(year)){
+            params.put("year",year);
+        }
+        OkHttpManager.getInstance().doGet(EchinoUrl.EDIT_RECORD_URL,params,callback);
+
     }
 }

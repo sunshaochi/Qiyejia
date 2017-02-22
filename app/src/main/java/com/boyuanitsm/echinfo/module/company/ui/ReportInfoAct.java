@@ -17,11 +17,14 @@ import com.boyuanitsm.echinfo.adapter.ReportThreeAdp;
 import com.boyuanitsm.echinfo.adapter.ReportTwoAdp;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
+import com.boyuanitsm.echinfo.bean.EditRecordBean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
 import com.boyuanitsm.echinfo.bean.YearReportBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.manager.CompanyManager;
 import com.boyuanitsm.echinfo.widget.MyListView;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -46,6 +49,7 @@ public class ReportInfoAct extends BaseAct {
     private YearReportBean yearReportBean;
 
     private CompanyBean companyBean;//公司信息
+    private  List<EditRecordBean> records;
 
     @Override
     public int getLayout() {
@@ -63,6 +67,8 @@ public class ReportInfoAct extends BaseAct {
         });
         yearReportBean=getIntent().getParcelableExtra(YEAR_REPORTINFO);
         getCompanyInfo(yearReportBean.getId());
+
+
     }
 
     private class MBaseAdp extends BaseExpandableListAdapter {
@@ -136,7 +142,54 @@ public class ReportInfoAct extends BaseAct {
         public View getChildView(int gPosition, int cPosition, boolean b, View view, ViewGroup viewGroup) {
             cViewHolder holder;
 
-            if (gPosition == 0 || gPosition == 1 || gPosition == 2 || gPosition == 3
+            if(gPosition==0){
+                if (companyBean == null) {
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
+                }else {
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
+                    TextView tvComName = (TextView) view.findViewById(R.id.tvComName);
+                    TextView tvRegNo = (TextView) view.findViewById(R.id.tvRegNo);
+                    TextView tvCompanyNo = (TextView) view.findViewById(R.id.tvCompanyNo);
+                    TextView tvYzNo = (TextView) view.findViewById(R.id.tvYzNo);
+                    TextView tvAddress = (TextView) view.findViewById(R.id.tvAddress);
+                    TextView tvEmail = (TextView) view.findViewById(R.id.tvEmail);
+                    TextView tvIsZr = (TextView) view.findViewById(R.id.tvIsZr);
+                    TextView tvIsHasWz = (TextView) view.findViewById(R.id.tvIsHasWz);
+                    TextView tvIsHasGq= (TextView) view.findViewById(R.id.tvIsHasGq);
+                    TextView tvCyrs= (TextView) view.findViewById(R.id.tvCyrs);
+
+                    tvComName.setText(companyBean.getCompanyName());
+                    tvRegNo.setText(companyBean.getRegistNo());
+                    tvCompanyNo.setText(companyBean.getCompanyPhoneNo());
+                    tvYzNo.setText(companyBean.getPostcode());
+                    tvAddress.setText(companyBean.getAddress());
+                    tvEmail.setText(companyBean.getEmail());
+                    if("0".equals(companyBean.getStockTransfer())){
+                        tvIsZr.setText("否");
+                    }else if("1".equals(companyBean.getStockTransfer())){
+                        tvIsZr.setText("是");
+                    }
+
+                    if("0".equals(companyBean.getIsHaveWeb())){
+                        tvIsHasWz.setText("否");
+                    }else if("1".equals(companyBean.getIsHaveWeb())){
+                        tvIsHasWz.setText("是");
+                    }
+
+                    if("0".equals(companyBean.getCompanyInverstment())){
+                        tvIsHasGq.setText("否");
+                    }else if("1".equals(companyBean.getCompanyInverstment())){
+                        tvIsHasGq.setText("是");
+                    }
+                    if(TextUtils.isEmpty(companyBean.getEmployeeCount())){
+                        tvCyrs.setText("无");
+                    }else {
+                        tvCyrs.setText(companyBean.getEmployeeCount()+"");
+                    }
+                }
+            }
+
+            if ( gPosition == 1 || gPosition == 2 || gPosition == 3
                     || gPosition == 4 || gPosition == 7) {
                 holder = new cViewHolder();
                 view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
@@ -144,54 +197,7 @@ public class ReportInfoAct extends BaseAct {
                 //企业基本信息
 //                    oneAdp = new ReportOneAdp(getApplicationContext());
 //                    holder.myListView.setAdapter(oneAdp);
-                if (gPosition == 0) {
-                    if (companyBean == null) {
-                        view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
-                    } else {
-                        view = View.inflate(getApplicationContext(), R.layout.report_company_view, null);
-                        TextView tvComName = (TextView) view.findViewById(R.id.tvComName);
-                        TextView tvRegNo = (TextView) view.findViewById(R.id.tvRegNo);
-                        TextView tvCompanyNo = (TextView) view.findViewById(R.id.tvCompanyNo);
-                        TextView tvYzNo = (TextView) view.findViewById(R.id.tvYzNo);
-                        TextView tvAddress = (TextView) view.findViewById(R.id.tvAddress);
-                        TextView tvEmail = (TextView) view.findViewById(R.id.tvEmail);
-                        TextView tvIsZr = (TextView) view.findViewById(R.id.tvIsZr);
-                        TextView tvIsHasWz = (TextView) view.findViewById(R.id.tvIsHasWz);
-                        TextView tvIsHasGq= (TextView) view.findViewById(R.id.tvIsHasGq);
-                        TextView tvCyrs= (TextView) view.findViewById(R.id.tvCyrs);
 
-                        tvComName.setText(companyBean.getCompanyName());
-                        tvRegNo.setText(companyBean.getRegistNo());
-                        tvCompanyNo.setText(companyBean.getCompanyPhoneNo());
-                        tvYzNo.setText(companyBean.getPostcode());
-                        tvAddress.setText(companyBean.getAddress());
-                        tvEmail.setText(companyBean.getEmail());
-                        if("0".equals(companyBean.getStockTransfer())){
-                            tvIsZr.setText("否");
-                        }else if("1".equals(companyBean.getStockTransfer())){
-                            tvIsZr.setText("是");
-                        }
-
-                        if("0".equals(companyBean.getIsHaveWeb())){
-                            tvIsHasWz.setText("否");
-                        }else if("1".equals(companyBean.getIsHaveWeb())){
-                            tvIsHasWz.setText("是");
-                        }
-
-                        if("0".equals(companyBean.getCompanyInverstment())){
-                            tvIsHasGq.setText("否");
-                        }else if("1".equals(companyBean.getCompanyInverstment())){
-                            tvIsHasGq.setText("是");
-                        }
-                        if(TextUtils.isEmpty(companyBean.getEmployeeCount())){
-                            tvCyrs.setText("无");
-                        }else {
-                            tvCyrs.setText(companyBean.getEmployeeCount()+"");
-                        }
-
-
-                    }
-                }
                 if (gPosition == 1) {//网站或网店信息
                     oneAdp = new ReportOneAdp(getApplicationContext());
                     holder.myListView.setAdapter(oneAdp);
@@ -209,8 +215,14 @@ public class ReportInfoAct extends BaseAct {
                     holder.myListView.setAdapter(fourAdp);
                 }
                 if (gPosition == 7) {//变更记录
-                    sevenAdp = new BusinessThreeAdp(getApplicationContext());
-                    holder.myListView.setAdapter(sevenAdp);
+                    if(records!=null&&records.size()>0){
+                        sevenAdp = new BusinessThreeAdp(getApplicationContext(),records);
+                        holder.myListView.setAdapter(sevenAdp);
+                    }else {
+                        view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
+
+                    }
+
                 }
             }
 
@@ -255,9 +267,31 @@ public class ReportInfoAct extends BaseAct {
             public void onResponse(ResultBean<CompanyBean> response) {
                 companyBean=response.getData();
                 elv_businessInfo.setAdapter(new MBaseAdp());
+                getEditRecord(yearReportBean.getId(),yearReportBean.getYear());
+
             }
         });
 
+    }
+
+    /**
+     * 查询企业变更记录
+     * @param companyId
+     * @param year
+     */
+    private void getEditRecord(String companyId,String year){
+        CompanyManager.getCompanyManager().getCompanyEditRecord(companyId, year, new ResultCallback<ResultBean<List<EditRecordBean>>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+
+            }
+
+            @Override
+            public void onResponse(ResultBean<List<EditRecordBean>> response) {
+                records=response.getData();
+
+            }
+        });
     }
 
 }

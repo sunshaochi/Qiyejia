@@ -125,4 +125,6 @@ public class EchinoUrl {
     /*提交纠错信息*/
     public static final String ERROR_SUBMIT_URL = BASE_URL + "company/login/insertCorrectionManage.do";
 
+    /*企业变更记录*/
+    public static final String EDIT_RECORD_URL=BASE_URL+"findEditRecordListByCompanyId";
 }
