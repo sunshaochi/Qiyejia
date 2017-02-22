@@ -23,6 +23,7 @@ public class CommonView extends RelativeLayout {
     private ImageView ivCommon;//左边图表
     private TextView tvCommon;//左边文字
     private TextView tvNotes;//右边按钮文字
+    private ImageView ivArrow;//右边箭头
 
 
     /**
@@ -45,6 +46,10 @@ public class CommonView extends RelativeLayout {
      * 是否显示分类图片
      */
     private boolean isShowCategoryImage;
+    /**
+     * 是否显示右边箭头
+     */
+    private boolean isShowArrowImage;
     /**
      * 分类的状态图片
      */
@@ -92,6 +97,7 @@ public class CommonView extends RelativeLayout {
         notesText = mTypedArray.getString(R.styleable.CommonView_notesText);
         notesTextColor = mTypedArray.getColor(R.styleable.CommonView_notesTextColor, Color.parseColor("#999999"));
         notesTextSize = mTypedArray.getDimensionPixelSize(R.styleable.CommonView_notesTextSize, 14);
+        isShowArrowImage=mTypedArray.getBoolean( R.styleable.CommonView_isShowCategoryImage, true);
         mTypedArray.recycle();
 
         initData();
@@ -103,6 +109,7 @@ public class CommonView extends RelativeLayout {
         ivCommon = (ImageView) view.findViewById(R.id.ivCommon);
         tvCommon = (TextView) view.findViewById(R.id.tvCommon);
         tvNotes = (TextView) view.findViewById(R.id.tvNotes);
+        ivArrow= (ImageView) view.findViewById(R.id.ivArrow);
     }
 
     /**
@@ -252,5 +259,19 @@ public class CommonView extends RelativeLayout {
         setNotesTextColor(notesTextColor);
         setNotesTextSize(notesTextSize);
         setIsShowNotesText(isShowTextNotes);
+        setIsShowArrowImage(isShowArrowImage);
+    }
+
+    /**
+     * 是否显示左边图片
+     * @param isShowArrowImage
+     */
+    public void setIsShowArrowImage(boolean isShowArrowImage) {
+        if(isShowArrowImage){
+            ivArrow.setVisibility(View.VISIBLE);
+        }else {
+            ivArrow.setVisibility(View.GONE);
+        }
+        this.isShowArrowImage=isShowArrowImage;
     }
 }

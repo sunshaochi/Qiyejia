@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -134,10 +135,10 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
     public void init(Bundle savedInstanceState) {
         mPresenter = new JingYingPreImpl(this);
         initFrg();//初识化下拉刷洗控件
-        query.setOnKeyListener(new View.OnKeyListener() {
+        query.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId== EditorInfo.IME_ACTION_SEARCH){
                     // 先隐藏键盘
                     ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
                             .hideSoftInputFromWindow(SearchGsByNameAct.this.getCurrentFocus()

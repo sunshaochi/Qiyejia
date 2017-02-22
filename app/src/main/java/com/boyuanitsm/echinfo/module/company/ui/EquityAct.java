@@ -10,6 +10,8 @@ import com.boyuanitsm.echinfo.module.company.presenter.IEquityPre;
 import com.boyuanitsm.echinfo.module.company.view.IEquityView;
 import com.boyuanitsm.echinfo.widget.MineItemView;
 
+import java.util.List;
+
 import butterknife.BindView;
 
 
@@ -58,7 +60,8 @@ public class EquityAct extends BaseAct<IEquityPre> implements IEquityView {
 
     /**
      * 初始化下拉刷新
-     //     */
+     //
+     * @param */
 //    private void initFrg() {
 ////        datas=EchinfoUtils.getTestDatas(3);
 //        rcv= EchinfoUtils.getLinearRecyclerView(rcv,getApplicationContext(),true);
@@ -113,7 +116,8 @@ public class EquityAct extends BaseAct<IEquityPre> implements IEquityView {
 //    }
 
     @Override
-    public void setEquityDatas(EquityBean mdatas) {
+    public void setEquityDatas(List<EquityBean> list) {
+         EquityBean mdatas = list.get(0);
         if(mdatas!=null) {
             miv_dj.setRightText(mdatas.getRegistrationNumber());
             miv_zt.setRightText(mdatas.getStatus());
@@ -140,6 +144,11 @@ public class EquityAct extends BaseAct<IEquityPre> implements IEquityView {
     public void requestError(int status, String errorMsg) {
 //    rcv.refreshComplete();
         toast(errorMsg);
+    }
+
+    @Override
+    public void getNoData() {
+
     }
 
 

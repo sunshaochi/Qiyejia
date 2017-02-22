@@ -5,7 +5,6 @@ import android.os.Bundle;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.FinancInfoBean;
-import com.boyuanitsm.echinfo.bean.RecruiBean;
 import com.boyuanitsm.echinfo.module.company.presenter.IFinancingInfoPre;
 import com.boyuanitsm.echinfo.module.company.presenter.IFinancingInfoPreImpl;
 import com.boyuanitsm.echinfo.module.company.view.IFinancIfView;

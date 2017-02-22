@@ -18,6 +18,7 @@
         <attr name="notesText" format="string" />
         <attr name="notesTextColor" format="color" />
         <attr name="notesTextSize" format="dimension" />
+        <attr name="isShowArrowImage" format="boolean" />
 
     </declare-styleable>
 

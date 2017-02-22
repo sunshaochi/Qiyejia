@@ -228,6 +228,9 @@
         <activity
             android:name=".module.company.ui.RecruitmentAct"
             android:screenOrientation="portrait" />
+        <!--更多企业信息-->
+        <activity android:name=".module.company.ui.MoreInfoAct"
+            android:screenOrientation="portrait"></activity>
         <!--清算信息-->
         <activity
             android:name=".module.company.ui.ClearingInfoAct"
@@ -272,6 +275,12 @@
             android:screenOrientation="portrait"/>
         <!--企业证书列表-->
         <activity android:name=".module.company.ui.QiYeZsAct"
+            android:screenOrientation="portrait"/>
+        <!--热门企业-->
+        <activity android:name=".module.home.ui.search.SearchHot"
+            android:screenOrientation="portrait"/>
+        <!--税务信用-->
+        <activity android:name=".module.company.ui.SuiWuInfo"
             android:screenOrientation="portrait"/>
         </application>
 

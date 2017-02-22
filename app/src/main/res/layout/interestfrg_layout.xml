@@ -4,6 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_grey_color">
+    <RelativeLayout
+        android:background="@color/tv_blue_color"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <TextView
+            android:text="发现"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    <TextView
+        android:padding="15dp"
+        android:textColor="#666666"
+        android:textSize="15sp"
+        android:text="可能感兴趣"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--android:paddingTop="15dp"-->
+    <!--android:paddingBottom="10dp"-->
+    <!--android:paddingLeft="15dp"-->
+
     <com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView
         android:id="@+id/rcv"
         android:layout_width="match_parent"

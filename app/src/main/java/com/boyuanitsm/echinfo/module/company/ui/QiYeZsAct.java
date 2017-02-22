@@ -32,6 +32,7 @@ public class QiYeZsAct extends BaseAct<IQiYeZsPre> implements IQiYeZsView {
 
     private BaseRecyclerAdapter<QiYeZsBean> mAdp;
     private List<QiYeZsBean> datas = new ArrayList<>();
+    private String companyId;
 
     @Override
     public int getLayout() {
@@ -41,8 +42,9 @@ public class QiYeZsAct extends BaseAct<IQiYeZsPre> implements IQiYeZsView {
     @Override
     public void init(Bundle savedInstanceState) {
         setTopTitle("企业证书");
+        companyId=getIntent().getStringExtra(CompanyAct.COMAPYT_ID);
         mPresenter = new QiYeZsPreImpl(this);
-        mPresenter.getQiYeList("123456789");
+        mPresenter.getQiYeList(companyId);
         rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), false);
         mAdp = new BaseRecyclerAdapter<QiYeZsBean>(getApplicationContext(), datas) {
             @Override

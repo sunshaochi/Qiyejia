@@ -56,9 +56,9 @@ public class LitigationInfoAct extends BaseAct<ICompanyBasePre> implements IBase
 
             @Override
             public void bindData(BaseRecyclerViewHolder holder, int position, LawsuitMsgBean item) {
-                holder.getTextView(R.id.tv_lgName).setText(item.getCourt());
-                holder.getTextView(R.id.tv_lgNum).setText(item.getName());
-                holder.getTextView(R.id.tv_lgTime).setText(item.getRegistrineTime());
+                holder.getTextView(R.id.tv_lgName).setText(item.getCourt());//执行法院
+                holder.getTextView(R.id.tv_lgNum).setText(item.getCaseNo());//执行案号
+                holder.getTextView(R.id.tv_lgTime).setText(item.getRegistrineTime());//立案时间
 
             }
         };

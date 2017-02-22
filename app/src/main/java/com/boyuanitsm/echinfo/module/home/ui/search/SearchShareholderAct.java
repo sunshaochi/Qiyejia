@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -105,10 +106,10 @@ public class SearchShareholderAct extends BaseAct<ISearchShareholderPresenter> i
         aCache=ACache.get(SearchShareholderAct.this);
         gson=new Gson();
         xr = EchinfoUtils.getLinearRecyclerView(xr, getApplicationContext(), true);
-        query.setOnKeyListener(new View.OnKeyListener() {
+        query.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId== EditorInfo.IME_ACTION_SEARCH){
                     // 先隐藏键盘
                     ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
                             .hideSoftInputFromWindow(SearchShareholderAct.this.getCurrentFocus()

@@ -80,6 +80,8 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     FlowTagLayout size_flow_layout;
     private TagAdapter<String> mSizeTagAdapter;
 
+    private CompanyBean mcompanyBean;
+
     private boolean isatt;
 
     /*基础信息*/
@@ -121,9 +123,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     public void init(Bundle savedInstanceState) {
         companyId = getIntent().getStringExtra(COMAPYT_ID);
         mPresenter = new CompanyPreImpl(this);
-        mPresenter.getCompanyDetail("4ee8a9f4d4844a17a91535a82349b61f");
+        mPresenter.getCompanyDetail("123456789");
         initOnItemClick();
-        bundle.putString(COMAPYT_ID,"4ee8a9f4d4844a17a91535a82349b61f");
+        bundle.putString(COMAPYT_ID,"123456789");
     }
 
 
@@ -214,6 +216,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                         openActivity(EquityAct.class,bundle);
                         break;
                     case 1://税务信用
+                        openActivity(SuiWuInfo.class,bundle);
                         break;
                     case 2://融资记录
                         openActivity(FinancingInfoAct.class,bundle);
@@ -249,7 +252,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         });
     }
 
-    @OnClick({R.id.rlShare, R.id.cvEmail, R.id.cvWz, R.id.cvAddress, R.id.llHome, R.id.llFollow, R.id.llBg, R.id.llComment, R.id.llJk})
+    @OnClick({R.id.rlShare, R.id.cvEmail, R.id.cvWz, R.id.cvAddress, R.id.llHome, R.id.llFollow, R.id.llBg, R.id.llComment, R.id.llJk,R.id.ll_gd})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.rlShare:
@@ -284,6 +287,12 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             case R.id.llJk://监控
 
                 break;
+            case R.id.ll_gd://更多
+                Bundle bundle=new Bundle();
+//
+                bundle.putParcelable("mcompanyBean",mcompanyBean);
+                openActivity(MoreInfoAct.class,bundle);
+                break;
         }
     }
 
@@ -298,6 +307,10 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
     @Override
     public void setCompanyMes(CompanyBean companyBean) {
+        if(mcompanyBean!=null){
+            mcompanyBean=null;
+        }
+        mcompanyBean=companyBean;
         setTopTitle(companyBean.getCompanyName());
         tvPerson.setText(companyBean.getLegalPerson());
         tvRegMoney.setText(companyBean.getRegCapital());
@@ -306,7 +319,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             tvUpdateTime.setText("更新：" + companyBean.getLastUpdateTime());
         }
         tvFollow.setText("关注" + companyBean.getFocus());
-        tvLl.setText("浏览："+companyBean.getBrowseCount());
+        if(!TextUtils.isEmpty(companyBean.getBrowseCount())){
+            tvLl.setText("浏览："+companyBean.getBrowseCount());
+        }
         tvPhone.setText(companyBean.getCompanyPhoneNo());
         cvEmail.setDesText(companyBean.getEmail());
         cvWz.setDesText(companyBean.getUrl());
@@ -348,7 +363,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         gvCompany.setAdapter(companyAdp);
 
         mSizeTagAdapter = new TagAdapter<>(CompanyAct.this);//流逝布局
-        size_flow_layout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);//设置是单选
+        size_flow_layout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_NONE);//设置是不选
         size_flow_layout.setAdapter(mSizeTagAdapter);
 
         List<String> sdatasource = new ArrayList<>();

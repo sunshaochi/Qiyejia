@@ -1,7 +1,6 @@
 package com.boyuanitsm.echinfo.module.company.ui;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -43,6 +42,7 @@ public class ProductInfoAct extends BaseAct {
     private List<String> testList = new ArrayList<>();
     public static final String PRODUCT_INFO="product_info";
     private ProductBean productBean;
+    private String companyId;//公司id；
     @Override
     public int getLayout() {
         return R.layout.act_productinfo;
