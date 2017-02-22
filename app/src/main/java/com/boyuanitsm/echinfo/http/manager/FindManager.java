@@ -310,4 +310,16 @@ public class FindManager {
         }
         OkHttpManager.getInstance().doGet(EchinoUrl.FIND_LOSE_CREDIT_URL,params,callback);
     }
+
+    /**
+     * 查税务信用
+     * @param id
+     * @param callback
+     */
+
+    public void findShuiWuInfo(String id,ResultCallback callback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",id);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_SHUIWUXINYONG_URL,params,callback);
+    }
 }

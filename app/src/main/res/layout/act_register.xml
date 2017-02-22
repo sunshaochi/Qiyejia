@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@android:color/transparent"
-            android:hint="请输入密码"
+            android:hint="密码为6-20位数字或字母"
             android:inputType="textPassword"
             android:lines="1"
             android:maxLength="20"

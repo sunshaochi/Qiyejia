@@ -66,6 +66,8 @@ public class EchinoUrl {
     public static final String FIND_GUDONG_URL = BASE_URL + "stockMsg/unLogin/findStockMsgInfo.do";
     //根据id查失信信息接口
     public static final String FIND_LOSECREDIT_URL = BASE_URL + "company/login/findCourtitemListBysId.do";
+    //根据id查税务信用
+    public static final String FIND_SHUIWUXINYONG_URL=BASE_URL+"company/login/findTaxInfoListByCompanyId.do";
     /**
      * 企业向关
      */

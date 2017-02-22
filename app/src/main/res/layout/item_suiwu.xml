@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_nd"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="14sp"
+            android:textColor="#333"
+            android:text="评价年度：A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="14sp"
+            android:textColor="#333"
+            android:text="是否正常纳税："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_ns"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:text="是"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="15dp"
+            android:textSize="14sp"
+            android:textColor="#333"
+            android:text="是否欠税："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_qs"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:text="是"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textColor="#333"
+            android:text="纳税信用等级："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_xy"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:text="A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textColor="#333"
+            android:text="欠税金额："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_je"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:text="2000万"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textColor="#333"
+            android:text="纳税人识别号："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_bh"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:text="12345678"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textColor="#333"
+            android:text="评价单位："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_dw"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:text="地税局"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

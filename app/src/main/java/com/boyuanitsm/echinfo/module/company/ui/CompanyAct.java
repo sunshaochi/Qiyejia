@@ -216,6 +216,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                         openActivity(EquityAct.class,bundle);
                         break;
                     case 1://税务信用
+                        openActivity(SuiWuInfo.class,bundle);
                         break;
                     case 2://融资记录
                         openActivity(FinancingInfoAct.class,bundle);
@@ -318,7 +319,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             tvUpdateTime.setText("更新：" + companyBean.getLastUpdateTime());
         }
         tvFollow.setText("关注" + companyBean.getFocus());
-        tvLl.setText("浏览："+companyBean.getBrowseCount());
+        if(!TextUtils.isEmpty(companyBean.getBrowseCount())){
+            tvLl.setText("浏览："+companyBean.getBrowseCount());
+        }
         tvPhone.setText(companyBean.getCompanyPhoneNo());
         cvEmail.setDesText(companyBean.getEmail());
         cvWz.setDesText(companyBean.getUrl());

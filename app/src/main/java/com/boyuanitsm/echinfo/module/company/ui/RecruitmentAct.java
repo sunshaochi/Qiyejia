@@ -47,7 +47,7 @@ public class RecruitmentAct extends BaseAct<IRecruiPre> implements IRecruiView {
 
     private void initFrg() {
 //        testList = EchinfoUtils.getTestDatas(3);做布局时候显示看的
-        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), true);
+        rcv = EchinfoUtils.getLinearRecyclerView(rcv, getApplicationContext(), false);
         mAdp = new BaseRecyclerAdapter<RecruiBean>(this,datas) {
             @Override
             public int getItemLayoutId(int viewType) {
