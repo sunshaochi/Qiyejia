@@ -286,6 +286,9 @@
         <!--商标列表-->
         <activity android:name=".module.company.ui.FindBrandInfoAct"
             android:screenOrientation="portrait"/>
+        <!--产品信息列表-->
+        <activity android:name=".module.company.ui.ProductListAct"
+            android:screenOrientation="portrait"/>
         </application>
 
 </manifest>

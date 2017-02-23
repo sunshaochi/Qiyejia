@@ -6,6 +6,7 @@ import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.EchinoUrl;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 /**
@@ -332,5 +333,17 @@ public class FindManager {
         Map<String,String> params=new HashMap<>();
         params.put("companyId",id);
         OkHttpManager.getInstance().doGet(EchinoUrl.FIND_SHANGBIAO_URL,params,callback);
+    }
+
+    /**
+     * 根据id获取产品信息列表
+     * @param id
+     * @param callback
+     */
+    public void findProductListbyId(String id, ResultCallback callback) {
+        Map<String,String> params=new Hashtable<>();
+        params.put("companyId",id);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_CHANPIN_LIST_URL,params,callback);
+
     }
 }

@@ -92,24 +92,24 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
 
     /*风险信息*/
-    private String[] risk_titles = {"法院公告", "被执行人", "失信信息", "法院裁决", "诉讼信息", "行政处罚", "经营异常"};//, "抽查检查"
+    private String[] risk_titles = {"法院公告", "被执行人", "失信信息", "法院裁决", "诉讼信息", "行政处罚", "经营异常",""};//, "抽查检查"
     private int[] risk_images = {R.mipmap.fyggico, R.mipmap.bzxrico, R.mipmap.sxxxico, R.mipmap.fypjico,
-            R.mipmap.ssxxico, R.mipmap.xzcfico, R.mipmap.jyycico};//, R.mipmap.ccjcico
+            R.mipmap.ssxxico, R.mipmap.xzcfico, R.mipmap.jyycico,1};//, R.mipmap.ccjcico
 
     /*知识产权*/
-    private String[] knowledge_titles = {"专利", "商标", "著作权", "企业证书"};
-    private int[] knowledge_images = {R.mipmap.zlcpico, R.mipmap.sbico, R.mipmap.zzqic, R.mipmap.qyzsico};
+    private String[] knowledge_titles = {"专利", "商标", "著作权", ""};
+    private int[] knowledge_images = {R.mipmap.zlcpico, R.mipmap.sbico, R.mipmap.zzqic,1};
 
 
     /*财物信息*/
-    private String[] property_titles = { "股权出资", "税务信用", "融资纪录"};//"财物数据",
-    private int property_images[] = { R.mipmap.gqczico, R.mipmap.swxyico, R.mipmap.rzjlico};//R.mipmap.cwsjico,
+    private String[] property_titles = { "股权出资", "税务信用", "融资纪录",""};//"财物数据",
+    private int property_images[] = { R.mipmap.gqczico, R.mipmap.swxyico, R.mipmap.rzjlico,1};//R.mipmap.cwsjico,
 
 
     /*企业多维*/
-    private String[] company_titles = {"招聘", "企业资讯", "注册网站", "产品信息", "清算信息"};//"舆情口碑",
+    private String[] company_titles = {"招聘", "企业资讯", "注册网站", "产品信息"};//"舆情口碑", "清算信息",""
     private int[] company_images = {R.mipmap.zpico, R.mipmap.qynewsico, R.mipmap.websiteico, R.mipmap.cpxxico,
-            R.mipmap.qsxxico};// R.mipmap.yqkbico,
+           };// R.mipmap.yqkbico, R.mipmap.qsxxico,1
 
 
     private CompanyAdapter basicAdp, riskAdp, knowledgeAdp, propertyAdp, companyAdp;
@@ -126,8 +126,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         mPresenter = new CompanyPreImpl(this);
         mPresenter.getCompanyDetail(companyId);
         initOnItemClick();
-//        bundle.putString(COMAPYT_ID,companyId);
-        bundle.putString(COMAPYT_ID,"123456789");
+        bundle.putString(COMAPYT_ID,companyId);
 
     }
 
@@ -203,9 +202,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                     case 2://著作权
                         openActivity(CopyrightAct.class,bundle);
                         break;
-                    case 3://企业证书
-                        openActivity(QiYeZsAct.class,bundle);
-                        break;
+//                    case 3://企业证书
+//                        openActivity(QiYeZsAct.class,bundle);
+//                        break;
                 }
             }
         });
@@ -244,14 +243,14 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                         openActivity(WebsiteAct.class,bundle);
                         break;
                     case 3://产品信息
-                        openActivity(ProductInfoAct.class,bundle);
+                        openActivity(ProductListAct.class,bundle);
                         break;
 //                    case 4://舆情口碑
 //                        openActivity(OpinionAct.class,bundle);
 //                        break;
-                    case 4://清算信息
-                        openActivity(ClearingInfoAct.class,bundle);
-                        break;
+//                    case 4://清算信息
+//                        openActivity(ClearingInfoAct.class,bundle);
+//                        break;
                 }
             }
         });
@@ -347,27 +346,27 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
         }
 
-        String[] basic_des = {"", "共"+companyBean.getAbroadInvestmentNum() + "条", companyBean.getAnnualPortsMsgNum() + "", "", "", ""};
+        String[] basic_des = {"", "共"+companyBean.getAbroadInvestmentNum() + "条", "共"+companyBean.getAnnualPortsMsgNum() + "条", "", "", ""};
         basicAdp = new CompanyAdapter(this, basic_images, basic_titles, basic_des);
         gvBasic.setAdapter(basicAdp);
 
-         String[] risk_des = {companyBean.getCourtAnnouncementNum()+"", companyBean.getBreakExecutiveNum()+"", "", companyBean.getCourtDecisionNum()+"",
-                 companyBean.getLawsuitMsgNum()+"", companyBean.getAdministrativePenaltyNum()+"", companyBean.getManageExceptionNum()+"", ""};
+         String[] risk_des = {"共"+companyBean.getCourtAnnouncementNum()+"条", "共"+companyBean.getBreakExecutiveNum()+"条", "",  "共"+companyBean.getCourtDecisionNum()+"条",
+                 "共"+ companyBean.getLawsuitMsgNum()+"条", "共"+ companyBean.getAdministrativePenaltyNum()+"条",  "共"+ companyBean.getManageExceptionNum()+"条", ""};
         riskAdp = new CompanyAdapter(this, risk_images, risk_titles, risk_des);
         gvRisk.setAdapter(riskAdp);
 
         /*知识产权*/
-        String[] knowledge_des = {companyBean.getPatenInfomationNum()+"", companyBean.getTrademarkNum()+"",companyBean.getCopyrightsNum()+"",companyBean.getCertificateNum()+""};
+        String[] knowledge_des = { "共"+companyBean.getPatenInfomationNum()+"条", "共"+ companyBean.getTrademarkNum()+"条", "共"+companyBean.getCopyrightsNum()+"条", "共"+companyBean.getCertificateNum()+"条"};
         knowledgeAdp = new CompanyAdapter(this, knowledge_images, knowledge_titles, knowledge_des);
         gvKnowledge.setAdapter(knowledgeAdp);
         /*购物信息*/
-        String[] property_des = {"",companyBean.getEquityPledgedNum()+"",companyBean.getTaxInfoNum()+"",companyBean.getFinancingInfoNum()+""};
+        String[] property_des = {"", "共"+companyBean.getEquityPledgedNum()+"条", "共"+companyBean.getTaxInfoNum()+"条", "共"+companyBean.getFinancingInfoNum()+"条"};
         propertyAdp = new CompanyAdapter(this, property_images, property_titles, property_des);
         gvProperty.setAdapter(propertyAdp);
 
         /*企业多纬*/
-         String[] company_des = {companyBean.getRecruitingNum()+"",companyBean.getEnterpriseNewsNum()+"",companyBean.getEnterpriseWebMsgNum()+"",
-                 companyBean.getProductInfoNum()+"", "",companyBean.getClearInfoNum()+""};
+         String[] company_des = { "共"+companyBean.getRecruitingNum()+"条", "共"+companyBean.getEnterpriseNewsNum()+"条", "共"+companyBean.getEnterpriseWebMsgNum()+"条",
+                 "共"+ companyBean.getProductInfoNum()+"条", "", "共"+companyBean.getClearInfoNum()+"条"};
         companyAdp = new CompanyAdapter(this, company_images, company_titles, company_des);
         gvCompany.setAdapter(companyAdp);
 

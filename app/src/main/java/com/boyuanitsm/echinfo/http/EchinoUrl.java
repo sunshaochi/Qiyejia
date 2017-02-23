@@ -145,4 +145,7 @@ public class EchinoUrl {
     public static final String FIND_SONENTERPRISE_URL=BASE_URL+"company/login/findSonEnterpriseListByCompanyId.do";
     /*查询抽查检查*/
     public static final String FIND_SPOTCHECKLIST_URL=BASE_URL+"company/login/findSpotCheckListByCompanyId.do";
+
+    //产品信息列表
+    public static final String FIND_CHANPIN_LIST_URL=BASE_URL+"/company/login/findProductInfoListByCompanyId.do";
 }

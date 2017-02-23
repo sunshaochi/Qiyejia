@@ -58,9 +58,12 @@ public class CompanyAdapter extends BaseAdapter {
         }else {
             viewHolder= (ViewHolder) convertView.getTag();
         }
+
         viewHolder.ivCompany.setImageResource(iamges[position]);
         viewHolder.tvName.setText(titles[position]);
-        viewHolder.tvDes.setText(des[position]);
+        if (iamges[position]!=1){
+            viewHolder.tvDes.setText(des[position]);
+        }
         return convertView;
     }
 
