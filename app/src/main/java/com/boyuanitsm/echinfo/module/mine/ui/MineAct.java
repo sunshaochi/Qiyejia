@@ -85,8 +85,8 @@ public class MineAct extends BaseAct<MineMsgPre> implements IMineMsgView{
         if (!TextUtils.isEmpty(userBean.getIcon())){
 
         }
-        if (!TextUtils.isEmpty(userBean.getPhone())){
-            miv_phone.setLeftText(userBean.getPhone());
+        if (!TextUtils.isEmpty(userBean.getUsername())){
+            miv_phone.setLeftText(userBean.getUsername());
         }
         if (!TextUtils.isEmpty(userBean.getName())){
             miv_name.setRightText(userBean.getName());
@@ -225,7 +225,7 @@ public class MineAct extends BaseAct<MineMsgPre> implements IMineMsgView{
 
     @Override
     public void upLoadHeadFaild(int status, String errorMsg) {
-
+        toast(errorMsg);
     }
 
     public class MyReceiver extends BroadcastReceiver {

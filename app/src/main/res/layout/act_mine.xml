@@ -58,7 +58,6 @@
             style="@style/mineAct_item"
             app:isShowArrowRight="false"
             app:leftText="15010101011"
-            app:rightText="已绑定"
             app:rightTextColor="#ff7c00"
             app:rightTextSize="16sp" />
 
