@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
+ * 对外投资
  * Created by bitch-1 on 2017/2/13.
  */
 public class EnterpriBean implements Parcelable {

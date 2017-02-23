@@ -10,6 +10,6 @@ import com.boyuanitsm.echinfo.http.manager.CompanyManager;
 public class ForengnInvesImpl implements ICompanyBaseListModel{
     @Override
     public void getDatas(String companyId, ResultCallback resultCallback) {
-        CompanyManager.getCompanyManager().toGetInves(companyId,resultCallback);
+        CompanyManager.getCompanyManager().toGetInves(companyId,"",resultCallback);
     }
 }
