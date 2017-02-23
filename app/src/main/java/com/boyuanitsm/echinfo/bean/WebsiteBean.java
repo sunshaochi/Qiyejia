@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
+ * 网站信息
  * Created by bitch-1 on 2017/2/22.
  */
 

@@ -8,6 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.bean.SonEnterpriseBean;
+
+import java.util.List;
 
 /**
  * 工商信息界面分支机构适配器
@@ -16,19 +19,21 @@ import com.boyuanitsm.echinfo.R;
 public class BusinessFourAdp extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
+    private List<SonEnterpriseBean> datas;
 
-    public BusinessFourAdp(Context context) {
+    public BusinessFourAdp(Context context,List<SonEnterpriseBean> datas) {
         inflater = LayoutInflater.from(context);
+        this.datas=datas;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return datas.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return datas.get(i);
     }
 
     @Override
@@ -47,6 +52,7 @@ public class BusinessFourAdp extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
+        holder.tv_companyName.setText(datas.get(i).getCompanyName());
         return view;
     }
 

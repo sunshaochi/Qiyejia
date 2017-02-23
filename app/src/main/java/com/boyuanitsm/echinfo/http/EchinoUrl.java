@@ -129,5 +129,17 @@ public class EchinoUrl {
     public static final String ERROR_SUBMIT_URL = BASE_URL + "company/login/insertCorrectionManage.do";
 
     /*企业变更记录*/
-    public static final String EDIT_RECORD_URL=BASE_URL+"findEditRecordListByCompanyId";
+    public static final String EDIT_RECORD_URL=BASE_URL+"company/login/findEditRecordListByCompanyId.do";
+
+    /*查询股东信息*/
+    public static final String FIND_STOCK_URL=BASE_URL+"company/login/findStockMsgListByCompanyId.do";
+
+    /*查询企业详情无统计*/
+    public static final String FIND_COMPANY_NO_URL=BASE_URL+"view/login/findEnterpriseInfoById.do";
+    /*主要成员*/
+    public static final String FIND_MAIN_MEMBER_URL=BASE_URL+"company/login/findMainMemberListByCompanyId.do";
+    /*查询分支机构*/
+    public static final String FIND_SONENTERPRISE_URL=BASE_URL+"company/login/findSonEnterpriseListByCompanyId.do";
+    /*查询抽查检查*/
+    public static final String FIND_SPOTCHECKLIST_URL=BASE_URL+"company/login/findSpotCheckListByCompanyId.do";
 }

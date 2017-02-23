@@ -332,14 +332,70 @@ public class CompanyManager {
         OkHttpManager.getInstance().doGet(EchinoUrl.EDIT_RECORD_URL, params, callback);
     }
 
-     /* 注册网站
+    /** 注册网站
      * @param companyId
      * @param callback
      */
-
-    public void Findweb(String companyId, ResultCallback callback) {
+    public void Findweb(String companyId,String year,ResultCallback callback) {
         Map<String, String> params = new HashMap<>();
         params.put("companyId", companyId);
+        if(!TextUtils.isEmpty(year))
+            params.put("year", year);
         OkHttpManager.getInstance().doGet(EchinoUrl.FINDWEB_URL, params, callback);
+    }
+
+    /**
+     * 查询股东
+     * @param companyId
+     * @param callback
+     */
+    public void toFindStockMsg(String companyId,ResultCallback callback){
+        Map<String, String> params = new HashMap<>();
+        params.put("companyId", companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_STOCK_URL, params, callback);
+    }
+
+    /**
+     * 查询企业无统计
+     * @param id
+     * @param callback
+     */
+    public void toFindCompanyNo(String id,ResultCallback callback){
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_COMPANY_NO_URL, params, callback);
+    }
+
+    /**
+     * 主要成员
+     * @param companyId
+     * @param resultCallback
+     */
+    public void toFindMainMember(String companyId,ResultCallback resultCallback){
+        Map<String, String> params = new HashMap<>();
+        params.put("companyId", companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_MAIN_MEMBER_URL, params, resultCallback);
+    }
+
+    /**
+     * 查询分支机构
+     * @param companyId
+     * @param resultCallback
+     */
+    public void toFindSonEnterprise(String companyId,ResultCallback resultCallback){
+        Map<String, String> params = new HashMap<>();
+        params.put("companyId", companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_SONENTERPRISE_URL, params, resultCallback);
+    }
+
+    /**
+     * 抽查检查
+     * @param companyId
+     * @param resultCallback
+     */
+    public void toFindSpotCheck(String companyId,ResultCallback resultCallback){
+        Map<String, String> params = new HashMap<>();
+        params.put("companyId", companyId);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_SPOTCHECKLIST_URL, params, resultCallback);
     }
 }

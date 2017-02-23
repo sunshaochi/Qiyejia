@@ -104,6 +104,7 @@ public class AttenBean implements Parcelable {
     private String companyPhoneNo;
     private String dataSource;
 
+
     public String getEnglishName() {
         return englishName;
     }

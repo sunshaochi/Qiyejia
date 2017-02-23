@@ -9,32 +9,37 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.bean.StockMsgBean;
+
+import java.util.List;
 
 /**
- * 工商信息界面投资人适配器
+ * 工商信息界股东信息适配器
  * Created by Yang on 2017/1/6 0006.
  */
 public class BusinessOneAdp extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
+    private List<StockMsgBean> datas;
 
-    public BusinessOneAdp(Context context) {
+    public BusinessOneAdp(Context context,List<StockMsgBean> datas) {
         inflater = LayoutInflater.from(context);
+        this.datas=datas;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return datas.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return datas.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
@@ -50,11 +55,13 @@ public class BusinessOneAdp extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        if (i == 1) {
-            holder.iv_icon.setBackgroundResource(R.mipmap.business_add_icon);
-        } else {
-            holder.iv_icon.setBackgroundResource(R.mipmap.business_jian_icon);
-        }
+        holder.tv_companyName.setText(datas.get(i).getCompanyName());
+        holder.tv_professional.setText(datas.get(i).getStockType());
+//        if (i == 1) {
+//            holder.iv_icon.setBackgroundResource(R.mipmap.business_add_icon);
+//        } else {
+//            holder.iv_icon.setBackgroundResource(R.mipmap.business_jian_icon);
+//        }
         return view;
     }
 
