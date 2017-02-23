@@ -3,74 +3,78 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_grey_color"
+    android:background="@color/white"
     android:orientation="vertical">
-    <include layout="@layout/title_act_layout"></include>
+    <!--<include layout="@layout/title_act_layout"></include>-->
 
     <com.boyuanitsm.echinfo.widget.MineItemView
-       android:id="@+id/miv_dj"
+        android:id="@+id/miv_name"
         style="@style/productInfo_item"
-        app:leftText="登记编号"
-        app:rightText="12345677" />
+        app:leftText="" />
 
-    <View style="@style/view_line" />
-
-    <com.boyuanitsm.echinfo.widget.MineItemView
-        android:id="@+id/miv_zt"
-        style="@style/productInfo_item"
-        app:leftText="状态"
-        app:rightText="12345677" />
-
-    <View style="@style/view_line" />
+    <View
+        android:layout_marginLeft="15dp"
+        style="@style/view_line" />
 
     <com.boyuanitsm.echinfo.widget.MineItemView
-        android:id="@+id/miv_cz"
+        android:id="@+id/miv_perpson"
         style="@style/productInfo_item"
         app:leftText="出资人"
-        app:rightText="马小康" />
+        app:rightText="" />
 
-    <View style="@style/view_line" />
-
-    <com.boyuanitsm.echinfo.widget.MineItemView
-        android:id="@+id/miv_czj"
-        style="@style/productInfo_item"
-        app:leftText="证件号码"
-        app:rightText="334555555" />
-
-    <View style="@style/view_line" />
+    <View android:layout_marginLeft="15dp"
+        style="@style/view_line" />
 
     <com.boyuanitsm.echinfo.widget.MineItemView
-        android:id="@+id/miv_zq"
+        android:id="@+id/miv_money"
         style="@style/productInfo_item"
-        app:leftText="质权人"
-        app:rightText="张东" />
-
-    <com.boyuanitsm.echinfo.widget.MineItemView
-        android:id="@+id/miv_zzj"
-        style="@style/productInfo_item"
-        app:leftText="证件号码"
-        app:rightText="8928949821" />
-
-    <View style="@style/view_line" />
-
-    <View style="@style/view_line" />
-
-    <com.boyuanitsm.echinfo.widget.MineItemView
-        android:id="@+id/miv_se"
-        style="@style/productInfo_item"
-        app:leftText="出资股权数额"
-        app:rightText="3000万" />
-
-    <View style="@style/view_line" />
-
-    <com.boyuanitsm.echinfo.widget.MineItemView
-        android:id="@+id/miv_time"
-        style="@style/productInfo_item"
-        app:leftText="登记日期"
-        app:rightText="2017-01-04" />
+        app:leftText="出资股权份额"
+        app:rightText="" />
 
     <View
         android:layout_height="10dp"
         style="@style/view_line" />
+
+    <!--<com.boyuanitsm.echinfo.widget.MineItemView-->
+        <!--android:id="@+id/miv_czj"-->
+        <!--style="@style/productInfo_item"-->
+        <!--app:leftText="证件号码"-->
+        <!--app:rightText="334555555" />-->
+
+    <!--<View style="@style/view_line" />-->
+
+    <!--<com.boyuanitsm.echinfo.widget.MineItemView-->
+        <!--android:id="@+id/miv_zq"-->
+        <!--style="@style/productInfo_item"-->
+        <!--app:leftText="质权人"-->
+        <!--app:rightText="张东" />-->
+
+    <!--<com.boyuanitsm.echinfo.widget.MineItemView-->
+        <!--android:id="@+id/miv_zzj"-->
+        <!--style="@style/productInfo_item"-->
+        <!--app:leftText="证件号码"-->
+        <!--app:rightText="8928949821" />-->
+
+    <!--<View style="@style/view_line" />-->
+
+    <!--<View style="@style/view_line" />-->
+
+    <!--<com.boyuanitsm.echinfo.widget.MineItemView-->
+        <!--android:id="@+id/miv_se"-->
+        <!--style="@style/productInfo_item"-->
+        <!--app:leftText="出资股权数额"-->
+        <!--app:rightText="3000万" />-->
+
+    <!--<View style="@style/view_line" />-->
+
+    <!--<com.boyuanitsm.echinfo.widget.MineItemView-->
+        <!--android:id="@+id/miv_time"-->
+        <!--style="@style/productInfo_item"-->
+        <!--app:leftText="登记日期"-->
+        <!--app:rightText="2017-01-04" />-->
+
+    <!--<View-->
+        <!--android:layout_height="10dp"-->
+        <!--style="@style/view_line" />-->
 
 </LinearLayout>
