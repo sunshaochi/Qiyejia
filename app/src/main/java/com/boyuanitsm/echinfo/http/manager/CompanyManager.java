@@ -51,9 +51,11 @@ public class CompanyManager {
      * @param companyId
      * @param resultCallback
      */
-    public void toGetInves(String companyId, ResultCallback resultCallback) {
+    public void toGetInves(String companyId,String year,ResultCallback resultCallback) {
         Map<String, String> params = new HashMap<>();
         params.put("companyId", companyId);
+        if(!TextUtils.isEmpty(year))
+            params.put("year",year);
         OkHttpManager.getInstance().doGet(EchinoUrl.INVES_DATA_URL, params, resultCallback);
     }
 

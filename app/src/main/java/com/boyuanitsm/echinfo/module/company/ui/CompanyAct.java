@@ -124,9 +124,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     public void init(Bundle savedInstanceState) {
         companyId = getIntent().getStringExtra(COMAPYT_ID);
         mPresenter = new CompanyPreImpl(this);
-        mPresenter.getCompanyDetail("123456789");
+        mPresenter.getCompanyDetail(companyId);
         initOnItemClick();
-        bundle.putString(COMAPYT_ID,"123456789");
+        bundle.putString(COMAPYT_ID,companyId);
     }
 
 

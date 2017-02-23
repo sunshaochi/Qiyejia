@@ -49,7 +49,8 @@ public class ReportInfoAct extends BaseAct {
     private YearReportBean yearReportBean;
 
     private CompanyBean companyBean;//公司信息
-    private  List<EditRecordBean> records;
+    private List<CompanyBean> enterpriBeans;//对外投资
+    private  List<EditRecordBean> records;//变更纪录
 
     @Override
     public int getLayout() {
@@ -67,6 +68,7 @@ public class ReportInfoAct extends BaseAct {
         });
         yearReportBean=getIntent().getParcelableExtra(YEAR_REPORTINFO);
         getCompanyInfo(yearReportBean.getId());
+        getInves(yearReportBean.getId(),yearReportBean.getYear());
 
 
     }
@@ -131,8 +133,40 @@ public class ReportInfoAct extends BaseAct {
                 holder.iv_groupArrow.setVisibility(View.GONE);
                 holder.tv_groupRight.setVisibility(View.VISIBLE);
             } else {
-                holder.iv_groupArrow.setVisibility(View.VISIBLE);
-                holder.tv_groupRight.setVisibility(View.GONE);
+                switch (i){
+                    case 0://企业基本信息
+                        if(companyBean!=null){
+                            holder.iv_groupArrow.setVisibility(View.VISIBLE);
+                            holder.tv_groupRight.setVisibility(View.GONE);
+                        }else {
+                            holder.iv_groupArrow.setVisibility(View.GONE);
+                            holder.tv_groupRight.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                    case 3://对外投资
+                        if(enterpriBeans!=null&&enterpriBeans.size()>0){
+                            holder.iv_groupArrow.setVisibility(View.VISIBLE);
+                            holder.tv_groupRight.setVisibility(View.GONE);
+                        }else {
+                            holder.iv_groupArrow.setVisibility(View.GONE);
+                            holder.tv_groupRight.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                    case 7://变更纪录
+                        if(records!=null&&records.size()>0){
+                            holder.iv_groupArrow.setVisibility(View.VISIBLE);
+                            holder.tv_groupRight.setVisibility(View.GONE);
+                        }else {
+                            holder.iv_groupArrow.setVisibility(View.GONE);
+                            holder.tv_groupRight.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                    default:
+                        holder.iv_groupArrow.setVisibility(View.VISIBLE);
+                        holder.tv_groupRight.setVisibility(View.GONE);
+                        break;
+                }
+
             }
             holder.tv_groupName.setText(groupName[i]);
             return view;
@@ -146,7 +180,7 @@ public class ReportInfoAct extends BaseAct {
                 if (companyBean == null) {
                     view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
                 }else {
-                    view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
+                    view = View.inflate(getApplicationContext(), R.layout.report_company_view, null);
                     TextView tvComName = (TextView) view.findViewById(R.id.tvComName);
                     TextView tvRegNo = (TextView) view.findViewById(R.id.tvRegNo);
                     TextView tvCompanyNo = (TextView) view.findViewById(R.id.tvCompanyNo);
@@ -189,8 +223,33 @@ public class ReportInfoAct extends BaseAct {
                 }
             }
 
-            if ( gPosition == 1 || gPosition == 2 || gPosition == 3
-                    || gPosition == 4 || gPosition == 7) {
+            if(gPosition==3){//对外投资
+                if(enterpriBeans!=null&&enterpriBeans.size()>0){
+                    holder = new cViewHolder();
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
+                    threeAdp = new ReportThreeAdp(getApplicationContext(),enterpriBeans);
+                    holder.myListView.setAdapter(threeAdp);
+                }else {
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
+
+                }
+
+            }
+
+            if(gPosition==7){//变更纪录
+                if(records!=null&&records.size()>0){
+                    holder = new cViewHolder();
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
+                    sevenAdp = new BusinessThreeAdp(getApplicationContext(),records);
+                    holder.myListView.setAdapter(sevenAdp);
+                }else {
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
+
+                }
+            }
+
+            if ( gPosition == 1 || gPosition == 2
+                    || gPosition == 4 ) {
                 holder = new cViewHolder();
                 view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
                 holder.myListView = (MyListView) view.findViewById(R.id.mlv);
@@ -206,24 +265,24 @@ public class ReportInfoAct extends BaseAct {
                     twoAdp = new ReportTwoAdp(getApplicationContext());
                     holder.myListView.setAdapter(twoAdp);
                 }
-                if (gPosition == 3) {//对外投资信息
-                    threeAdp = new ReportThreeAdp(getApplicationContext());
-                    holder.myListView.setAdapter(threeAdp);
-                }
+//                if (gPosition == 3) {//对外投资信息
+//                    threeAdp = new ReportThreeAdp(getApplicationContext(),enterpriBeans);
+//                    holder.myListView.setAdapter(threeAdp);
+//                }
                 if (gPosition == 4) {//企业资产状况信息
                     fourAdp = new ReportFourAdp(getApplicationContext());
                     holder.myListView.setAdapter(fourAdp);
                 }
-                if (gPosition == 7) {//变更记录
-                    if(records!=null&&records.size()>0){
-                        sevenAdp = new BusinessThreeAdp(getApplicationContext(),records);
-                        holder.myListView.setAdapter(sevenAdp);
-                    }else {
-                        view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
-
-                    }
-
-                }
+//                if (gPosition == 7) {//变更记录
+//                    if(records!=null&&records.size()>0){
+//                        sevenAdp = new BusinessThreeAdp(getApplicationContext(),records);
+//                        holder.myListView.setAdapter(sevenAdp);
+//                    }else {
+//                        view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
+//
+//                    }
+//
+//                }
             }
 
             if (gPosition == 5) {//对外提供保证担保信息
@@ -290,6 +349,26 @@ public class ReportInfoAct extends BaseAct {
             public void onResponse(ResultBean<List<EditRecordBean>> response) {
                 records=response.getData();
 
+            }
+        });
+
+    }
+
+    /**
+     * 查询对外投资
+     * @param companyId
+     * @param year
+     */
+    private void getInves(String companyId,String year){
+        CompanyManager.getCompanyManager().toGetInves(companyId, year, new ResultCallback<ResultBean<List<CompanyBean>>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+
+            }
+
+            @Override
+            public void onResponse(ResultBean<List<CompanyBean>> response) {
+                enterpriBeans =response.getData();
             }
         });
     }
