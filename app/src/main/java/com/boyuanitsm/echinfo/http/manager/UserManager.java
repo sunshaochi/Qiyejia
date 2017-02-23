@@ -173,7 +173,7 @@ public class UserManager {
     public void subHeadImg(String temppath , ResultCallback callback) {
         Map<String, File> filemap = new HashMap<>();
          File file = new File(temppath);
-        filemap.put("file", file);
+            filemap.put("0.png", file);
         Map<String,String> params=new HashMap<>();
 //        params.put("type", "img");
 //        params.put("uploadLableName", "file");

@@ -126,7 +126,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         mPresenter = new CompanyPreImpl(this);
         mPresenter.getCompanyDetail(companyId);
         initOnItemClick();
-        bundle.putString(COMAPYT_ID,companyId);
+//        bundle.putString(COMAPYT_ID,companyId);
+        bundle.putString(COMAPYT_ID,"123456789");
+
     }
 
 
@@ -137,7 +139,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
                 switch (i) {
                     case 0://工商信息
-                        openActivity(BusinessInfoAct.class);
+                        openActivity(BusinessInfoAct.class,bundle);
                         break;
                     case 1://对外投资
                         openActivity(ForeignInvestmentAct.class,bundle);
@@ -196,6 +198,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                         openActivity(PatentInfoAct.class,bundle);
                         break;
                     case 1://商标
+                        openActivity(FindBrandInfoAct.class,bundle);
                         break;
                     case 2://著作权
                         openActivity(CopyrightAct.class,bundle);
@@ -344,7 +347,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
         }
 
-        String[] basic_des = {"", companyBean.getAbroadInvestmentNum() + "", companyBean.getAnnualPortsMsgNum() + "", "", "", ""};
+        String[] basic_des = {"", "共"+companyBean.getAbroadInvestmentNum() + "条", companyBean.getAnnualPortsMsgNum() + "", "", "", ""};
         basicAdp = new CompanyAdapter(this, basic_images, basic_titles, basic_des);
         gvBasic.setAdapter(basicAdp);
 

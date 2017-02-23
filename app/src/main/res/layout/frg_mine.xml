@@ -34,6 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="张三三"
+                android:textSize="16sp"
                 android:textColor="@color/white" />
 
             <TextView
@@ -48,6 +49,7 @@
                 android:paddingBottom="1dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:textSize="14sp"
                 android:text="IT质量管理工程师"
                 android:textColor="@color/white" />
 
@@ -97,13 +99,11 @@
         <View
             android:layout_marginLeft="15dp"
             style="@style/view_line" />
-
         <com.boyuanitsm.echinfo.widget.MineItemView
             android:id="@+id/miv_fk"
             style="@style/mine_item"
             app:leftImg="@mipmap/mine_fk"
             app:leftText="意见反馈" />
-
         <View
             android:layout_marginLeft="15dp"
             style="@style/view_line" />
@@ -112,7 +112,9 @@
             android:id="@+id/miv_wt"
             style="@style/mine_item"
             app:leftImg="@mipmap/mine_wt"
-            app:leftText="常见问题" />
+            app:leftText="常见问题" >
+        </com.boyuanitsm.echinfo.widget.MineItemView>
+
 
         <View
             android:layout_marginLeft="15dp"

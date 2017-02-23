@@ -9,7 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.bean.MainMemberBean;
 import com.boyuanitsm.tools.view.CircleImageView;
+
+import java.util.List;
 
 /**
  * 工商信息界面主要成员适配器
@@ -18,24 +21,26 @@ import com.boyuanitsm.tools.view.CircleImageView;
 public class BusinessTwoAdp extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
+    private List<MainMemberBean> datas;
 
-    public BusinessTwoAdp(Context context) {
+    public BusinessTwoAdp(Context context,List<MainMemberBean> datas) {
         inflater = LayoutInflater.from(context);
+        this.datas=datas;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return datas.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return datas.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
@@ -44,7 +49,7 @@ public class BusinessTwoAdp extends BaseAdapter {
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.mlv_businesstwo_item, null);
-            holder.tv_name = (TextView) view.findViewById(R.id.tv_companyName);
+            holder.tv_name = (TextView) view.findViewById(R.id.tv_name);
             holder.tv_professional = (TextView) view.findViewById(R.id.tv_professional);
             holder.iv_icon = (ImageView) view.findViewById(R.id.iv_icon);
             holder.civ_head = (CircleImageView) view.findViewById(R.id.civ_head);
@@ -52,11 +57,14 @@ public class BusinessTwoAdp extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        if (i == 1) {
-            holder.iv_icon.setBackgroundResource(R.mipmap.business_add_icon);
-        } else {
-            holder.iv_icon.setBackgroundResource(R.mipmap.business_jian_icon);
-        }
+        holder.tv_professional.setText(datas.get(i).getJobName());
+        holder.tv_name.setText(datas.get(i).getPersionName());
+
+//        if (i == 1) {
+//            holder.iv_icon.setBackgroundResource(R.mipmap.business_add_icon);
+//        } else {
+//            holder.iv_icon.setBackgroundResource(R.mipmap.business_jian_icon);
+//        }
         return view;
     }
 

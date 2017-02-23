@@ -339,8 +339,6 @@ public class OkHttpManager {
         MyLogUtils.info("参数URL:" + url);
         MyLogUtils.info("参数paramms:" + params);
         MyLogUtils.info("参数files:" + files);
-
-
         OkHttpUtils.post().url(url).params(params).headers(getHeaders()).files("file",files).build().execute(new com.zhy.http.okhttp.callback.Callback<String>() {
 
             @Override

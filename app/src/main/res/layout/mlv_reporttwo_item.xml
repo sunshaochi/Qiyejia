@@ -14,8 +14,9 @@
         android:paddingTop="20dp">
 
         <TextView
+            android:id="@+id/tvName"
             style="@style/tv_14_black"
-            android:text="张婷婷" />
+            android:text="" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,9 +35,10 @@
                     android:text="出资时间" />
 
                 <TextView
+                    android:id="@+id/tvCzTime"
                     style="@style/tv_14_gray"
                     android:layout_marginTop="10dp"
-                    android:text="2017年1月6日" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -50,9 +52,10 @@
                     android:text="认缴出资额" />
 
                 <TextView
+                    android:id="@+id/tvCzMoney"
                     style="@style/tv_14_gray"
                     android:layout_marginTop="10dp"
-                    android:text="2017年1月6日" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 
@@ -73,9 +76,10 @@
                     android:text="实缴时间" />
 
                 <TextView
+                    android:id="@+id/tvSjTime"
                     style="@style/tv_14_gray"
                     android:layout_marginTop="10dp"
-                    android:text="2017年1月6日" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -89,9 +93,10 @@
                     android:text="实缴出资额" />
 
                 <TextView
+                    android:id="@+id/tvSjMoney"
                     style="@style/tv_14_gray"
                     android:layout_marginTop="10dp"
-                    android:text="2017年1月6日" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 
@@ -101,9 +106,10 @@
             android:text="出资方式" />
 
         <TextView
+            android:id="@+id/tvType"
             style="@style/tv_14_gray"
             android:layout_marginTop="10dp"
-            android:text="货币" />
+            android:text="" />
     </LinearLayout>
 
     <View style="@style/view_line" />

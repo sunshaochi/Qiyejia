@@ -75,7 +75,7 @@ public class FollowFrg extends BaseFrg<IFollowPre> implements IFollowView {
             @Override
             public void onItemClick(View view, int position) {
                 Bundle bundle=new Bundle();
-                bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position).getId());
+                bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position-1).getId());
                 openActivity(CompanyAct.class,bundle);
             }
 

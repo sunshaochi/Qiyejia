@@ -15,9 +15,10 @@
                 android:text="法定代表人" />
 
             <TextView
+                android:id="@+id/tvPerson"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="李鸿章" />
+                android:text="" />
         </LinearLayout>
 
         <View style="@style/view_line_vertical" />
@@ -29,9 +30,10 @@
                 android:text="注册资本" />
 
             <TextView
+                android:id="@+id/tvMoney"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="6000万" />
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 
@@ -50,9 +52,10 @@
                 android:text="成立日期" />
 
             <TextView
+                android:id="@+id/tvCreateDate"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="2017-01-06" />
+                android:text="" />
         </LinearLayout>
 
         <View style="@style/view_line_vertical" />
@@ -64,9 +67,10 @@
                 android:text="发照日期" />
 
             <TextView
+                android:id="@+id/tvFzDate"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="2017-01-06" />
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 
@@ -85,9 +89,10 @@
                 android:text="公司类型" />
 
             <TextView
+                android:id="@+id/tvType"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="有限责任公司" />
+                android:text="" />
         </LinearLayout>
 
         <View style="@style/view_line_vertical" />

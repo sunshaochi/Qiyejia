@@ -6,41 +6,46 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        android:padding="15dp">
+
+
+        >
 
         <com.boyuanitsm.tools.view.CircleImageView
             android:id="@+id/civ_head"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            android:visibility="gone"
+            />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_professional"
                 style="@style/tv_14_black"
-                android:text="董事长" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/tv_name"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="5dp"
-                android:text="柳传志" />
+                android:text="" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/iv_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"
+            />
     </LinearLayout>
 
     <View style="@style/view_line" />

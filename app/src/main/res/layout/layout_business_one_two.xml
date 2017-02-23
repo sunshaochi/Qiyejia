@@ -17,9 +17,10 @@
                 android:text="工商注册号" />
 
             <TextView
+                android:id="@+id/tvRegNo"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="44444" />
+                android:text="" />
         </LinearLayout>
 
         <View style="@style/view_line_vertical" />
@@ -31,9 +32,10 @@
                 android:text="组织机构代码" />
 
             <TextView
+                android:id="@+id/tvZzNo"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="fffff" />
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 
@@ -52,9 +54,10 @@
                 android:text="统一社会信用代码" />
 
             <TextView
+                android:id="@+id/tvXyNo"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="290483" />
+                android:text="" />
         </LinearLayout>
 
         <View style="@style/view_line_vertical" />
@@ -66,9 +69,10 @@
                 android:text="经营状态" />
 
             <TextView
+                android:id="@+id/tvManagerState"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="存续" />
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 
@@ -87,9 +91,10 @@
                 android:text="英文名" />
 
             <TextView
+                android:id="@+id/tvEnglishName"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="android" />
+                android:text="" />
         </LinearLayout>
 
         <View style="@style/view_line_vertical" />
@@ -101,9 +106,10 @@
                 android:text="曾用名" />
 
             <TextView
+                android:id="@+id/tvOtherName"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="-" />
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 
@@ -122,9 +128,10 @@
                 android:text="所属行业" />
 
             <TextView
+                android:id="@+id/tvHy"
                 style="@style/tv_14_gray"
                 android:layout_marginTop="10dp"
-                android:text="批发零售业" />
+                android:text="" />
         </LinearLayout>
 
         <View style="@style/view_line_vertical" />
