@@ -20,6 +20,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.boyuanitsm.echinfo.ConstantValue;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.CityAdapter;
 import com.boyuanitsm.echinfo.adapter.GvAdapter;
@@ -129,6 +130,9 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
     String[] strNames={"按名称查询","按地址查询","按经营范围查询","按品牌/产品查询","按法定代表人查询"};
     List<String> sdatasource = new ArrayList<>();
 
+
+    private ProAdapter hyAdapter;
+    private CityAdapter hySecAdapter;
     @Override
     public int getLayout() {
         return R.layout.act_jinyinfw;
@@ -428,6 +432,8 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
                         case 1:
                             capital = "0,1000000";
                             break;
+
+
                         case 2:
                             capital = "1000000,2000000";
                             break;
@@ -466,6 +472,7 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
                             break;
                         case 3:
                             screeningRange = 7 + "";
+
                             break;
                         case 4:
                             screeningRange = 8 + "";
@@ -499,15 +506,19 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             View v = LayoutInflater.from(SearchGsByNameAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(SearchGsByNameAct.this);
-            CityAdapter cityadapter = new CityAdapter(SearchGsByNameAct.this);
+           final ProAdapter proadapteer = new ProAdapter(SearchGsByNameAct.this, ConstantValue.getIndustyList(),0);
             lsv_pricive.setAdapter(proadapteer);
-            lsv_city.setAdapter(cityadapter);
 
             lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    lsv_city.setVisibility(View.VISIBLE);
+                    if (ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)) != null) {
+                        proadapteer.setSlectionChange(i);
+
+                        CityAdapter cityadapter = new CityAdapter(SearchGsByNameAct.this, ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)));
+                        lsv_city.setVisibility(View.VISIBLE);
+                        lsv_city.setAdapter(cityadapter);
+                    }
                 }
             });
 
@@ -515,18 +526,31 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
 
 
         } else if (i == 2) {//不限行业
+
             View v = LayoutInflater.from(SearchGsByNameAct.this).inflate(R.layout.city_sec, null);
-            ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
+            final ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(SearchGsByNameAct.this);
-            CityAdapter cityadapter = new CityAdapter(SearchGsByNameAct.this);
-            lsv_pricive.setAdapter(proadapteer);
-            lsv_city.setAdapter(cityadapter);
+            hyAdapter = new ProAdapter(SearchGsByNameAct.this, ConstantValue.getIndustyList(),0);
+            lsv_pricive.setAdapter(hyAdapter);
+            hySecAdapter=new CityAdapter(SearchGsByNameAct.this,ConstantValue.getIndustyMap().get("不限行业"));
+            lsv_city.setVisibility(View.VISIBLE);
+            lsv_city.setAdapter(hySecAdapter);
+
 
             lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    lsv_city.setVisibility(View.VISIBLE);
+                    if (ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)) != null) {
+                        hyAdapter.setSlectionChange(i);
+                        hySecAdapter.setDatas(ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)));
+                        lsv_city.setVisibility(View.VISIBLE);
+                    }else {
+                        lsv_pricive.setVisibility(View.GONE);
+                        lsv_city.setVisibility(View.GONE);
+
+                    }
+
+
                 }
             });
 

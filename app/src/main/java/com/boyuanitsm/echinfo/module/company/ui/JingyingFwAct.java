@@ -20,6 +20,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.boyuanitsm.echinfo.ConstantValue;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.CityAdapter;
 import com.boyuanitsm.echinfo.adapter.GvAdapter;
@@ -415,15 +416,18 @@ public class JingyingFwAct extends BaseAct<IJingYingPre> implements IJingyingVie
             View v = LayoutInflater.from(JingyingFwAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(JingyingFwAct.this);
-            CityAdapter cityadapter = new CityAdapter(JingyingFwAct.this);
+            final ProAdapter proadapteer = new ProAdapter(JingyingFwAct.this, ConstantValue.getIndustyList(),0);
             lsv_pricive.setAdapter(proadapteer);
-            lsv_city.setAdapter(cityadapter);
 
             lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    lsv_city.setVisibility(View.VISIBLE);
+                    if (ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)) != null) {
+                        proadapteer.setSlectionChange(i);
+                        CityAdapter cityadapter = new CityAdapter(JingyingFwAct.this, ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)));
+                        lsv_city.setVisibility(View.VISIBLE);
+                        lsv_city.setAdapter(cityadapter);
+                    }
                 }
             });
 
@@ -434,15 +438,18 @@ public class JingyingFwAct extends BaseAct<IJingYingPre> implements IJingyingVie
             View v = LayoutInflater.from(JingyingFwAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(JingyingFwAct.this);
-            CityAdapter cityadapter = new CityAdapter(JingyingFwAct.this);
+           final ProAdapter proadapteer = new ProAdapter(JingyingFwAct.this,ConstantValue.getIndustyList(),0);
             lsv_pricive.setAdapter(proadapteer);
-            lsv_city.setAdapter(cityadapter);
 
             lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    lsv_city.setVisibility(View.VISIBLE);
+                    if (ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)) != null) {
+                        proadapteer.setSlectionChange(i);
+                        CityAdapter cityadapter = new CityAdapter(JingyingFwAct.this, ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)));
+                        lsv_city.setVisibility(View.VISIBLE);
+                        lsv_city.setAdapter(cityadapter);
+                    }
                 }
             });
 
