@@ -124,7 +124,7 @@ public class EchinoUrl {
     public static final String INSERTIDEATICKING_URL = BASE_URL + "company/login/insertIdeaTicking.do";
 
     /*获取字典列表（纠错的错误列表）*/
-    public static final String ERROR_LIST_URL = BASE_URL + "company/login/findDictListBydictType.do";
+    public static final String ERROR_LIST_URL = BASE_URL + "company/unlogin/findDictListBydictType.do";
     /*提交纠错信息*/
     public static final String ERROR_SUBMIT_URL = BASE_URL + "company/login/insertCorrectionManage.do";
 
