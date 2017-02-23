@@ -12,8 +12,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.telephony.TelephonyManager;
@@ -54,8 +52,28 @@ public class ToolsUtils {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return format.format(new Date());
     }
-
-
+    /**
+     * 几年以内
+     *
+     * @return
+     */
+    public static String getCurrent(int n) {
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd");
+//        Date date = new Date();
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+//        int year = date.getYear();
+         int newYear = year - n;
+        return newYear+"-"+format.format(new Date());
+    }
+    /**
+     * 获取当前时间
+     *
+     * @return
+     */
+    public static String getCurrentYmd() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(new Date());
+    }
     /**
      * 时间戳转化成时间
      *
