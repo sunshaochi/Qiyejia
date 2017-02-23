@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <!--<RelativeLayout-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="45dp">-->
+    <!--<TextView-->
+    <!--android:id="@+id/tv_name"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:text="聚雅"-->
+    <!--android:textSize="16sp"-->
+    <!--android:textColor="#000"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/tv_status"-->
+    <!--android:layout_toLeftOf="@+id/iv_right"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:text="商标注册以完成"-->
+    <!--android:textColor="#2485f2"-->
+    <!--android:textSize="14sp"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content" />-->
+    <!--<ImageView-->
+    <!--android:layout_marginTop="2dp"-->
+    <!--android:id="@+id/iv_right"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:background="@mipmap/gray_right"-->
+    <!--android:layout_width="5dp"-->
+    <!--android:layout_height="10dp" />-->
+    <!--</RelativeLayout>-->
+    <!--<View-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--style="@style/view_line"/>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="13dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="13dp">
+
+        <ImageView
+            android:id="@+id/brand_logo"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
+            android:background="@mipmap/brand" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/brand_logo"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="聚雅"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="商标注册申请等待受理中"
+                android:textColor="#666666"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_sblx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="商标类型：38--通讯"
+                android:textColor="#666666"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp">
+            <ImageView
+                android:id="@+id/iv_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/gray_right" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View style="@style/view_line" />
+</LinearLayout>

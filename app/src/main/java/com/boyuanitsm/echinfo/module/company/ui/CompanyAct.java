@@ -37,6 +37,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
     //公司id
     public static final String COMAPYT_ID = "company_id";
     private String companyId;
+    private String companyname;//公司名称带到股权出资里面去
 
     @BindView(R.id.tvPerson)
     TextView tvPerson;//法人代表
@@ -197,6 +198,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
                         openActivity(PatentInfoAct.class,bundle);
                         break;
                     case 1://商标
+                        openActivity(FindBrandInfoAct.class,bundle);
                         break;
                     case 2://著作权
                         openActivity(CopyrightAct.class,bundle);
@@ -215,6 +217,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 //                    case 0://财务数据
 //                        break;
                     case 0://股权出资
+                        bundle.putString("companyname",companyname);
                         openActivity(EquityAct.class,bundle);
                         break;
                     case 1://税务信用
@@ -289,7 +292,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             case R.id.llJk://监控
 
                 break;
-            case R.id.ll_gd://更多
+            case R.id.ll_gd://更多企业信息
                 Bundle bundle=new Bundle();
 //
                 bundle.putParcelable("mcompanyBean",mcompanyBean);
@@ -312,7 +315,11 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         if(mcompanyBean!=null){
             mcompanyBean=null;
         }
+        if(!TextUtils.isEmpty(companyname)){
+            companyname="";
+        }
         mcompanyBean=companyBean;
+        companyname=companyBean.getCompanyName();//公司姓名
         setTopTitle(companyBean.getCompanyName());
         tvPerson.setText(companyBean.getLegalPerson());
         tvRegMoney.setText(companyBean.getRegCapital());
@@ -340,7 +347,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
         }
 
-        String[] basic_des = {"", companyBean.getAbroadInvestmentNum() + "", companyBean.getAnnualPortsMsgNum() + "", "", "", ""};
+        String[] basic_des = {"", "共"+companyBean.getAbroadInvestmentNum() + "条", companyBean.getAnnualPortsMsgNum() + "", "", "", ""};
         basicAdp = new CompanyAdapter(this, basic_images, basic_titles, basic_des);
         gvBasic.setAdapter(basicAdp);
 

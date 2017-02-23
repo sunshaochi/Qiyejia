@@ -8,6 +8,7 @@ public class EchinoUrl {
     /*基础地址*/
     public static final String BASE_URL = "http://139.196.226.111:8006/yiqicha/";
 //    public static final String BASE_URL="http://172.16.6.253:8011/yiqicha/";
+//    public static final String BASE_URL="http://172.16.5.18:8080/yiqicha/";
 
 
     /**
@@ -68,6 +69,8 @@ public class EchinoUrl {
     public static final String FIND_LOSECREDIT_URL = BASE_URL + "company/login/findCourtitemListBysId.do";
     //根据id查税务信用
     public static final String FIND_SHUIWUXINYONG_URL=BASE_URL+"company/login/findTaxInfoListByCompanyId.do";
+    //根据企业id，查询商标列表
+    public static final String FIND_SHANGBIAO_URL=BASE_URL+"company/login/findTrademarkListByCompanyId.do";
     /**
      * 企业向关
      */
@@ -124,7 +127,7 @@ public class EchinoUrl {
     public static final String INSERTIDEATICKING_URL = BASE_URL + "company/login/insertIdeaTicking.do";
 
     /*获取字典列表（纠错的错误列表）*/
-    public static final String ERROR_LIST_URL = BASE_URL + "company/login/findDictListBydictType.do";
+    public static final String ERROR_LIST_URL = BASE_URL + "company/unlogin/findDictListBydictType.do";
     /*提交纠错信息*/
     public static final String ERROR_SUBMIT_URL = BASE_URL + "company/login/insertCorrectionManage.do";
 

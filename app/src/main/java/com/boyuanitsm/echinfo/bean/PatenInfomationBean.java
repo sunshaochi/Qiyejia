@@ -3,6 +3,8 @@ package com.boyuanitsm.echinfo.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
 /**
  * 专利
  * Created by wangbin on 17/2/13.
@@ -25,6 +27,15 @@ public class PatenInfomationBean implements Parcelable {
     private String releaseDate;//公布日期
     private String serialNo;//序号
     private String state;//状态
+    private List<String> releaseYearList;//时间集合
+
+    public List<String> getReleaseYearList() {
+        return releaseYearList;
+    }
+
+    public void setReleaseYearList(List<String> releaseYearList) {
+        this.releaseYearList = releaseYearList;
+    }
 
     public String getApplicationNo() {
         return applicationNo;
@@ -154,6 +165,9 @@ public class PatenInfomationBean implements Parcelable {
         this.state = state;
     }
 
+    public PatenInfomationBean() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -177,9 +191,7 @@ public class PatenInfomationBean implements Parcelable {
         dest.writeString(this.releaseDate);
         dest.writeString(this.serialNo);
         dest.writeString(this.state);
-    }
-
-    public PatenInfomationBean() {
+        dest.writeStringList(this.releaseYearList);
     }
 
     protected PatenInfomationBean(Parcel in) {
@@ -199,9 +211,10 @@ public class PatenInfomationBean implements Parcelable {
         this.releaseDate = in.readString();
         this.serialNo = in.readString();
         this.state = in.readString();
+        this.releaseYearList = in.createStringArrayList();
     }
 
-    public static final Parcelable.Creator<PatenInfomationBean> CREATOR = new Parcelable.Creator<PatenInfomationBean>() {
+    public static final Creator<PatenInfomationBean> CREATOR = new Creator<PatenInfomationBean>() {
         @Override
         public PatenInfomationBean createFromParcel(Parcel source) {
             return new PatenInfomationBean(source);
