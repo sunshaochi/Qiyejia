@@ -1,8 +1,7 @@
 package com.boyuanitsm.echinfo.module.home.presenter.searchPresenter;
 
 import com.boyuanitsm.echinfo.base.BasePresenterImpl;
-import com.boyuanitsm.echinfo.bean.PatenDataBean;
-import com.boyuanitsm.echinfo.bean.PatenInfoDataBean;
+import com.boyuanitsm.echinfo.bean.DateBean;
 import com.boyuanitsm.echinfo.bean.PatenInfomationBean;
 import com.boyuanitsm.echinfo.bean.PatentTypeBean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
@@ -30,20 +29,21 @@ public class SearchPatentPresenterImpl extends BasePresenterImpl<ISearchPatentVi
 
     @Override
     public void findPatentInfo(String name, String patenType, final String releaseDate, int page, int rows) {
-        searchPatentModel.findPatentInfo(name, patenType, releaseDate, page, rows, new ResultCallback<ResultBean<PatenDataBean>>() {
+        searchPatentModel.findPatentInfo(name, patenType, releaseDate, page, rows, new ResultCallback<ResultBean<DateBean<PatenInfomationBean>>>() {
             @Override
             public void onError(int status, String errorMsg) {
                 mView.findPatentInfoFaild(status,errorMsg);
             }
 //            DateBean<PatenInfomationBean>
             @Override
-            public void onResponse(ResultBean<PatenDataBean> response) {
-                PatenDataBean data = response.getData();
-                PatenInfoDataBean patenInfomationList = data.getPatenInfomationList();
-                mView.findPatentTotal(patenInfomationList.getTotal());
-                if (patenInfomationList.getRows()!=null&&patenInfomationList.getRows().size()>0){
-                    mView.findPatentInfoSucess(patenInfomationList.getRows());
-                    mView.getRecentYears(data.getReleaseYear());
+            public void onResponse(ResultBean<DateBean<PatenInfomationBean>> response) {
+                int data = response.getData().getTatal();
+                List<PatenInfomationBean> datas = response.getData().getRows();
+//                PatenInfoDataBean patenInfomationList = data.getPatenInfomationList();
+                mView.findPatentTotal(data);
+                if (datas!=null&&datas.size()>0){
+                    mView.findPatentInfoSucess(datas);
+                    mView.getRecentYears(datas.get(0).getReleaseYearList());
                 }else {
                     mView.findPatentNoData();
                 }

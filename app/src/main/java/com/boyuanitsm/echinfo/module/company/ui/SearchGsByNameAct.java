@@ -40,6 +40,7 @@ import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
 import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.utils.GsonUtils;
+import com.boyuanitsm.tools.utils.MyLogUtils;
 import com.boyuanitsm.tools.utils.ToolsUtils;
 import com.boyuanitsm.tools.view.FlowTag.FlowTagLayout;
 import com.boyuanitsm.tools.view.FlowTag.OnTagClickListener;
@@ -116,7 +117,7 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
     String establishDate;
     int page = 1;
     int rows = 10;
-    boolean isRangeQuery;
+    boolean isRangeQuery = false;
     String screeningRange;
     ACache aCache;
     Gson gson;
@@ -126,6 +127,7 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
     SearchHistoryAdapter<String> hotAdapter;//热门搜索适配器
     String[] strYears = {"不限", "1年内", "1-2年内", "2-3年内", "3-5年内", "5-10年内", "10年以上"};
     String[] strMoney = {"不限", "100万以内", "100-200万", "200-500万", "500-1000万", "1000万以上"};
+    String[] strNames={"按名称查询","按地址查询","按经营范围查询","按品牌/产品查询","按法定代表人查询"};
     List<String> sdatasource = new ArrayList<>();
 
 
@@ -187,7 +189,11 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             rlSearch.setVisibility(View.VISIBLE);
             rlRecent.setVisibility(View.GONE);
         }
-
+        sdatasource.add(strNames[0]);
+        sdatasource.add(strNames[1]);
+        sdatasource.add(strNames[2]);
+        sdatasource.add(strNames[3]);
+        sdatasource.add(strNames[4]);
         gvclnxadt = new GvAdapter(SearchGsByNameAct.this, strYears);//成立年限
         gvzcziadt = new GvAdapter(SearchGsByNameAct.this, strMoney);//注册资本
     }
@@ -377,6 +383,8 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             View v = LayoutInflater.from(SearchGsByNameAct.this).inflate(R.layout.gd_sec, null);
             MyGridView gv_cnlx = (MyGridView) v.findViewById(R.id.gv_clnx);
             MyGridView gv_zczb = (MyGridView) v.findViewById(R.id.gv_zczb);
+            TextView tv_qd = (TextView) v.findViewById(R.id.tv_qd);
+            TextView tv_cz = (TextView) v.findViewById(R.id.tv_cz);
             FlowTagLayout mSizeFlowTagLayout = (FlowTagLayout) v.findViewById(R.id.size_flow_layout);
             gv_cnlx.setAdapter(gvclnxadt);
             gv_zczb.setAdapter(gvzcziadt);
@@ -385,8 +393,31 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             gv_cnlx.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    switch (i) {
+                        case 0:
+                            establishDate = "";
+                            break;
+                        case 1:
+                            establishDate = ToolsUtils.getCurrent(1) + "," + ToolsUtils.getCurrentYmd();
+                            break;
+                        case 2:
+                            establishDate = ToolsUtils.getCurrent(2) + "," + ToolsUtils.getCurrent(1);
+                            break;
+                        case 3:
+                            establishDate = ToolsUtils.getCurrent(3) + "," + ToolsUtils.getCurrent(2);
+                            break;
+                        case 4:
+                            establishDate = ToolsUtils.getCurrent(5) + "," + ToolsUtils.getCurrent(3);
+                            break;
+                        case 5:
+                            establishDate = ToolsUtils.getCurrent(10) + "," + ToolsUtils.getCurrent(5);
+                            break;
+                        case 6:
+                            establishDate = "*" + "," + ToolsUtils.getCurrent(10);
+                            break;
+                    }
+                    isRangeQuery = true;
                     gvclnxadt.setSeclection(i);
-
                     gvclnxadt.notifyDataSetChanged();
                 }
             });
@@ -399,19 +430,22 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
                             capital = "";
                             break;
                         case 1:
-                            capital = "0,100";
+                            capital = "0,1000000";
                             break;
+
+
                         case 2:
-                            capital = "100,200";
+                            capital = "1000000,2000000";
                             break;
                         case 3:
-                            capital = "200,500";
+                            capital = "2000000,5000000";
                             break;
                         case 4:
-                            capital = "500,1000";
+                            capital = "5000000,10000000";
                             break;
 
                     }
+                    isRangeQuery = true;
                     gvzcziadt.setSeclection(i);
                     gvzcziadt.notifyDataSetChanged();
                 }
@@ -419,9 +453,11 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             mSizeTagAdapter = new TagAdapter<>(SearchGsByNameAct.this);//流逝布局
             mSizeFlowTagLayout.setTagCheckedMode(FlowTagLayout.FLOW_TAG_CHECKED_SINGLE);//设置是多选
             mSizeFlowTagLayout.setAdapter(mSizeTagAdapter);
+            screeningRange = "0";
             mSizeFlowTagLayout.setOnTagSelectListener(new OnTagSelectListener() {
                 @Override
                 public void onItemSelect(FlowTagLayout parent, List<Integer> selectedList) {
+                    MyLogUtils.info(selectedList.toString()+"selectedList存放的内容是=====");
                     switch (selectedList.get(0)) {
                         case 0:
                             screeningRange = 0 + "";
@@ -441,18 +477,30 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
                         case 4:
                             screeningRange = 8 + "";
                             break;
+                        default:
+                            screeningRange = "";
+                            break;
                     }
+                    isRangeQuery = true;
                 }
 
             });
-            sdatasource.add("按名称查询");
-            sdatasource.add("按地址查询");
-            sdatasource.add("按经营范围查询");
-            sdatasource.add("按品牌/产品查询");
-            sdatasource.add("按法定代表人查询");
             mSizeTagAdapter.onlyAddAll(sdatasource);
-
             mPopupWindow = new PopupWindow(v, AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
+            tv_qd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    page = 1;
+                    mPresenter.getQiYeinfo(name, address, industry, capital, establishDate, isRangeQuery, screeningRange, page, rows);
+                    mPopupWindow.dismiss();
+                }
+            });
+            tv_cz.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
 
         } else if (i == 1) {//城市
             View v = LayoutInflater.from(SearchGsByNameAct.this).inflate(R.layout.city_sec, null);
