@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="MOUNT_UNMOUNT_FILESYSTEMS" />
 
@@ -81,10 +82,10 @@
         <!--忘记密码-->
         <activity android:name=".module.user.ui.ForgetPwdAct"
             android:screenOrientation="portrait"/>
-        <!--查商标-->
-        <activity
-            android:name=".module.home.ui.search.SearchBrandFrg"
-            android:screenOrientation="portrait" />
+        <!--&lt;!&ndash;查商标&ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name=".module.home.ui.search.SearchBrandFrg"-->
+            <!--android:screenOrientation="portrait" />-->
         <!--查著作权-->
         <activity
             android:name=".module.home.ui.search.SearchCopyrightAct"
@@ -281,6 +282,9 @@
             android:screenOrientation="portrait"/>
         <!--税务信用-->
         <activity android:name=".module.company.ui.SuiWuInfo"
+            android:screenOrientation="portrait"/>
+        <!--商标列表-->
+        <activity android:name=".module.company.ui.FindBrandInfoAct"
             android:screenOrientation="portrait"/>
         </application>
 

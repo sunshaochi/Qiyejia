@@ -150,6 +150,7 @@
             <View style="@style/view_line" />
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -170,9 +171,10 @@
                     android:layout_marginTop="15dp" />
             </LinearLayout>
 
-            <View style="@style/view_line" />
+            <!--<View style="@style/view_line" />-->
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -193,18 +195,20 @@
                     android:layout_marginTop="15dp" />
             </LinearLayout>
 
-            <View style="@style/view_line" />
+            <!--<View style="@style/view_line" />-->
 
             <com.boyuanitsm.echinfo.widget.MineItemView
+                android:visibility="gone"
                 android:id="@+id/miv_ch"
                 style="@style/miv_patentDetail_item"
                 app:leftText="初审公告号"
                 app:rightText=""
                 app:rightTextColor="#999999" />
 
-            <View style="@style/view_line" />
+            <!--<View style="@style/view_line" />-->
 
             <com.boyuanitsm.echinfo.widget.MineItemView
+                android:visibility="gone"
                 android:id="@+id/miv_crq"
                 style="@style/miv_patentDetail_item"
                 app:leftText="初审公告日期"
@@ -214,22 +218,24 @@
             <View style="@style/view_line" />
 
             <com.boyuanitsm.echinfo.widget.MineItemView
+                android:visibility="gone"
                 android:id="@+id/miv_zgh"
                 style="@style/miv_patentDetail_item"
                 app:leftText="注册公告号"
                 app:rightText=""
                 app:rightTextColor="#999999" />
 
-            <View style="@style/view_line" />
+            <!--<View style="@style/view_line" />-->
 
             <com.boyuanitsm.echinfo.widget.MineItemView
+                android:visibility="gone"
                 android:id="@+id/miv_rq"
                 style="@style/miv_patentDetail_item"
                 app:leftText="注册公告日期"
                 app:rightText=""
                 app:rightTextColor="#999999" />
 
-            <View style="@style/view_line" />
+            <!--<View style="@style/view_line" />-->
         </LinearLayout>
 
     </ScrollView>

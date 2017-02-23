@@ -205,7 +205,7 @@ public class FindManager {
     public void findEnterpriseInfoByBusinessScope(String businessScope ,String address,String industry,String capital,String establishDate,int page,int rows,ResultCallback callback) {
         Map<String,String> params=new HashMap<>();
         if (!TextUtils.isEmpty(businessScope )){
-            params.put("businessScope ",businessScope );
+            params.put("businessScope",businessScope );
         }
         if (!TextUtils.isEmpty(address)){
             params.put("address",address);
@@ -241,8 +241,8 @@ public class FindManager {
      */
     public void findEnterpriseInfoByProductName(String webAddress  ,String address,String industry,String capital,String establishDate,int page,int rows,ResultCallback callback) {
         Map<String,String> params=new HashMap<>();
-        if (!TextUtils.isEmpty(webAddress  )){
-            params.put("webAddress",webAddress  );
+        if (!TextUtils.isEmpty(webAddress)){
+            params.put("name",webAddress  );
         }
         if (!TextUtils.isEmpty(address)){
             params.put("address",address);
@@ -321,5 +321,16 @@ public class FindManager {
         Map<String,String> params=new HashMap<>();
         params.put("companyId",id);
         OkHttpManager.getInstance().doGet(EchinoUrl.FIND_SHUIWUXINYONG_URL,params,callback);
+    }
+
+    /**
+     * 商标列表
+     * @param id
+     * @param callback
+     */
+    public void findBrandInfo(String id,ResultCallback callback){
+        Map<String,String> params=new HashMap<>();
+        params.put("companyId",id);
+        OkHttpManager.getInstance().doGet(EchinoUrl.FIND_SHANGBIAO_URL,params,callback);
     }
 }

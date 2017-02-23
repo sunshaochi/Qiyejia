@@ -129,15 +129,16 @@ public class CropImageActivity extends MonitoredActivity {
 					@Override
 					public void run() {
 						Bitmap bitmap = clipImage.clip();
-						pathfile = Environment
-								.getExternalStorageDirectory()
-								+ "/ClipHeadPhoto/cache/"
-								+ System.currentTimeMillis() + ".png";
-						MyBitmapUtils.savePhotoToSDCard(bitmap, path);
-						MyLogUtils.info("拍照图片地址是："+path);
+						pathfile = Environment.getExternalStorageDirectory().toString() + "/DCIM/Camera/"+  System.currentTimeMillis() + ".png";
+
+//								Environment.getExternalStorageState()+"/"
+//								+ System.currentTimeMillis() + ".png";
+//						+ "/ClipHeadPhoto/cache/"
+						MyBitmapUtils.savePhotoToSDCard(bitmap, pathfile);
+						MyLogUtils.info("拍照图片地址是====："+pathfile);
 						loadingDialog.dismiss();
 						Intent intent = new Intent();
-						intent.putExtra("path", path);
+						intent.putExtra("path", pathfile);
 						setResult(RESULT_OK, intent);
 						//info.setMemberpic(path);
 						finish();
