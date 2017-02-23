@@ -58,7 +58,7 @@ import butterknife.OnClick;
  * Created by bitch-1 on 2017/2/7.
  */
 
-public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnItemClickListener {
+public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView, OnItemClickListener {
     @BindView(R.id.xr)
     XRecyclerView xr;//下拉刷新view
     @BindView(R.id.gd_sec)
@@ -87,7 +87,6 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
     TextView tvNum;
 
 
-
     @BindView(R.id.rl_recent)
     RelativeLayout rlRecent;//最近搜索
     @BindView(R.id.rl_search)
@@ -113,13 +112,14 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
     public static final String SEARCH_TYPE = "type";
     private int type;
     String name;
-    String address;
-    String industry;
-    String capital;
-    String establishDate;
-    int page=1;
-    int rows=10;
-
+    String address;//区域
+    String industry;//行业
+    String capital;//注册资金，注册资金（闭区间）开始不限capital=*,x；结束不限capital=x,*；0-1万人民币 capital=0,10000；
+    String establishDate;//成立时间，成立时间（闭区间）时间格式 2016-12-13，规则同注册资金
+    String screeningRange;// - 筛选条件 {公司名称:screeningRange = 0; 产品:screeningRange = 7; 股东、法人、高管:screeningRange = 8; 经营范围:screeningRange = 9; 联系方式:screeningRange = 10; 网址:screeningRange = 11} 多选用逗号隔开(screeningRange="0,7,8")
+    boolean isRangeQuery;// - 必传 是否筛选查询 初期查询 isRangeQuery = false isRangeQuery = true companyName 和 screeningRange 必填项;
+    int page = 1;
+    int rows = 10;
 
 
     ACache aCache;
@@ -128,6 +128,8 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
     List<String> hotNames = new ArrayList<>();
     SearchHistoryAdapter<String> recentAdatper;//最近搜索适配器
     SearchHistoryAdapter<String> hotAdapter;//热门搜索适配器
+    String[] strYears = {"不限", "1年内", "1-2年内", "2-3年内", "3-5年内", "5-10年内", "10年以上"};
+    String[] strMoney = {"不限", "100万以内", "100-200万", "200-500万", "500-1000万", "1000万以上"};
 
     @Override
     public int getLayout() {
@@ -137,16 +139,16 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
     @Override
     public void init(Bundle savedInstanceState) {
         type = getIntent().getIntExtra(SEARCH_TYPE, 0);
-        mPresenter=new PinPaiPreImpl(this);
+        mPresenter = new PinPaiPreImpl(this);
         initFrg();//初识化下拉刷洗控件
 
-        aCache=ACache.get(PinpaidocAct.this);
-        gson=new Gson();
+        aCache = ACache.get(PinpaidocAct.this);
+        gson = new Gson();
 
         query.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId== EditorInfo.IME_ACTION_SEARCH){
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     // 先隐藏键盘
                     ((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
                             .hideSoftInputFromWindow(PinpaidocAct.this.getCurrentFocus()
@@ -189,8 +191,8 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
         }
 
 
-        gvclnxadt = new GvAdapter(PinpaidocAct.this);//成立年限
-        gvzcziadt = new GvAdapter(PinpaidocAct.this);//注册资本
+        gvclnxadt = new GvAdapter(PinpaidocAct.this, strYears);//成立年限
+        gvzcziadt = new GvAdapter(PinpaidocAct.this, strMoney);//注册资本
     }
 
     private void initRecentSearch() {
@@ -257,10 +259,11 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
         } else {
             // 调用搜索的API方法
             ToolsUtils.hideSoftKeyboard(PinpaidocAct.this);
-            mPresenter.getQiYeinfobyPinPai(name,address,industry,capital,establishDate,page,rows);
+            mPresenter.getQiYeinfobyPinPai(name, address, industry, capital, establishDate, page, rows);
         }
 
     }
+
     /**
      * 初始化下拉刷新
      */
@@ -276,9 +279,9 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
             @Override
             public void bindData(BaseRecyclerViewHolder holder, int position, ProductBean item) {
                 holder.getTextView(R.id.tv_name).setText(item.getCompanyName());
-                holder.getTextView(R.id.tv_person).setText("公司法人："+item.getLegalPerson());
+                holder.getTextView(R.id.tv_person).setText("公司法人：" + item.getLegalPerson());
                 holder.getTextView(R.id.tv_status).setText(item.getManagementStatus());
-                holder.getTextView(R.id.tv_sb).setText( "商标/产品："+item.getName());
+                holder.getTextView(R.id.tv_sb).setText("商标/产品：" + item.getName());
 //                "商标/产品："+
 
             }
@@ -287,14 +290,14 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
         xr.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                page=1;
-                mPresenter.getQiYeinfobyPinPai(name,address,industry,capital,establishDate,page,rows);
+                page = 1;
+                mPresenter.getQiYeinfobyPinPai(name, address, industry, capital, establishDate, page, rows);
             }
 
             @Override
             public void onLoadMore() {
                 page++;
-                mPresenter.getQiYeinfobyPinPai(name,address,industry,capital,establishDate,page,rows);
+                mPresenter.getQiYeinfobyPinPai(name, address, industry, capital, establishDate, page, rows);
 
             }
         });
@@ -302,7 +305,7 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
         mAdp.setOnItemClickListener(this);
     }
 
-    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec,R.id.iv_sc,R.id.rl_search,R.id.ll_rs})
+    @OnClick({R.id.gd_sec, R.id.city_sec, R.id.hy_sec, R.id.iv_sc, R.id.rl_search, R.id.ll_rs})
     public void OnClick(View v) {
         switch (v.getId()) {
             case R.id.gd_sec:
@@ -485,13 +488,12 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
         }
 
 
-
-        if (page==1){
+        if (page == 1) {
             xr.refreshComplete();
             datas.clear();
         }
         xr.loadMoreComplete();
-        if (list!=null&&list.size()>0){
+        if (list != null && list.size() > 0) {
             datas.addAll(list);
         }
         mAdp.setData(datas);
@@ -510,10 +512,10 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
 
     @Override
     public void findEnterpriseTotals(int tatal) {
-        if (tatal>0){
+        if (tatal > 0) {
             llJg.setVisibility(View.VISIBLE);
-            tvNum.setText(tatal+"");
-        }else {
+            tvNum.setText(tatal + "");
+        } else {
             llJg.setVisibility(View.GONE);
         }
     }
@@ -539,9 +541,9 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView,OnI
 
     @Override
     public void onItemClick(View view, int position) {
-        Bundle bundle=new Bundle();
-        bundle.putParcelable(ProductInfoAct.PRODUCT_INFO,datas.get(position-1));
-        openActivity(ProductInfoAct.class,bundle);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(ProductInfoAct.PRODUCT_INFO, datas.get(position - 1));
+        openActivity(ProductInfoAct.class, bundle);
     }
 
     @Override

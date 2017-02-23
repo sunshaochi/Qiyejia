@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
@@ -16,8 +15,10 @@ import com.boyuanitsm.echinfo.R;
 public class GvAdapter extends BaseAdapter {
     private Context context;
     private int clickTemp = -1;//标识选择的Item
+    private String[] strings;
 
-    public GvAdapter(Context context) {
+    public GvAdapter(Context context,String[] strings) {
+        this.strings=strings;
         this.context = context;
     }
 
@@ -27,12 +28,12 @@ public class GvAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 6;
+        return strings.length;
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return strings[i];
     }
 
     @Override
@@ -51,7 +52,7 @@ public class GvAdapter extends BaseAdapter {
         }else {
             tabHolder= (TabHolder) view.getTag();
         }
-
+        tabHolder.tv_bq.setText(strings[i]);
         if(clickTemp==i){
             tabHolder.tv_bq.setTextColor(Color.parseColor("#2485f2"));
             tabHolder.tv_bq.setBackgroundResource(R.drawable.select_item_bag);
