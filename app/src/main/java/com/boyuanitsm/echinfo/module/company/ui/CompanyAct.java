@@ -126,7 +126,9 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         mPresenter = new CompanyPreImpl(this);
         mPresenter.getCompanyDetail(companyId);
         initOnItemClick();
-        bundle.putString(COMAPYT_ID,companyId);
+//        bundle.putString(COMAPYT_ID,companyId);
+        bundle.putString(COMAPYT_ID,"123456789");
+
     }
 
 
@@ -137,7 +139,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
                 switch (i) {
                     case 0://工商信息
-                        openActivity(BusinessInfoAct.class);
+                        openActivity(BusinessInfoAct.class,bundle);
                         break;
                     case 1://对外投资
                         openActivity(ForeignInvestmentAct.class,bundle);

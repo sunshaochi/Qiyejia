@@ -16,8 +16,9 @@
             android:text="检查实施机关:" />
 
         <TextView
+            android:id="@+id/tvAgency"
             style="@style/executed_item_tv_gray"
-            android:text="海关" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -31,8 +32,9 @@
             android:text="类型:" />
 
         <TextView
+            android:id="@+id/tvType"
             style="@style/executed_item_tv_gray"
-            android:text="-" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -46,8 +48,9 @@
             android:text="日期:" />
 
         <TextView
+            android:id="@+id/tvDate"
             style="@style/executed_item_tv_gray"
-            android:text="2017-01-06" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -61,7 +64,8 @@
             android:text="结果:" />
 
         <TextView
+            android:id="@+id/tvResult"
             style="@style/executed_item_tv_gray"
-            android:text="合格" />
+            android:text="" />
     </LinearLayout>
 </LinearLayout>

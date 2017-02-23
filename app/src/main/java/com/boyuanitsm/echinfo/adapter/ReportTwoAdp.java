@@ -5,8 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.bean.StockMsgBean;
+
+import java.util.List;
 
 /**
  * 年报信息股东信息适配器
@@ -15,23 +19,26 @@ import com.boyuanitsm.echinfo.R;
 public class ReportTwoAdp extends BaseAdapter {
     private LayoutInflater inflater;
 
-    public ReportTwoAdp(Context context) {
+    private List<StockMsgBean> datas;
+
+    public ReportTwoAdp(Context context,List<StockMsgBean> datas) {
         inflater = LayoutInflater.from(context);
+        this.datas=datas;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return datas.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return datas.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
@@ -40,13 +47,25 @@ public class ReportTwoAdp extends BaseAdapter {
         if(view == null){
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.mlv_reporttwo_item,null);
+            holder.tvName= (TextView) view.findViewById(R.id.tvName);
+            holder.tvCzTime= (TextView) view.findViewById(R.id.tvCzTime);
+            holder.tvCzMoney= (TextView) view.findViewById(R.id.tvCzMoney);
+            holder.tvSjTime= (TextView) view.findViewById(R.id.tvSjTime);
+            holder.tvSjMoney= (TextView) view.findViewById(R.id.tvSjMoney);
+            holder.tvType= (TextView) view.findViewById(R.id.tvType);
             view.setTag(holder);
         }else {
             holder = (ViewHolder) view.getTag();
         }
+        holder.tvName.setText(datas.get(i).getName());
+        holder.tvCzTime.setText(datas.get(i).getRealSubcribeTime());
+        holder.tvCzMoney.setText(datas.get(i).getSubcribe());
+        holder.tvSjTime.setText(datas.get(i).getRealSubcribeTime());
+        holder.tvSjMoney.setText(datas.get(i).getRealSubcribe());
+        holder.tvType.setText(datas.get(i).getRealSubcribeType());
         return view;
     }
     private class ViewHolder{
-
+        TextView tvName,tvCzTime,tvCzMoney,tvSjTime,tvSjMoney,tvType;
     }
 }

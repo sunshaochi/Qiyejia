@@ -19,7 +19,8 @@
         <View
             android:layout_marginTop="20dp"
             style="@style/view_line_vertical"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginLeft="5dp"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,11 +35,72 @@
                 android:drawablePadding="10dp"
                 android:text="" />
 
+            <TextView
+                android:id="@+id/tv_changeTitle"
+                style="@style/tv_14_black"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@mipmap/business_sanjiao01"
+                android:drawablePadding="10dp"
+                android:paddingLeft="5dp"
+                android:text="" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="13dp"
+                android:background="#f0f0f0"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        style="@style/tv_14_black"
+                        android:text="变更前" />
+
+                    <TextView
+                        android:id="@+id/tv_changeBefore"
+                        style="@style/tv_14_gray"
+                        android:layout_marginTop="10dp"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        style="@style/tv_14_black"
+                        android:text="变更后" />
+
+                    <TextView
+                        android:id="@+id/tv_changeAfter"
+                        style="@style/tv_14_gray"
+                        android:layout_marginTop="10dp"
+                        android:text="" />
+                </LinearLayout>
+            </LinearLayout>
+
+
             <com.boyuanitsm.echinfo.widget.MyListView
                 android:id="@+id/mlv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none" />
+                android:scrollbars="none"
+                android:visibility="gone"
+                />
         </LinearLayout>
     </FrameLayout>
+
+
 </LinearLayout>

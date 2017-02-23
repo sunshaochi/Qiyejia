@@ -9,6 +9,6 @@ import com.boyuanitsm.echinfo.http.manager.CompanyManager;
 public class IWebsiteModleImpl implements IWebsiteModle {
     @Override
     public void getData(String companyId, ResultCallback resultCallback) {
-        CompanyManager.getCompanyManager().Findweb(companyId,resultCallback);
+        CompanyManager.getCompanyManager().Findweb(companyId,"",resultCallback);
     }
 }

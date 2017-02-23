@@ -1,16 +1,19 @@
 package com.boyuanitsm.echinfo.module.mine.ui;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.AttenBean;
+import com.boyuanitsm.echinfo.module.company.ui.CompanyAct;
 import com.boyuanitsm.echinfo.module.mine.presenter.IFollowPre;
 import com.boyuanitsm.echinfo.module.mine.presenter.IFollowPreImpl;
 import com.boyuanitsm.echinfo.module.mine.view.IFollowView;
 import com.boyuanitsm.echinfo.utils.EchinfoUtils;
 import com.boyuanitsm.tools.base.BaseRecyclerAdapter;
 import com.boyuanitsm.tools.base.BaseRecyclerViewHolder;
+import com.boyuanitsm.tools.callback.OnItemClickListener;
 import com.boyuanitsm.tools.view.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
@@ -63,6 +66,19 @@ public class FollowAct extends BaseAct<IFollowPre> implements IFollowView {
 
             @Override
             public void onLoadMore() {
+
+            }
+        });
+        myAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Bundle bundle=new Bundle();
+                bundle.putString(CompanyAct.COMAPYT_ID,datas.get(position).getId());
+                openActivity(CompanyAct.class,bundle);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
 
             }
         });

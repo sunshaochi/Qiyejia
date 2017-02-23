@@ -8,6 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.boyuanitsm.echinfo.R;
+import com.boyuanitsm.echinfo.bean.WebsiteBean;
+
+import java.util.List;
 
 /**
  * 年报信息"企业基本信息", "网站或网店信息"适配器  上黑文字，下灰文字
@@ -15,19 +18,21 @@ import com.boyuanitsm.echinfo.R;
  */
 public class ReportOneAdp extends BaseAdapter {
     private LayoutInflater inflater;
+    private List<WebsiteBean> webs;
 
-    public ReportOneAdp(Context context) {
+    public ReportOneAdp(Context context,List<WebsiteBean> webs) {
         inflater = LayoutInflater.from(context);
+        this.webs=webs;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return webs.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return webs.get(i);
     }
 
     @Override
@@ -47,6 +52,8 @@ public class ReportOneAdp extends BaseAdapter {
         }else {
             holder = (ViewHolder) view.getTag();
         }
+        holder.tv_title.setText(webs.get(i).getWebAddress());
+        holder.tv_name.setText(webs.get(i).getWebName());
         return view;
     }
     private class ViewHolder{

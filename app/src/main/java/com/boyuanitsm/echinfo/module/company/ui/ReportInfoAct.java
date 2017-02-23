@@ -19,6 +19,8 @@ import com.boyuanitsm.echinfo.base.BaseAct;
 import com.boyuanitsm.echinfo.bean.CompanyBean;
 import com.boyuanitsm.echinfo.bean.EditRecordBean;
 import com.boyuanitsm.echinfo.bean.ResultBean;
+import com.boyuanitsm.echinfo.bean.StockMsgBean;
+import com.boyuanitsm.echinfo.bean.WebsiteBean;
 import com.boyuanitsm.echinfo.bean.YearReportBean;
 import com.boyuanitsm.echinfo.callback.ResultCallback;
 import com.boyuanitsm.echinfo.http.manager.CompanyManager;
@@ -49,6 +51,8 @@ public class ReportInfoAct extends BaseAct {
     private YearReportBean yearReportBean;
 
     private CompanyBean companyBean;//公司信息
+    private List<WebsiteBean> webs;//网站信息
+    private List<StockMsgBean> stockMsgs;//股东信息
     private List<CompanyBean> enterpriBeans;//对外投资
     private  List<EditRecordBean> records;//变更纪录
 
@@ -68,8 +72,8 @@ public class ReportInfoAct extends BaseAct {
         });
         yearReportBean=getIntent().getParcelableExtra(YEAR_REPORTINFO);
         getCompanyInfo(yearReportBean.getId());
-        getInves(yearReportBean.getId(),yearReportBean.getYear());
 
+//        getStockMsg(yearReportBean.getId());
 
     }
 
@@ -129,13 +133,31 @@ public class ReportInfoAct extends BaseAct {
             } else {
                 holder.iv_groupArrow.setImageResource(R.mipmap.arrow_down);
             }
-            if (i == 5 || i == 6) {
+            if (i == 5 ||i == 6||i==4) {
                 holder.iv_groupArrow.setVisibility(View.GONE);
                 holder.tv_groupRight.setVisibility(View.VISIBLE);
             } else {
                 switch (i){
                     case 0://企业基本信息
                         if(companyBean!=null){
+                            holder.iv_groupArrow.setVisibility(View.VISIBLE);
+                            holder.tv_groupRight.setVisibility(View.GONE);
+                        }else {
+                            holder.iv_groupArrow.setVisibility(View.GONE);
+                            holder.tv_groupRight.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                    case 1://网站或网站信息
+                        if(webs!=null&&webs.size()>0){
+                            holder.iv_groupArrow.setVisibility(View.VISIBLE);
+                            holder.tv_groupRight.setVisibility(View.GONE);
+                        }else {
+                            holder.iv_groupArrow.setVisibility(View.GONE);
+                            holder.tv_groupRight.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                    case 2://股东信息
+                        if(stockMsgs!=null&&stockMsgs.size()>0){
                             holder.iv_groupArrow.setVisibility(View.VISIBLE);
                             holder.tv_groupRight.setVisibility(View.GONE);
                         }else {
@@ -223,10 +245,35 @@ public class ReportInfoAct extends BaseAct {
                 }
             }
 
+            if(gPosition==1){//网站
+                if(webs!=null&&webs.size()>0){
+                    holder = new cViewHolder();
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
+                    holder.myListView= (MyListView) view.findViewById(R.id.mlv);
+                    oneAdp = new ReportOneAdp(getApplicationContext(),webs);
+                    holder.myListView.setAdapter(oneAdp);
+                }else {
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
+                }
+            }
+
+            if(gPosition==2){//股东信息
+                if(stockMsgs!=null&&stockMsgs.size()>0){
+                    holder = new cViewHolder();
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
+                    holder.myListView= (MyListView) view.findViewById(R.id.mlv);
+                    twoAdp = new ReportTwoAdp(getApplicationContext(),stockMsgs);
+                    holder.myListView.setAdapter(twoAdp);
+                }else {
+                    view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
+                }
+            }
+
             if(gPosition==3){//对外投资
                 if(enterpriBeans!=null&&enterpriBeans.size()>0){
                     holder = new cViewHolder();
                     view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
+                    holder.myListView= (MyListView) view.findViewById(R.id.mlv);
                     threeAdp = new ReportThreeAdp(getApplicationContext(),enterpriBeans);
                     holder.myListView.setAdapter(threeAdp);
                 }else {
@@ -240,6 +287,7 @@ public class ReportInfoAct extends BaseAct {
                 if(records!=null&&records.size()>0){
                     holder = new cViewHolder();
                     view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
+                    holder.myListView= (MyListView) view.findViewById(R.id.mlv);
                     sevenAdp = new BusinessThreeAdp(getApplicationContext(),records);
                     holder.myListView.setAdapter(sevenAdp);
                 }else {
@@ -248,43 +296,17 @@ public class ReportInfoAct extends BaseAct {
                 }
             }
 
-            if ( gPosition == 1 || gPosition == 2
-                    || gPosition == 4 ) {
-                holder = new cViewHolder();
-                view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
-                holder.myListView = (MyListView) view.findViewById(R.id.mlv);
-                //企业基本信息
-//                    oneAdp = new ReportOneAdp(getApplicationContext());
-//                    holder.myListView.setAdapter(oneAdp);
+//            if ( gPosition == 1 || gPosition == 2
+//                    ) {
+//                holder = new cViewHolder();
+//                view = View.inflate(getApplicationContext(), R.layout.view_business_two, null);
+//                holder.myListView = (MyListView) view.findViewById(R.id.mlv);
+//
+//            }
 
-                if (gPosition == 1) {//网站或网店信息
-                    oneAdp = new ReportOneAdp(getApplicationContext());
-                    holder.myListView.setAdapter(oneAdp);
-                }
-                if (gPosition == 2) {//股东信息
-                    twoAdp = new ReportTwoAdp(getApplicationContext());
-                    holder.myListView.setAdapter(twoAdp);
-                }
-//                if (gPosition == 3) {//对外投资信息
-//                    threeAdp = new ReportThreeAdp(getApplicationContext(),enterpriBeans);
-//                    holder.myListView.setAdapter(threeAdp);
-//                }
-                if (gPosition == 4) {//企业资产状况信息
-                    fourAdp = new ReportFourAdp(getApplicationContext());
-                    holder.myListView.setAdapter(fourAdp);
-                }
-//                if (gPosition == 7) {//变更记录
-//                    if(records!=null&&records.size()>0){
-//                        sevenAdp = new BusinessThreeAdp(getApplicationContext(),records);
-//                        holder.myListView.setAdapter(sevenAdp);
-//                    }else {
-//                        view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
-//
-//                    }
-//
-//                }
+            if (gPosition == 4) {//对外提供保证担保信息
+                view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
             }
-
             if (gPosition == 5) {//对外提供保证担保信息
                 view = View.inflate(getApplicationContext(), R.layout.view_business_four, null);
             }
@@ -312,25 +334,83 @@ public class ReportInfoAct extends BaseAct {
     }
 
     /**
-     * 获取企业信息
+     * 获取企业信息无统计
      * @param companyId
      */
     private void getCompanyInfo(String companyId){
-        CompanyManager.getCompanyManager().toGetCompanyDetail(companyId, new ResultCallback<ResultBean<CompanyBean>>() {
+        CompanyManager.getCompanyManager().toFindCompanyNo(companyId, new ResultCallback<ResultBean<CompanyBean>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+            }
+
+            @Override
+            public void onResponse(ResultBean<CompanyBean> response) {
+                companyBean=response.getData();
+                getWebDatas(yearReportBean.getId(),yearReportBean.getYear());
+
+            }
+        });
+    }
+
+    /**
+     * 获取网站信息
+     * @param companyId
+     * @param year
+     */
+    private void getWebDatas(final String companyId,String year){
+        CompanyManager.getCompanyManager().Findweb(companyId, year, new ResultCallback<ResultBean<List<WebsiteBean>>>() {
             @Override
             public void onError(int status, String errorMsg) {
 
             }
 
             @Override
-            public void onResponse(ResultBean<CompanyBean> response) {
-                companyBean=response.getData();
-                elv_businessInfo.setAdapter(new MBaseAdp());
-                getEditRecord(yearReportBean.getId(),yearReportBean.getYear());
+            public void onResponse(ResultBean<List<WebsiteBean>> response) {
+                webs=response.getData();
+                getStockMsg(companyId);
+
 
             }
         });
+    }
 
+    /**
+     * 查询股东信息
+     * @param companyId
+     */
+    private void getStockMsg(String companyId){
+        CompanyManager.getCompanyManager().toFindStockMsg(companyId, new ResultCallback<ResultBean<List<StockMsgBean>>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+
+            }
+
+            @Override
+            public void onResponse(ResultBean<List<StockMsgBean>> response) {
+                stockMsgs=response.getData();
+                getInves(yearReportBean.getId(),yearReportBean.getYear());
+            }
+        });
+    }
+
+    /**
+     * 查询对外投资
+     * @param companyId
+     * @param year
+     */
+    private void getInves(final String companyId,final String year){
+        CompanyManager.getCompanyManager().toGetInves(companyId, year, new ResultCallback<ResultBean<List<CompanyBean>>>() {
+            @Override
+            public void onError(int status, String errorMsg) {
+
+            }
+
+            @Override
+            public void onResponse(ResultBean<List<CompanyBean>> response) {
+                enterpriBeans =response.getData();
+                getEditRecord(companyId,year);
+            }
+        });
     }
 
     /**
@@ -348,29 +428,12 @@ public class ReportInfoAct extends BaseAct {
             @Override
             public void onResponse(ResultBean<List<EditRecordBean>> response) {
                 records=response.getData();
-
+                elv_businessInfo.setAdapter(new MBaseAdp());
             }
         });
 
     }
 
-    /**
-     * 查询对外投资
-     * @param companyId
-     * @param year
-     */
-    private void getInves(String companyId,String year){
-        CompanyManager.getCompanyManager().toGetInves(companyId, year, new ResultCallback<ResultBean<List<CompanyBean>>>() {
-            @Override
-            public void onError(int status, String errorMsg) {
 
-            }
-
-            @Override
-            public void onResponse(ResultBean<List<CompanyBean>> response) {
-                enterpriBeans =response.getData();
-            }
-        });
-    }
 
 }

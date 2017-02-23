@@ -13,13 +13,13 @@
         <TextView
             android:id="@+id/tv_title"
             style="@style/tv_14_black"
-            android:text="企业名称" />
+            android:text="" />
 
         <TextView
             android:id="@+id/tv_name"
             style="@style/tv_14_gray"
             android:layout_marginTop="10dp"
-            android:text="上海有限公司" />
+            android:text="" />
     </LinearLayout>
 
     <View style="@style/view_line" />

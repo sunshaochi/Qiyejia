@@ -11,6 +11,7 @@
         android:orientation="vertical">
 
         <TextView
+
             style="@style/tvBlack_businessChild_one"
             android:text="经营范围" />
 
@@ -19,8 +20,9 @@
             android:layout_marginLeft="15dp" />
 
         <TextView
+            android:id="@+id/tvManagerFw"
             style="@style/tvGray_businessChild_one"
-            android:text="经营范围" />
+            android:text="" />
     </LinearLayout>
 
     <View style="@style/view_line" />
@@ -44,8 +46,9 @@
             android:layout_marginLeft="15dp" />
 
         <TextView
+            android:id="@+id/tvAddress"
             style="@style/tvGray_businessChild_one"
-            android:text="天津市" />
+            android:text="" />
     </LinearLayout>
 
     <View style="@style/view_line" />
@@ -69,8 +72,9 @@
             android:layout_marginLeft="15dp" />
 
         <TextView
+            android:id="@+id/tvYyDate"
             style="@style/tvGray_businessChild_one"
-            android:text="2015-2019" />
+            android:text="" />
     </LinearLayout>
 
     <View style="@style/view_line" />
@@ -90,8 +94,9 @@
             android:layout_marginLeft="15dp" />
 
         <TextView
+            android:id="@+id/tvFzDate2"
             style="@style/tvGray_businessChild_one"
-            android:text="2017-01-06" />
+            android:text="" />
     </LinearLayout>
 
     <View style="@style/view_line" />
@@ -111,8 +116,9 @@
             android:layout_marginLeft="15dp" />
 
         <TextView
+            android:id="@+id/tvDjDate"
             style="@style/tvGray_businessChild_one"
-            android:text="工商管理局" />
+            android:text="" />
     </LinearLayout>
 
     <View style="@style/view_line" />
