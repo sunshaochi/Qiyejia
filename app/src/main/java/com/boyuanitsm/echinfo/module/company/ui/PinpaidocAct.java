@@ -20,6 +20,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.boyuanitsm.echinfo.ConstantValue;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.CityAdapter;
 import com.boyuanitsm.echinfo.adapter.GvAdapter;
@@ -408,15 +409,18 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView, On
             View v = LayoutInflater.from(PinpaidocAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(PinpaidocAct.this);
-            CityAdapter cityadapter = new CityAdapter(PinpaidocAct.this);
+            final ProAdapter proadapteer = new ProAdapter(PinpaidocAct.this,ConstantValue.getIndustyList(),0);
             lsv_pricive.setAdapter(proadapteer);
-            lsv_city.setAdapter(cityadapter);
 
             lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    lsv_city.setVisibility(View.VISIBLE);
+                    if (ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)) != null) {
+                        proadapteer.setSlectionChange(i);
+                        CityAdapter cityadapter = new CityAdapter(PinpaidocAct.this, ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)));
+                        lsv_city.setVisibility(View.VISIBLE);
+                        lsv_city.setAdapter(cityadapter);
+                    }
                 }
             });
 
@@ -427,15 +431,18 @@ public class PinpaidocAct extends BaseAct<IPinPaiPre> implements IPinPaiView, On
             View v = LayoutInflater.from(PinpaidocAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(PinpaidocAct.this);
-            CityAdapter cityadapter = new CityAdapter(PinpaidocAct.this);
+            final ProAdapter proadapteer = new ProAdapter(PinpaidocAct.this, ConstantValue.getIndustyList(),0);
             lsv_pricive.setAdapter(proadapteer);
-            lsv_city.setAdapter(cityadapter);
 
             lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    lsv_city.setVisibility(View.VISIBLE);
+                    if (ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)) != null) {
+                        proadapteer.setSlectionChange(i);
+                        CityAdapter cityadapter = new CityAdapter(PinpaidocAct.this, ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)));
+                        lsv_city.setVisibility(View.VISIBLE);
+                        lsv_city.setAdapter(cityadapter);
+                    }
                 }
             });
 

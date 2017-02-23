@@ -20,6 +20,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.boyuanitsm.echinfo.ConstantValue;
 import com.boyuanitsm.echinfo.R;
 import com.boyuanitsm.echinfo.adapter.CityAdapter;
 import com.boyuanitsm.echinfo.adapter.GvAdapter;
@@ -126,6 +127,10 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
     String[] strYears = {"不限", "1年内", "1-2年内", "2-3年内", "3-5年内", "5-10年内", "10年以上"};
     String[] strMoney = {"不限", "100万以内", "100-200万", "200-500万", "500-1000万", "1000万以上"};
     List<String> sdatasource = new ArrayList<>();
+
+
+    private ProAdapter hyAdapter;
+    private CityAdapter hySecAdapter;
     @Override
     public int getLayout() {
         return R.layout.act_jinyinfw;
@@ -389,21 +394,21 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             gv_zczb.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    switch (i){
+                    switch (i) {
                         case 0:
-                            capital="";
+                            capital = "";
                             break;
                         case 1:
-                            capital="0,100";
+                            capital = "0,100";
                             break;
                         case 2:
-                            capital="100,200";
+                            capital = "100,200";
                             break;
                         case 3:
-                            capital="200,500";
+                            capital = "200,500";
                             break;
                         case 4:
-                            capital="500,1000";
+                            capital = "500,1000";
                             break;
 
                     }
@@ -417,24 +422,24 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             mSizeFlowTagLayout.setOnTagSelectListener(new OnTagSelectListener() {
                 @Override
                 public void onItemSelect(FlowTagLayout parent, List<Integer> selectedList) {
-                    switch (selectedList.get(0)){
+                    switch (selectedList.get(0)) {
                         case 0:
-                            screeningRange=0+"";
+                            screeningRange = 0 + "";
                             break;
                         case 1:
-                            screeningRange=11+"";
+                            screeningRange = 11 + "";
 
                             break;
                         case 2:
-                            screeningRange=9+"";
+                            screeningRange = 9 + "";
 
                             break;
                         case 3:
-                            screeningRange=7+"";
+                            screeningRange = 7 + "";
 
                             break;
                         case 4:
-                            screeningRange=8+"";
+                            screeningRange = 8 + "";
                             break;
                     }
                 }
@@ -453,15 +458,19 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
             View v = LayoutInflater.from(SearchGsByNameAct.this).inflate(R.layout.city_sec, null);
             ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(SearchGsByNameAct.this);
-            CityAdapter cityadapter = new CityAdapter(SearchGsByNameAct.this);
+           final ProAdapter proadapteer = new ProAdapter(SearchGsByNameAct.this, ConstantValue.getIndustyList(),0);
             lsv_pricive.setAdapter(proadapteer);
-            lsv_city.setAdapter(cityadapter);
 
             lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    lsv_city.setVisibility(View.VISIBLE);
+                    if (ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)) != null) {
+                        proadapteer.setSlectionChange(i);
+
+                        CityAdapter cityadapter = new CityAdapter(SearchGsByNameAct.this, ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)));
+                        lsv_city.setVisibility(View.VISIBLE);
+                        lsv_city.setAdapter(cityadapter);
+                    }
                 }
             });
 
@@ -469,18 +478,31 @@ public class SearchGsByNameAct extends BaseAct<IJingYingPre> implements IJingyin
 
 
         } else if (i == 2) {//不限行业
+
             View v = LayoutInflater.from(SearchGsByNameAct.this).inflate(R.layout.city_sec, null);
-            ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
+            final ListView lsv_pricive = (ListView) v.findViewById(R.id.lsv_provice);
             final ListView lsv_city = (ListView) v.findViewById(R.id.lsv_city);
-            ProAdapter proadapteer = new ProAdapter(SearchGsByNameAct.this);
-            CityAdapter cityadapter = new CityAdapter(SearchGsByNameAct.this);
-            lsv_pricive.setAdapter(proadapteer);
-            lsv_city.setAdapter(cityadapter);
+            hyAdapter = new ProAdapter(SearchGsByNameAct.this, ConstantValue.getIndustyList(),0);
+            lsv_pricive.setAdapter(hyAdapter);
+            hySecAdapter=new CityAdapter(SearchGsByNameAct.this,ConstantValue.getIndustyMap().get("不限行业"));
+            lsv_city.setVisibility(View.VISIBLE);
+            lsv_city.setAdapter(hySecAdapter);
+
 
             lsv_pricive.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    lsv_city.setVisibility(View.VISIBLE);
+                    if (ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)) != null) {
+                        hyAdapter.setSlectionChange(i);
+                        hySecAdapter.setDatas(ConstantValue.getIndustyMap().get(ConstantValue.getIndustyList().get(i)));
+                        lsv_city.setVisibility(View.VISIBLE);
+                    }else {
+                        lsv_pricive.setVisibility(View.GONE);
+                        lsv_city.setVisibility(View.GONE);
+
+                    }
+
+
                 }
             });
 
