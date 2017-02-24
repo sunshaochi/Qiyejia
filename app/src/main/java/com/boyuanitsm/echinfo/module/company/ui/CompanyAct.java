@@ -286,7 +286,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
 
                 break;
             case R.id.llComment: //点评
-
+                openActivity(PinrunAct.class,bundle);
                 break;
             case R.id.llJk://监控
 

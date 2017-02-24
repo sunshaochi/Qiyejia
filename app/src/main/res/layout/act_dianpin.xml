@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#eef1f3"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/title_act_layout"></include>
+        <RelativeLayout
+            android:layout_alignParentRight="true"
+            android:layout_width="100dp"
+            android:layout_height="48dp">
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="提交"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:paddingTop="15dp"
+        android:paddingLeft="10dp"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        android:text="公司印象"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+        <com.boyuanitsm.echinfo.widget.MyGridView
+            android:paddingBottom="15dp"
+            android:id="@+id/gv_yx"
+            android:numColumns="4"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="5dp"
+            android:paddingTop="13dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></com.boyuanitsm.echinfo.widget.MyGridView>
+
+    </LinearLayout>
+
+   <LinearLayout
+       android:layout_marginTop="5dp"
+       android:background="@color/white"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <EditText
+           android:paddingLeft="10dp"
+           android:textSize="16sp"
+           android:textColorHint="#999999"
+           android:gravity="top"
+           android:hint="评论内容不能少于20字"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent" />
+
+
+   </LinearLayout>
+
+
+
+</LinearLayout>
