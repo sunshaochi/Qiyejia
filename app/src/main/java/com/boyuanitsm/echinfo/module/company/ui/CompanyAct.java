@@ -256,7 +256,7 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
         });
     }
 
-    @OnClick({R.id.rlShare, R.id.cvEmail, R.id.cvWz, R.id.cvAddress, R.id.llHome, R.id.llFollow, R.id.llBg, R.id.llComment, R.id.llJk,R.id.ll_gd})
+    @OnClick({R.id.rlShare, R.id.cvEmail, R.id.cvWz, R.id.cvAddress, R.id.llHome, R.id.llFollow, R.id.llBg, R.id.llComment, R.id.llJk,R.id.ll_gd,R.id.ll_pinrun})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.rlShare:
@@ -291,12 +291,17 @@ public class CompanyAct extends BaseAct<ICompanyPre> implements ICompanyView {
             case R.id.llJk://监控
 
                 break;
+            case R.id.ll_pinrun://评论数
+                openActivity(MorePinrunAct.class,bundle);
+                break;
+
             case R.id.ll_gd://更多企业信息
                 Bundle bundle=new Bundle();
 //
                 bundle.putParcelable("mcompanyBean",mcompanyBean);
                 openActivity(MoreInfoAct.class,bundle);
                 break;
+
         }
     }
 

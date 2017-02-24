@@ -62,6 +62,10 @@
         <activity
             android:name=".module.mine.ui.SettingAct"
             android:screenOrientation="portrait" />
+        <!--评论数-->
+        <activity
+            android:name=".module.company.ui.MorePinrunAct"
+            android:screenOrientation="portrait" />
         <!--修改资料内容-->
         <activity
             android:name=".module.mine.ui.EditAct"
